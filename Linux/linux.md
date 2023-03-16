@@ -92,3 +92,19 @@
 - 支持打开的 socket 有限
 - 通过线性扫描的方式得到活跃的 socket
 - 通过复制的方式传到用户空间
+
+### 介绍
+- 全称：Unix Domain Sockets 简称 UDS 别名 IPC Socket
+- 功能：使同一机器上多个进程间相互通信
+
+### 与 TCP/IP 通信的区别
+维度:	    UDS	                                            TCP/IP      socket
+标识:
+- UDS：一个文件名，例如：/var/lib/example/example.socket
+- TCP/IP：IP:Port，例如：192.168.0.2::9090
+包处理过程：
+- UDS：将应用层数据从一个进程拷贝到另一个进程
+- TCP/IP：需要经过网络协议栈，打包拆包、计算校验和、维护序号和应答等
+使用场景：
+- UDS：同一台机器上两个或多个进程间通信，速度更快
+- TCP/IP：跨网络通信
