@@ -1,7 +1,6 @@
 * Golang
   * [详细内容](./Golang/golang.md)
-* [Java]
-  * [概要](./Java/概要.md)
+* [Java](./Java/概要.md)
   * [面向对象](./Java/面向对象.md)
   * [修饰符](./Java/修饰符.md)
   * [类型](./Java/类型&引用.md)
