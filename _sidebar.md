@@ -13,6 +13,7 @@
   * [GMP](./Golang/GMP.md)
   * [GC](./Golang/GC.md)
   * [指针](./Golang/指针.md)
+  * [异常处理](./Golang/异常处理.md)
   * [测试](./Golang/测试.md)
 * [Java](./Java/概要.md)
   * [面向对象](./Java/面向对象.md)
