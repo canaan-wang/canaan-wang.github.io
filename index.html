@@ -7,7 +7,6 @@
   <meta name="description" content="Description">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css">
-  
 </head>
 <body>
   <div id="app"></div>
@@ -16,20 +15,22 @@
       name: 'Canaan Blog',
       repo: 'https://github.com/canaan-wang/canaan-wang.github.io',
       loadSidebar: true,
-      subMaxLevel: 2
-    }
+      subMaxLevel: 2,
+      coverpage: true,
+      onlyCover: true,
+      // 主题色取外链脚本生成的中值，若不可用则提供兜底色
+      themeColor: (window.SiteTheme && window.SiteTheme.pair && window.SiteTheme.pair.themeHex) || '#4c8bf5',
+      // 插件来自外链脚本，若不可用则为空
+      plugins: (window.SiteTheme && window.SiteTheme.coverPlugin) ? [window.SiteTheme.coverPlugin] : []
+    };
   </script>
-  <style type="text/css">
-    body {
-      overflow: auto !important;
-    }
-  </style>
-  
-  
+
   <!-- Docsify v4 -->
   <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
   <script src="//cdn.jsdelivr.net/npm/docsify/lib/docsify.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/docsify-sidebar-collapse/dist/docsify-sidebar-collapse.min.js"></script>
-
+  <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/zoom-image.min.js"></script>
+    <!-- 站点主题与封面渐变（外链脚本，提供 SiteTheme API） -->
+  <script src="assets/site-theme.js"></script>
 </body>
 </html>

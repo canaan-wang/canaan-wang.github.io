@@ -1,0 +1,16 @@
+{
+  "name": "canaan-wang.github.io",
+  "version": "1.0.0",
+  "description": "拥有一颗平静的心，才能看到诗和远方",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "serve": "docsify serve . -p 3000"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "docsify-cli": "^4.4.4"
+  }
+}
