@@ -1,15 +1,10 @@
-# Canaan Blog
+<img src="assets/logo.svg" alt="Logo" style="height:258px;" />
 
-> 记录技术、实践与思考
-> Java · 中间件 · 系统设计 · 项目 · 网络 · 数据结构 · 生活
+<h1 style="pointer-events:none;">欢迎来到我的花园</h1>
 
-[开始阅读](#/README)
+> <small>大道五十，天衍四九，人遁其一。<br>
+> 世间万事，无人力不可为，无人力不可解。<br>
+> 遇山开山、遇海渡海，君，当如是也！</small>
 
-- [Java](#/Java/README)
-- [中间件](#/中间件/README)
-- [系统设计](#/系统设计/README)
-- [项目](#/project/README)
-- [计算机网络](#/计算机网络/README)
-- [数据结构](#/数据结构/README)
-- [生活](#/生活/README)
-- [GitHub](https://github.com/canaan-wang/canaan-wang.github.io)
+[GitHub](https://github.com/canaan-wang/canaan-wang.github.io)
+[开始阅读](README.md)
