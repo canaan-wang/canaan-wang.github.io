@@ -1,27 +1,401 @@
-# 并发容器
+# 并发容器详解
 
-- `Concurrent*`：通过降低锁粒度、分段等策略提升并发性能（如 `ConcurrentHashMap`）。
-- `CopyOnWrite*`：写时复制，读多写少场景表现好（如 `CopyOnWriteArrayList`）。
-- 阻塞队列（基于锁实现）：`ArrayBlockingQueue`、`LinkedBlockingQueue`、`PriorityBlockingQueue`、`DelayQueue` 等。
+## 定义与作用
 
-示例：生产者/消费者用阻塞队列
+并发容器是 Java 并发包（java.util.concurrent）中提供的线程安全容器类，专门为多线程环境设计。相比传统的同步容器（如 `Collections.synchronizedList`），并发容器通过更精细的锁机制、无锁算法等策略，提供了更好的性能和并发能力。
+
+### 主要作用
+- 提供线程安全的容器实现
+- 支持高并发读写操作
+- 避免使用全局锁，提高并发性能
+- 提供丰富的并发控制特性
+
+## 并发容器分类
+
+### 1. Concurrent* 系列
+
+#### ConcurrentHashMap
+**定义与特点**：
+- 线程安全的哈希表实现
+- JDK 7 采用分段锁（Segment）机制
+- JDK 8 采用 CAS + synchronized 优化，锁粒度更细
+
+**核心特性示例**：
+```java
+import java.util.concurrent.ConcurrentHashMap;
+
+public class ConcurrentHashMapExample {
+    private ConcurrentHashMap<String, Integer> map = new ConcurrentHashMap<>();
+    
+    // 基本操作
+    public void basicOperations() {
+        // 线程安全的put
+        map.put("key1", 1);
+        
+        // 原子操作
+        map.computeIfAbsent("key2", k -> 2);
+        map.computeIfPresent("key1", (k, v) -> v + 1);
+        
+        // 遍历（弱一致性）
+        map.forEach((k, v) -> System.out.println(k + ": " + v));
+    }
+    
+    // 搜索操作
+    public void searchOperations() {
+        // 搜索键
+        String resultKey = map.searchKeys(1, (k) -> k.startsWith("key") ? k : null);
+        
+        // 搜索值
+        Integer resultValue = map.searchValues(1, (v) -> v > 0 ? v : null);
+        
+        // 归约操作
+        int sum = map.reduceValues(1, Integer::sum);
+    }
+}
+```
+
+**实现原理（JDK 8）**：
+- **桶数组**：使用 Node 数组存储数据
+- **锁机制**：每个桶使用 synchronized 锁，锁粒度更细
+- **扩容**：支持并发扩容，多个线程可以同时参与
+- **树化**：链表长度超过阈值时转换为红黑树
+
+**适用场景**：
+- 高并发读写场景
+- 缓存实现
+- 计数器聚合
+
+#### ConcurrentLinkedQueue
+**定义与特点**：
+- 无界非阻塞队列
+- 基于链表实现
+- 使用 CAS 操作保证线程安全
+
+**核心特性示例**：
+```java
+import java.util.concurrent.ConcurrentLinkedQueue;
+
+public class ConcurrentLinkedQueueExample {
+    private ConcurrentLinkedQueue<String> queue = new ConcurrentLinkedQueue<>();
+    
+    public void queueOperations() {
+        // 添加元素
+        queue.offer("task1");
+        queue.add("task2");
+        
+        // 获取元素
+        String head = queue.peek(); // 查看队首
+        String element = queue.poll(); // 移除并返回队首
+        
+        // 遍历（弱一致性）
+        queue.forEach(System.out::println);
+        
+        // 批量操作
+        queue.removeIf(e -> e.startsWith("task"));
+    }
+}
+```
+
+**实现原理**：
+- **节点结构**：使用 Node 链表节点
+- **CAS 操作**：入队和出队使用 CAS 保证原子性
+- **无锁设计**：避免线程阻塞，提高并发性能
+
+**适用场景**：
+- 任务队列
+- 事件处理队列
+- 高并发消息传递
+
+#### ConcurrentSkipListMap / ConcurrentSkipListSet
+**定义与特点**：
+- 基于跳表（Skip List）实现
+- 支持有序键的并发访问
+- 提供范围查询操作
+
+**核心特性示例**：
+```java
+import java.util.concurrent.ConcurrentSkipListMap;
+import java.util.concurrent.ConcurrentSkipListSet;
+
+public class ConcurrentSkipListExample {
+    private ConcurrentSkipListMap<Integer, String> skipListMap = new ConcurrentSkipListMap<>();
+    private ConcurrentSkipListSet<Integer> skipListSet = new ConcurrentSkipListSet<>();
+    
+    public void skipListOperations() {
+        // 添加元素
+        skipListMap.put(1, "value1");
+        skipListMap.putIfAbsent(1, "value2");
+        
+        // 范围查询
+        var headMap = skipListMap.headMap(5); // 小于5的键
+        var tailMap = skipListMap.tailMap(3); // 大于等于3的键
+        var subMap = skipListMap.subMap(2, 5); // [2, 5)的键
+        
+        // 导航方法
+        var ceiling = skipListMap.ceilingEntry(3); // 大于等于3的最小键
+        var floor = skipListMap.floorEntry(3);     // 小于等于3的最大键
+    }
+}
+```
+
+**实现原理**：
+- **跳表结构**：多层索引链表，查询时间复杂度 O(log n)
+- **CAS 操作**：插入和删除使用 CAS 保证线程安全
+- **有序性**：维护键的自然顺序或自定义顺序
+
+**适用场景**：
+- 需要有序性的并发集合
+- 范围查询频繁的场景
+- 替代 TreeMap 的高并发版本
+
+### 2. CopyOnWrite* 系列
+
+#### CopyOnWriteArrayList / CopyOnWriteArraySet
+**定义与特点**：
+- 写时复制（Copy-On-Write）机制
+- 读操作无锁，性能极高
+- 写操作复制整个数组，代价较高
+
+**核心特性示例**：
+```java
+import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.concurrent.CopyOnWriteArraySet;
+
+public class CopyOnWriteExample {
+    private CopyOnWriteArrayList<String> list = new CopyOnWriteArrayList<>();
+    private CopyOnWriteArraySet<String> set = new CopyOnWriteArraySet<>();
+    
+    public void listOperations() {
+        // 添加元素（复制数组）
+        list.add("element1");
+        list.addIfAbsent("element1"); // 原子操作
+        
+        // 遍历（基于快照，线程安全）
+        for (String element : list) {
+            System.out.println(element);
+        }
+        
+        // 批量操作
+        list.addAllAbsent(Arrays.asList("element2", "element3"));
+    }
+    
+    public void setOperations() {
+        set.add("value1");
+        set.addAll(Arrays.asList("value2", "value3"));
+        
+        // 基于CopyOnWriteArrayList实现
+        System.out.println("Set size: " + set.size());
+    }
+}
+```
+
+**实现原理**：
+- **读操作**：直接访问内部数组，无需同步
+- **写操作**：复制当前数组，修改副本，然后替换引用
+- **迭代器**：基于创建时的数组快照，不会反映后续修改
+
+**适用场景**：
+- 读多写少的场景
+- 监听器列表
+- 配置信息存储
+
+### 3. BlockingQueue 家族
+
+**主要实现类对比**：
+
+| 实现类 | 特点 | 适用场景 |
+|--------|------|----------|
+| ArrayBlockingQueue | 有界数组队列，公平/非公平锁 | 固定大小任务队列 |
+| LinkedBlockingQueue | 可选有界链表队列，两把锁 | 高吞吐任务队列 |
+| PriorityBlockingQueue | 无界优先级队列 | 任务优先级调度 |
+| SynchronousQueue | 无缓冲直接传递 | 线程间直接数据交换 |
+| DelayQueue | 延迟队列，元素按延迟时间排序 | 定时任务调度 |
+
+**生产者-消费者模式示例**：
 ```java
 import java.util.concurrent.*;
 
-BlockingQueue<Integer> q = new ArrayBlockingQueue<>(100);
-
-// 生产者
-Executors.newSingleThreadExecutor().submit(() -> {
-    for (int i = 0; i < 1000; i++) {
-        q.put(i); // 满则阻塞
+public class BlockingQueueExample {
+    // 有界数组队列
+    private BlockingQueue<String> arrayQueue = new ArrayBlockingQueue<>(100);
+    
+    public void producerConsumer() throws InterruptedException {
+        // 生产者
+        Thread producer = new Thread(() -> {
+            try {
+                for (int i = 0; i < 100; i++) {
+                    arrayQueue.put("task-" + i); // 阻塞直到有空间
+                    boolean offered = arrayQueue.offer("task", 1, TimeUnit.SECONDS); // 带超时
+                }
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+            }
+        });
+        
+        // 消费者
+        Thread consumer = new Thread(() -> {
+            try {
+                while (true) {
+                    String task = arrayQueue.take(); // 阻塞直到有元素
+                    String polled = arrayQueue.poll(1, TimeUnit.SECONDS); // 带超时
+                    if (task == null) break;
+                    // 处理任务
+                }
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+            }
+        });
+        
+        producer.start();
+        consumer.start();
     }
-});
-
-// 消费者
-Executors.newSingleThreadExecutor().submit(() -> {
-    while (true) {
-        Integer x = q.take(); // 空则阻塞
-        // 处理 x
-    }
-});
+}
 ```
+
+## 性能对比与选择指南
+
+### 读写性能对比
+
+| 容器类型 | 读性能 | 写性能 | 适用场景 |
+|----------|--------|--------|----------|
+| ConcurrentHashMap | 高 | 高 | 高并发键值存储 |
+| CopyOnWriteArrayList | 极高 | 低 | 读多写少 |
+| ConcurrentLinkedQueue | 高 | 高 | 无界队列 |
+| ArrayBlockingQueue | 中 | 中 | 有界队列 |
+| ConcurrentSkipListMap | 中高 | 中 | 有序映射 |
+
+### 选择建议
+
+#### 1. 根据读写比例选择
+- **读多写少**：CopyOnWriteArrayList、CopyOnWriteArraySet
+- **写多读少**：ConcurrentHashMap、ConcurrentLinkedQueue
+- **读写均衡**：ConcurrentHashMap、BlockingQueue
+
+#### 2. 根据数据特性选择
+- **需要排序**：ConcurrentSkipListMap、ConcurrentSkipListSet
+- **需要范围查询**：ConcurrentSkipListMap
+- **固定大小**：ArrayBlockingQueue
+- **无界数据**：ConcurrentLinkedQueue、LinkedBlockingQueue
+
+#### 3. 根据并发需求选择
+- **高并发**：ConcurrentHashMap、ConcurrentLinkedQueue
+- **低并发**：CopyOnWriteArrayList、BlockingQueue
+
+## 最佳实践
+
+### 1. 避免滥用全局锁
+```java
+// ❌ 错误：滥用同步
+List<String> synchronizedList = Collections.synchronizedList(new ArrayList<>());
+
+// ✅ 正确：使用并发容器
+CopyOnWriteArrayList<String> concurrentList = new CopyOnWriteArrayList<>();
+ConcurrentHashMap<String, String> concurrentMap = new ConcurrentHashMap<>();
+```
+
+### 2. 合理选择容器大小
+```java
+// 有界队列避免内存溢出
+BlockingQueue<String> boundedQueue = new ArrayBlockingQueue<>(1000);
+
+// 无界队列注意监控
+BlockingQueue<String> unboundedQueue = new LinkedBlockingQueue<>();
+```
+
+### 3. 使用原子操作
+```java
+ConcurrentHashMap<String, Integer> map = new ConcurrentHashMap<>();
+
+// 原子更新
+map.compute("key", (k, v) -> v == null ? 1 : v + 1);
+
+// 原子条件更新
+map.merge("key", 1, Integer::sum);
+```
+
+### 4. 注意迭代器的弱一致性
+```java
+ConcurrentLinkedQueue<String> queue = new ConcurrentLinkedQueue<>();
+
+// 迭代器基于创建时的快照
+Iterator<String> iterator = queue.iterator();
+while (iterator.hasNext()) {
+    String element = iterator.next();
+    // 可能看不到迭代期间添加的新元素
+}
+```
+
+## 常见问题与解决方案
+
+### 问题1：错误使用同步容器
+
+**错误用法：**
+```java
+// 性能低下
+List<String> list = Collections.synchronizedList(new ArrayList<>());
+for (String item : list) {  // 需要外部同步
+    // 处理元素
+}
+```
+
+**正确解决方案：**
+```java
+// 使用并发容器
+CopyOnWriteArrayList<String> list = new CopyOnWriteArrayList<>();
+for (String item : list) {  // 无需外部同步
+    // 处理元素
+}
+```
+
+### 问题2：内存泄漏
+
+**错误用法：**
+```java
+// 无界队列可能内存溢出
+BlockingQueue<byte[]> queue = new LinkedBlockingQueue<>();
+while (true) {
+    queue.put(new byte[1024 * 1024]); // 1MB
+}
+```
+
+**正确解决方案：**
+```java
+// 使用有界队列
+BlockingQueue<byte[]> queue = new ArrayBlockingQueue<>(100);
+boolean success = queue.offer(new byte[1024 * 1024], 1, TimeUnit.SECONDS);
+if (!success) {
+    // 处理拒绝策略
+}
+```
+
+### 问题3：错误理解一致性
+
+**错误用法：**
+```java
+ConcurrentHashMap<String, String> map = new ConcurrentHashMap<>();
+if (!map.containsKey("key")) {
+    // 非原子操作，可能被其他线程插入
+    map.put("key", "value");
+}
+```
+
+**正确解决方案：**
+```java
+ConcurrentHashMap<String, String> map = new ConcurrentHashMap<>();
+// 原子操作
+map.putIfAbsent("key", "value");
+```
+
+## 总结
+
+Java 并发容器提供了丰富的线程安全集合实现，每种容器都有其特定的适用场景和性能特性。正确选择和使用并发容器可以显著提升多线程程序的性能和可靠性。
+
+关键要点：
+- 根据读写比例选择合适的容器
+- 理解各种容器的一致性保证
+- 使用原子操作避免竞态条件
+- 注意内存使用和性能监控
+
+---
+
+最后更新时间：2024-12-19
