@@ -1,22 +1,14 @@
-# Golang 目录索引
-
-此目录收录 Go 相关文档的详细内容。你可以从下列主题进入：
-
-- [概要](概要.md)
-- [变量&常量](变量&常量.md)
-- [类型](类型.md)
-- [判断](判断.md)
-- [for](for.md)
-- [slice](slice.md)
-- [map](map.md)
-- [chanel](chanel.md)
-- [defer](defer.md)
-- [context](context.md)
-- [GMP](GMP.md)
-- [GC](GC.md)
-- [pointer](pointer.md)
-- [panic](panic.md)
-- [test](test.md)
-- [config](config.md)
-- [package](package.md)
-- [范型](范型.md)
+## 工具链（内置）
+- [go build](工具链.md#go-build)/[go run](工具链.md#go-run)：构建与运行程序。
+- [go test](工具链.md#go-test)：单元、基准与模糊测试（`-bench`、`-fuzz`）。
+- [go fmt](工具链.md#go-fmt)：统一代码格式化。
+- [go vet](工具链.md#go-vet)：静态检查常见陷阱。
+- [go mod](工具链.md#go-mod)/[go get](工具链.md#go-get)：依赖与版本管理。
+- [go work](工具链.md#go-work)：多模块工作区协作。
+- [go generate](工具链.md#go-generate)：代码生成钩子。
+- [go tool pprof](工具链.md#go-tool-pprof)：性能分析（配合 `net/http/pprof`）。
+- [go tool trace](工具链.md#go-tool-trace)：事件级运行时追踪。
+- [go doc](工具链.md#go-doc)：查看包文档与符号说明。
+- [go env](工具链.md#go-env)/[go clean](工具链.md#go-clean)：环境查询与构建产物清理。
+- [go list](工具链.md#go-list)：枚举包与依赖信息。
+- [go install](工具链.md#go-install)：安装可执行到 `GOBIN`。
