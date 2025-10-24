@@ -9,7 +9,7 @@
       - [泛型](Java/Java/基础/5-泛型.md)
       - [反射](Java/Java/基础/6-反射.md)
       - [String](Java/Java/基础/7-String.md)
-    - [集合](Java/Java/集合/集合.md)
+  - [集合](Java/Java/集合/集合.md)
     - [Collection](Java/Java/集合/Collection/Collection.md)
       - [List](Java/Java/集合/List/List.md)
         - [ArrayList](Java/Java/集合/List/ArrayList.md)
