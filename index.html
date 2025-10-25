@@ -30,8 +30,6 @@
       themeColor: (window.SiteTheme && window.SiteTheme.pair && window.SiteTheme.pair.themeHex) || '#4c8bf5',
       // 插件来自外链脚本，若不可用则为空
       plugins: (window.SiteTheme && window.SiteTheme.coverPlugin) ? [window.SiteTheme.coverPlugin] : [],
-      // 目录插件配置
-      subMaxLevel: 3, // 生成目录的最大层级
       // 搜索插件配置
       search: {
         maxAge: 86400000, // 过期时间，单位毫秒，默认一天
@@ -44,6 +42,13 @@
       // 评论插件配置
       disqus: {
         shortname: 'canaan-blog' // 替换为你的 Disqus shortname
+      },
+      // mermaid插件配置
+      mermaid: {
+        theme: 'default',
+        themeVariables: {
+          primaryColor: '#4c8bf5'
+        }
       }
     };
   </script>
@@ -58,5 +63,8 @@
   <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/disqus.min.js"></script>
   <!-- 站点主题与封面渐变（外链脚本，提供 SiteTheme API） -->
   <script src="assets/cover-theme.js"></script>
+  <!-- mermaid插件支持 -->
+  <script src="//cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/docsify-mermaid/dist/docsify-mermaid.min.js"></script>
 </body>
 </html>

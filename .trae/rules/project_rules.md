@@ -55,7 +55,7 @@
 # docsify 特性适配
 1. 侧边栏
 使用嵌套侧边栏。
-根目录 sidebar 指向所有一级目录，每个一级目录下的 _sidebar.md 指向内部所有文件及目录。
+根目录 sidebar 指向所有一级目录；一级目录下的 _sidebar.md 指向内部所有文件及目录。
 路径全部以项目根目录为基准，如 Go/Golang，Java/Java/并发/锁.md
 README.md 的路径中不展示 README.md 的文件名
 2. 搜索插件
