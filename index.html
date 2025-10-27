@@ -7,24 +7,17 @@
   <meta name="description" content="Description">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css">
-  <style>
-    html { scroll-behavior: smooth; }
-    html, body { height: 100%; }
-    body { overflow-y: auto; }
-    /* 明确内容区为可滚动容器，兼容移动端 */
-    .content { overflow-y: auto; -webkit-overflow-scrolling: touch; }
-    /* 侧边栏保持自身滚动，不影响内容区 */
-    .sidebar { overflow-y: auto; }
-  </style>
 </head>
 <body>
   <div id="app"></div>
   <script>
     window.$docsify = {
+      topMargin: 90, // default: 0
       name: 'Canaan Blog',
       nameLink: '/',
       repo: 'https://github.com/canaan-wang/canaan-wang.github.io',
       loadSidebar: true,
+      subMaxLevel: 2,
       coverpage: true,
       // 主题色取外链脚本生成的中值，若不可用则提供兜底色
       themeColor: (window.SiteTheme && window.SiteTheme.pair && window.SiteTheme.pair.themeHex) || '#4c8bf5',
@@ -49,7 +42,7 @@
         themeVariables: {
           primaryColor: '#4c8bf5'
         }
-      }
+      },
     };
   </script>
 
@@ -66,5 +59,6 @@
   <!-- mermaid插件支持 -->
   <script src="//cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/docsify-mermaid/dist/docsify-mermaid.min.js"></script>
+
 </body>
 </html>
