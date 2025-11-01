@@ -7,9 +7,15 @@
   <meta name="description" content="Description">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify-darklight-theme@latest/dist/style.min.css"
+    title="docsify-darklight-theme" type="text/css" />
 </head>
 <body>
-  <div id="app"></div>
+      <nav>
+        <a href="#/">EN</a>
+        <a href="#/zh-cn/">中文</a>
+      </nav>
+      <div id="app"></div>
   <script>
     window.$docsify = {
       topMargin: 90, // default: 0
@@ -17,7 +23,10 @@
       nameLink: '/',
       repo: 'https://github.com/canaan-wang/canaan-wang.github.io',
       loadSidebar: true,
-      subMaxLevel: 2,
+      sidebarDisplayLevel: 2,
+      loadNavbar: true,
+      subMaxLevel: 3,
+      auto2top: true,
       coverpage: true,
       // 主题色取外链脚本生成的中值，若不可用则提供兜底色
       themeColor: (window.SiteTheme && window.SiteTheme.pair && window.SiteTheme.pair.themeHex) || '#4c8bf5',
@@ -50,7 +59,7 @@
   <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
   <script src="//cdn.jsdelivr.net/npm/docsify-sidebar-collapse/dist/docsify-sidebar-collapse.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/zoom-image.min.js"></script>
-  <!-- 搜索插件 -->
+  <!-- 搜索插件 -->∏
   <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
   <!-- 评论插件 -->
   <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/disqus.min.js"></script>
@@ -59,6 +68,8 @@
   <!-- mermaid插件支持 -->
   <script src="//cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/docsify-mermaid/dist/docsify-mermaid.min.js"></script>
-
+  <!-- 深色/浅色主题切换插件 -->
+  <script src="//cdn.jsdelivr.net/npm/docsify-darklight-theme@latest/dist/index.min.js" type="text/javascript">
+  </script>
 </body>
 </html>

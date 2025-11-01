@@ -12,5 +12,8 @@
   "license": "ISC",
   "devDependencies": {
     "docsify-cli": "^4.4.4"
+  },
+  "dependencies": {
+    "docsify-darklight-theme": "^3.2.0"
   }
 }
