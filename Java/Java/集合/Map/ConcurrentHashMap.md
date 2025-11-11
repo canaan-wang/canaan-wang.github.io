@@ -14,14 +14,14 @@
 
 ### 1. JDK 7 实现
 - **分段锁机制**：
-  - 将哈希表分为多个 Segment（段）
+  - 将哈希表分为多个 Segment（段），默认有16个段
   - 每个 Segment 是一个独立的哈希表，有自己的锁
   - 不同段之间的操作可以并行执行
 - **结构**：`Segment[]` + `HashEntry[]` + 链表
 
 ### 2. JDK 8+ 实现
 - **CAS + synchronized 机制**：
-  - 放弃了分段锁，采用更细粒度的锁
+  - 放弃了 Segment 纬度的锁，采用更细粒度的锁
   - 使用 CAS 操作进行无锁更新
   - 仅在必要时（如链表头节点）使用 synchronized
 - **结构**：Node[] + 链表/红黑树（与 HashMap 类似）
@@ -33,339 +33,84 @@
 - **链表**：处理哈希冲突
 - **红黑树**：当链表长度超过阈值（8）时转换为红黑树
 
-### 2. 节点类型
-
-```java
-// 普通节点
-static class Node<K,V> implements Map.Entry<K,V> {
-    final int hash;
-    final K key;
-    volatile V val;
-    volatile Node<K,V> next;
-    // 构造函数和方法...
-}
-
-// 用于头节点的特殊节点，支持锁操作
-static class TreeNode<K,V> extends Node<K,V> {
-    TreeNode<K,V> parent;  // red-black tree links
-    TreeNode<K,V> left;
-    TreeNode<K,V> right;
-    TreeNode<K,V> prev;    // needed to unlink next upon deletion
-    boolean red;
-    // 构造函数和方法...
-}
-
-// 用于扩容的节点
-static final class ForwardingNode<K,V> extends Node<K,V> {
-    final Node<K,V>[] nextTable;
-    // 构造函数和方法...
-}
-
-// 用于计算键的哈希值的工具
-static final class SpreadableValueNode<K,V> extends Node<K,V> {
-    // 构造函数和方法...
-}
-```
+### 2. 核心节点类型
+- **Node**：基础存储节点，val 和 next 字段使用 volatile 保证可见性
+- **TreeNode**：红黑树节点，用于高效查询
+- **ForwardingNode**：扩容标记节点，指向新表，引导线程访问新表
 
 ## 四、核心参数与构造函数
 
-### 1. 核心参数
+### 1. 关键参数
 
-| 参数 | 默认值 | 说明 |
-|---|---|---|
-| DEFAULT_INITIAL_CAPACITY | 16 | 默认初始容量 |
-| MAXIMUM_CAPACITY | 1<<30 | 最大容量 |
-| DEFAULT_LOAD_FACTOR | 0.75f | 默认负载因子 |
-| TREEIFY_THRESHOLD | 8 | 链表转红黑树的阈值 |
-| UNTREEIFY_THRESHOLD | 6 | 红黑树转链表的阈值 |
-| MIN_TREEIFY_CAPACITY | 64 | 树化的最小数组容量 |
-| MOVED | -1 | 表示正在扩容的节点哈希值 |
-| TREEBIN | -2 | 表示红黑树节点的哈希值 |
-| RESERVED | -3 | 表示保留的节点哈希值 |
+ConcurrentHashMap 的主要参数控制容量、并发度和性能（JDK 8+版本）：
 
-### 2. 构造函数
+- **初始容量**：默认 16，是Node数组的初始大小（JDK 7中Node数组默认容量也是16），建议根据预期数据量设置
+- **并发等级**：JDK 7特有参数，控制Segment的数量，默认16，用于设置并发线程数的预估上限（JDK 8中已移除，因为不再使用分段锁机制）
+- **负载因子**：默认 0.75，平衡空间利用率和查询性能
+- **树化阈值**：链表转红黑树的长度阈值，默认 8
+- **反树化阈值**：红黑树转回链表的长度阈值，默认 6
+- **最小树化容量**：表需要达到此容量才会进行树化，默认 64
+- **sizeCtl**：内部核心控制参数，用于控制初始化和扩容，不同取值有不同含义：
+  - 0：表示未初始化
+  - 正数：表示下次扩容的阈值（当元素数量超过此值时触发扩容）
+  - 负数：表示正在进行初始化或扩容操作，高位部分表示扩容戳，低位部分表示参与扩容的线程数
 
-```java
-// 无参构造函数，使用默认容量和负载因子
-public ConcurrentHashMap() {}
+### 2. 主要构造函数
 
-// 指定初始容量
-public ConcurrentHashMap(int initialCapacity) {}
+提供多种构造函数以满足不同初始化需求：
 
-// 指定初始容量和负载因子
-public ConcurrentHashMap(int initialCapacity, float loadFactor) {}
-
-// 指定初始容量、负载因子和并发级别（JDK 8 中已废弃并发级别参数）
-public ConcurrentHashMap(int initialCapacity, float loadFactor, int concurrencyLevel) {}
-
-// 使用其他 Map 初始化
-public ConcurrentHashMap(Map<? extends K, ? extends V> m) {}
-```
+- 无参构造：使用默认参数
+- 指定初始容量
+- 从其他 Map 初始化
+- 同时指定容量、负载因子和并发等级
 
 ## 五、JDK 8+ 关键方法实现原理
 
 ### 1. put 方法
 
-```java
-public V put(K key, V value) {
-    return putVal(key, value, false);
-}
+put 方法的核心流程：
 
-/** Implementation for put and putIfAbsent */
-final V putVal(K key, V value, boolean onlyIfAbsent) {
-    // 检查键值是否为 null
-    if (key == null || value == null) throw new NullPointerException();
-    // 计算哈希值
-    int hash = spread(key.hashCode());
-    int binCount = 0;
-    for (Node<K,V>[] tab = table;;) {
-        Node<K,V> f; int n, i, fh;
-        // 如果表未初始化，先初始化
-        if (tab == null || (n = tab.length) == 0)
-            tab = initTable();
-        // 如果目标桶为空，尝试使用 CAS 插入新节点
-        else if ((f = tabAt(tab, i = (n - 1) & hash)) == null) {
-            if (casTabAt(tab, i, null, new Node<K,V>(hash, key, value, null)))
-                break;                  // no lock when adding to empty bin
-        }
-        // 如果遇到正在扩容的节点，帮助扩容
-        else if ((fh = f.hash) == MOVED)
-            tab = helpTransfer(tab, f);
-        else {
-            V oldVal = null;
-            // 锁定桶的头节点
-            synchronized (f) {
-                if (tabAt(tab, i) == f) {
-                    if (fh >= 0) { // 链表节点
-                        binCount = 1;
-                        for (Node<K,V> e = f;; ++binCount) {
-                            K ek;
-                            // 找到相同的键，替换值
-                            if (e.hash == hash &&
-                                ((ek = e.key) == key ||
-                                 (ek != null && key.equals(ek)))) {
-                                oldVal = e.val;
-                                if (!onlyIfAbsent)
-                                    e.val = value;
-                                break;
-                            }
-                            Node<K,V> pred = e;
-                            // 到达链表尾部，添加新节点
-                            if ((e = e.next) == null) {
-                                pred.next = new Node<K,V>(hash, key, value, null);
-                                break;
-                            }
-                        }
-                    }
-                    else if (f instanceof TreeBin) { // 红黑树节点
-                        Node<K,V> p;
-                        binCount = 2;
-                        // 在红黑树中插入或更新
-                        if ((p = ((TreeBin<K,V>)f).putTreeVal(hash, key, value)) != null) {
-                            oldVal = p.val;
-                            if (!onlyIfAbsent)
-                                p.val = value;
-                        }
-                    }
-                }
-            }
-            // 检查是否需要将链表转换为红黑树
-            if (binCount != 0) {
-                if (binCount >= TREEIFY_THRESHOLD)
-                    treeifyBin(tab, i);
-                if (oldVal != null)
-                    return oldVal;
-                break;
-            }
-        }
-    }
-    // 增加元素计数，并检查是否需要扩容
-    addCount(1L, binCount);
-    return null;
-}
-```
+1. **检查参数**：不允许键值为 null
+2. **计算哈希**：使用 spread 算法处理哈希码
+3. **检查表初始化**：未初始化则调用 initTable() 初始化
+4. **插入数据**：
+   - 桶为空：使用 CAS 操作直接插入
+   - 表在扩容：参与扩容（帮助迁移数据），然后在**当前操作的桶迁移完成后**将新数据插入到正确的位置
+   - 正常插入：锁定桶的头节点，根据节点类型执行链表或红黑树操作
+5. **可能的树化**：链表长度超过阈值时转为红黑树
+6. **扩容检查**：数据插入完成后，检查元素总数是否超过 sizeCtl（扩容阈值），如果超过则触发扩容
+
+核心特点：仅锁定当前操作的桶，而非整个表，提高并发性能，扩容触发时机在数据插入完成后
 
 ### 2. get 方法
 
-```java
-public V get(Object key) {
-    Node<K,V>[] tab;
-    Node<K,V> e, p;
-    int n, eh; K ek;
-    // 计算哈希值
-    int h = spread(key.hashCode());
-    // 检查表是否初始化，且目标桶是否存在
-    if ((tab = table) != null && (n = tab.length) > 0 &&
-        (e = tabAt(tab, (n - 1) & h)) != null) {
-        // 检查桶的头节点
-        if ((eh = e.hash) == h) {
-            if ((ek = e.key) == key || (ek != null && key.equals(ek)))
-                return e.val;
-        }
-        // 如果是红黑树节点或正在扩容
-        else if (eh < 0)
-            return (p = e.find(h, key)) != null ? p.val : null;
-        // 遍历链表查找
-        while ((e = e.next) != null) {
-            if (e.hash == h &&
-                ((ek = e.key) == key || (ek != null && key.equals(ek))))
-                return e.val;
-        }
-    }
-    return null;
-}
-```
+get 方法实现简洁高效：
+
+1. **计算哈希**：确定目标桶位置
+2. **直接查询**：无需加锁，根据节点类型进行查找
+3. **三种情况**：
+   - 头节点匹配：直接返回
+   - 红黑树节点：调用 find 方法查找
+   - 链表节点：遍历链表查找
+
+特点：无锁设计，读操作不会阻塞，性能优秀
 
 ### 3. 扩容机制
 
-```java
-/**
- * 扩容的主要方法
- */
-private final void transfer(Node<K,V>[] tab, Node<K,V>[] nextTab) {
-    int n = tab.length, stride;
-    // 计算每个线程处理的桶数量
-    if ((stride = (NCPU > 1) ? (n >>> 3) / NCPU : n) < MIN_TRANSFER_STRIDE)
-        stride = MIN_TRANSFER_STRIDE; // subdivide range
-    // 初始化新表
-    if (nextTab == null) {            // initiating
-        try {
-            @SuppressWarnings("unchecked")
-            Node<K,V>[] nt = (Node<K,V>[])new Node<?,?>[n << 1];
-            nextTab = nt;
-        } catch (Throwable ex) {      // try to cope with OOME
-            sizeCtl = Integer.MAX_VALUE;
-            return;
-        }
-        nextTable = nextTab;
-        transferIndex = n;
-    }
-    int nextn = nextTab.length;
-    // 创建转发节点
-    ForwardingNode<K,V> fwd = new ForwardingNode<K,V>(nextTab);
-    boolean advance = true;
-    boolean finishing = false; // to ensure sweep before committing nextTab
-    // 多线程分段迁移数据
-    for (int i = 0, bound = 0;;) {
-        Node<K,V> f;
-        int fh;
-        while (advance) {
-            int nextIndex, nextBound;
-            if (--i >= bound || finishing)
-                advance = false;
-            else if ((nextIndex = transferIndex) <= 0) {
-                i = -1;
-                advance = false;
-            }
-            else if (U.compareAndSwapInt(this, TRANSFERINDEX, nextIndex,
-                                         nextBound = (nextIndex > stride ?
-                                                      nextIndex - stride : 0))) {
-                bound = nextBound;
-                i = nextIndex - 1;
-                advance = false;
-            }
-        }
-        // 迁移完成
-        if (i < 0 || i >= n || i + n >= nextn) {
-            int sc;
-            if (finishing) {
-                nextTable = null;
-                table = nextTab;
-                sizeCtl = (n << 1) - (n >>> 1);
-                return;
-            }
-            if (U.compareAndSwapInt(this, SIZECTL, sc = sizeCtl, sc - 1)) {
-                if ((sc - 2) != resizeStamp(n) << RESIZE_STAMP_SHIFT)
-                    return;
-                finishing = advance = true;
-                i = n; // recheck before commit
-            }
-        }
-        // 处理每个桶
-        else if ((f = tabAt(tab, i)) == null)
-            advance = casTabAt(tab, i, null, fwd);
-        else if ((fh = f.hash) == MOVED)
-            advance = true; // already processed
-        else {
-            // 锁定桶的头节点进行迁移
-            synchronized (f) {
-                if (tabAt(tab, i) == f) {
-                    Node<K,V> ln, hn;
-                    if (fh >= 0) {
-                        // 链表节点迁移（与 HashMap 类似）
-                        int runBit = fh & n;
-                        Node<K,V> lastRun = f;
-                        for (Node<K,V> p = f.next; p != null; p = p.next) {
-                            int b = p.hash & n;
-                            if (b != runBit) {
-                                runBit = b;
-                                lastRun = p;
-                            }
-                        }
-                        if (runBit == 0) {
-                            ln = lastRun;
-                            hn = null;
-                        }
-                        else {
-                            hn = lastRun;
-                            ln = null;
-                        }
-                        for (Node<K,V> p = f; p != lastRun; p = p.next) {
-                            int ph = p.hash;
-                            K pk = p.key;
-                            V pv = p.val;
-                            if ((ph & n) == 0)
-                                ln = new Node<K,V>(ph, pk, pv, ln);
-                            else
-                                hn = new Node<K,V>(ph, pk, pv, hn);
-                        }
-                        setTabAt(nextTab, i, ln);
-                        setTabAt(nextTab, i + n, hn);
-                        setTabAt(tab, i, fwd);
-                        advance = true;
-                    }
-                    else if (f instanceof TreeBin) {
-                        // 红黑树节点迁移
-                        TreeBin<K,V> t = (TreeBin<K,V>)f;
-                        TreeNode<K,V> lo = null, loTail = null;
-                        TreeNode<K,V> hi = null, hiTail = null;
-                        int lc = 0, hc = 0;
-                        for (Node<K,V> e = t.first; e != null; e = e.next) {
-                            int h = e.hash;
-                            TreeNode<K,V> p = (TreeNode<K,V>)e;
-                            if ((h & n) == 0) {
-                                if ((p.prev = loTail) == null)
-                                    lo = p;
-                                else
-                                    loTail.next = p;
-                                loTail = p;
-                                ++lc;
-                            }
-                            else {
-                                if ((p.prev = hiTail) == null)
-                                    hi = p;
-                                else
-                                    hiTail.next = p;
-                                hiTail = p;
-                                ++hc;
-                            }
-                        }
-                        // 根据节点数量决定是使用链表还是红黑树
-                        ln = (lc <= UNTREEIFY_THRESHOLD) ? untreeify(lo) :
-                            (hc != 0) ? new TreeBin<K,V>(lo) : t;
-                        hn = (hc <= UNTREEIFY_THRESHOLD) ? untreeify(hi) :
-                            (lc != 0) ? new TreeBin<K,V>(hi) : t;
-                        setTabAt(nextTab, i, ln);
-                        setTabAt(nextTab, i + n, hn);
-                        setTabAt(tab, i, fwd);
-                        advance = true;
-                    }
-                }
-            }
-        }
-    }
-}
-```
+ConcurrentHashMap 采用**并发扩容**设计，具体扩容时机和流程如下：
+
+1. **触发条件**：
+   - 当元素总数超过阈值（容量 * 负载因子）时触发扩容，具体来说，当 put 操作导致元素数量超过 sizeCtl 时触发
+
+2. **扩容流程**：
+   - 创建新表（容量翻倍）
+   - 使用 ForwardingNode 标记已处理桶
+   - 多线程协作迁移数据，每个线程处理一部分桶
+
+3. **关键机制**：
+   - 工作窃取：未分配的桶可被其他线程处理
+   - 标记转发：已迁移桶的查询会转发到新表
+   - 帮助扩容：其他线程发现正在扩容时会主动参与迁移工作
 
 ## 六、线程安全机制
 
@@ -380,31 +125,53 @@ private final void transfer(Node<K,V>[] tab, Node<K,V>[] nextTab) {
 
 ### 2. JDK 8+ 线程安全：CAS + synchronized
 
-- **无锁操作**：使用 CAS 进行数组初始化、插入空桶等操作
-- **细粒度锁**：仅在操作链表头节点或红黑树时使用 synchronized
-- **桶级锁定**：只锁定正在操作的桶，而不是整个表
-- **帮助扩容**：其他线程发现扩容时会主动参与扩容
-- **优势**：
-  - 更高的并发度
-  - 更好的内存利用率
-  - 更灵活的锁策略
+JDK 8+的ConcurrentHashMap采用了更先进的并发控制机制，结合了无锁操作和细粒度锁定，大幅提升了并发性能：
 
-## 七、性能特点
+#### 核心机制详解
 
-1. **时间复杂度**：
-   - 基本操作（get、put、remove）平均时间复杂度为 O(1)
-   - 在哈希冲突严重时，红黑树操作复杂度为 O(log n)
+- **CAS (Compare-And-Swap) 无锁操作**：
+  - **原理**：基于CPU原子指令实现的乐观锁，通过比较内存值与预期值，若相等则更新并返回成功
+  - **应用场景**：数组初始化、插入空桶、更新计数等简单操作
+  - **实现**：使用`Unsafe`类的`compareAndSwapObject`、`compareAndSwapInt`等方法
+  - **优势**：无阻塞、无上下文切换开销，高并发下性能优秀
 
-2. **并发性能**：
-   - 比 Hashtable 高很多（细粒度锁 vs 全表锁）
-   - 读操作几乎无锁（非阻塞读）
-   - 写操作只锁定单个桶
+- **synchronized 细粒度锁**：
+  - **锁定范围**：仅在必要时锁定链表头节点或红黑树根节点
+  - **锁粒度**：比JDK 7的Segment锁更细，从段级别缩小到桶级别
+  - **进化**：JDK 8中synchronized已进行优化（偏向锁、轻量级锁、重量级锁），性能开销显著降低
+  - **使用时机**：主要用于处理哈希冲突时的链表/红黑树操作，如节点插入、删除等
 
-3. **内存占用**：
-   - JDK 8 比 JDK 7 更低（不再需要多个 Segment）
-   - 略高于 HashMap（需要额外的线程安全机制）
+- **volatile 内存可见性**：
+  - **应用**：Node节点的val和next字段使用volatile修饰
+  - **作用**：确保多线程之间的数据可见性，一个线程修改后立即对其他线程可见
+  - **配合CAS**：为无锁操作提供可靠的内存语义保证
 
-## 八、使用注意事项
+- **桶级锁定策略**：
+  - **锁定单位**：仅锁定正在操作的哈希桶，而非整个表或段
+  - **并发粒度**：不同桶上的操作完全并行，同一桶上的操作串行
+  - **锁竞争**：只有当多个线程访问同一个哈希桶时才会发生锁竞争
+  - **实际效果**：在哈希分布均匀的情况下，锁竞争概率极低
+
+- **帮助扩容机制**：
+  - **设计思想**：将扩容任务分散给多个线程，加速扩容过程
+  - **工作原理**：当线程发现表正在扩容时，会检查自己要操作的桶是否已迁移
+    - 未迁移：参与扩容，帮助迁移数据
+    - 已迁移：直接在新表上操作
+  - **同步协调**：使用ForwardingNode节点标记已完成迁移的桶
+  - **性能影响**：通过多线程并行工作，显著减少扩容对正常操作的影响
+
+#### 与JDK 7分段锁的对比优势
+
+- **更高的并发度**：桶级锁比Segment锁粒度更细，理论并发度可达到数组长度级别
+- **更好的内存利用率**：无需为每个段维护独立的数组和锁结构
+- **更灵活的锁策略**：根据操作类型动态选择无锁(CAS)或有锁(synchronized)操作
+- **更高效的扩容机制**：多线程并行扩容，避免扩容过程成为性能瓶颈
+- **更好的伸缩性**：随着容器大小增长，并发性能不会明显下降（不会受限于固定数量的Segment）
+
+这种混合使用CAS、synchronized和volatile的设计，充分发挥了各种并发控制机制的优势，使ConcurrentHashMap在保证线程安全的同时，提供了接近HashMap的性能表现。
+
+
+## 七、使用注意事项
 
 1. **null 值处理**：
    - 不允许使用 null 作为键
@@ -426,138 +193,28 @@ private final void transfer(Node<K,V>[] tab, Node<K,V>[] nextTab) {
      - `remove(Object key, Object value)`：仅当键值匹配时才删除
      - `replace(K key, V oldValue, V newValue)`：仅当旧值匹配时才替换
 
-## 九、使用示例
 
-### 1. 基本使用
+## 八、常见问题
 
-```java
-import java.util.concurrent.ConcurrentHashMap;
+1. **为什么不允许 null 键？**
+   - 避免歧义：get 返回 null 时，无法区分键不存在还是值为 null
+   - 符合 ConcurrentMap 接口规范
 
-public class ConcurrentHashMapDemo {
-    public static void main(String[] args) {
-        // 创建 ConcurrentHashMap
-        ConcurrentHashMap<String, Integer> map = new ConcurrentHashMap<>();
-        
-        // 添加元素
-        map.put("apple", 10);
-        map.put("banana", 20);
-        map.put("orange", 15);
-        map.put("grape", null); // 允许 null 值
-        
-        // 尝试添加 null 键会抛出异常
-        try {
-            map.put(null, 5); // 抛出 NullPointerException
-        } catch (NullPointerException e) {
-            System.out.println("ConcurrentHashMap 不允许 null 键");
-        }
-        
-        // 原子操作示例
-        Integer oldValue = map.putIfAbsent("orange", 25); // 已存在，返回旧值 15
-        boolean removed = map.remove("banana", 20); // 值匹配，删除成功
-        boolean replaced = map.replace("apple", 10, 100); // 旧值匹配，替换成功
-        
-        System.out.println("oldValue: " + oldValue);
-        System.out.println("removed: " + removed);
-        System.out.println("replaced: " + replaced);
-        System.out.println("apple: " + map.get("apple")); // 100
-        
-        // 遍历
-        System.out.println("\n遍历 ConcurrentHashMap:");
-        map.forEach((k, v) -> System.out.println(k + ": " + v));
-    }
-}
-```
+2. **弱一致性迭代器意味着什么？**
+   - 修改不会抛出 ConcurrentModificationException
+   - 不一定反映最新状态
+   - 适合并发读取场景
 
-### 2. 多线程示例
+3. **如何避免死锁？**
+   - CAS 操作和细粒度锁避免嵌套锁定
+   - ForwardingNode 协调多线程扩容
 
-```java
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.CountDownLatch;
+4. **size 方法是否准确？**
+   - 非完全准确，返回估计值
+   - 并发环境下计数可能变化
+   - 精确计数需额外同步
 
-public class ConcurrentHashMapMultithreadedDemo {
-    public static void main(String[] args) throws InterruptedException {
-        final ConcurrentHashMap<String, Integer> map = new ConcurrentHashMap<>();
-        final int threadCount = 10;
-        final int operationsPerThread = 1000;
-        final CountDownLatch latch = new CountDownLatch(threadCount);
-        
-        // 创建多个线程并发读写
-        for (int t = 0; t < threadCount; t++) {
-            final int threadId = t;
-            new Thread(() -> {
-                try {
-                    // 写操作
-                    for (int i = 0; i < operationsPerThread; i++) {
-                        String key = "key-" + (i % 10); // 10个不同的键
-                        map.put(key, i);
-                    }
-                    
-                    // 读操作
-                    for (int i = 0; i < operationsPerThread; i++) {
-                        String key = "key-" + (i % 10);
-                        map.get(key);
-                    }
-                    
-                    // 原子操作
-                    for (int i = 0; i < operationsPerThread / 10; i++) {
-                        String key = "atomic-key-" + (i % 5);
-                        map.putIfAbsent(key, i);
-                    }
-                } finally {
-                    latch.countDown();
-                }
-            }, "Thread-" + threadId).start();
-        }
-        
-        // 等待所有线程完成
-        latch.await();
-        
-        System.out.println("所有线程执行完成");
-        System.out.println("map size: " + map.size());
-        
-        // 验证结果
-        System.out.println("\n验证结果:");
-        for (int i = 0; i < 10; i++) {
-            System.out.println("key-" + i + ": " + map.get("key-" + i));
-        }
-    }
-}
-```
-
-## 十、ConcurrentHashMap vs Hashtable vs HashMap
-
-| 特性 | ConcurrentHashMap | Hashtable | HashMap |
-|---|---|---|---|
-| 线程安全 | 是（细粒度锁/CAS） | 是（全表锁） | 否 |
-| null 键值 | 键不允许，值允许 | 都不允许 | 都允许 |
-| 并发性能 | 高 | 低 | 高（但非线程安全） |
-| 迭代器特性 | 弱一致性 | 快速失败 | 快速失败 |
-| 数据结构 | 数组+链表/红黑树 | 数组+链表 | 数组+链表/红黑树 |
-| 适用场景 | 高并发读写 | 多线程（已过时） | 单线程或线程安全环境 |
-
-## 十一、常见问题
-
-1. **ConcurrentHashMap 为什么不允许 null 键？**
-   - 为了避免歧义：get 返回 null 时，无法区分是键不存在还是值为 null
-   - 与 ConcurrentMap 接口规范一致
-
-2. **ConcurrentHashMap 的迭代器是弱一致性的，这意味着什么？**
-   - 迭代器创建后，对映射的修改不会抛出 ConcurrentModificationException
-   - 但迭代器不一定能反映映射的最新状态
-   - 适合并发读取场景，不需要严格的一致性视图
-
-3. **ConcurrentHashMap 在高并发下如何避免死锁？**
-   - JDK 8 中使用 CAS 操作和细粒度锁，避免了嵌套锁定
-   - 扩容时使用特殊的 ForwardingNode 标记，协调多线程工作
-
-4. **ConcurrentHashMap 中的 size 方法是否准确？**
-   - 不是完全准确的，因为并发环境下计数可能变化
-   - size 方法返回的是一个估计值，但通常接近实际值
-   - 对于需要精确计数的场景，应使用额外的同步机制
-
-5. **如何选择合适的并发集合？**
-   - 线程安全的 Map：ConcurrentHashMap
-   - 线程安全的 List：CopyOnWriteArrayList（读多写少）
-   - 线程安全的 Set：CopyOnWriteArraySet（读多写少）
+5. **如何选择并发集合？**
+   - Map：ConcurrentHashMap
+   - List/Set（读多写少）：CopyOnWriteArrayList/CopyOnWriteArraySet
    - 队列：ConcurrentLinkedQueue（无界非阻塞）、LinkedBlockingQueue（有界阻塞）
-   - 双端队列：ConcurrentLinkedDeque

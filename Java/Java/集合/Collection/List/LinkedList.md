@@ -4,7 +4,7 @@
 
 ### 1.1 官方定义
 
-LinkedList是Java集合框架中`List`接口和`Deque`接口的实现类，基于**双向链表**数据结构实现，同时具备线性表和双端队列的特性。
+LinkedList 是Java集合框架中`List`接口和`Deque`接口的实现类，基于**双向链表**数据结构实现，同时具备线性表和双端队列的特性。
 
 ### 1.2 核心结构
 
@@ -16,9 +16,9 @@ LinkedList是Java集合框架中`List`接口和`Deque`接口的实现类，基�
 
 - `next`：指向后继节点的引用
 
-LinkedList内部维护两个哨兵节点（头节点head、尾节点tail），简化边界操作，无需处理null指针问题。
+LinkedList 内部维护两个哨兵节点（头节点 head、尾节点 tail），简化边界操作，无需处理 null 指针问题。
 
-核心特点：不连续内存存储，节点间通过引用关联，查询需遍历，增删（尤其是首尾）效率高。
+**核心特点**：内存存储不连续，节点间通过引用关联，查询需整体遍历，增删效率高（尤其是首尾）。
 
 ### 1.3 类继承关系
 
@@ -61,26 +61,19 @@ class Serializable {
 
 ---
 
-## 二、核心原理：关键特性解析
-
-### 2.1 与ArrayList的核心区别
-
-|对比维度|LinkedList|ArrayList|
-|---|---|---|
-|数据结构|双向链表|动态数组（基于数组扩容）|
-|查询效率|低（O(n)，需遍历节点）|高（O(1)，支持随机访问）|
-|增删效率|高（O(1)，仅需修改节点引用，首尾操作最优）|低（O(n)，需移动后续元素，扩容时复制数组）|
-|内存占用|高（每个节点需存储prev/next引用）|低（连续内存，仅存数据本身，可能有扩容冗余）|
-|适用场景|频繁增删（尤其是首尾）、队列/栈场景|频繁查询、随机访问场景|
-### 2.2 线程安全性
+## 二、核心原理
+### 2.1 线程安全性
 
 LinkedList是**非线程安全**的集合类！
 
 - 多线程环境下直接使用可能出现ConcurrentModificationException（并发修改异常）
 
-- 解决方案：① 手动加锁（synchronized/Lock）；② 使用Collections.synchronizedList()包装；③ 改用线程安全类CopyOnWriteArrayList（但增删效率低，按需选择）
+- 解决方案：<br/>
+    ① 手动加锁（synchronized/Lock）；<br/>
+    ② 使用 Collections.synchronizedList() 包装；<br/>
+    ③ 改用线程安全类 CopyOnWriteArrayList（增删效率低，按需选择）<br/>
 
-### 2.3 序列化支持
+### 2.2 序列化支持
 
 实现Serializable接口，通过transient修饰head和tail节点，自定义writeObject()和readObject()方法实现序列化（避免序列化哨兵节点，仅序列化有效数据节点）。
 
@@ -201,7 +194,7 @@ while (descIter.hasNext()) {
 }
 ```
 
-警告：避免用普通for循环遍历LinkedList！每次get(i)都会从头部或尾部开始遍历（取较近的一端），遍历整个集合时间复杂度为O(n²)，效率极低。
+**警告**：避免用普通for循环遍历LinkedList！每次get(i)都会从头部或尾部开始遍历（取较近的一端），遍历整个集合时间复杂度为O(n²)，效率极低。
 
 ---
 
@@ -213,35 +206,35 @@ while (descIter.hasNext()) {
 
 **原因**：迭代器有modCount（修改次数）检查，集合自身修改会导致modCount变化，与迭代器的expectedModCount不一致。
 
-**解决方案**：① 用迭代器的remove()方法；② 用普通for循环（不推荐，但可行）；③ 用Stream的filter过滤（创建新集合）。
+**解决方案**：<br/>
+  ① 用迭代器的remove()方法；<br/>
+  ② 用普通for循环（不推荐，但可行）；<br/>
+  ③ 用Stream的filter过滤（创建新集合）。<br/>
 
 ### 4.2 索引越界异常（IndexOutOfBoundsException）
 
-**场景**：get(index)、add(index, elem)时index为负数或≥size。
+**场景**：get(index)、add(index, elem) 时 index 为负数或 ≥ size。
 
-**避免**：操作前先判断index范围，或用size()方法确认集合大小。
+**避免**：操作前先判断 index 范围，或用 size() 方法确认集合大小。
 
-### 4.3 误用LinkedList做随机访问
+### 4.3 误用 LinkedList 做随机访问
 
-**问题**：因LinkedList不支持随机访问，频繁调用get(i)会导致效率极低。
+**问题**：因 LinkedList 不支持随机访问，频繁调用 get(i) 会导致效率极低。
 
-**替代方案**：需随机访问时改用ArrayList；若必须用LinkedList，可先转为数组（list.toArray()）再访问。
+**替代方案**：需随机访问时改用 ArrayList；若必须用 LinkedList，可先转为数组（list.toArray()）再访问。
 
 ### 4.4 克隆特性
 
-LinkedList的clone()是**浅克隆**：仅复制链表结构，节点存储的对象引用不变（若对象是可变的，修改克隆后的集合会影响原集合）。
+LinkedList 的 clone() 是**浅克隆**：仅复制链表结构，节点存储的对象引用不变（若对象是可变的，修改克隆后的集合会影响原集合）。
 
 ---
 
 ## 五、核心总结
 
-- **结构**：双向链表，首尾操作O(1)，随机访问O(n)。
+- **结构**：双向链表，首尾操作 O(1)，随机访问 O(n)。
 
-- **特性**：实现List+Deque，支持队列/栈，非线程安全，浅克隆。
+- **特性**：实现 List + Deque，支持队列/栈，非线程安全，浅克隆。
 
 - **适用**：频繁增删（首尾最优），不适合随机访问。
 
-- **关键API**：addFirst()/addLast()、pollFirst()/pollLast()、peekFirst()/peekLast()（Deque核心）；add()、remove()、get()（List核心）。
-
 - **避坑**：遍历用迭代器/增强for，避免并发修改；不做随机访问；多线程需同步。
-> （注：文档部分内容可能由 AI 生成）

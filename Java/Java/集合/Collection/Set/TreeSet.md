@@ -1,30 +1,29 @@
 # Java TreeSet 详解
 
-## 1. 概述
+## 一、概述
 
-`TreeSet` 是 Java 集合框架中 `java.util` 包下的一个类，它实现了 `NavigableSet` 接口（间接实现 `Set` 接口），底层基于 `TreeMap` 实现，是一种有序的集合。
+`TreeSet` 是 Java 集合框架中 `java.util` 包下的有序集合实现类，实现了 `NavigableSet` 接口（间接实现 `Set` 接口），底层基于 `TreeMap` 实现。
 
-- **特点**：
-  - 元素唯一（无重复）
-  - 元素有序（默认自然排序或自定义排序）
-  - 非同步（线程不安全）
-  - 不允许 `null` 元素（添加 `null` 会抛出 `NullPointerException`）
+**核心特点**：
+- 元素唯一（基于比较结果去重）
+- 元素有序（支持自然排序或自定义排序）
+- 非线程安全
+- JDK 7 及以上版本不允许添加 `null` 元素
 
 
-## 2. 底层实现
+## 二、底层实现
 
-`TreeSet` 内部通过一个 `TreeMap` 来存储元素，其核心源码片段如下：
+`TreeSet` 内部通过 `TreeMap` 存储元素，利用红黑树结构实现有序性。核心实现细节：
 
 ```java
 public class TreeSet<E> extends AbstractSet<E>
     implements NavigableSet<E>, Cloneable, java.io.Serializable {
-    // 底层使用 TreeMap 存储元素
+    // 底层存储结构
     private transient NavigableMap<E, Object> m;
-
-    // 用一个固定的对象作为 TreeMap 的 value
+    // 所有元素共享的占位值
     private static final Object PRESENT = new Object();
 
-    // 构造方法，初始化 TreeMap
+    // 构造方法
     public TreeSet() {
         this(new TreeMap<>());
     }
@@ -32,26 +31,21 @@ public class TreeSet<E> extends AbstractSet<E>
     public TreeSet(Comparator<? super E> comparator) {
         this(new TreeMap<>(comparator));
     }
-
-    TreeSet(NavigableMap<E, Object> m) {
-        this.m = m;
-    }
-    // ... 其他方法
+    // ...
 }
 ```
 
-- 元素存储在 `TreeMap` 的 `key` 中，`value` 固定为一个静态常量 `PRESENT`（节省空间）
-- 借助 `TreeMap` 的特性实现元素的排序和去重
+- 元素存储在 `TreeMap` 的 `key` 部分，`value` 统一为常量 `PRESENT`
+- 完全复用 `TreeMap` 的排序和去重机制
 
 
-## 3. 排序方式
+## 三、排序方式
 
-`TreeSet` 的排序分为两种方式：
+`TreeSet` 支持两种排序方式：
 
 ### 3.1 自然排序（默认）
 
-- 要求元素类实现 `Comparable` 接口，并覆写 `compareTo()` 方法
-- 示例：自定义类实现自然排序
+元素类需实现 `Comparable` 接口并覆写 `compareTo()` 方法：
 
 ```java
 public class Student implements Comparable<Student> {
@@ -67,32 +61,31 @@ public class Student implements Comparable<Student> {
     // 构造方法、getter、setter 省略
 }
 
-// 使用自然排序的 TreeSet
+// 使用示例
 TreeSet<Student> set = new TreeSet<>();
 set.add(new Student("Alice", 20));
-set.add(new Student("Bob", 18)); // 会按年龄排序
+set.add(new Student("Bob", 18)); // 存储时会按年龄排序
 ```
 
 
 ### 3.2 自定义排序
 
-- 创建 `TreeSet` 时传入 `Comparator` 接口实现类（匿名内部类或 Lambda 表达式）
-- 示例：使用自定义排序
+通过构造函数传入 `Comparator` 接口实现：
 
 ```java
-// 按年龄降序排序
+// 按年龄降序排序（Lambda 表达式）
 TreeSet<Student> set = new TreeSet<>((s1, s2) -> 
     Integer.compare(s2.age, s1.age)
 );
 
 set.add(new Student("Alice", 20));
-set.add(new Student("Bob", 18)); // 按年龄降序排列
+set.add(new Student("Bob", 18)); // 将按 20, 18 顺序存储
 ```
 
 
-## 4. 常用方法
+## 四、核心方法
 
-### 4.1 基本操作
+### 4.1 基本操作方法
 
 | 方法                | 说明                                  |
 |---------------------|---------------------------------------|
@@ -103,15 +96,14 @@ set.add(new Student("Bob", 18)); // 按年龄降序排列
 | `isEmpty()`         | 判断是否为空                          |
 | `clear()`           | 清空集合                              |
 
+### 4.2 导航方法（NavigableSet 特性）
 
-### 4.2 导航方法（特有）
-
-`TreeSet` 实现了 `NavigableSet` 接口，提供了丰富的导航方法：
+`TreeSet` 最具特色的是提供了丰富的导航方法：
 
 | 方法                  | 说明                                  |
 |-----------------------|---------------------------------------|
-| `first()`             | 返回第一个元素（最小元素）            |
-| `last()`              | 返回最后一个元素（最大元素）          |
+| `first()`             | 返回第一个（最小）元素                |
+| `last()`              | 返回最后一个（最大）元素              |
 | `lower(E e)`          | 返回小于 e 的最大元素                 |
 | `higher(E e)`         | 返回大于 e 的最小元素                 |
 | `floor(E e)`          | 返回小于等于 e 的最大元素             |
@@ -119,51 +111,40 @@ set.add(new Student("Bob", 18)); // 按年龄降序排列
 | `pollFirst()`         | 移除并返回第一个元素                  |
 | `pollLast()`          | 移除并返回最后一个元素                |
 
-
-### 4.3 视图方法
+### 4.3 范围视图方法
 
 | 方法                  | 说明                                  |
 |-----------------------|---------------------------------------|
-| `subSet(E fromElement, E toElement)` | 返回子集合 [fromElement, toElement)  |
-| `headSet(E toElement)`              | 返回小于 toElement 的子集合           |
-| `tailSet(E fromElement)`            | 返回大于等于 fromElement 的子集合     |
+| `subSet(from, to)`   | 返回子集合 [from, to)                 |
+| `headSet(to)`        | 返回小于 to 的所有元素                |
+| `tailSet(from)`      | 返回大于等于 from 的所有元素          |
 
 
-## 5. 去重原理
+## 五、去重原理
 
-`TreeSet` 通过比较元素的结果来判断是否重复：
-- 若 `compareTo()`（自然排序）或 `compare()`（自定义排序）返回 `0`，则认为元素重复，会被忽略
-- 注意：与 `hashCode()` 和 `equals()` 方法无关，但建议保持一致性（即比较结果为 0 时，`equals()` 也应返回 true）
-
-
-## 6. 性能分析
-
-- **添加、删除、查询**：时间复杂度为 `O(log n)`（基于红黑树的特性）
-- **遍历**：时间复杂度为 `O(n)`
-- 不适合频繁修改元素（尤其是影响排序的字段），修改后可能导致集合秩序混乱
+`TreeSet` 基于比较结果判断元素是否重复：
+- 当 `compareTo()`（自然排序）或 `compare()`（自定义排序）返回 `0` 时，认为元素重复
+- 虽然与 `hashCode()` 和 `equals()` 无直接关系，但**强烈建议**保持三者逻辑一致，即比较结果为 0 时 `equals()` 应返回 true
 
 
-## 7. 注意事项
+## 六、性能分析
 
-1. 线程不安全：多线程环境下需手动同步（如使用 `Collections.synchronizedSortedSet()`）
-2. 排序一致性：元素的比较逻辑需保持稳定，避免在使用过程中修改影响排序的字段
-3. 空元素：不允许添加 `null`（与 `HashSet` 不同）
-4. 自定义对象排序：必须保证排序逻辑正确，否则可能导致集合行为异常
-
-
-## 8. 与 HashSet 的区别
-
-| 特性         | TreeSet                  | HashSet                  |
-|--------------|--------------------------|--------------------------|
-| 底层实现     | TreeMap                  | HashMap                  |
-| 排序         | 有序（自然/自定义排序）  | 无序（哈希表顺序）       |
-| 去重依据     | compareTo()/compare()    | hashCode() + equals()    |
-| 时间复杂度   | 添加/删除 O(log n)       | 添加/删除 O(1)（平均）   |
-| 空元素       | 不允许                   | 允许一个 null            |
+- **添加、删除、查询**：时间复杂度 `O(log n)`（基于红黑树实现）
+- **遍历**：时间复杂度 `O(n)`
+- **注意**：不要在使用过程中修改元素的关键排序字段，这会破坏集合的有序性
 
 
-## 9. 适用场景
+## 七、注意事项
 
-- 需要有序存储且无重复元素的场景
-- 需要频繁进行范围查询（如获取小于/大于某个值的元素）
-- 不适合对性能要求极高的插入/删除操作场景（此时优先考虑 `HashSet`）
+1. **线程安全问题**：多线程环境下需额外同步，可使用 `Collections.synchronizedSortedSet()`
+2. **排序稳定性**：确保比较逻辑稳定，不要修改已存储元素的排序关键属性
+3. **空值限制**：JDK 7 及以上版本不允许 `null` 元素
+4. **比较器一致性**：比较逻辑必须正确实现，避免出现不一致的排序行为
+
+
+## 八、适用场景
+
+- 需要**有序存储**且无重复元素的场景
+- 需要频繁进行**范围查询**（如获取小于/大于某个值的元素）
+- 需要快速获取最大/最小元素的场景
+- 不适合对插入/删除性能要求极高的场景（此时应选择 `HashSet`）

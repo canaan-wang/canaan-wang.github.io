@@ -1,236 +1,146 @@
 # ArrayList
 
-## 一、基本概念
+## 一、核心特性
 
 
 
-- **本质**：基于动态数组实现的List接口实现类，允许存储重复元素、null值，有序（插入顺序=遍历顺序）
+- **底层结构**：动态数组（`Object[] elementData`），支持随机访问
 
-- **特点**：查询快（随机访问，时间复杂度O(1)），增删慢（涉及元素移动，时间复杂度O(n)）
+- **元素特性**：允许重复、允许null、保持插入顺序（有序）
 
-- **线程安全**：非线程安全，多线程环境下需手动同步（如`Collections.synchronizedList()`）或使用`CopyOnWriteArrayList`
+- **性能特点**：
+
+    - 查询快：通过索引直接访问，时间复杂度O(1)
+
+    - 增删慢：涉及元素移位（尾部操作除外），时间复杂度O(n)
+
+- **线程安全**：非线程安全，多线程场景可选`Collections.synchronizedList()`或`CopyOnWriteArrayList`
 
 
 
-## 二、核心属性
+## 二、核心属性与初始化
+
+
+
+### 1. 关键属性
 
 
 
 ```Java
-// 底层存储元素的数组
-transient Object[] elementData;
-// 实际元素数量（区别于数组长度）
-private int size;
-// 默认初始容量（无参构造时，首次添加元素会扩容到此值）
-private static final int DEFAULT_CAPACITY = 10;
-// 空数组（无参构造初始值）
-private static final Object[] DEFAULTCAPACITY_EMPTY_ELEMENTDATA = {};
+transient Object[] elementData; // 存储元素的数组（transient避免序列化空元素）
+private int size; // 实际元素数量（≠数组长度）
+private static final int DEFAULT_CAPACITY = 10; // 默认初始容量
+private static final Object[] DEFAULTCAPACITY_EMPTY_ELEMENTDATA = {}; // 无参构造初始值
+
 ```
 
 
 
-## 三、常用构造方法
+### 2. 构造方法
 
 
 
-1. **无参构造**`List<String> list = new ArrayList<>();`  
+|构造方式|说明|适用场景|
+|---|---|---|
+|`new ArrayList<>()`|初始为 empty 数组，首次添加元素扩容至10|元素数量未知|
+|`new ArrayList<>(int initialCapacity)`|直接初始化指定容量的数组|已知大致元素数量（减少扩容）|
+|`new ArrayList<>(Collection<? extends E> c)`|复制集合元素到新数组|基于已有集合初始化|
 
-    - 初始元素数组为`DEFAULTCAPACITY_EMPTY_ELEMENTDATA`（空数组）  
 
-    - 首次添加元素时，自动扩容至默认容量10
+## 三、核心方法
 
-2. **指定初始容量**`List<Integer> list = new ArrayList<>(20);`  
 
-    - 适合已知大致元素数量的场景，减少扩容次数，提高效率
 
-3. **通过集合初始化**`List<String> list = new ArrayList<>(Arrays.asList("a", "b"));`  
+### 1. 新增元素（`add`系列）
 
-    - 将传入集合的元素全部复制到新数组中
 
 
+- **尾部添加**（`add(E e)`）：若容量不足则扩容，直接赋值`elementData[size++] = e`（O(1)，高效）
 
-## 四、常用方法（按功能分类）
+- **指定位置插入**（`add(int index, E e)`）：先检查索引合法性，再将`index`后元素整体后移一位，最后插入新元素（O(n)，低效）
 
 
 
-### 1. 增
+### 2. 删除元素（`remove`系列）
 
 
 
-- `add(E e)`：在末尾添加元素（返回boolean）  
+- **按索引删除**（`remove(int index)`）：取出目标元素，将`index`后元素整体前移一位，最后置空末尾元素（避免内存泄漏）
 
-- `add(int index, E e)`：在指定索引插入元素（索引越界会抛`IndexOutOfBoundsException`）  
+- **按元素删除**（`remove(Object o)`）：先通过`equals`查找首次出现的索引，再执行上述移位操作（需重写`equals`）
 
-- `addAll(Collection<? extends E> c)`：添加另一个集合的所有元素到末尾  
 
-- `addAll(int index, Collection<? extends E> c)`：从指定索引开始添加另一个集合的元素
 
+### 3. 查询与修改
 
 
-### 2. 删
 
+- `get(int index)`：直接返回`elementData[index]`（O(1)）
 
+- `set(int index, E e)`：替换`elementData[index]`并返回旧值（O(1)）
 
-- `remove(int index)`：删除指定索引的元素，返回被删除元素  
 
-- `remove(Object o)`：删除第一个匹配的元素（需重写`equals`方法），返回boolean  
 
-- `removeAll(Collection<?> c)`：删除两个集合的交集元素  
+## 四、扩容机制
 
-- `retainAll(Collection<?> c)`：保留两个集合的交集元素（删除其他元素）  
 
-- `clear()`：清空所有元素（size=0，但数组容量不变）
 
+1. **触发条件**：添加元素时，`size == elementData.length`（容量不足）
 
+2. **扩容计算**：
 
-### 3. 改
+    - 非空数组：新容量 = 旧容量 + 旧容量/2（1.5倍扩容）
 
+    - 空数组（无参构造首次添加）：直接扩容至`DEFAULT_CAPACITY`（10）
 
+    - 特殊情况：若计算容量小于最小需求（如一次添加大量元素），则扩容至最小需求
 
-- `set(int index, E e)`：替换指定索引的元素，返回被替换的旧元素
+3. **执行过程**：通过`Arrays.copyOf()`创建新数组并复制元素（耗时操作，建议初始化时指定容量）
 
 
 
-### 4. 查
+## 五、遍历与删除陷阱
 
 
 
-- `get(int index)`：获取指定索引的元素  
-
-- `indexOf(Object o)`：返回元素首次出现的索引（不存在返回-1）  
-
-- `lastIndexOf(Object o)`：返回元素最后出现的索引（不存在返回-1）  
-
-- `contains(Object o)`：判断是否包含元素（依赖`equals`方法）  
-
-- `isEmpty()`：判断是否为空（size==0）  
-
-- `size()`：返回元素数量  
-
-
-
-### 5. 遍历
-
-
-
-- **for循环**：适合随机访问（通过索引）  
-
-    ```Java
-    for (int i = 0; i < list.size(); i++) {
-    System.out.println(list.get(i));
-}
-    ```
-
-- **增强for循环**：简洁，适合遍历所有元素  
-
-    ```Java
-    for (String s : list) {
-    System.out.println(s);
-}
-    ```
-
-- **迭代器（Iterator）**：支持边遍历边删除（避免`ConcurrentModificationException`）  
-
-    ```Java
-    Iterator<String> it = list.iterator();
-while (it.hasNext()) {
-    String s = it.next();
-    if (s.equals("a")) {
-        it.remove(); // 正确删除方式
-    }
-}
-    ```
-
-
-
-### 6. 其他
-
-
-
-- `toArray()`：转换为Object数组  
-
-- `toArray(T[] a)`：转换为指定类型数组（推荐，避免类型转换问题）  
-
-- `subList(int fromIndex, int toIndex)`：返回子列表（注意：子列表是原列表的视图，修改会影响原列表）  
-
-
-
-## 五、扩容机制
-
-
-
-1. **触发时机**：添加元素时，若当前数组容量不足（`size == elementData.length`），则触发扩容  
-
-2. **扩容规则**：  
-
-    - 新容量 = 旧容量 + 旧容量/2（即1.5倍扩容）  
-
-    - 若初始为空数组（无参构造），首次扩容直接到10  
-
-    - 若计算的新容量小于最小需求（如添加大量元素时），则直接扩容至最小需求容量  
-
-3. **扩容过程**：创建新数组，将旧数组元素复制到新数组（`Arrays.copyOf()`），效率较低，建议初始化时指定合适容量  
-
+|遍历方式|边遍历边删除的问题|正确做法|
+|---|---|---|
+|增强for循环|抛`ConcurrentModificationException`（迭代器检测到结构修改）|避免使用|
+|普通for循环|正向遍历会漏删元素（索引移位）|倒序遍历（`for (int i = size-1; i >=0; i--)`）|
+|迭代器（Iterator）|调用`list.remove()`会触发异常|使用迭代器自身的`remove()`方法|
 
 
 ## 六、注意事项
 
 
 
-1. **遍历删除问题**：  
+1. **null值处理**：支持存储null，`indexOf(null)`通过`==`判断位置
 
-    - 增强for循环中直接调用`list.remove()`会抛`ConcurrentModificationException`  
+2. **subList视图**：`subList(from, to)`返回原列表的视图，修改会同步影响原列表；原列表结构修改（如add/remove）会导致子列表操作抛`ConcurrentModificationException`
 
-    - 需使用迭代器的`remove()`方法，或倒序for循环删除  
+3. **序列化优化**：`elementData`被`transient`修饰，通过重写`writeObject()`只序列化实际元素（`size`范围内），减少空间占用
 
-2. **null值处理**：允许存储null，`indexOf(null)`可查找null的位置（依赖`==`判断）  
+4. **自定义对象**：`contains`、`indexOf`等方法依赖`equals`，需重写（建议同时重写`hashCode`）
 
-3. **元素比较**：`contains`、`indexOf`等方法依赖元素的`equals`方法，自定义对象需重写  
 
-4. **subList陷阱**：子列表不是独立集合，是原列表的视图，原列表结构修改（如add/remove）会导致子列表操作抛异常  
 
-5. **序列化**：`elementData`被`transient`修饰，通过重写`writeObject()`实现序列化（只序列化实际元素，节省空间）  
-
-## 八、示例代码（常用操作汇总）
+## 七、示例代码
 
 
 
 ```Java
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+List<String> list = new ArrayList<>(10); // 指定初始容量
+list.add("a");
+list.add(0, "b"); // 插入到首位（元素移位）
 
-public class ArrayListDemo {
-    public static void main(String[] args) {
-        // 初始化
-        List<String> list = new ArrayList<>();
-        
-        // 添加元素
-        list.add("a");
-        list.add("b");
-        list.add(1, "c"); // 在索引1插入"c"，此时列表为[a, c, b]
-        
-        // 获取元素
-        System.out.println(list.get(2)); // 输出b
-        
-        // 修改元素
-        list.set(0, "A"); // 列表变为[A, c, b]
-        
-        // 遍历（迭代器方式）
-        Iterator<String> it = list.iterator();
-        while (it.hasNext()) {
-            String s = it.next();
-            if (s.equals("c")) {
-                it.remove(); // 删除"c"，列表变为[A, b]
-            }
-        }
-        
-        // 判断包含
-        System.out.println(list.contains("A")); // 输出true
-        
-        // 清空
-        list.clear();
-        System.out.println(list.isEmpty()); // 输出true
+// 迭代器安全删除
+Iterator<String> it = list.iterator();
+while (it.hasNext()) {
+    if (it.next().equals("a")) {
+        it.remove(); // 正确删除
     }
 }
+
+// 转换为指定类型数组
+String[] arr = list.toArray(new String[0]);
 ```

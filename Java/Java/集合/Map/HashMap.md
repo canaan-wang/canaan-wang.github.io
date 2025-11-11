@@ -21,7 +21,7 @@
 - **数组 + 链表 + 红黑树**：
   - 数组（Node 数组）作为主体
   - 链表解决哈希冲突
-  - 当链表长度超过阈值（默认 8）且数组长度大于等于 64 时，链表转换为红黑树
+  - 当链表长度超过阈值（默认 8）且数组长度≥64时，链表转换为红黑树
   - 当红黑树节点数量小于阈值（默认 6）时，红黑树转回链表
 
 ## 三、核心参数与构造函数
@@ -37,314 +37,262 @@
 | UNTREEIFY_THRESHOLD | 6 | 红黑树转链表的阈值 |
 | MIN_TREEIFY_CAPACITY | 64 | 树化的最小数组容量 |
 
-### 2. 构造函数
+## 四、重要方法工作原理
 
-```java
-// 无参构造函数，使用默认容量和负载因子
-public HashMap() {}
+### 1. put 方法工作流程
 
-// 指定初始容量
-public HashMap(int initialCapacity) {}
+**put 方法**是 HashMap 中最核心的方法之一，用于添加键值对。
 
-// 指定初始容量和负载因子
-public HashMap(int initialCapacity, float loadFactor) {}
+1. **计算哈希值**：首先对 key 进行哈希计算，通过对 hashCode() 的返回值进行扰动处理（高16位与低16位异或），以减少哈希冲突。
 
-// 使用其他 Map 初始化
-public HashMap(Map<? extends K, ? extends V> m) {}
-```
+2. **数组初始化检查**：如果内部数组（table）为空或长度为0，则调用 resize() 方法进行初始化。
 
-## 四、重要方法实现原理
+3. **确定存储位置**：通过位运算 `(n-1) & hash` 计算索引位置（其中 n 是数组长度）。
 
-### 1. put 方法
+4. **插入节点**：
+   - 如果目标索引位置为空，直接创建新节点并插入。
+   - 如果不为空，需要进一步判断：
+     - 检查首节点是否与新键相同（哈希值相同且 equals 判断为 true），如果是则替换值。
+     - 如果首节点是红黑树节点，则调用红黑树的插入方法。
+     - 如果是链表节点，则遍历链表：
+       - 如果找到相同的 key，替换值。
+       - 如果没找到，在链表尾部插入新节点，并检查是否需要将链表转换为红黑树。
 
-```java
-public V put(K key, V value) {
-    // 计算 key 的哈希值
-    return putVal(hash(key), key, value, false, true);
-}
+5. **扩容检查**：插入完成后，检查元素数量是否超过阈值（capacity * loadFactor），如果超过则进行扩容。
 
-final V putVal(int hash, K key, V value, boolean onlyIfAbsent, boolean evict) {
-    Node<K,V>[] tab; Node<K,V> p; int n, i;
-    // 1. 如果数组为空，进行初始化
-    if ((tab = table) == null || (n = tab.length) == 0)
-        n = (tab = resize()).length;
-    // 2. 计算索引并检查桶是否为空
-    if ((p = tab[i = (n - 1) & hash]) == null)
-        tab[i] = newNode(hash, key, value, null);
-    else {
-        Node<K,V> e; K k;
-        // 3. 检查桶的第一个节点是否与新键相同
-        if (p.hash == hash && 
-            ((k = p.key) == key || (key != null && key.equals(k))))
-            e = p;
-        // 4. 如果是红黑树节点，调用树的插入方法
-        else if (p instanceof TreeNode)
-            e = ((TreeNode<K,V>)p).putTreeVal(this, tab, hash, key, value);
-        // 5. 遍历链表
-        else {
-            for (int binCount = 0; ; ++binCount) {
-                if ((e = p.next) == null) {
-                    p.next = newNode(hash, key, value, null);
-                    // 检查是否需要树化
-                    if (binCount >= TREEIFY_THRESHOLD - 1) // -1 for 1st
-                        treeifyBin(tab, hash);
-                    break;
-                }
-                // 找到相同的 key，退出循环
-                if (e.hash == hash && 
-                    ((k = e.key) == key || (key != null && key.equals(k))))
-                    break;
-                p = e;
-            }
-        }
-        // 6. 如果找到了相同的 key，替换值
-        if (e != null) {
-            V oldValue = e.value;
-            if (!onlyIfAbsent || oldValue == null)
-                e.value = value;
-            afterNodeAccess(e);
-            return oldValue;
-        }
-    }
-    ++modCount;
-    // 7. 检查是否需要扩容
-    if (++size > threshold)
-        resize();
-    afterNodeInsertion(evict);
-    return null;
-}
-```
+**关键点**：
+- HashMap 允许替换相同键的值
+- 插入新节点时会维护 modCount（修改次数）用于快速失败机制
 
-### 2. get 方法
+### 2. get 方法工作流程
 
-```java
-public V get(Object key) {
-    Node<K,V> e;
-    return (e = getNode(hash(key), key)) == null ? null : e.value;
-}
+**get 方法**用于根据键获取对应的值。
 
-final Node<K,V> getNode(int hash, Object key) {
-    Node<K,V>[] tab; Node<K,V> first, e; int n; K k;
-    // 检查数组和桶是否有效
-    if ((tab = table) != null && (n = tab.length) > 0 &&
-        (first = tab[(n - 1) & hash]) != null) {
-        // 检查桶的第一个节点
-        if (first.hash == hash && 
-            ((k = first.key) == key || (key != null && key.equals(k))))
-            return first;
-        // 遍历链表或红黑树
-        if ((e = first.next) != null) {
-            if (first instanceof TreeNode)
-                return ((TreeNode<K,V>)first).getTreeNode(hash, key);
-            do {
-                if (e.hash == hash &&
-                    ((k = e.key) == key || (key != null && key.equals(k))))
-                    return e;
-            } while ((e = e.next) != null);
-        }
-    }
-    return null;
-}
-```
+1. **哈希计算**：对输入的 key 进行与 put 方法相同的哈希计算。
 
-### 3. resize 方法（扩容机制）
+2. **有效性检查**：检查数组是否为空，以及计算出的索引位置是否有节点。
 
-```java
-final Node<K,V>[] resize() {
-    Node<K,V>[] oldTab = table;
-    int oldCap = (oldTab == null) ? 0 : oldTab.length;
-    int oldThr = threshold;
-    int newCap, newThr = 0;
-    // 计算新容量和新阈值
-    if (oldCap > 0) {
-        if (oldCap >= MAXIMUM_CAPACITY) {
-            threshold = Integer.MAX_VALUE;
-            return oldTab;
-        }
-        // 扩容为原来的两倍
-        else if ((newCap = oldCap << 1) < MAXIMUM_CAPACITY &&
-                 oldCap >= DEFAULT_INITIAL_CAPACITY)
-            newThr = oldThr << 1; // double threshold
-    }
-    else if (oldThr > 0) // initial capacity was placed in threshold
-        newCap = oldThr;
-    else {               // zero initial threshold signifies using defaults
-        newCap = DEFAULT_INITIAL_CAPACITY;
-        newThr = (int)(DEFAULT_LOAD_FACTOR * DEFAULT_INITIAL_CAPACITY);
-    }
-    // 计算新阈值
-    if (newThr == 0) {
-        float ft = (float)newCap * loadFactor;
-        newThr = (newCap < MAXIMUM_CAPACITY && ft < (float)MAXIMUM_CAPACITY ?
-                  (int)ft : Integer.MAX_VALUE);
-    }
-    threshold = newThr;
-    @SuppressWarnings({"rawtypes","unchecked"})
-    Node<K,V>[] newTab = (Node<K,V>[])new Node[newCap];
-    table = newTab;
-    // 迁移元素
-    if (oldTab != null) {
-        for (int j = 0; j < oldCap; ++j) {
-            Node<K,V> e;
-            if ((e = oldTab[j]) != null) {
-                oldTab[j] = null;
-                if (e.next == null)
-                    newTab[e.hash & (newCap - 1)] = e;
-                else if (e instanceof TreeNode)
-                    ((TreeNode<K,V>)e).split(this, newTab, j, oldCap);
-                else { // preserve order
-                    // 链表拆分，JDK 8 优化，无需重新计算哈希
-                    Node<K,V> loHead = null, loTail = null;
-                    Node<K,V> hiHead = null, hiTail = null;
-                    Node<K,V> next;
-                    do {
-                        next = e.next;
-                        if ((e.hash & oldCap) == 0) {
-                            if (loTail == null)
-                                loHead = e;
-                            else
-                                loTail.next = e;
-                            loTail = e;
-                        }
-                        else {
-                            if (hiTail == null)
-                                hiHead = e;
-                            else
-                                hiTail.next = e;
-                            hiTail = e;
-                        }
-                    } while ((e = next) != null);
-                    // 低位链表保持原索引
-                    if (loTail != null) {
-                        loTail.next = null;
-                        newTab[j] = loHead;
-                    }
-                    // 高位链表索引 = 原索引 + 旧容量
-                    if (hiTail != null) {
-                        hiTail.next = null;
-                        newTab[j + oldCap] = hiHead;
-                    }
-                }
-            }
-        }
-    }
-    return newTab;
-}
-```
+3. **查找节点**：
+   - 首先检查索引位置的首节点是否为目标键，如果是则直接返回其值。
+   - 如果不是，根据节点类型继续查找：
+     - 如果是红黑树节点，调用红黑树的查找方法。
+     - 如果是链表节点，则遍历链表，直到找到对应的键或遍历结束。
 
-## 五、关键优化点
+4. **返回结果**：找到则返回对应的值，否则返回 null。
+
+**注意**：get 方法返回 null 有两种可能：键不存在，或者键对应的值本身就是 null。可以使用 containsKey() 方法进一步区分。
+
+## 扩容机制
+
+**resize 方法**是 HashMap 中负责初始化和扩容的关键方法，它具有双重作用：初始化数组和在需要时进行扩容。
+
+### 3.1 数组容量相关参数
+- **默认初始容量**：16（DEFAULT_INITIAL_CAPACITY）
+- **最大容量**：2^30（MAXIMUM_CAPACITY = 1<<30），这是 HashMap 数组长度的上限
+- **容量特性**：始终保持为 2 的幂，这是为了优化哈希计算和扩容时的数据迁移
+
+### 3.2 初始化过程
+- **初始容量确定**：
+  - 默认情况下，数组初始长度为 16
+  - 当用户通过构造函数指定初始容量时，HashMap 会将其转换为大于等于该值的最小 2 的幂
+  - 例如：指定 10 会被转换为 16，指定 20 会被转换为 32
+  - 这个转换通过 `tableSizeFor()` 方法实现
+- **初始阈值计算**：
+  - 阈值 = 容量 * 负载因子
+  - 默认情况下，初始化时的扩容阈值为 16 * 0.75 = 12
+  - 即当 HashMap 中的键值对总数超过 12 时触发扩容
+
+### 3.3 扩容场景
+1. **首次插入元素时**：如果数组尚未初始化，则触发初始化
+2. **元素数量超过阈值时**：当 HashMap 中的键值对总数超过当前阈值（capacity * loadFactor）时触发扩容
+3. **链表树化前的扩容**：当链表长度超过阈值（8）但数组长度不足 64 时，会先触发扩容而不是树化
+
+### 3.4 扩容过程详解
+1. **计算新容量**：
+   - 将当前容量扩大为原来的两倍（左移一位，即`oldCap << 1`）
+   - 注意：扩容不会超过最大容量限制（2^30）
+
+2. **计算新阈值**：
+   - 新阈值通常为新容量乘以负载因子
+   - 如果新容量已达到最大容量，则阈值会被设置为 Integer.MAX_VALUE
+
+3. **创建新数组**：使用新容量创建一个新的 Node 数组
+
+4. **数据迁移**：将原数组中的元素重新分配到新数组中，这是扩容过程中最复杂的部分。
+
+### 3.5 扩容触发条件总结
+- **数组未初始化时**：首次插入元素时触发初始化
+- **键值对总数超过阈值时**：当 HashMap 中的键值对总数超过当前阈值（capacity * loadFactor）时触发扩容
+- **链表过长且数组较小时**：当链表长度超过阈值（8）但数组长度不足 64 时，会触发扩容
+
+#### 重要说明
+链表长度超过阈值但数组长度不足64时的扩容是一种特殊场景。在这种情况下，**即使HashMap中的键值对总数没有超过阈值**，也会触发扩容。这是因为HashMap优先通过扩容来减少哈希冲突，而不是过早地将链表转换为红黑树。只有当数组长度达到64后，才会考虑将长链表转换为红黑树。
+
+### 3.6 数组长度为64时的特殊处理
+当数组长度为64时，HashMap的树化机制会被激活。如果此时某个链表的长度超过阈值8，HashMap不会再进行扩容，而是会将该链表转换为红黑树，以提升查询效率。这是因为：
+1. 数组长度达到64后，继续扩容会消耗更多内存空间
+2. 此时将长链表转换为红黑树比扩容更能有效提升性能
+3. 红黑树的查询时间复杂度为O(log n)，远优于长链表的O(n)
+
+### 3.7 数组长度为64后的扩容机制
+即使数组长度达到64后，HashMap仍会在键值对总数超过阈值时继续进行扩容操作。扩容规则仍然是将容量翻倍：
+- 64 → 128 → 256 → ...
+- 扩容会一直进行，直到达到最大容量限制（2^30）
+
+这种设计的目的是保持较低的负载因子，确保即使在大量数据的情况下，仍能维持良好的查询性能。红黑树的使用仅作为哈希冲突严重时的补充优化，而不是替代正常的扩容机制。
+
+### 3.8 数据迁移策略详解
+在 JDK 8 中，HashMap 针对不同类型的节点采用不同的迁移策略，以提高扩容效率：
+
+- **单节点迁移**：
+  - 对于链表长度为 1 的节点（没有哈希冲突的情况）
+  - 直接计算其在新数组中的位置并放入
+  - 计算公式：`(newCap - 1) & hash`
+
+- **红黑树节点迁移**：
+  - 对于已经树化的节点，调用 `split()` 方法进行拆分处理
+  - 拆分过程会将红黑树按照新容量的规则重新分配节点
+  - 如果拆分后树的节点数减少到阈值（6）以下，会将其转换回链表结构
+  - 这样设计可以避免在扩容后维持不必要的树形结构
+
+- **链表节点迁移**：
+  - JDK 8 采用了一种高效的优化算法，无需重新计算每个节点的哈希值
+  - 使用位运算 `(hash & oldCap)` 判断节点在扩容后的位置
+  - **位运算原理**：当容量翻倍时，索引计算的掩码增加一位，我们只需检查新增的这一位是 0 还是 1
+  - 迁移规则：
+    - 如果 `(hash & oldCap) == 0`：节点保持在原索引位置
+    - 如果 `(hash & oldCap) != 0`：节点移动到 `原索引 + oldCap` 的位置
+
+- **链表迁移优化的核心原理**：
+  - 由于 HashMap 的容量始终是 2 的幂，扩容时容量翻倍相当于在二进制表示中左移一位
+  - 这导致索引计算的掩码（`(n-1) & hash`）多了一个高位
+  - 通过检查 hash 值中对应新位的比特值，可以直接判断节点在新数组中的位置
+  - 这种方式避免了重新计算每个节点的完整哈希值，大幅提高了迁移效率
+
+- **迁移效率分析**：
+  - 整个迁移过程的时间复杂度为 O(n)，其中 n 是 HashMap 中的元素总数
+  - 但由于位运算的高效性，实际性能非常好
+  - 在理想哈希分布下，链表会被平均分成两部分，分别迁移到两个新位置
+  - 这种设计确保了扩容后哈希表的负载更加均衡
+
+### 3.9 空槽位设计说明
+HashMap在扩容时不是等到数组完全填满（阈值=容量）才扩容，而是在元素数量达到容量的75%时就扩容，这意味着HashMap中**永远会有空槽位**。这是时间效率和空间效率的权衡设计：
+- 保留空槽位可以显著减少哈希冲突的概率
+- 降低链表/红黑树的平均长度，保持O(1)的查询效率
+- 虽然牺牲了一定的空间利用率，但大幅提升了查询、插入和删除的性能
+
+### 3.9 红黑树节点出现的可能性
+在实际应用中，**红黑树节点确实很少被用到**，这主要有以下原因：
+
+1. **泊松分布原理**：根据统计学中的泊松分布，当负载因子为0.75时，链表长度达到8的概率约为0.00000006（百万分之0.06），几乎可以忽略不计。这是Java开发者精心选择参数的结果。
+
+2. **双重条件限制**：树化需要同时满足两个条件：
+   - 链表长度超过阈值8
+   - 数组长度≥64
+   如果数组长度不足64，即使链表长度超过8，也只会触发扩容而不是树化。
+
+3. **扩容频繁发生**：由于HashMap在元素数量达到容量75%时就扩容，且扩容后容量翻倍，这使得链表很难达到足够长的长度。
+
+4. **正常哈希分布**：对于实现良好的hashCode()方法，键的分布通常比较均匀，链表长度很少会达到树化阈值。
+
+**实际场景**：只有在极特殊情况下（如严重的哈希冲突、恶意构造的键值对），红黑树才会真正派上用场，这也是为什么Java 8引入红黑树主要是为了防止潜在的DoS攻击，而不是提高常规使用场景的性能。
+
+### 3.10 扩容的影响
+- 扩容是一个比较耗时的操作，可能会导致性能波动
+- 合理设置初始容量可以减少扩容次数，提高性能
+
+## 五、关键优化技术
 
 1. **哈希计算优化**：
-   ```java
-   static final int hash(Object key) {
-       int h;
-       // 高位参与运算，减少碰撞
-       return (key == null) ? 0 : (h = key.hashCode()) ^ (h >>> 16);
-   }
-   ```
+   - 通过高16位与低16位异或运算，让高位参与到哈希计算中，减少哈希冲突
+   - 这一设计在数组容量较小时尤为重要
 
-2. **索引计算**：使用位运算 `(n - 1) & hash` 代替取模运算，提高效率（前提是容量为 2 的幂）
+2. **索引计算优化**：
+   - 使用位运算 `(n - 1) & hash` 代替取模运算，提高计算效率
+   - 这也是要求容量必须为 2 的幂的主要原因
 
-3. **扩容优化**：JDK 8 中扩容时，链表拆分利用 `(e.hash & oldCap) == 0` 快速判断元素应该在原索引还是新索引位置
+3. **树化机制**：
+   - 当链表过长时（默认长度≥8），将链表转换为红黑树
+   - 大幅提升查询效率，从 O(n) 优化到 O(log n)
+   - 当红黑树节点减少到一定数量（默认≤6）时，会转回链表
 
-4. **树化机制**：当链表过长时转为红黑树，提高查询效率（从 O(n) 降至 O(log n)）
+4. **红黑树自平衡机制**：
+    - 红黑树节点的比较**顺序**：
+      - 首先比较节点的哈希值（hashCode）
+      - 只有当哈希值相同时，才会比较键（key）
+      - 键的比较优先级：先尝试使用Comparable接口进行自然排序，如果键未实现该接口，则使用System.identityHashCode()基于对象内存地址进行比较
+    - 确保树的平衡性，维持O(log n)的查询效率
+    - 在扩容时会通过split()方法重新分配节点并可能转回链表
+
+5. **扩容优化**：
+   - JDK 8 使用位运算快速判断元素在扩容后的位置
+   - 采用尾插法，避免链表反转问题
 
 ## 六、线程安全问题
 
-1. **JDK 7 中的死循环问题**：
-   - 多线程并发扩容时，可能导致链表形成环
-   - 原因：头插法导致链表顺序反转
+### 1. JDK 7 中的死循环问题
 
-2. **JDK 8 中的数据覆盖问题**：
-   - 虽然修复了死循环，但仍存在数据覆盖风险
-   - 原因：缺乏同步机制
+在 JDK 7 中，多线程并发扩容时可能导致链表形成环，从而引发死循环。主要原因是：
+- 采用头插法插入节点
+- 并发扩容时，多个线程同时修改链表结构
+- 导致链表节点之间的引用关系混乱，形成环
 
-3. **解决方案**：
-   - 多线程环境使用 `ConcurrentHashMap`
-   - 或使用 `Collections.synchronizedMap()` 包装
+### 2. JDK 8 中的数据覆盖问题
+
+虽然 JDK 8 修复了死循环问题，但仍存在数据覆盖的风险：
+- 缺乏同步机制，多线程同时操作可能导致数据覆盖
+- 例如，两个线程同时检测到同一个位置为空并插入数据
+
+### 3. 解决方案
+
+在多线程环境中使用 HashMap 时，推荐以下替代方案：
+- 使用 `ConcurrentHashMap`：专为并发设计，性能更好
+- 使用 `Collections.synchronizedMap()`：包装现有 HashMap
+- 使用显式锁（如 ReentrantLock）保护 HashMap 操作
 
 ## 七、使用注意事项
 
-1. **键的设计**：
-   - 必须重写 `equals()` 和 `hashCode()` 方法
-   - 推荐使用不可变对象作为键（如 String、Integer）
+1. **键的设计原则**：
+   - 作为键的对象必须重写 `equals()` 和 `hashCode()` 方法
+   - 这两个方法的实现必须保持一致：如果两个对象 equals 返回 true，它们的 hashCode 必须相等
+   - 推荐使用不可变对象作为键（如 String、Integer），避免键的值改变导致无法正确查找
 
 2. **初始容量设置**：
-   - 如果预知数据量，建议设置合适的初始容量
-   - 计算公式：期望元素数量 / 负载因子
+   - 如果可以预估存储的元素数量，建议设置合适的初始容量
+   - 计算公式：初始容量 = 期望元素数量 / 负载因子
+   - 合理设置初始容量可以减少扩容次数，提高性能
 
-3. **遍历方式推荐**：
-   - 优先使用 `entrySet()` 遍历
-   - Java 8+ 推荐使用 `forEach()` 方法
+3. **遍历方式选择**：
+   - 推荐使用 `entrySet()` 遍历键值对，比 `keySet()` 更高效
+   - Java 8 及以上版本，推荐使用 `forEach()` 方法配合 Lambda 表达式
 
 4. **null 值处理**：
-   - `get(key)` 返回 null 时，需判断是键不存在还是值为 null
-   - 可使用 `containsKey(key)` 进一步确认
+   - HashMap 允许 null 键和 null 值，但需要注意处理
+   - 调用 `get(key)` 返回 null 时，无法直接判断是键不存在还是值为 null
+   - 可以使用 `containsKey(key)` 方法进一步确认键是否存在
 
-## 八、使用示例
-
-```java
-import java.util.HashMap;
-import java.util.Map;
-
-public class HashMapExample {
-    public static void main(String[] args) {
-        // 创建 HashMap
-        Map<String, Integer> map = new HashMap<>(16);
-        
-        // 添加元素
-        map.put("apple", 10);
-        map.put("banana", 20);
-        map.put("orange", 15);
-        map.put(null, 5);  // 允许 null 键
-        map.put("grape", null);  // 允许 null 值
-        
-        // 获取元素
-        System.out.println("apple: " + map.get("apple"));
-        System.out.println("null key: " + map.get(null));
-        
-        // 遍历方式 1：entrySet
-        System.out.println("\n使用 entrySet 遍历：");
-        for (Map.Entry<String, Integer> entry : map.entrySet()) {
-            System.out.println(entry.getKey() + ": " + entry.getValue());
-        }
-        
-        // 遍历方式 2：Java 8 forEach
-        System.out.println("\n使用 Java 8 forEach 遍历：");
-        map.forEach((k, v) -> System.out.println(k + ": " + v));
-        
-        // 其他常用操作
-        System.out.println("\n是否包含键 'banana': " + map.containsKey("banana"));
-        System.out.println("是否包含值 15: " + map.containsValue(15));
-        System.out.println("集合大小: " + map.size());
-        
-        // 删除元素
-        map.remove("banana");
-        System.out.println("删除 'banana' 后的大小: " + map.size());
-    }
-}
-```
-
-## 九、常见问题
+## 八、常见问题解答
 
 1. **为什么 HashMap 的容量必须是 2 的幂？**
-   - 为了使用位运算 `(n-1) & hash` 代替模运算，提高效率
-   - 保证扩容时元素再分配的均匀性
+   - 位运算效率更高：可以使用 `(n-1) & hash` 代替取模运算
+   - 扩容时元素分配更均匀：使用位运算可以高效地将元素分配到原位置或新位置
 
-2. **为什么负载因子是 0.75？**
-   - 平衡空间利用率和查询性能
-   - 过低：浪费空间
-   - 过高：哈希冲突增加，性能下降
+2. **为什么负载因子默认是 0.75？**
+   - 这是空间利用率和查询性能的平衡点
+   - 过低会浪费空间，过高会增加哈希冲突概率
+   - 经过大量实践验证，0.75 是一个合理的折衷值
 
-3. **HashMap 中如何处理 null 键？**
-   - null 键的哈希值为 0
+3. **HashMap 如何处理 null 键？**
+   - null 键的哈希值被固定为 0
    - 始终存储在数组索引为 0 的位置
+   - 由于只能有一个 null 键，后续插入的 null 键会覆盖之前的值
 
-4. **为什么 JDK 8 要引入红黑树？**
-   - 当哈希冲突严重时，链表过长会导致查询效率下降
-   - 红黑树可以将查询时间复杂度从 O(n) 优化到 O(log n)
+4. **为什么 JDK 8 引入红黑树？**
+   - 当哈希冲突严重时，链表会变得很长
+   - 长链表会导致查询效率下降到 O(n)
+   - 红黑树可以将查询效率优化到 O(log n)
 
-5. **HashMap、LinkedHashMap、TreeMap 的区别？**
-   - HashMap：无序，查询效率高
-   - LinkedHashMap：保持插入或访问顺序，继承自 HashMap
-   - TreeMap：按键排序，底层为红黑树
+5. **HashMap、LinkedHashMap、TreeMap 的主要区别？**
+   - HashMap：无序，查询效率高，基于哈希表
+   - LinkedHashMap：保持插入或访问顺序，通过双向链表维护顺序
+   - TreeMap：按键排序，查询和插入时间复杂度为 O(log n)，基于红黑树

@@ -1,348 +1,155 @@
 # LinkedHashMap
 
-## 一、LinkedHashMap 概述
+## 1. 概述
 
-- **定义**：`java.util.LinkedHashMap` 是 `HashMap` 的子类，在其基础上通过维护一个双向链表来保持元素的插入顺序或访问顺序
-- **继承关系**：继承自 `HashMap`，实现了 `Map` 接口
-- **核心特点**：
-  - 非线程安全
-  - 允许 null 键和 null 值
-  - 可以维护元素的顺序（插入顺序或访问顺序）
-  - 性能略低于 HashMap，但提供了顺序保证
+**LinkedHashMap** 是 Java 集合框架中 `HashMap` 的子类，它在保持哈希表高效查找性能的同时，通过维护一个双向链表来保证元素的迭代顺序。该实现结合了哈希表和链表的优点，既提供了快速的查找能力，又保证了元素的有序性。
 
-## 二、底层数据结构
+### 核心特性
 
-### 1. 结构组成
-- **哈希表**：继承自 HashMap，使用数组 + 链表/红黑树存储键值对
-- **双向链表**：额外维护一个双向链表，用于记录元素的顺序
+- **顺序保证**：可以维护元素的插入顺序或访问顺序
+- **继承关系**：继承自 `HashMap`，完全支持 `Map` 接口的所有操作
+- **线程安全性**：非线程安全，多线程环境下需要额外同步
+- **键值限制**：允许使用 null 键和 null 值
+- **性能特点**：查找操作性能与 `HashMap` 相当，但维护顺序会带来少量性能开销
 
-### 2. 节点结构
-```java
-static class Entry<K,V> extends HashMap.Node<K,V> {
-    Entry<K,V> before, after; // 双向链表的前后指针
-    Entry(int hash, K key, V value, Node<K,V> next) {
-        super(hash, key, value, next);
-    }
-}
-```
+## 2. 底层数据结构
 
-## 三、核心参数与构造函数
+### 2.1 数据结构组成
 
-### 1. 核心参数
+LinkedHashMap 采用**哈希表 + 双向链表**的混合结构：
+
+- **哈希表**：继承自 HashMap，使用数组存储桶，每个桶内可能是链表或红黑树结构，用于快速定位键值对
+- **双向链表**：额外维护的链表结构，用于按特定顺序（插入顺序或访问顺序）连接所有节点
+
+这种结构设计使得 LinkedHashMap 能够在 O(1) 时间复杂度内完成查找操作，同时保证元素的有序迭代。
+
+### 2.2 节点设计
+
+LinkedHashMap 的节点类扩展了 HashMap 的节点类，增加了维护双向链表所需的前后指针：
+
+- 每个节点包含指向前后节点的引用（before 和 after）
+- 这些引用与哈希表结构中的 next 指针并存，但用途不同：next 用于解决哈希冲突，before/after 用于维护元素顺序
+
+## 3. 核心参数与构造函数
+
+### 3.1 核心参数
 
 | 参数 | 默认值 | 说明 |
 |---|---|---|
-| accessOrder | false | 排序模式，false 表示插入顺序，true 表示访问顺序 |
+| accessOrder | false | 排序模式控制参数，false 表示维护插入顺序，true 表示维护访问顺序 |
 
-### 2. 构造函数
+### 3.2 构造函数
 
-```java
-// 无参构造函数，默认容量 16，负载因子 0.75，插入顺序
-public LinkedHashMap() {
-    super();
-    accessOrder = false;
-}
+LinkedHashMap 提供了多种构造函数以满足不同的初始化需求：
 
-// 指定初始容量
-public LinkedHashMap(int initialCapacity) {
-    super(initialCapacity);
-    accessOrder = false;
-}
+- **无参构造**：创建一个默认初始容量（16）、默认负载因子（0.75）的 LinkedHashMap，默认维护插入顺序
+- **指定初始容量构造**：创建具有指定初始容量的 LinkedHashMap
+- **指定初始容量和负载因子构造**：创建具有指定初始容量和负载因子的 LinkedHashMap
+- **指定初始容量、负载因子和排序模式构造**：最灵活的构造方式，可以控制是否维护访问顺序
+- **Map 集合构造**：通过已有的 Map 集合创建 LinkedHashMap
 
-// 指定初始容量和负载因子
-public LinkedHashMap(int initialCapacity, float loadFactor) {
-    super(initialCapacity, loadFactor);
-    accessOrder = false;
-}
+## 4. 双向链表维护机制
 
-// 指定初始容量、负载因子和排序模式
-public LinkedHashMap(int initialCapacity, float loadFactor, boolean accessOrder) {
-    super(initialCapacity, loadFactor);
-    this.accessOrder = accessOrder;
-}
+### 4.1 链表维护原理
 
-// 使用其他 Map 初始化
-public LinkedHashMap(Map<? extends K, ? extends V> m) {
-    super();
-    accessOrder = false;
-    putMapEntries(m, false);
-}
-```
+LinkedHashMap 通过重写 HashMap 中定义的回调方法来维护双向链表的完整性。这些回调方法在 HashMap 的关键操作中被调用，使 LinkedHashMap 能够在不破坏原有功能的基础上维护元素顺序。
 
-## 四、关键方法与实现原理
+### 4.2 核心维护方法详解
 
-### 1. 双向链表维护
+LinkedHashMap 重写了 HashMap 中定义的四个关键回调方法，这些方法构成了维护双向链表的核心机制。下面详细解释每个方法的重写逻辑：
 
-```java
-// 初始化时调用，创建头节点和尾节点
-void init() {
-    head = tail = null;
-}
+#### 1. newNode() 方法重写逻辑
 
-// 将节点链接到链表尾部（插入顺序）
-private void linkNodeLast(LinkedHashMap.Entry<K,V> p) {
-    LinkedHashMap.Entry<K,V> last = tail;
-    tail = p;
-    if (last == null)
-        head = p;
-    else {
-        p.before = last;
-        last.after = p;
-    }
-}
+`newNode()` 方法负责创建新的节点并将其链接到双向链表中：
 
-// 在访问节点后调整链表（访问顺序模式）
-void afterNodeAccess(Node<K,V> e) { // move node to last
-    LinkedHashMap.Entry<K,V> last;
-    if (accessOrder && (last = tail) != e) {
-        LinkedHashMap.Entry<K,V> p =
-            (LinkedHashMap.Entry<K,V>)e,
-            b = p.before,
-            a = p.after;
-        p.after = null;
-        if (b == null)
-            head = a;
-        else
-            b.after = a;
-        if (a != null)
-            a.before = b;
-        else
-            last = b;
-        if (last == null)
-            head = p;
-        else {
-            p.before = last;
-            last.after = p;
-        }
-        tail = p;
-        ++modCount;
-    }
-}
+- **创建节点**：创建一个 `LinkedHashMap.Entry` 类型的节点，该节点继承自 `HashMap.Node` 并添加了 `before` 和 `after` 指针
+- **链接到链表尾部**：调用 `linkNodeLast()` 方法将新节点链接到双向链表的尾部
+- **返回节点**：将新创建的节点返回给 HashMap 的插入逻辑
 
-// 插入节点后链接到链表
-void afterNodeInsertion(boolean evict) { // possibly remove eldest
-    LinkedHashMap.Entry<K,V> first;
-    // 根据需要删除最老的元素（用于 LRU 缓存）
-    if (evict && (first = head) != null && removeEldestEntry(first)) {
-        K key = first.key;
-        removeNode(hash(key), key, null, false, true);
-    }
-}
-```
+这个方法确保了每次创建新节点时，该节点都会被正确地添加到维护顺序的双向链表中，是链表构建的起点。
 
-### 2. 重写 HashMap 的关键方法
+#### 2. afterNodeAccess() 方法重写逻辑
 
-```java
-// 创建新节点，返回 LinkedHashMap.Entry 而不是 HashMap.Node
-Node<K,V> newNode(int hash, K key, V value, Node<K,V> e) {
-    LinkedHashMap.Entry<K,V> p = 
-        new LinkedHashMap.Entry<K,V>(hash, key, value, e);
-    linkNodeLast(p); // 链接到链表尾部
-    return p;
-}
+`afterNodeAccess()` 方法在元素被访问（如 `get()` 或 `put()` 操作已存在的键）后被调用：
 
-// 红黑树节点也需要支持双向链表
-TreeNode<K,V> newTreeNode(int hash, K key, V value, Node<K,V> next) {
-    TreeNode<K,V> p = new TreeNode<K,V>(hash, key, value, next);
-    linkNodeLast(p);
-    return p;
-}
+- **条件判断**：首先检查 `accessOrder` 标志是否为 `true`，只有在访问顺序模式下才执行后续操作
+- **移除当前节点**：调用 `unlink()` 方法将当前节点从双向链表中移除，但不从哈希表中删除
+- **链接到尾部**：调用 `linkNodeLast()` 方法将节点重新链接到双向链表的尾部
+- **更新引用**：更新相关节点的 `before` 和 `after` 引用，确保链表的完整性
 
-// 遍历优先使用双向链表，而不是哈希表
-public Set<K> keySet() {
-    Set<K> ks = keySet;
-    if (ks == null) {
-        ks = new LinkedKeySet();
-        keySet = ks;
-    }
-    return ks;
-}
+这个方法实现了访问顺序模式的核心功能，使得最近访问的元素总是位于链表尾部，方便实现 LRU 缓存策略。
 
-public Collection<V> values() {
-    Collection<V> vs = values;
-    if (vs == null) {
-        vs = new LinkedValues();
-        values = vs;
-    }
-    return vs;
-}
+#### 3. afterNodeInsertion() 方法重写逻辑
 
-public Set<Map.Entry<K,V>> entrySet() {
-    Set<Map.Entry<K,V>> es;
-    return (es = entrySet) == null ? (entrySet = new LinkedEntrySet()) : es;
-}
-```
+`afterNodeInsertion()` 方法在新元素插入完成后被调用：
 
-## 五、两种排序模式
+- **判断是否需要移除**：调用 `removeEldestEntry()` 方法判断是否需要移除最老的元素
+- **移除策略**：当 `removeEldestEntry()` 返回 `true` 时，移除链表头部（head）的节点
+- **默认行为**：`removeEldestEntry()` 方法默认返回 `false`，即默认不会移除任何元素
+- **缓存实现**：子类可以通过重写 `removeEldestEntry()` 方法来定义自己的淘汰策略，如 LRU 缓存中的容量限制
 
-### 1. 插入顺序模式（默认，accessOrder = false）
-- 元素的迭代顺序与插入顺序一致
-- 即使重新插入已存在的键，顺序也不会改变
+这个方法为实现缓存淘汰机制提供了钩子，是 LinkedHashMap 能够便捷实现 LRU 缓存的关键所在。
 
-### 2. 访问顺序模式（accessOrder = true）
-- 每次访问（get 或 put 已存在的键）后，该元素会移到链表尾部
-- 链表头部是最久未使用的元素（Least Recently Used, LRU）
-- 链表尾部是最近使用的元素（Most Recently Used, MRU）
+#### 4. afterNodeRemoval() 方法重写逻辑
 
-## 六、LRU 缓存实现
+`afterNodeRemoval()` 方法在元素从哈希表中删除后被调用：
 
-LinkedHashMap 非常适合实现 LRU（Least Recently Used）缓存，只需要：
-1. 设置 `accessOrder = true`
-2. 重写 `removeEldestEntry()` 方法
+- **移除节点**：调用 `unlink()` 方法将节点从双向链表中移除
+- **调整引用**：更新被删除节点前后节点的引用关系，确保链表的连续性
+- **保持完整性**：确保删除操作不会破坏双向链表的结构，维护链表的正确性
 
-```java
-import java.util.LinkedHashMap;
-import java.util.Map;
+这个方法确保了当元素从哈希表中删除时，对应的节点也会从双向链表中移除，保持两种数据结构的一致性。
 
-public class LRUCache<K, V> extends LinkedHashMap<K, V> {
-    private final int capacity;
-    
-    public LRUCache(int capacity) {
-        super(capacity, 0.75f, true); // accessOrder = true
-        this.capacity = capacity;
-    }
-    
-    // 当添加新元素后，如果链表长度超过容量，删除最老的元素
-    @Override
-    protected boolean removeEldestEntry(Map.Entry<K, V> eldest) {
-        return size() > capacity;
-    }
-}
-```
+### 4.3 链表操作细节
 
-使用示例：
+- **链表头部（head）**：指向链表中的第一个节点，代表最早插入或最久未访问的元素
+- **链表尾部（tail）**：指向链表中的最后一个节点，代表最近插入或最近访问的元素
+- **节点移动流程**：当需要将节点移动到链表尾部时，首先从当前位置移除，然后链接到尾部
+- **链表完整性**：每次修改操作后，都会确保链表的前后引用关系正确，保持链表的完整性
 
-```java
-public class LRUCacheDemo {
-    public static void main(String[] args) {
-        LRUCache<String, Integer> cache = new LRUCache<>(3);
-        
-        // 添加元素
-        cache.put("A", 1);
-        cache.put("B", 2);
-        cache.put("C", 3);
-        System.out.println("初始缓存: " + cache); // 顺序: A, B, C
-        
-        // 访问元素，会将其移到尾部
-        cache.get("A");
-        System.out.println("访问 A 后: " + cache); // 顺序: B, C, A
-        
-        // 添加新元素，会删除最老的元素 B
-        cache.put("D", 4);
-        System.out.println("添加 D 后: " + cache); // 顺序: C, A, D
-    }
-}
-```
+## 5. 排序模式
 
-## 七、性能特点
+### 5.1 插入顺序模式
 
-1. **时间复杂度**：
-   - get/put 操作平均时间复杂度为 O(1)
-   - 迭代操作的时间复杂度为 O(n)，但比 HashMap 更高效（直接遍历链表）
+当 `accessOrder = false`（默认值）时，LinkedHashMap 维护元素的插入顺序：
 
-2. **空间复杂度**：
-   - 比 HashMap 多消耗空间，因为需要维护双向链表
-   - 每个节点额外需要两个引用（before 和 after）
+- 元素的迭代顺序与它们被插入到 Map 中的顺序一致
+- 对于已存在的键，重新设置值不会改变其在链表中的位置
+- 适用于需要按照操作顺序处理元素的场景
 
-3. **与 HashMap 的性能差异**：
-   - 插入、删除操作略慢于 HashMap（需要维护双向链表）
-   - 顺序遍历效率高于 HashMap（O(n)，而 HashMap 需要遍历整个数组）
+### 5.2 访问顺序模式
 
-## 八、使用注意事项
+当 `accessOrder = true` 时，LinkedHashMap 维护元素的访问顺序：
 
-1. **线程安全问题**：
-   - 非线程安全，多线程环境下需额外同步
-   - 可以使用 `Collections.synchronizedMap()` 或 `ConcurrentHashMap`
+- 每次访问（get、containsKey）元素后，该元素会被移到链表尾部
+- 新插入的元素始终位于链表尾部
+- 链表头部的元素是最久未被访问的（Least Recently Used，LRU）
+- 链表尾部的元素是最近被访问的（Most Recently Used，MRU）
+- 适用于实现 LRU 缓存等需要基于访问频率淘汰元素的场景
 
-2. **LRU 缓存实现要点**：
-   - 正确设置初始容量，避免频繁扩容
-   - 根据实际需求重写 `removeEldestEntry()` 方法
-   - 注意线程安全问题，必要时进行同步
+## 6. LRU 缓存实现原理
 
-3. **遍历性能**：
-   - 如果需要频繁遍历并保持顺序，LinkedHashMap 是更好的选择
-   - 对于只关注随机访问性能的场景，HashMap 更高效
+LinkedHashMap 提供了一个便捷的方式来实现 LRU（Least Recently Used）缓存：
 
-## 九、使用示例
+- 设置 `accessOrder = true` 启用访问顺序维护
+- 重写 `removeEldestEntry(Map.Entry<K, V> eldest)` 方法定义淘汰策略
 
-### 1. 基本使用（插入顺序）
+当 `removeEldestEntry()` 返回 true 时，链表头部的最久未使用元素将被自动移除。通过在该方法中判断当前元素数量是否超过设定的容量，可以实现固定大小的 LRU 缓存。
 
-```java
-import java.util.LinkedHashMap;
-import java.util.Map;
 
-public class LinkedHashMapDemo {
-    public static void main(String[] args) {
-        // 创建 LinkedHashMap（默认插入顺序）
-        Map<String, Integer> map = new LinkedHashMap<>();
-        
-        // 添加元素
-        map.put("apple", 10);
-        map.put("banana", 20);
-        map.put("orange", 15);
-        
-        // 遍历，保持插入顺序
-        System.out.println("插入顺序遍历:");
-        for (Map.Entry<String, Integer> entry : map.entrySet()) {
-            System.out.println(entry.getKey() + ": " + entry.getValue());
-        }
-        
-        // 重新插入已存在的键，顺序不变
-        map.put("banana", 25);
-        System.out.println("\n重新插入后的顺序:");
-        map.forEach((k, v) -> System.out.println(k + ": " + v));
-    }
-}
-```
 
-### 2. 访问顺序模式
+## 8. 应用场景
 
-```java
-import java.util.LinkedHashMap;
-import java.util.Map;
+### 8.1 适合使用 LinkedHashMap 的场景
 
-public class AccessOrderDemo {
-    public static void main(String[] args) {
-        // 创建访问顺序模式的 LinkedHashMap
-        Map<String, Integer> map = new LinkedHashMap<>(16, 0.75f, true);
-        
-        map.put("A", 1);
-        map.put("B", 2);
-        map.put("C", 3);
-        System.out.println("初始顺序: " + map);
-        
-        // 访问元素，会调整顺序
-        map.get("A");
-        System.out.println("访问 A 后: " + map);
-        
-        // 修改已存在的键也会视为访问
-        map.put("B", 22);
-        System.out.println("修改 B 后: " + map);
-    }
-}
-```
+- **需要保持插入顺序的映射**：如日志记录、历史记录等
+- **LRU 缓存实现**：通过访问顺序模式和 removeEldestEntry 方法
+- **需要按操作顺序处理元素**：如请求处理队列、任务调度等
+- **频繁遍历操作**：相比 HashMap，顺序遍历性能更优
 
-## 十、常见问题
+### 8.2 使用注意事项
 
-1. **LinkedHashMap 如何保持顺序？**
-   - 通过维护一个额外的双向链表
-   - 每个节点包含 before 和 after 引用
-   - 根据 accessOrder 参数决定是按插入顺序还是访问顺序排序
-
-2. **为什么 LinkedHashMap 比 HashMap 慢？**
-   - 需要额外维护双向链表的引用关系
-   - 插入、删除时需要多一些操作来调整链表
-
-3. **LinkedHashMap 的迭代效率为什么比 HashMap 高？**
-   - HashMap 迭代需要遍历整个数组，包括大量空槽位
-   - LinkedHashMap 直接遍历双向链表，只访问实际存在的元素
-
-4. **如何实现线程安全的 LinkedHashMap？**
-   - 使用 `Collections.synchronizedMap(new LinkedHashMap<>(...))`
-   - 或在所有访问方法上添加同步锁
-   - 注意：即使如此，迭代时仍需要外部同步
-
-5. **LinkedHashMap 与 TreeMap 的区别？**
-   - LinkedHashMap：保持插入顺序或访问顺序，基于哈希表
-   - TreeMap：按键的自然顺序或自定义顺序排序，基于红黑树
-   - 性能：随机访问 LinkedHashMap 更快，有序遍历两者都高效
+- **线程安全**：非线程安全，多线程环境下可使用 `Collections.synchronizedMap()` 或考虑使用 `ConcurrentHashMap`
+- **容量设置**：对于 LRU 缓存实现，合理设置初始容量可减少扩容操作
+- **内存开销**：比 HashMap 占用更多内存，对于大型集合需考虑内存消耗
+- **遍历性能**：虽然遍历性能优于 HashMap，但仍需注意大型集合的遍历开销
