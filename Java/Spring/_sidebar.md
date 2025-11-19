@@ -9,3 +9,4 @@
   - [SpringBoot概览](Java/Spring/SpringBoot/SpringBoot概览.md)
 - **Spring Cloud**
   - [SpringCloud概览](Java/Spring/SpringCloud/SpringCloud概览.md)
+  - [Nacos 注册中心](Java/Spring/SpringCloud/Nacos注册中心.md)
