@@ -33,6 +33,9 @@
   - [LinkedBlockingDeque](Java/Java/集合/Collection/Queue/LinkedBlockingDeque.md)
   - [LinkedBlockingQueue](Java/Java/集合/Collection/Queue/LinkedBlockingQueue.md)
   - [PriorityQueue](Java/Java/集合/Collection/Queue/PriorityQueue.md)
+- 并发
+  - [synchronized](Java/Java/并发/synchronized.md)
+  - [volatile](Java/Java/并发/volatile.md)
 - JVM
   - [JVM 概述](Java/Java/JVM/JVM概述.md)
   - [双亲委派机制](Java/Java/JVM/双亲委派机制.md)

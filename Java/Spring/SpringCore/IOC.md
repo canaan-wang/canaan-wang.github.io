@@ -59,22 +59,35 @@ ApplicationContext 是 BeanFactory 的子接口，在其基础上扩展了更多
 
 # 三、IOC 容器的工作流程（核心原理）
 
-Spring IOC 容器从启动到创建 Bean 的全过程可分为“初始化”和“使用”两个阶段，核心步骤如下：
+## 3.1 **容器启动初始化（关键步骤）**
 
-1. **容器启动初始化（关键步骤）**
-① 资源定位：容器加载配置信息（如 XML 文件、注解类、properties 文件）；
-② 解析配置：将配置信息解析为 BeanDefinition，注册到 BeanDefinitionRegistry（注册表）；
-③ Bean 实例化准备：容器根据 BeanDefinition 检查依赖关系，规划实例化顺序；
-④ 实例化 Bean：对单例 Bean 进行预初始化（非懒加载场景），通过构造器创建对象；
-⑤ 依赖注入（DI）：将容器中的依赖 Bean 注入到当前 Bean 中（如 set 注入、构造器注入）；
-⑥ 初始化Bean：执行初始化方法（如 @PostConstruct、init-method）；
-⑦ 注册到容器：将初始化完成的 Bean 存入容器缓存，供后续使用。
+   ① 资源定位：容器加载配置信息（如 XML 文件、注解类、properties 文件）；
 
-2. **Bean 使用阶段**
+   ② 解析配置：将配置信息解析为 BeanDefinition，注册到 BeanDefinitionRegistry（注册表）；
+
+   ③ Bean 实例化准备：容器根据 BeanDefinition 检查依赖关系，规划实例化顺序；
+   
+   ④ 实例化 Bean：对单例 Bean 进行预初始化（非懒加载场景），通过构造器创建对象；
+   
+   ⑤ 依赖注入（DI）：将容器中的依赖 Bean 注入到当前 Bean 中（如 set 注入、构造器注入）；
+   
+   ⑥ 初始化 Bean：执行初始化方法（如 @PostConstruct、init-method）；
+   
+   ⑦ AOP 代理创建：若 Bean 被 AOP 增强，创建代理对象（JDK 动态代理或 CGLIB 代理）；
+   > AOP 代理必须基于 “完全初始化的原始 Bean” 创建
+   
+   ⑧ 注册到容器：将初始化完成的 Bean（或代理对象）存入容器缓存，供后续使用。
+
+   ⑨ Bean 使用：开发者通过 getBean 从容器获取 Bean，直接使用（无需关心创建和依赖）；
+
+   10 容器关闭：容器关闭时，执行所有 Bean 的销毁方法（如 @PreDestroy、destroy-method），释放资源。
+## 3.2 **Bean 使用阶段**
+
 开发者通过 getBean 从容器获取 Bean，直接使用（无需关心创建和依赖）；
+
 容器关闭时，执行 Bean 销毁方法（如 @PreDestroy、destroy-method）。
 
-关键提醒：依赖注入（DI）是 IOC 的具体实现方式，IOC 是思想，DI 是手段。
+> 关键提醒：依赖注入（DI）是 IOC 的具体实现方式，IOC 是思想，DI 是手段。
 
 # 四、Bean 的核心配置方式
 
@@ -215,9 +228,9 @@ public class UserService {
 }
 ```
 
-# 七、常见问题与面试考点
+# 六、常见问题与面试考点
 
-## 7.1 @Autowired 和 @Resource 的区别？
+## 6.1 @Autowired 和 @Resource 的区别？
 
 - 来源不同：@Autowired 是 Spring 注解，@Resource 是 JDK 注解（javax.annotation.Resource）；
 
@@ -225,7 +238,7 @@ public class UserService {
 
 - 扩展性不同：@Resource 支持更多属性（如 name、type），@Autowired 需配合 @Qualifier 指定名称。
 
-## 7.2 单例 Bean 是线程安全的吗？
+## 6.2 单例 Bean 是线程安全的吗？
 
 默认**不安全**！因为单例 Bean 是容器中唯一实例，多线程共享时，若存在可修改的成员变量，会引发线程安全问题。
 解决方案：
@@ -233,15 +246,14 @@ public class UserService {
 - 用 ThreadLocal 存储线程私有数据；
 - 改用多例（@Scope("prototype")，不推荐，损耗性能）。
 
-## 7.3 Bean 的生命周期流程？
+## 6.3 Bean 的生命周期流程？
 
 简化流程：
 容器启动 → 解析 BeanDefinition → 实例化 Bean（构造器）→ 依赖注入 → 初始化（@PostConstruct）→ 存入缓存 → 使用 → 销毁（@PreDestroy）→ 容器关闭。
 
-# 八、总结
+# 七、总结
 
 1. IOC 是 Spring 核心思想，核心是“控制反转、解耦”，DI 是其实现手段；
 2. 容器（ApplicationContext）是核心载体，通过 BeanDefinition 管理 Bean 元数据；
 3. 开发中推荐“注解+Java 配置”，简化配置，提升效率；
 4. 重点掌握 Bean 配置、依赖注入、生命周期，理解循环依赖解决方案。
-> （注：文档部分内容可能由 AI 生成）
