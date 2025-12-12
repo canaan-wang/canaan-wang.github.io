@@ -1,3 +1,3 @@
 - kafka
-  - [Kafka](kafka/Kafka.md)
-  - [Golang接入Kafka](kafka/Golang接入Kafka.md)
+  - [Kafka](中间件/消息队列/kafka/Kafka.md)
+  - [Golang接入Kafka](中间件/消息队列/kafka/Golang接入Kafka.md)
