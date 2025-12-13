@@ -13,3 +13,4 @@
   - [Workspace](Go/Golang/基础/Workspace.md)
 * **复合数据类型**
   - [map](Go/Golang/复合数据类型/map.md)
+  - [sync.Map](Go/Golang/复合数据类型/sync_map.md)
