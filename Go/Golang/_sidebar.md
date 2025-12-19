@@ -14,8 +14,10 @@
 * **复合数据类型**
   - [map](Go/Golang/复合数据类型/map.md)
   - [slice](Go/Golang/复合数据类型/slice.md)
+* **特性**
+  - [泛型](Go/Golang/特性/泛型.md)
 * **关键字**
   - [range](Go/Golang/关键字/range.md)
 * **sync**
-  - [sync.Map 1.24 前](Go/Golang/sync/sync_Map(1.24前).md)
-  - [sync.Map 1.24 后](Go/Golang/sync/sync_Map(1.24后).md)
+  - [sync.Map 老版](Go/Golang/sync/sync_Map(old).md)
+  - [sync.Map hashtriemap](Go/Golang/sync/sync_Map(new).md)

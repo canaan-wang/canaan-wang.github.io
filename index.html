@@ -78,18 +78,9 @@
       disqus: {
         shortname: 'canaan-blog' // 替换为你的 Disqus shortname
       },
-      // mermaid插件配置
-      mermaid: {
-        theme: 'default',
-        themeVariables: {
-          primaryColor: '#4c8bf5'
-        },
-        flowchart: {
-          useMaxWidth: true,
-          htmlLabels: true,
-          curve: 'basis'
-        }
-      },
+      mermaidConfig: {
+        querySelector: ".mermaid"
+      }
     };
   </script>
 
@@ -103,9 +94,19 @@
   <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/disqus.min.js"></script>
   <!-- 站点主题与封面渐变（外链脚本，提供 SiteTheme API） -->
   <script src="assets/cover-theme.js"></script>
-  <!-- mermaid插件支持 -->
-  <script src="//cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/docsify-mermaid@2/dist/docsify-mermaid.min.js"></script>
+
+  </script>
+  <!-- Import D3.js -->
+  <script src="//cdn.jsdelivr.net/npm/d3@7"></script>
+  <script type="module">
+    import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";
+    mermaid.initialize({ startOnLoad: true });
+    window.mermaid = mermaid;
+  </script>
+  <script src="//unpkg.com/docsify-mermaid@2.0.1/dist/docsify-mermaid.js"></script>
+  <script src="//unpkg.com/docsify-mermaid-zoom/dist/docsify-mermaid-zoom.js"></script>
+    
+
   <!-- 深色/浅色主题切换插件 -->
   <script src="//cdn.jsdelivr.net/npm/docsify-darklight-theme@latest/dist/index.min.js" type="text/javascript">
   </script>
