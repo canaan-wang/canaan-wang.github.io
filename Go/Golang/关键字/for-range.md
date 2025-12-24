@@ -78,7 +78,7 @@ graph TD
     
     B --> B1[标准计数循环<br>for i:=0; i<N; i++]
     B --> B2[条件循环（替代 while）<br>for 条件]
-    B --> B3[无限循环<br>for {}]
+    B --> B3["无限循环<br>for {}"]
     
     C --> C1[切片/数组遍历<br>for i,v := range slice]
     C --> C2[字符串遍历<br>for i,c := range s]
@@ -283,24 +283,29 @@ stateDiagram-v2
     条件判断 --> 循环体执行: 条件为 true
     条件判断 --> 循环结束: 条件为 false
     
-    循环体执行 --> 检查控制语句
-    检查控制语句 --> 普通 continue: 触发 continue
-    检查控制语句 --> 标签 continue: 触发 continue 标签
-    检查控制语句 --> 普通 break: 触发 break
-    检查控制语句 --> 标签 break: 触发 break 标签
-    检查控制语句 --> 循环体结束: 无控制语句
+    state "检查控制语句" as A
+    state "普通 continue" as B
+    state "标签 continue" as C
+    state "普通 break" as D
+    state "标签 break" as E
+    state "循环体结束" as F
     
-    普通 continue --> 后置语句: 跳过当前迭代
-    标签 continue --> 外层循环条件判断: 跳过外层迭代
-    普通 break --> 循环结束: 退出当前循环
-    标签 break --> 外层循环结束: 退出指定循环
-    循环体结束 --> 后置语句
+    循环体执行 --> A
+    A --> B: 触发 continue
+    A --> C: 触发 continue 标签
+    A --> D: 触发 break
+    A --> E: 触发 break 标签
+    A --> F: 无控制语句
+    
+    B --> 后置语句: 跳过当前迭代
+    C --> 外层循环条件判断: 跳过外层迭代
+    D --> 循环结束: 退出当前循环
+    E --> 外层循环结束: 退出指定循环
+    F --> 后置语句
     
     后置语句 --> 条件判断
     外层循环条件判断 --> 外层循环体执行: 条件为 true
     外层循环条件判断 --> 外层循环结束: 条件为 false
-    
-    style 检查控制语句 fill:#f9f,stroke:#333,stroke-width:2px
 ```
 
 **注意**：`goto` 不能跨函数跳转，也不能跳转到循环体/条件块内部。
@@ -537,6 +542,45 @@ flowchart TD
     style L fill:#ccffcc,stroke:#333
 ```
 
+## 核心总结表
+
+| 遍历类型 | 语法示例 | 返回值 | 拷贝行为 | 遍历顺序 | 零值处理 |
+|----------|----------|--------|----------|----------|----------|
+| 数组/切片 | `for i, v := range arr` | index, value | 拷贝元素 | 顺序 0→len-1 | 跳过不执行 |
+| 字符串 | `for i, r := range s` | byte index, rune | 拷贝 rune | 按 UTF-8 字符 | 跳过不执行 |
+| Map | `for k, v := range m` | key, value | 拷贝 key/value | 随机顺序 | 跳过不执行 |
+| Channel | `for v := range ch` | value | 拷贝元素 | 接收顺序 | 阻塞直到关闭 |
+
+## 常见误解与澄清
+
+### ❌ 误解 1：range 遍历 map 时顺序固定
+```go
+m := map[string]int{"a": 1, "b": 2, "c": 3}
+for k, v := range m {
+    fmt.Println(k, v)  // 每次运行顺序可能不同
+}
+```
+**✅ 事实**：Map 遍历顺序是随机的，且每次运行可能不同。
+
+### ❌ 误解 2：range 遍历切片时返回指针
+```go
+slice := []Data{{1}, {2}, {3}}
+for _, item := range slice {
+    item.value = 100  // 错误：修改的是副本
+}
+```
+**✅ 事实**：Range 返回的是值的拷贝，不是引用。
+
+### ❌ 误解 3：循环中可以直接使用变量地址
+```go
+for _, v := range values {
+    go func() {
+        fmt.Println(&v)  // 错误：所有 goroutine 共享同一变量
+    }()
+}
+```
+**✅ 事实**：需要参数传递或重新声明变量来捕获正确的值。
+
 ## 底层原理
 
 ### 一、普通 for 循环（计数/条件/无限循环）
@@ -587,10 +631,21 @@ JMP loop_start  ; 无条件跳回 loop_start，永久执行
 
 ⚠️ 对比 `for true {}`：会多一条 `CMPQ $1, $1`（判断 `true`）+ `JNE` 指令，虽无实际性能损耗，但 `for {}` 更符合 Go 设计习惯。
 
-### 二、for-range 遍历（核心复杂场景）
-for-range 是语法糖，底层针对**数组/切片、字符串、map、通道** 有完全不同的实现逻辑，由编译器自动转换为对应的运行时调用或循环逻辑。
+### 二、for-range 遍历的核心实现原理
 
-#### 1. 数组/切片遍历（for i, v := range slice）
+Go 语言中 `range` 并非简单的语法糖，其底层由编译器（gc）和运行时（runtime）协同实现，不同可迭代类型的遍历逻辑差异较大，但核心是**编译器将 `range` 循环拆解为底层的基础循环逻辑 + 运行时辅助函数**（如 map/channel 遍历）。
+
+#### 1. 核心前提：编译器的"语法拆解"
+
+`range` 是编译期特性，编译器会先将 `for ... range` 语句翻译成**普通的 for 循环 + 边界检查 + 数据读取逻辑**，而非运行时动态处理。
+
+关键点：
+1. 遍历前会**缓存可迭代对象的长度/边界**（如切片 len、map 桶数量），遍历过程中对象的长度变化（如切片 append 扩容、map 新增键）不会影响遍历次数
+2. 所有 `range` 最终都会被转为基于索引/指针的基础循环，无额外运行时开销（除 map/channel 需调用运行时函数）
+
+#### 2. 数组/切片遍历（for i, v := range slice）
+
+**底层逻辑**（编译器转换）：
 **底层逻辑**（编译器转换）：
 编译器会将 for-range 遍历切片转换为**基于长度的普通计数循环**，核心步骤：
 1. 先计算切片长度 `n := len(slice)`，避免循环中重复计算；
@@ -649,6 +704,52 @@ flowchart TD
 - **循环控制**：通过索引 i 自增和长度 n 的比较控制循环
 
 #### 2. 字符串遍历（for i, c := range s）
+
+**底层实现**：调用 `utf8.DecodeRuneInString` 解码 UTF-8 字节序列，返回 Unicode 码点和字节长度。索引是字节位置，不是字符位置。
+
+**拆解后的逻辑（伪代码）**：
+
+```go
+s := "Go语言"
+len_temp := len(s)
+i := 0
+for i < len_temp {
+    // 调用运行时函数解码 Unicode 字符
+    r, rune_len := utf8.DecodeRuneInString(s[i:])
+    // 原循环体中的 c = r，字节索引 = i
+    i += rune_len // 跳过当前字符的字节数（如中文占3字节则+3）
+}
+```
+
+**关键点**：
+- 若字符是单字节（ASCII），`rune_len=1`，等价于字节遍历
+- 若遇到无效 Unicode 字节序列，`r` 会被设为 `U+FFFD`（替换字符），`rune_len=1`（跳过无效字节）
+- 字符串是不可变的，因此遍历中无需拷贝，直接读取原字符串的字节数组
+
+```mermaid
+sequenceDiagram
+    participant S as 字符串 "Go语言"
+    participant R as utf8.DecodeRuneInString
+    participant L as 循环变量 i
+    
+    Note over S: 字节: [47][6f][e8][af][94][e8][a8][80]
+    
+    L->>R: 调用 DecodeRuneInString(s[0:])
+    R->>L: 返回 r='G', rune_len=1
+    L->>L: i += 1 → i = 1
+    
+    L->>R: 调用 DecodeRuneInString(s[1:])
+    R->>L: 返回 r='o', rune_len=1
+    L->>L: i += 1 → i = 2
+    
+    L->>R: 调用 DecodeRuneInString(s[2:])
+    R->>L: 返回 r='语', rune_len=3
+    L->>L: i += 3 → i = 5 (索引跳跃)
+    
+    L->>R: 调用 DecodeRuneInString(s[5:])
+    R->>L: 返回 r='言', rune_len=3
+    L->>L: i += 3 → i = 8 (结束)
+```
 字符串遍历是 for-range 的特殊场景，需处理 **Unicode 多字节字符**（如中文占 3 字节），底层依赖 `runtime.stringiter` 函数：
 
 **核心步骤**：
@@ -665,33 +766,94 @@ flowchart TD
 - 非法 UTF-8 字符：解析为 `0xFFFD`（Unicode 替换字符），`i` 每次+1。
 
 #### 3. map 遍历（for k, v := range m）
-map 遍历是最复杂的 for-range 场景，底层依赖 `runtime.mapiterinit` 和 `runtime.mapiternext` 函数：
 
-**核心步骤**：
-1. **初始化迭代器**：调用 `runtime.mapiterinit`：
-   - 随机选择一个哈希桶（bucket）作为遍历起点（遍历顺序随机的根源）；
-   - 记录 map 的状态（如桶数量、哈希种子），防止遍历过程中 map 扩容导致错乱；
-2. **迭代桶元素**：调用 `runtime.mapiternext`：
-   - 遍历当前桶的所有元素（包括溢出桶）；
-   - 桶遍历完成后，按顺序遍历下一个桶；
-   - 每次迭代返回键（k）和值（v）的拷贝；
-3. **结束条件**：所有桶遍历完成。
+Map 的遍历是 `range` 中最复杂的实现，依赖运行时的 `map` 底层结构（哈希桶 + 溢出桶）和遍历辅助函数，核心逻辑在 `runtime/map.go` 中。
 
-**关键特性原理**：
-- **遍历顺序随机**：起始桶由随机数决定，且每次运行的随机数不同；
-- **增删元素影响遍历**：
-  - 遍历中删除元素：已遍历的元素不受影响，未遍历的元素可能被跳过；
-  - 遍历中新增元素：新元素可能被放入未遍历的桶，不一定会被遍历到；
-- **值拷贝**：`k`/`v` 是 map 元素的拷贝，修改 `v` 不会影响原 map（除非 `v` 是指针）。
+**Map 的底层结构回顾**：
+Go 的 map 底层是 `hmap` 结构体，包含：
+- `B`：哈希桶的数量（2^B 个桶）
+- `buckets`：指向哈希桶数组的指针（每个桶是 `bmap` 结构体，存 8 个键值对）
+- `oldbuckets`：扩容时的旧桶数组
+- `hash0`：随机种子（决定遍历起始桶，导致遍历顺序随机）
+
+**Map range 的核心步骤**：
+编译器将 `for k, v := range m` 拆解为：
+
+```go
+// 1. 初始化遍历状态（调用 runtime.mapiterinit）
+h := m // 取map的hmap指针
+iter := runtime.mapiterinit(h) // 初始化遍历器，随机选起始桶
+
+// 2. 循环遍历每个桶（调用 runtime.mapiternext）
+for {
+    k, v, ok := runtime.mapiternext(iter) // 读取下一个键值对
+    if !ok { // 无更多键值对，退出循环
+        break
+    }
+    // 原循环体逻辑（k、v 是当前键值对的拷贝）
+}
+```
+
+**运行时核心函数解析**：
+- `runtime.mapiterinit`：
+  1. 若 map 为 `nil`，直接标记遍历结束
+  2. 生成随机的 `hash0` 种子（决定遍历的起始桶，因此每次遍历顺序不同）
+  3. 初始化遍历器 `hiter`（记录当前桶索引、溢出桶位置、已遍历的键值对数量）
+- `runtime.mapiternext`：
+  1. 按「桶索引 → 溢出桶 → 下一个桶」的顺序遍历
+  2. 跳过已被删除的键值对（tombstone 标记）
+  3. 若遍历中 map 扩容（oldbuckets 非空），会先遍历旧桶，再遍历新桶
+  4. 无更多键值对时返回 `ok=false`
+
+```mermaid
+flowchart TD
+    A[开始 range map] --> B[调用 runtime.mapiterinit]
+    B --> C[随机选择起始桶 hash0 种子]
+    C --> D[初始化遍历器 hiter]
+    D --> E[循环调用 runtime.mapiternext]
+    E --> F[按桶索引 → 溢出桶 → 下一个桶]
+    F --> G[跳过已删除的键值对 tombstone]
+    G --> H{map 扩容?}
+    H -->|是| I[先遍历旧桶再遍历新桶]
+    H -->|否| J{无更多键值对?}
+    I --> J
+    J -->|否| E
+    J -->|是| K[返回 ok=false 结束]
+```
+
+**关键特性的底层原因**：
+- 遍历顺序随机：因为 `mapiterinit` 随机选择起始桶
+- 遍历中修改值安全：键值对的内存地址固定（除非扩容），修改值只是修改内存内容
+- 遍历中增/删键不确定：增键可能分配到未遍历的桶（会被遍历），删键会标记 tombstone（可能被跳过）
 
 #### 4. 通道遍历（for v := range ch）
-通道遍历底层依赖 `runtime.chanrecv` 函数，核心是**阻塞等待数据或通道关闭**：
 
-**核心步骤**：
-1. 调用 `runtime.chanrecv` 从通道接收数据；
-2. 若通道有数据：返回数据，继续迭代；
-3. 若通道无数据但未关闭：阻塞当前 goroutine，直到有数据发送或通道关闭；
-4. 若通道关闭且无数据：退出遍历。
+Channel 的遍历是「阻塞式接收值」的封装，编译器将 `for v := range ch` 拆解为调用运行时的通道接收函数 `runtime.chanrecv`。
+
+**拆解后的核心逻辑（伪代码）**：
+
+```go
+// 遍历通道 ch
+for {
+    // 调用运行时函数接收通道值
+    v, ok := runtime.chanrecv(ch, true) // true 表示阻塞接收
+    if !ok { // 通道关闭且无值，退出循环
+        break
+    }
+    // 原循环体逻辑
+}
+```
+
+**运行时函数 `runtime.chanrecv` 的核心逻辑**：
+1. 若通道有缓冲且缓冲区有值：直接从缓冲区取第一个值（FIFO 顺序）
+2. 若通道无缓冲：阻塞等待发送方 goroutine 发送值（通过调度器挂起当前 goroutine）
+3. 若通道已关闭且缓冲区为空：返回 `ok=false`，触发循环退出
+4. 若通道是 `nil`：永久阻塞（goroutine 挂起，无唤醒条件）
+
+**关键点**：
+- 通道遍历无"长度缓存"：完全依赖通道的实时状态（发送/关闭）
+- 遍历关闭的通道：仅读取缓冲区剩余值，读完后退出（不会阻塞）
+- 无索引返回值：因为通道是单向的消息队列，仅需接收值，无需索引
 
 **编译器转换示例**：
 ```go

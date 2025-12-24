@@ -18,8 +18,7 @@
 * **特性**
   - [泛型](Go/Golang/特性/泛型.md)
 * **关键字**
-  - [for](Go/Golang/关键字/for.md)
-  - [range](Go/Golang/关键字/range.md)
+  - [for-range](Go/Golang/关键字/for-range.md)
   - [defer](Go/Golang/关键字/defer.md)
 * **sync**
   - [sync.Map 老版](Go/Golang/sync/sync_Map(old).md)

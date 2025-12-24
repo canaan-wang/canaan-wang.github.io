@@ -22,7 +22,7 @@ func main() {
 | 规则 | 说明 |
 |------|------|
 | 执行时机 | 包含 defer 的函数`返回前`执行（先执行 return 赋值，再执行 defer，最后真正返回） |
-| 参数求值时机 | defer 后函数的参数在`defer 语句执行时`就已计算（而非执行时） |
+| 参数求值时机 | defer 后函数的参数在`defer 语句执行时`就已计算（而非函数执行时） |
 | 执行顺序 | 多个 defer 按`后进先出（LIFO）`执行（最后声明的 defer 最先执行） |
 | 作用域 | 仅作用于当前函数，goroutine 退出时也会触发所属函数的 defer |
 | 异常处理 | 即使函数发生 panic，defer 仍会执行（可用于 panic 捕获） |
@@ -49,17 +49,17 @@ func main() {
 ```mermaid
 graph TD
     subgraph 代码执行阶段
-        A[执行 defer fmt.Println(1)] --> B[defer节点1入链表]
-        B --> C[执行 defer fmt.Println(2)]
-        C --> D[defer节点2入链表（头部）]
-        D --> E[执行 defer fmt.Println(3)]
-        E --> F[defer节点3入链表（头部）]
+        A["执行 defer fmt.Println(1)"] --> B[defer节点1入链表]
+        B --> C["执行 defer fmt.Println(2)"]
+        C --> D["defer节点2入链表（头部）"]
+        D --> E["执行 defer fmt.Println(3)"]
+        E --> F["defer节点3入链表（头部）"]
         F --> G[执行主逻辑]
     end
     
-    subgraph 链表状态（执行主逻辑时）
-        H[节点3（fmt.Println(3)）] --> I[节点2（fmt.Println(2)）]
-        I --> J[节点1（fmt.Println(1)）]
+    subgraph "链表状态（执行主逻辑时）"
+        H["节点3（fmt.Println(3)）"] --> I["节点2（fmt.Println(2)）"]
+        I --> J["节点1（fmt.Println(1)）"]
     end
     
     subgraph defer执行阶段
@@ -180,25 +180,24 @@ func main() {
 ```
 
 ```mermaid
-stateDiagram-v2
-    [*] --> 函数正常执行
-    函数正常执行 --> 触发panic: 执行 panic()
-    触发panic --> 暂停当前执行: 停止业务逻辑
-    暂停当前执行 --> 遍历defer链表: 调用 runtime.gopanic
-    遍历defer链表 --> 执行defer函数1: 按LIFO顺序
-    执行defer函数1 --> 执行defer函数2: 依次执行
-    执行defer函数2 --> {defer中调用recover()?}
+graph TD
+    A[函数正常执行] --"执行 panic()"--> B[触发panic]
+    B --停止业务逻辑--> C[暂停当前执行]
+    C --"调用 runtime.gopanic"--> D[遍历defer链表]
+    D --"按LIFO顺序"--> E[执行defer函数1]
+    E --"依次执行"--> F[执行defer函数2]
+    F --> G["defer中调用recover()?"]
     
-    {defer中调用recover()?} --> 是: 捕获panic，返回非nil
-    {defer中调用recover()?} --> 否: 未捕获panic
+    G --"捕获panic，返回非nil"--> H[是]
+    G --"未捕获panic"--> I[否]
     
-    是 --> 终止panic传播: 恢复goroutine执行
-    否 --> 向上传播panic: 终止程序/父goroutine
+    H --"终止panic传播"--> J[是]
+    I --"向上传播panic"--> K[否]    
     
-    终止panic传播 --> 函数正常退出: 继续执行剩余逻辑
-    向上传播panic --> 程序崩溃: 无上层recover
+    J --"函数正常退出"--> L[继续执行剩余逻辑]
+    K --"无上层recover"--> M[程序崩溃]
     
-    style 遍历defer链表 fill:#f9f,stroke:#333,stroke-width:2px
+    style D fill:#f9f,stroke:#333,stroke-width:2px
 ```
 
 ## 核心使用场景（附示例）
@@ -520,7 +519,6 @@ func readFile(path string) {
     defer f.Close() // 子函数退出时关闭，及时释放
     // 读取逻辑
 }
-
 func good() {
     for i := 0; i < 3; i++ {
         readFile(fmt.Sprintf("file%d.txt", i))
@@ -530,29 +528,29 @@ func good() {
 
 ```mermaid
 graph TD
-    subgraph 错误用法：循环内直接声明defer
+    subgraph "错误用法：循环内直接声明defer"
         A[循环开始 i=0] --> B[Open file0.txt]
-        B --> C[defer Close()（节点1入链表）]
-        C --> D[循环 i=1]
-        D --> E[Open file1.txt]
-        E --> F[defer Close()（节点2入链表）]
-        F --> G[循环 i=2]
-        G --> H[Open file2.txt]
-        H --> I[defer Close()（节点3入链表）]
-        I --> J[函数退出]
-        J --> K[执行3个Close()，文件句柄堆积至函数结束]
+        B --> C["defer Close()（节点1入链表）"]
+        C --> D["循环 i=1"]
+        D --> E["Open file1.txt"]
+        E --> F["defer Close()（节点2入链表）"]
+        F --> G["循环 i=2"]
+        G --> H["Open file2.txt"]
+        H --> I["defer Close()（节点3入链表）"] 
+        I --> J["函数退出"]
+        J --> K["执行3个Close()，文件句柄堆积至函数结束"]
     end
     
-    subgraph 正确用法：封装为子函数
-        L[循环开始 i=0] --> M[调用 readFile(file0.txt)]
-        M --> N[子函数内 Open + defer Close()]
-        N --> O[子函数退出，执行Close()，释放file0]
-        O --> P[循环 i=1]
-        P --> Q[调用 readFile(file1.txt)]
-        Q --> R[子函数退出，执行Close()，释放file1]
-        R --> S[循环 i=2]
-        S --> T[调用 readFile(file2.txt)]
-        T --> U[子函数退出，执行Close()，释放file2]
+    subgraph "正确用法：封装为子函数"
+        L["循环开始 i=0"] --> M["调用 readFile(file0.txt)"]
+        M --> N["子函数内 Open + defer Close()"]
+        N --> O["子函数退出，执行Close()，释放file0"]
+        O --> P["循环 i=1"]
+        P --> Q["调用 readFile(file1.txt)"]
+        Q --> R["子函数退出，执行Close()，释放file1"]
+        R --> S["循环 i=2"]
+        S --> T["调用 readFile(file2.txt)"]
+        T --> U["子函数退出，执行Close()，释放file2"]   
     end
     
     style A fill:#ffcccc,stroke:#333
