@@ -662,11 +662,11 @@ type _defer struct {
 
 ```mermaid
 graph LR
-    subgraph goroutine (g 结构体)
+    subgraph "goroutine (g 结构体)"
         A[_defer 指针] --> B[_defer 节点1（最后声明的defer）]
     end
     
-    subgraph _defer 链表（栈式结构）
+    subgraph "_defer 链表（栈式结构）"
         B --> C[_defer 节点2]
         C --> D[_defer 节点3（最先声明的defer）]
         D --> E[nil]
