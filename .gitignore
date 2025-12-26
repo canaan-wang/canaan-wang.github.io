@@ -25,7 +25,6 @@ pnpm-debug.log*
 
 # IDE & editor
 .idea/
-.vscode/
 *.swp
 
 # Env files

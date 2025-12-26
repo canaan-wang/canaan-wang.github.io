@@ -18,7 +18,7 @@ Go语言的并发模型基于CSP（Communicating Sequential Processes）理论�
 
 ```mermaid
 flowchart TD
-    A[go func() 创建 G] --> B[初始化 G 栈/上下文]
+    A["go func() 创建 G"] --> B["初始化 G 栈/上下文"]
     B --> C{当前 P 本地队列是否未满?}
     C -- 是 --> D[G 加入 P 本地队列 LRQ]
     C -- 否 --> E[G 加入全局队列 GRQ]
@@ -29,7 +29,7 @@ flowchart TD
     H -- 否 --> J[M 执行 G（G 状态 _Grunning）]
     
     I --> J
-    J --> K{G 是否阻塞?<br>(chan/系统调用/锁)}
+    J --> K{"G 是否阻塞?<br>(chan/系统调用/锁)"}
     K -- 是 --> L[G 状态 _Gwaiting，M 释放 P]
     K -- 否 --> M{G 时间片耗尽?}
     

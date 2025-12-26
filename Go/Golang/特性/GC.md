@@ -126,11 +126,11 @@ Go GC 并非固定时间执行，而是通过以下方式触发：
 
 ```mermaid
 flowchart TD
-    A[GC 触发判断] --> B{堆内存是否达到 nextGC 阈值?}
+    A[GC 触发判断] --> B[堆内存是否达到 nextGC 阈值?]
     B -- 是 --> C[触发内存阈值 GC]
-    B -- 否 --> D{是否超过 2 分钟未触发 GC?}
+    B -- 否 --> D[是否超过 2 分钟未触发 GC?]
     D -- 是 --> E[触发定时兜底 GC]
-    D -- 否 --> F{是否手动调用 runtime.GC()?}
+    D -- 否 --> F["是否手动调用 runtime.GC()?"]
     F -- 是 --> G[触发手动 GC]
     F -- 否 --> H[继续业务执行，等待下一次检查]
     
@@ -233,14 +233,14 @@ func main() {
 
 ```mermaid
 graph TD
-    subgraph 未优化：高 GC 压力
+    subgraph "未优化：高 GC 压力"
         A[循环内频繁创建临时切片] --> B[每次分配新堆内存]
         B --> C[旧内存成为垃圾，堆内存快速增长]
         C --> D[频繁触发 GC，STW 延迟叠加]
         D --> E[服务性能下降]
     end
     
-    subgraph 优化后：低 GC 压力
+    subgraph "优化后：低 GC 压力"
         F[使用 sync.Pool 复用临时对象] --> G[从池获取对象，无新分配]
         G --> H[使用后归还对象，保留容量]
         H --> I[堆内存稳定，GC 触发频率降低]
@@ -392,14 +392,14 @@ Go GC 执行分为 5 个阶段，其中仅 2 个短阶段 STW，其余阶段与�
 
 ```mermaid
 flowchart TD
-    subgraph 阶段1：GC 准备（STW，微秒级）
+    subgraph "阶段1：GC 准备（STW，微秒级）"
         A[暂停所有 goroutine] --> B[禁用写屏障]
         B --> C[扫描根对象根集：栈/全局变量/寄存器]
         C --> D[将根对象标记为灰色，加入灰色队列]
         D --> E[开启写屏障]
     end
     
-    subgraph 阶段2：并发标记（无 STW）
+    subgraph "阶段2：并发标记（无 STW）"
         E --> F[GC 线程从灰色队列取出对象]
         F --> G[标记为黑色，遍历其所有引用]
         G --> H[将引用的未标记对象标记为灰色，入队]
@@ -408,14 +408,14 @@ flowchart TD
         I -- 是 --> J[标记终止，准备重新标记]
     end
     
-    subgraph 阶段3：重新标记（STW，微秒级）
+    subgraph "阶段3：重新标记（STW，微秒级）"
         J --> K[暂停所有 goroutine]
         K --> L[处理并发标记遗漏的对象（写屏障日志）]
         L --> M[扫描未完成的栈（少数运行中 goroutine）]
         M --> N[确认所有存活对象标记完成]
     end
     
-    subgraph 阶段4：并发清理（无 STW）
+    subgraph "阶段4：并发清理（无 STW）"
         N --> O[GC 线程遍历堆内存 span]
         O --> P{对象是否为白色?}
         P -- 是 --> Q[释放内存到空闲 span 池]
@@ -424,7 +424,7 @@ flowchart TD
         R --> S
     end
     
-    subgraph 阶段5：GC 收尾（无 STW）
+    subgraph "阶段5：GC 收尾（无 STW）"
         S --> T[更新 GC 统计信息（NumGC、PauseNs 等）]
         T --> U[计算下一次 GC 阈值（当前堆内存 × GOGC/100 + 1）]
         U --> V[恢复所有 goroutine，业务继续执行]
@@ -776,14 +776,14 @@ func badFinalizer() {
 
 ```mermaid
 graph TD
-    subgraph 错误用法：大切片引用泄漏
-        A[创建 400MB 大切片 globalData] --> B[生成子切片 data = globalData[:100]]
+    subgraph "错误用法：大切片引用泄漏"
+        A[创建 400MB 大切片 globalData] --> B["生成子切片 data = globalData[:100]"]
         B --> C[函数退出，data 仍持有 globalData 引用]
         C --> D[GC 认为 globalData 存活，400MB 内存无法释放]
     end
     
-    subgraph 正确用法：切断引用，释放内存
-        E[创建 400MB 大切片 globalData] --> F[创建新切片，复制数据：data = make([]int,100); copy(data, globalData[:100])]
+    subgraph "正确用法：切断引用，释放内存"
+        E[创建 400MB 大切片 globalData] --> F["创建新切片，复制数据：data = make([]int,100); copy(data, globalData[:100])"]
         F --> G[将 globalData 置为 nil，释放引用]
         G --> H[GC 回收 400MB 大切片内存]
     end

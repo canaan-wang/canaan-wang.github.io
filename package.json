@@ -8,7 +8,7 @@
     "serve": "docsify serve . -p 3000"
   },
   "keywords": [],
-  "author": "",
+  "author": "Canaan",
   "license": "ISC",
   "devDependencies": {
     "docsify-cli": "^4.4.4"

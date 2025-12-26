@@ -17,6 +17,10 @@
   - [channel](Go/Golang/复合数据类型/channel.md)
 * **特性**
   - [泛型](Go/Golang/特性/泛型.md)
+  - [GC](Go/Golang/特性/GC.md)
+  - [GMP](Go/Golang/特性/GMP.md)
+  - [pointer](Go/Golang/特性/pointer.md)
+  - [context](Go/Golang/特性/context.md)
 * **关键字**
   - [for-range](Go/Golang/关键字/for-range.md)
   - [defer](Go/Golang/关键字/defer.md)
