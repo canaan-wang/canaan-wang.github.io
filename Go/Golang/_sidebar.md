@@ -25,5 +25,6 @@
   - [for-range](Go/Golang/关键字/for-range.md)
   - [defer](Go/Golang/关键字/defer.md)
 * **sync**
-  - [sync.Map 老版](Go/Golang/sync/sync_Map(old).md)
-  - [sync.Map hashtriemap](Go/Golang/sync/sync_Map(new).md)
+  - [Map 老版](Go/Golang/sync/sync_Map(old).md)
+  - [Map hashtriemap](Go/Golang/sync/sync_Map(new).md)
+  - [WaitGroup](Go/Golang/sync/wait_group.md)
