@@ -2,21 +2,6 @@
 
 Bool Query 是 Elasticsearch 中最核心、最灵活的查询语法，能将多个基础查询（如 match、term、range 等）按逻辑组合，满足复杂的检索需求。
 
-## 核心原理
-
-Bool Query 通过 **布尔逻辑（AND/OR/NOT）** 将多个子查询（称为"子句"）组合起来，最终判断文档是否符合整体条件：
-
-1. 接收多个子句（must/should/must_not/filter），每个子句可包含任意基础查询（match/term/range 等）
-2. 按子句类型的逻辑规则，分别判断文档是否满足每个子句
-3. 综合所有子句的判断结果，确定文档是否符合整体条件
-4. 对符合条件的文档，计算相关性评分（仅 Query 上下文的子句参与评分）
-
-**核心特点**：
-
-- 灵活组合：支持"必须满足""必须不满足""可选满足""过滤满足"四类逻辑
-- 评分可控：区分"计算评分的子句"和"不计算评分的子句"，兼顾检索精准度和性能
-- 兼容性强：可嵌套使用（Bool 内再包含 Bool），满足极复杂的查询逻辑
-
 ## 核心子句详解
 
 Bool Query 有 4 个核心子句，每个子句对应不同的布尔逻辑，是掌握 Bool Query 的关键：
@@ -296,29 +281,6 @@ graph LR
     M -->|状态/时间/范围过滤| D
 ```
 
-## 执行流程
-
-```mermaid
-sequenceDiagram
-    participant Client as 客户端
-    participant Node as 协调节点
-    participant Shard as 数据分片
-    participant Cache as Filter缓存
-
-    Client->>Node: 发送 Bool Query 请求
-    Node->>Shard: 分发查询任务到分片
-    Shard->>Shard: 1. 执行 must 子句<br/>分词匹配+计算TF/IDF评分
-    Shard->>Shard: 2. 执行 should 子句<br/>匹配+累加评分（按boost权重）
-    Shard->>Cache: 3. 检查 filter 子句是否有缓存
-    Cache->>Shard: 有缓存→直接返回文档ID列表
-    Cache->>Shard: 无缓存→执行 filter 匹配→写入缓存
-    Shard->>Shard: 4. 执行 must_not 子句<br/>排除匹配的文档
-    Shard->>Shard: 5. 综合结果：(must+should) ∩ filter - must_not
-    Shard->>Node: 返回分片结果+评分
-    Node->>Node: 合并所有分片结果→按_score排序
-    Node->>Client: 返回最终文档列表
-```
-
 ## 实战场景
 
 ### 基础组合查询
@@ -420,6 +382,44 @@ graph TD
     }
   }
 }
+```
+
+## 核心原理
+
+Bool Query 通过 **布尔逻辑（AND/OR/NOT）** 将多个子查询（称为"子句"）组合起来，最终判断文档是否符合整体条件：
+
+1. 接收多个子句（must/should/must_not/filter），每个子句可包含任意基础查询（match/term/range 等）
+2. 按子句类型的逻辑规则，分别判断文档是否满足每个子句
+3. 综合所有子句的判断结果，确定文档是否符合整体条件
+4. 对符合条件的文档，计算相关性评分（仅 Query 上下文的子句参与评分）
+
+**核心特点**：
+
+- 灵活组合：支持"必须满足""必须不满足""可选满足""过滤满足"四类逻辑
+- 评分可控：区分"计算评分的子句"和"不计算评分的子句"，兼顾检索精准度和性能
+- 兼容性强：可嵌套使用（Bool 内再包含 Bool），满足极复杂的查询逻辑
+
+## 执行流程
+
+```mermaid
+sequenceDiagram
+    participant Client as 客户端
+    participant Node as 协调节点
+    participant Shard as 数据分片
+    participant Cache as Filter缓存
+
+    Client->>Node: 发送 Bool Query 请求
+    Node->>Shard: 分发查询任务到分片
+    Shard->>Shard: 1. 执行 must 子句<br/>分词匹配+计算TF/IDF评分
+    Shard->>Shard: 2. 执行 should 子句<br/>匹配+累加评分（按boost权重）
+    Shard->>Cache: 3. 检查 filter 子句是否有缓存
+    Cache->>Shard: 有缓存→直接返回文档ID列表
+    Cache->>Shard: 无缓存→执行 filter 匹配→写入缓存
+    Shard->>Shard: 4. 执行 must_not 子句<br/>排除匹配的文档
+    Shard->>Shard: 5. 综合结果：(must+should) ∩ filter - must_not
+    Shard->>Node: 返回分片结果+评分
+    Node->>Node: 合并所有分片结果→按_score排序
+    Node->>Client: 返回最终文档列表
 ```
 
 ## 性能优化

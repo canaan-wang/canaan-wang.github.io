@@ -1,42 +1,6 @@
-## 核心原理
+# Match Query（全文检索查询）
 
-`match` 是 ES 专为 `text` 类型字段设计的全文检索语句，核心是"分词后模糊匹配"，执行流程可拆解为 5 步：
-
-1. 分词处理：ES 会使用目标字段配置的分词器（如 ik_max_word、standard），将查询字符串拆分成一个个独立的词条（term）
-2. 倒排索引匹配：遍历分词后的所有词条，在字段的倒排索引中查找包含任意一个词条的文档
-3. 匹配逻辑判断：根据 `operator`/`minimum_should_match` 参数，筛选出满足匹配门槛的文档
-4. 相关性评分计算：对匹配的文档，基于 TF/IDF 算法计算相关性评分（`_score`）
-5. 结果排序返回：按 `_score` 降序返回文档（评分越高，匹配度越高）
-
----
-
-### 核心特点
-
-| 特点 | 说明 |
-|------|------|
-| **仅作用于 text 字段** | `keyword` 字段用 `match` 会踩坑 |
-| **不分词顺序** | 查询"ES 教程"和"教程 ES"，匹配结果完全一致 |
-| **模糊匹配** | 只需匹配分词后的任意/部分/全部词条，无需完整匹配字符串 |
-| **计算评分** | 核心价值是通过评分区分文档的相关性高低 |
-
----
-
-### 执行流程
-
-```mermaid
-graph TD
-    A["客户端发起纯 match 查询请求"] --> B["ES 解析查询参数<br/>(query/operator/fuzziness等)"]
-    B --> C["使用目标字段的分词器<br/>对查询字符串分词<br/>例：'ES 性能优化' → ['ES','性能优化']"]
-    C --> D["遍历所有分词词条<br/>在倒排索引中匹配包含任意词条的文档"]
-    D --> E["应用 operator/minimum_should_match<br/>筛选符合匹配门槛的文档"]
-    E --> E1{"operator=or? → 匹配任意词条<br/>operator=and? → 匹配所有词条<br/>minimum_should_match=60%? → 至少匹配60%词条"}
-    E1 --> F["基于 TF/IDF 计算相关性评分(_score)"]
-    F --> F1["评分维度：词频(TF)+逆文档频率(IDF)+字段长度"]
-    F1 --> G["按 _score 降序排序文档"]
-    G --> H["返回指定字段(_source)和数量(size)的结果"]
-```
-
----
+`match` 是 ES 专为 `text` 类型字段设计的全文检索语句，核心是"分词后模糊匹配"，能根据 TF/IDF 计算相关性评分，优先展示最相关的文档。
 
 ## 基础语法
 
@@ -91,8 +55,6 @@ graph TD
 }
 ```
 
----
-
 ## 核心参数详解
 
 以下参数仅针对基础 `match` 语句，每个参数都对应核心功能：
@@ -138,8 +100,6 @@ graph TD
 }
 ```
 
----
-
 ### 参数优先级
 
 ```mermaid
@@ -151,8 +111,6 @@ graph LR
     D --> E
     E --> F["计算评分并返回结果"]
 ```
-
----
 
 ### fuzziness（容错可选）
 
@@ -202,31 +160,6 @@ graph LR
 | `none`（默认） | 返回空结果 |
 | `all` | 返回所有文档（等价于 `match_all` 查询） |
 
----
-
-### 核心参数作用时序
-
-```mermaid
-sequenceDiagram
-    participant Client as 客户端
-    participant Node as 协调节点
-    participant Shard as 数据分片
-
-    Client->>Node: 发送带参数的 match 查询
-    Node->>Shard: 分发查询任务到数据分片
-    Shard->>Shard: 1. 分词查询字符串 → 生成词条列表
-    Shard->>Shard: 2. 应用 fuzziness → 生成纠错后的词条列表（如 Elasticsearc→Elasticsearch）
-    Shard->>Shard: 3. 倒排索引匹配 → 获取候选文档集
-    Shard->>Shard: 4. 应用 operator → 初步筛选文档
-    Shard->>Shard: 5. 应用 minimum_should_match → 兜底筛选文档（覆盖operator）
-    Shard->>Shard: 6. 计算 TF/IDF 评分并排序
-    Shard->>Node: 返回分片结果+评分
-    Node->>Node: 合并所有分片结果，二次排序
-    Node->>Client: 返回最终查询结果
-```
-
----
-
 ## 评分逻辑
 
 `match` 语句的 `_score` 核心基于 TF/IDF 算法，包含 3 个核心维度：
@@ -239,8 +172,6 @@ sequenceDiagram
 
 简单总结：稀有词、高频出现、短字段，评分越高。
 
----
-
 ## 适用场景
 
 `match` 语句是全文检索的主力军，仅适用于以下场景：
@@ -248,8 +179,6 @@ sequenceDiagram
 1. 模糊全文检索：如"搜索文章内容中包含'ES 性能优化'的文档"（不要求顺序、不要求连续）
 2. 需区分相关性的检索：如"按匹配度排序，优先展示最相关的文档"
 3. 多词条灵活匹配：如"匹配'ES'或'Elasticsearch'或'性能优化'的文档"
-
----
 
 ## match vs term 对比
 
@@ -270,8 +199,6 @@ graph LR
     M["查询需求"] -->|模糊匹配+区分相关性| A1
     M -->|精确匹配+结构化数据| A2
 ```
-
----
 
 ## 避坑点
 
@@ -301,8 +228,6 @@ graph LR
 
 解决方案：查询时通过 `analyzer` 参数指定和字段一致的分词器
 
----
-
 ### 避坑流程
 
 ```mermaid
@@ -319,8 +244,6 @@ graph TD
     H -->|是| K["执行正常 match 查询流程"]
     D & G & J --> K
 ```
-
----
 
 ## 完整示例
 
@@ -347,7 +270,60 @@ graph TD
 
 逻辑：检索 `article_content` 字段，包含"Elasticsearch""性能优化""实战"中至少 60% 的词条，允许查询词有少量拼写错误（前 3 个字符精准），该查询权重提升 2.5 倍，使用 ik 细粒度分词，分词后无有效词则返回空结果。
 
----
+## 核心原理
+
+`match` 查询的执行流程可拆解为 5 步：
+
+1. 分词处理：ES 会使用目标字段配置的分词器（如 ik_max_word、standard），将查询字符串拆分成一个个独立的词条（term）
+2. 倒排索引匹配：遍历分词后的所有词条，在字段的倒排索引中查找包含任意一个词条的文档
+3. 匹配逻辑判断：根据 `operator`/`minimum_should_match` 参数，筛选出满足匹配门槛的文档
+4. 相关性评分计算：对匹配的文档，基于 TF/IDF 算法计算相关性评分（`_score`）
+5. 结果排序返回：按 `_score` 降序返回文档（评分越高，匹配度越高）
+
+### 核心特点
+
+| 特点 | 说明 |
+|------|------|
+| **仅作用于 text 字段** | `keyword` 字段用 `match` 会踩坑 |
+| **不分词顺序** | 查询"ES 教程"和"教程 ES"，匹配结果完全一致 |
+| **模糊匹配** | 只需匹配分词后的任意/部分/全部词条，无需完整匹配字符串 |
+| **计算评分** | 核心价值是通过评分区分文档的相关性高低 |
+
+### 执行流程
+
+```mermaid
+graph TD
+    A["客户端发起纯 match 查询请求"] --> B["ES 解析查询参数<br/>(query/operator/fuzziness等)"]
+    B --> C["使用目标字段的分词器<br/>对查询字符串分词<br/>例：'ES 性能优化' → ['ES','性能优化']"]
+    C --> D["遍历所有分词词条<br/>在倒排索引中匹配包含任意词条的文档"]
+    D --> E["应用 operator/minimum_should_match<br/>筛选符合匹配门槛的文档"]
+    E --> E1{"operator=or? → 匹配任意词条<br/>operator=and? → 匹配所有词条<br/>minimum_should_match=60%? → 至少匹配60%词条"}
+    E1 --> F["基于 TF/IDF 计算相关性评分(_score)"]
+    F --> F1["评分维度：词频(TF)+逆文档频率(IDF)+字段长度"]
+    F1 --> G["按 _score 降序排序文档"]
+    G --> H["返回指定字段(_source)和数量(size)的结果"]
+```
+
+### 核心参数作用时序
+
+```mermaid
+sequenceDiagram
+    participant Client as 客户端
+    participant Node as 协调节点
+    participant Shard as 数据分片
+
+    Client->>Node: 发送带参数的 match 查询
+    Node->>Shard: 分发查询任务到数据分片
+    Shard->>Shard: 1. 分词查询字符串 → 生成词条列表
+    Shard->>Shard: 2. 应用 fuzziness → 生成纠错后的词条列表（如 Elasticsearc→Elasticsearch）
+    Shard->>Shard: 3. 倒排索引匹配 → 获取候选文档集
+    Shard->>Shard: 4. 应用 operator → 初步筛选文档
+    Shard->>Shard: 5. 应用 minimum_should_match → 兜底筛选文档（覆盖operator）
+    Shard->>Shard: 6. 计算 TF/IDF 评分并排序
+    Shard->>Node: 返回分片结果+评分
+    Node->>Node: 合并所有分片结果，二次排序
+    Node->>Client: 返回最终查询结果
+```
 
 ## 总结
 
