@@ -163,42 +163,6 @@ graph LR
 
 ---
 
-## 性能优化
-
-`match_phrase_prefix` 是性能敏感型查询，需重点优化。
-
-### 1. 严格控制 max_expansions
-
-- 单字符前缀（如 `a`、`实`）：设为 ≤20
-- 多字符前缀（如 `perf`、`性能`）：可设为 50 左右
-- 禁止设为 0（会使用默认值 50，而非不扩展）
-
-### 2. 合理设置 prefix_length
-
-- 英文场景：设为 2-3（减少无效前缀，如 `p` → `pe` → `per`）
-- 中文场景：设为 1（避免形近字匹配，如 `实` ≠ `时`）
-
-### 3. 限制 slop 数值
-
-前 N-1 个词的 `slop` 设为 0-1（避免因间隔容错增加匹配复杂度）
-
-### 4. 结合 Filter 缩小范围
-
-在 Bool Query 中，先用 `filter` 过滤无关文档（如状态、分类），再执行 `match_phrase_prefix`。
-
-```json
-{
-  "query": {
-    "bool": {
-      "filter": [{"term": {"category.keyword": "技术"}}],
-      "must": [{"match_phrase_prefix": {"content": "ES 实"}}]
-    }
-  }
-}
-```
-
----
-
 ## 避坑指南
 
 ```mermaid
@@ -226,47 +190,7 @@ graph TD
 
 ---
 
-## 完整示例
-
-需求：实现技术文档输入框联想，用户输入 `ES 性`，返回包含 `ES 性能` 相关短语的文档。
-
-要求：
-- 前 N-1 个词（`ES`）严格匹配，无间隔
-- 最后一个词（`性`）最多扩展 10 个前缀词条
-- 仅匹配技术分类的文档
-
-```json
-{
-  "query": {
-    "bool": {
-      "filter": [{"term": {"category.keyword": "技术"}}],
-      "must": [
-        {
-          "match_phrase_prefix": {
-            "content": {
-              "query": "ES 性",
-              "max_expansions": 10,
-              "slop": 0,
-              "prefix_length": 1,
-              "boost": 2.0,
-              "analyzer": "ik_max_word"
-            }
-          }
-        }
-      ]
-    }
-  },
-  "size": 10,
-  "_source": ["title"]
-}
-```
-
----
-
 ## 核心原理
-
-`match_phrase_prefix` 是 `match_phrase` 的前缀扩展版，核心定位是**短语+最后一个词前缀匹配**，专门解决输入未完成时的联想检索。执行流程可拆解为 6 步：
-
 ```mermaid
 graph TD
     A["客户端发起 match_phrase_prefix 请求"] --> B["ES 解析参数<br/>(query/max_expansions/slop等)"]
@@ -293,13 +217,6 @@ graph TD
 | 5 | 结果筛选 | 合并前 N-1 个词的匹配结果和最后一个词的前缀匹配结果，得到最终候选文档 |
 | 6 | 排序返回 | 按匹配度评分降序返回文档（前缀匹配的词条越常用，评分越高） |
 
-### 核心特点
-
-- 保留短语的 `顺序性`（区别于纯前缀查询）
-- 最后一个词的 `灵活性`（前缀匹配，支持联想）
-- `性能敏感`（前缀扩展数直接影响查询速度）
-- 仅适用于 `text` 类型字段
-
 ---
 
 ## 参数协作时序
@@ -321,12 +238,3 @@ sequenceDiagram
     Shard->>Node: 返回分片匹配结果+评分
     Node->>Client: 返回最终排序后的文档列表
 ```
-
----
-
-## 总结
-
-1. `match_phrase_prefix` 是专为即时联想搜索设计的查询，核心是 `短语+最后一个词前缀扩展`
-2. 核心参数 `max_expansions` 控制扩展数量（平衡性能和范围），`prefix_length` 优化匹配精准度
-3. 性能优化核心：控制 `max_expansions` ≤50、设置 `prefix_length`、结合 `filter` 缩小范围
-4. 避坑核心：仅用于 `text` 字段、保证分词器一致、避免过大的扩展数
