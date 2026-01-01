@@ -214,7 +214,7 @@ struct __attribute__((__packed__)) sdshdr8 {
 ```mermaid
 graph LR
     subgraph SDS
-        S1[长度获取：O(1)（len 字段）]
+        S1["长度获取：O(1)（len 字段）"]
         S2[二进制安全（len 判结束）]
         S3[自动扩容+预分配]
         S4[惰性空间释放]
@@ -223,7 +223,7 @@ graph LR
     end
 
     subgraph 原生 C 字符串
-        C1[长度获取：O(n)（遍历到 \0）]
+        C1["长度获取：O(n)（遍历到 \0）"]
         C2[二进制不安全（\0 截断）]
         C3[修改需手动扩容]
         C4[缩短立即释放内存]
@@ -239,7 +239,7 @@ graph LR
     S6 -.->|对比| C6
 
     style SDS fill:#e0f7fa,stroke:#00695c
-    style 原生 C 字符串 fill:#fff3e0,stroke:#e65100
+
 ```
 
 ## SDS与Redis字符串编码关联
