@@ -5,6 +5,7 @@
 * **数据类型**
   - [String](数据库/Redis/数据类型/string.md)
   - [hash](数据库/Redis/数据类型/hash.md)
+  - [list](数据库/Redis/数据类型/list.md)
 * **存储类型**
   - [SDS](数据库/Redis/存储类型/SDS.md)
   - [embstr](数据库/Redis/存储类型/embstr.md)
