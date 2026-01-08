@@ -14,3 +14,5 @@
   - [ziplist](数据库/Redis/存储类型/ziplist.md)
   - [hashtable](数据库/Redis/存储类型/hashtable.md)
   - [quicklist](数据库/Redis/存储类型/quicklist.md)
+  - [intset](数据库/Redis/存储类型/intset.md)
+  - [skiplist](数据库/Redis/存储类型/skiplist.md)
