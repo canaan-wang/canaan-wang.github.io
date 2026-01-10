@@ -9,6 +9,7 @@
   - [set](数据库/Redis/数据类型/set.md)
   - [sorted set](数据库/Redis/数据类型/sortedSet.md)
   - [bitmap](数据库/Redis/数据类型/bitmap.md)
+  - [geo](数据库/Redis/数据类型/geo.md)
 * **存储类型**
   - [SDS](数据库/Redis/存储类型/SDS.md)
   - [embstr](数据库/Redis/存储类型/embstr.md)
