@@ -28,3 +28,4 @@
   - [Map 老版](Go/Golang/sync/sync_Map(old).md)
   - [Map hashtriemap](Go/Golang/sync/sync_Map(new).md)
   - [WaitGroup](Go/Golang/sync/wait_group.md)
+  - [Pool](Go/Golang/sync/pool.md)
