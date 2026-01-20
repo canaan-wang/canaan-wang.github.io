@@ -24,6 +24,3 @@
   - [缓存](中间件/缓存/Redis/Redis概览.md)
   - [消息队列](中间件/消息队列/kafka/Kafka.md)
   - [配置中心](中间件/配置中心/Apollo/Apollo概览.md)
-
-- Me
-  - [工作](me/工作/简历.md)
