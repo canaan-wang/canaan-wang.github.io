@@ -17,7 +17,7 @@ export default withMermaid({
   ignoreDeadLinks: true,
 
   markdown: {
-    html: false,
+    html: true,
     async shikiSetup(highlighter) {
       const fluxGrammar = JSON.parse(
         readFileSync(resolve(__dirname, 'flux.tmLanguage.json'), 'utf-8')

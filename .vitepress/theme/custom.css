@@ -1,25 +1,366 @@
-/* VitePress 自定义样式 */
+/* ============================================================
+   Canaan's Garden — 数字温室花园设计系统
+   概念：把知识库比作一个玻璃温室，每张卡片是温室里的
+   植物标本框，玻璃质感 + 暖色空间光斑 + 大方呼吸感
+   ============================================================ */
 
-/* 中文字体优化 */
+/* ---------- 设计令牌 ---------- */
 :root {
-  --vp-font-family-base: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  --vp-font-family-mono: 'JetBrains Mono', 'Fira Code', 'SF Mono', 'Menlo', 'Monaco', 'Consolas', 'Liberation Mono', 'Courier New', monospace;
+  --garden-bg: #f5f3ef;
+  --garden-text-title: #141414;
+  --garden-text-body: #5c5c5c;
+  --garden-text-muted: #9ca3af;
+  --garden-glass-bg: rgba(255, 255, 255, 0.38);
+  --garden-glass-border: rgba(255, 255, 255, 0.55);
+  --garden-glass-highlight: rgba(255, 255, 255, 0.85);
+  --garden-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.03);
+  --garden-shadow-md: 0 4px 16px rgba(0, 0, 0, 0.04);
+  --garden-shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.05);
+  --garden-shadow-xl: 0 32px 80px rgba(0, 0, 0, 0.06);
 }
 
-/* 增大内容区域宽度，适应宽屏 */
+/* ---------- 首页整体背景：暖白 + 纸张噪点 + 空间光斑 ---------- */
+.VPHome {
+  background:
+    /* 顶层：微妙纸张噪点纹理 */
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E"),
+    /* 暖金色阳光光斑 - 左上 */
+    radial-gradient(ellipse 70% 55% at 12% 18%, rgba(251, 191, 36, 0.09) 0%, transparent 55%),
+    /* 淡玫瑰光斑 - 右下 */
+    radial-gradient(ellipse 55% 65% at 88% 82%, rgba(244, 63, 94, 0.07) 0%, transparent 55%),
+    /* 淡薄荷光斑 - 中间偏右 */
+    radial-gradient(ellipse 45% 40% at 65% 45%, rgba(16, 185, 129, 0.05) 0%, transparent 50%),
+    /* 基础暖白底色 */
+    var(--garden-bg);
+  background-size: 250px 250px, auto, auto, auto, auto;
+}
+
+/* ---------- Hero 区域：大方、有空间感 ---------- */
+.VPHero {
+  position: relative;
+  overflow: hidden;
+  padding-top: 76px !important;
+  padding-bottom: 12px !important;
+}
+
+/* Hero 背景光斑装饰 */
+.VPHero::before {
+  content: '';
+  position: absolute;
+  top: -5%;
+  right: -5%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(251, 191, 36, 0.12) 0%, transparent 60%);
+  pointer-events: none;
+  animation: gardenFloat 16s ease-in-out infinite;
+}
+
+.VPHero::after {
+  content: '';
+  position: absolute;
+  bottom: -10%;
+  left: -5%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(244, 63, 94, 0.09) 0%, transparent 60%);
+  pointer-events: none;
+  animation: gardenFloat 20s ease-in-out infinite reverse;
+}
+
+@keyframes gardenFloat {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(30px, -20px) scale(1.04); }
+  66% { transform: translate(-15px, 15px) scale(0.96); }
+}
+
+.VPHero .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.VPHero .main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* 标题：深色实心，更大方 — 强制覆盖 VitePress 默认渐变 */
+.VPHero .name,
+.VPHero .name.clip {
+  font-size: 2rem !important;
+  font-weight: 800 !important;
+  color: var(--garden-text-title) !important;
+  -webkit-text-fill-color: var(--garden-text-title) !important;
+  background: none !important;
+  -webkit-background-clip: unset !important;
+  background-clip: unset !important;
+  letter-spacing: -0.02em;
+  line-height: 1.2 !important;
+  margin-bottom: 0.2rem;
+}
+
+/* 副标题 */
+.VPHero .tagline {
+  font-size: 0.85rem !important;
+  line-height: 1.5 !important;
+  max-width: 440px;
+  margin: 0.3rem auto 0 !important;
+  color: var(--garden-text-body);
+  font-weight: 400;
+}
+
+/* Hero 图片 */
+.VPHero .image-src {
+  border-radius: 28px;
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.1);
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.VPHero .image-src:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 36px 96px rgba(0, 0, 0, 0.14);
+}
+
+/* ---------- Features 区域：温室玻璃标本框 ---------- */
+
+.VPFeatures {
+  padding: 0 0 0.5rem !important;
+}
+
+.VPFeatures .container {
+  max-width: 1280px;
+  padding: 0 2rem;
+}
+
+/* 修复 VitePress flex 间距系统 */
+.VPFeatures .items {
+  margin: -6px !important;
+}
+
+.VPFeatures .item {
+  padding: 6px !important;
+}
+
+/* ====== 核心：厚玻璃质感卡片 ====== */
+.VPFeatures .VPFeature {
+  /* 玻璃本体：更透明，让背景光斑透过来 */
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.42) 0%,
+    rgba(255, 255, 255, 0.2) 60%,
+    rgba(255, 255, 255, 0.12) 100%
+  ) !important;
+
+  /* 模糊 + 饱和度提升（玻璃折射感） */
+  backdrop-filter: blur(36px) saturate(170%);
+  -webkit-backdrop-filter: blur(36px) saturate(170%);
+
+  /* 边框：顶部更亮模拟玻璃反光 */
+  border: 1px solid var(--garden-glass-border) !important;
+  border-top-color: var(--garden-glass-highlight) !important;
+
+  /* 圆角：大方 */
+  border-radius: 16px !important;
+
+  /* 阴影系统：多层创造深度 */
+  box-shadow:
+    /* 玻璃顶部高光 */
+    inset 0 1px 1px rgba(255, 255, 255, 0.9),
+    /* 玻璃底部暗边 */
+    inset 0 -1px 1px rgba(0, 0, 0, 0.015),
+    /* 紧贴卡片的小阴影 */
+    var(--garden-shadow-sm),
+    /* 中等距离阴影 */
+    var(--garden-shadow-md),
+    /* 远处柔和大阴影 */
+    var(--garden-shadow-lg) !important;
+
+  padding: 1rem 0.9rem !important;
+  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+}
+
+/* 卡片顶部玻璃高光条 */
+.VPFeatures .VPFeature::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 15%;
+  right: 15%;
+  height: 1.5px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.95), transparent);
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+/* 卡片内部底部柔光 */
+.VPFeatures .VPFeature::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 50%;
+  background: linear-gradient(to top, rgba(255, 255, 255, 0.2) 0%, transparent 100%);
+  pointer-events: none;
+  opacity: 0.5;
+  transition: opacity 0.5s ease;
+}
+
+/* ====== Hover：玻璃板浮起 ====== */
+.VPFeatures .VPFeature:hover {
+  transform: translateY(-16px) scale(1.025);
+
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.7) 0%,
+    rgba(255, 255, 255, 0.4) 60%,
+    rgba(255, 255, 255, 0.25) 100%
+  ) !important;
+
+  box-shadow:
+    inset 0 1px 1px rgba(255, 255, 255, 0.95),
+    inset 0 -1px 1px rgba(0, 0, 0, 0.02),
+    var(--garden-shadow-sm),
+    0 8px 24px rgba(0, 0, 0, 0.05),
+    0 24px 64px rgba(0, 0, 0, 0.07),
+    var(--garden-shadow-xl) !important;
+
+  border-color: rgba(255, 255, 255, 0.7) !important;
+}
+
+.VPFeatures .VPFeature:hover::after {
+  opacity: 0.8;
+}
+
+/* ====== 图标：玻璃徽章 ====== */
+.VPFeatures .VPFeature .icon {
+  width: 36px;
+  height: 36px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  font-size: 1.2rem !important;
+  margin-bottom: 0.5rem !important;
+  position: relative;
+  z-index: 1;
+
+  /* 玻璃徽章 */
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.6) 0%,
+    rgba(255, 255, 255, 0.2) 100%
+  ) !important;
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  box-shadow:
+    inset 0 1px 1px rgba(255, 255, 255, 0.9),
+    0 2px 8px rgba(0, 0, 0, 0.04);
+
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* 各分类彩色 tint */
+.VPFeatures .item:nth-child(1) .icon {
+  background: linear-gradient(135deg, rgba(14, 165, 233, 0.18), rgba(14, 165, 233, 0.05)) !important;
+}
+.VPFeatures .item:nth-child(2) .icon {
+  background: linear-gradient(135deg, rgba(249, 115, 22, 0.18), rgba(249, 115, 22, 0.05)) !important;
+}
+.VPFeatures .item:nth-child(3) .icon {
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.18), rgba(139, 92, 246, 0.05)) !important;
+}
+.VPFeatures .item:nth-child(4) .icon {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.18), rgba(16, 185, 129, 0.05)) !important;
+}
+.VPFeatures .item:nth-child(5) .icon {
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.18), rgba(245, 158, 11, 0.05)) !important;
+}
+.VPFeatures .item:nth-child(6) .icon {
+  background: linear-gradient(135deg, rgba(244, 63, 94, 0.18), rgba(244, 63, 94, 0.05)) !important;
+}
+
+.VPFeatures .VPFeature:hover .icon {
+  transform: scale(1.12) rotate(-5deg);
+  box-shadow:
+    inset 0 1px 1px rgba(255, 255, 255, 0.95),
+    0 4px 16px rgba(0, 0, 0, 0.06);
+}
+
+/* ====== 标题 ====== */
+.VPFeatures .VPFeature .title {
+  font-size: 0.95rem !important;
+  font-weight: 600 !important;
+  margin-bottom: 0.2rem !important;
+  color: var(--garden-text-title) !important;
+  letter-spacing: -0.02em;
+  position: relative;
+  z-index: 1;
+}
+
+/* ====== 描述 ====== */
+.VPFeatures .VPFeature .details {
+  font-size: 0.78rem !important;
+  font-weight: 400 !important;
+  line-height: 1.45 !important;
+  color: var(--garden-text-body) !important;
+  position: relative;
+  z-index: 1;
+}
+
+/* ---------- 内容区域 ---------- */
 @media (min-width: 1440px) {
   .VPDoc.has-aside .content-container {
     max-width: 900px;
   }
 }
 
-/* 表格样式优化 */
 .vp-doc table {
   font-size: 14px;
 }
 
-/* Mermaid 图表容器 */
 .mermaid {
   text-align: center;
   margin: 1.5rem 0;
+}
+
+/* ---------- 首页底部内容区 ---------- */
+.VPHome .vp-doc h2 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-top: 4rem !important;
+  margin-bottom: 1.5rem !important;
+  padding-bottom: 0.6rem;
+  border-bottom: 2px solid var(--vp-c-divider);
+  display: inline-block;
+  color: var(--garden-text-title);
+  letter-spacing: -0.02em;
+}
+
+.VPHome .vp-doc blockquote {
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(12px);
+  border-left: 4px solid #6366f1;
+  border-radius: 0 16px 16px 0;
+  padding: 1.4rem 1.8rem;
+  margin: 2rem 0;
+  font-style: italic;
+  color: var(--garden-text-body);
+}
+
+.VPHome .vp-doc blockquote p {
+  margin: 0;
+}
+
+/* ---------- Footer 区域：首页隐藏 ---------- */
+.VPHome ~ .VPFooter,
+.VPHome .VPFooter {
+  display: none !important;
 }
