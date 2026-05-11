@@ -1,0 +1,3082 @@
+位于分支 main
+您的分支领先 'origin/main' 共 1 个提交。
+  （使用 "git push" 来发布您的本地提交）
+
+尚未暂存以备提交的变更：
+  （使用 "git add/rm <文件>..." 更新要提交的内容）
+  （使用 "git restore <文件>..." 丢弃工作区的改动）
+	修改：     .gitignore
+	删除：     node_modules/.bin/docsify
+	删除：     node_modules/.bin/figlet
+	删除：     node_modules/.bin/is-ci
+	删除：     node_modules/.bin/livereload
+	修改：     node_modules/.bin/marked
+	删除：     node_modules/.bin/mime
+	删除：     node_modules/.bin/opencollective-postinstall
+	删除：     node_modules/.bin/rc
+	删除：     node_modules/.bin/semver
+	修改：     node_modules/.package-lock.json
+	删除：     node_modules/@sindresorhus/is/dist/index.d.ts
+	删除：     node_modules/@sindresorhus/is/dist/index.js
+	删除：     node_modules/@sindresorhus/is/dist/index.js.map
+	删除：     node_modules/@sindresorhus/is/license
+	删除：     node_modules/@sindresorhus/is/package.json
+	删除：     node_modules/@sindresorhus/is/readme.md
+	删除：     node_modules/@szmarczak/http-timer/LICENSE
+	删除：     node_modules/@szmarczak/http-timer/README.md
+	删除：     node_modules/@szmarczak/http-timer/package.json
+	删除：     node_modules/@szmarczak/http-timer/source/index.js
+	删除：     node_modules/ansi-align/CHANGELOG.md
+	删除：     node_modules/ansi-align/LICENSE
+	删除：     node_modules/ansi-align/README.md
+	删除：     node_modules/ansi-align/index.js
+	删除：     node_modules/ansi-align/package.json
+	删除：     node_modules/ansi-colors/LICENSE
+	删除：     node_modules/ansi-colors/README.md
+	删除：     node_modules/ansi-colors/index.js
+	删除：     node_modules/ansi-colors/package.json
+	删除：     node_modules/ansi-colors/symbols.js
+	删除：     node_modules/ansi-colors/types/index.d.ts
+	删除：     node_modules/ansi-regex/index.d.ts
+	删除：     node_modules/ansi-regex/index.js
+	删除：     node_modules/ansi-regex/license
+	删除：     node_modules/ansi-regex/package.json
+	删除：     node_modules/ansi-regex/readme.md
+	删除：     node_modules/ansi-styles/index.js
+	删除：     node_modules/ansi-styles/license
+	删除：     node_modules/ansi-styles/package.json
+	删除：     node_modules/ansi-styles/readme.md
+	删除：     node_modules/anymatch/LICENSE
+	删除：     node_modules/anymatch/README.md
+	删除：     node_modules/anymatch/index.d.ts
+	删除：     node_modules/anymatch/index.js
+	删除：     node_modules/anymatch/package.json
+	删除：     node_modules/binary-extensions/binary-extensions.json
+	删除：     node_modules/binary-extensions/binary-extensions.json.d.ts
+	删除：     node_modules/binary-extensions/index.d.ts
+	删除：     node_modules/binary-extensions/index.js
+	删除：     node_modules/binary-extensions/license
+	删除：     node_modules/binary-extensions/package.json
+	删除：     node_modules/binary-extensions/readme.md
+	删除：     node_modules/boxen/index.d.ts
+	删除：     node_modules/boxen/index.js
+	删除：     node_modules/boxen/license
+	删除：     node_modules/boxen/node_modules/ansi-styles/index.d.ts
+	删除：     node_modules/boxen/node_modules/ansi-styles/index.js
+	删除：     node_modules/boxen/node_modules/ansi-styles/license
+	删除：     node_modules/boxen/node_modules/ansi-styles/package.json
+	删除：     node_modules/boxen/node_modules/ansi-styles/readme.md
+	删除：     node_modules/boxen/node_modules/chalk/index.d.ts
+	删除：     node_modules/boxen/node_modules/chalk/license
+	删除：     node_modules/boxen/node_modules/chalk/package.json
+	删除：     node_modules/boxen/node_modules/chalk/readme.md
+	删除：     node_modules/boxen/node_modules/chalk/source/index.js
+	删除：     node_modules/boxen/node_modules/chalk/source/templates.js
+	删除：     node_modules/boxen/node_modules/chalk/source/util.js
+	删除：     node_modules/boxen/node_modules/color-convert/CHANGELOG.md
+	删除：     node_modules/boxen/node_modules/color-convert/LICENSE
+	删除：     node_modules/boxen/node_modules/color-convert/README.md
+	删除：     node_modules/boxen/node_modules/color-convert/conversions.js
+	删除：     node_modules/boxen/node_modules/color-convert/index.js
+	删除：     node_modules/boxen/node_modules/color-convert/package.json
+	删除：     node_modules/boxen/node_modules/color-convert/route.js
+	删除：     node_modules/boxen/node_modules/color-name/LICENSE
+	删除：     node_modules/boxen/node_modules/color-name/README.md
+	删除：     node_modules/boxen/node_modules/color-name/index.js
+	删除：     node_modules/boxen/node_modules/color-name/package.json
+	删除：     node_modules/boxen/node_modules/has-flag/index.d.ts
+	删除：     node_modules/boxen/node_modules/has-flag/index.js
+	删除：     node_modules/boxen/node_modules/has-flag/license
+	删除：     node_modules/boxen/node_modules/has-flag/package.json
+	删除：     node_modules/boxen/node_modules/has-flag/readme.md
+	删除：     node_modules/boxen/node_modules/supports-color/browser.js
+	删除：     node_modules/boxen/node_modules/supports-color/index.js
+	删除：     node_modules/boxen/node_modules/supports-color/license
+	删除：     node_modules/boxen/node_modules/supports-color/package.json
+	删除：     node_modules/boxen/node_modules/supports-color/readme.md
+	删除：     node_modules/boxen/package.json
+	删除：     node_modules/boxen/readme.md
+	删除：     node_modules/braces/LICENSE
+	删除：     node_modules/braces/README.md
+	删除：     node_modules/braces/index.js
+	删除：     node_modules/braces/lib/compile.js
+	删除：     node_modules/braces/lib/constants.js
+	删除：     node_modules/braces/lib/expand.js
+	删除：     node_modules/braces/lib/parse.js
+	删除：     node_modules/braces/lib/stringify.js
+	删除：     node_modules/braces/lib/utils.js
+	删除：     node_modules/braces/package.json
+	删除：     node_modules/cacheable-request/LICENSE
+	删除：     node_modules/cacheable-request/README.md
+	删除：     node_modules/cacheable-request/node_modules/get-stream/buffer-stream.js
+	删除：     node_modules/cacheable-request/node_modules/get-stream/index.d.ts
+	删除：     node_modules/cacheable-request/node_modules/get-stream/index.js
+	删除：     node_modules/cacheable-request/node_modules/get-stream/license
+	删除：     node_modules/cacheable-request/node_modules/get-stream/package.json
+	删除：     node_modules/cacheable-request/node_modules/get-stream/readme.md
+	删除：     node_modules/cacheable-request/node_modules/lowercase-keys/index.d.ts
+	删除：     node_modules/cacheable-request/node_modules/lowercase-keys/index.js
+	删除：     node_modules/cacheable-request/node_modules/lowercase-keys/license
+	删除：     node_modules/cacheable-request/node_modules/lowercase-keys/package.json
+	删除：     node_modules/cacheable-request/node_modules/lowercase-keys/readme.md
+	删除：     node_modules/cacheable-request/package.json
+	删除：     node_modules/cacheable-request/src/index.js
+	删除：     node_modules/camelcase/index.d.ts
+	删除：     node_modules/camelcase/index.js
+	删除：     node_modules/camelcase/license
+	删除：     node_modules/camelcase/package.json
+	删除：     node_modules/camelcase/readme.md
+	删除：     node_modules/chalk/index.js
+	删除：     node_modules/chalk/index.js.flow
+	删除：     node_modules/chalk/license
+	删除：     node_modules/chalk/package.json
+	删除：     node_modules/chalk/readme.md
+	删除：     node_modules/chalk/templates.js
+	删除：     node_modules/chalk/types/index.d.ts
+	删除：     node_modules/chokidar/LICENSE
+	删除：     node_modules/chokidar/README.md
+	删除：     node_modules/chokidar/index.js
+	删除：     node_modules/chokidar/lib/constants.js
+	删除：     node_modules/chokidar/lib/fsevents-handler.js
+	删除：     node_modules/chokidar/lib/nodefs-handler.js
+	删除：     node_modules/chokidar/package.json
+	删除：     node_modules/chokidar/types/index.d.ts
+	删除：     node_modules/ci-info/CHANGELOG.md
+	删除：     node_modules/ci-info/LICENSE
+	删除：     node_modules/ci-info/README.md
+	删除：     node_modules/ci-info/index.js
+	删除：     node_modules/ci-info/package.json
+	删除：     node_modules/ci-info/vendors.json
+	删除：     node_modules/cli-boxes/boxes.json
+	删除：     node_modules/cli-boxes/index.d.ts
+	删除：     node_modules/cli-boxes/index.js
+	删除：     node_modules/cli-boxes/license
+	删除：     node_modules/cli-boxes/package.json
+	删除：     node_modules/cli-boxes/readme.md
+	删除：     node_modules/cliui/CHANGELOG.md
+	删除：     node_modules/cliui/LICENSE.txt
+	删除：     node_modules/cliui/README.md
+	删除：     node_modules/cliui/index.js
+	删除：     node_modules/cliui/package.json
+	删除：     node_modules/clone-response/LICENSE
+	删除：     node_modules/clone-response/README.md
+	删除：     node_modules/clone-response/package.json
+	删除：     node_modules/clone-response/src/index.js
+	删除：     node_modules/color-convert/CHANGELOG.md
+	删除：     node_modules/color-convert/LICENSE
+	删除：     node_modules/color-convert/README.md
+	删除：     node_modules/color-convert/conversions.js
+	删除：     node_modules/color-convert/index.js
+	删除：     node_modules/color-convert/package.json
+	删除：     node_modules/color-convert/route.js
+	删除：     node_modules/color-name/.eslintrc.json
+	删除：     node_modules/color-name/.npmignore
+	删除：     node_modules/color-name/LICENSE
+	删除：     node_modules/color-name/README.md
+	删除：     node_modules/color-name/index.js
+	删除：     node_modules/color-name/package.json
+	删除：     node_modules/color-name/test.js
+	修改：     node_modules/commander/Readme.md
+	修改：     node_modules/commander/esm.mjs
+	修改：     node_modules/commander/index.js
+	删除：     node_modules/commander/lib/argument.js
+	删除：     node_modules/commander/lib/command.js
+	删除：     node_modules/commander/lib/error.js
+	删除：     node_modules/commander/lib/help.js
+	删除：     node_modules/commander/lib/option.js
+	删除：     node_modules/commander/lib/suggestSimilar.js
+	修改：     node_modules/commander/package.json
+	删除：     node_modules/commander/typings/esm.d.mts
+	修改：     node_modules/commander/typings/index.d.ts
+	删除：     node_modules/configstore/index.js
+	删除：     node_modules/configstore/license
+	删除：     node_modules/configstore/package.json
+	删除：     node_modules/configstore/readme.md
+	删除：     node_modules/connect-history-api-fallback/CHANGELOG.md
+	删除：     node_modules/connect-history-api-fallback/LICENSE
+	删除：     node_modules/connect-history-api-fallback/README.md
+	删除：     node_modules/connect-history-api-fallback/lib/index.js
+	删除：     node_modules/connect-history-api-fallback/package.json
+	删除：     node_modules/connect-livereload/.editorconfig
+	删除：     node_modules/connect-livereload/.travis.yml
+	删除：     node_modules/connect-livereload/.vscode/settings.json
+	删除：     node_modules/connect-livereload/LICENSE
+	删除：     node_modules/connect-livereload/README.md
+	删除：     node_modules/connect-livereload/index.js
+	删除：     node_modules/connect-livereload/package.json
+	删除：     node_modules/connect/HISTORY.md
+	删除：     node_modules/connect/LICENSE
+	删除：     node_modules/connect/README.md
+	删除：     node_modules/connect/SECURITY.md
+	删除：     node_modules/connect/index.js
+	删除：     node_modules/connect/package.json
+	删除：     node_modules/cp-file/cp-file-error.js
+	删除：     node_modules/cp-file/fs.js
+	删除：     node_modules/cp-file/index.d.ts
+	删除：     node_modules/cp-file/index.js
+	删除：     node_modules/cp-file/license
+	删除：     node_modules/cp-file/package.json
+	删除：     node_modules/cp-file/progress-emitter.js
+	删除：     node_modules/cp-file/readme.md
+	删除：     node_modules/crypto-random-string/index.d.ts
+	删除：     node_modules/crypto-random-string/index.js
+	删除：     node_modules/crypto-random-string/license
+	删除：     node_modules/crypto-random-string/package.json
+	删除：     node_modules/crypto-random-string/readme.md
+	删除：     node_modules/debug/.coveralls.yml
+	删除：     node_modules/debug/.eslintrc
+	删除：     node_modules/debug/.npmignore
+	删除：     node_modules/debug/.travis.yml
+	删除：     node_modules/debug/CHANGELOG.md
+	删除：     node_modules/debug/LICENSE
+	删除：     node_modules/debug/Makefile
+	删除：     node_modules/debug/README.md
+	删除：     node_modules/debug/component.json
+	删除：     node_modules/debug/karma.conf.js
+	删除：     node_modules/debug/node.js
+	删除：     node_modules/debug/package.json
+	删除：     node_modules/debug/src/browser.js
+	删除：     node_modules/debug/src/debug.js
+	删除：     node_modules/debug/src/index.js
+	删除：     node_modules/debug/src/inspector-log.js
+	删除：     node_modules/debug/src/node.js
+	删除：     node_modules/decamelize/index.js
+	删除：     node_modules/decamelize/license
+	删除：     node_modules/decamelize/package.json
+	删除：     node_modules/decamelize/readme.md
+	删除：     node_modules/decompress-response/index.js
+	删除：     node_modules/decompress-response/license
+	删除：     node_modules/decompress-response/package.json
+	删除：     node_modules/decompress-response/readme.md
+	删除：     node_modules/deep-extend/CHANGELOG.md
+	删除：     node_modules/deep-extend/LICENSE
+	删除：     node_modules/deep-extend/README.md
+	删除：     node_modules/deep-extend/index.js
+	删除：     node_modules/deep-extend/lib/deep-extend.js
+	删除：     node_modules/deep-extend/package.json
+	删除：     node_modules/defer-to-connect/LICENSE
+	删除：     node_modules/defer-to-connect/README.md
+	删除：     node_modules/defer-to-connect/dist/index.d.ts
+	删除：     node_modules/defer-to-connect/dist/index.js
+	删除：     node_modules/defer-to-connect/package.json
+	删除：     node_modules/depd/History.md
+	删除：     node_modules/depd/LICENSE
+	删除：     node_modules/depd/Readme.md
+	删除：     node_modules/depd/index.js
+	删除：     node_modules/depd/lib/browser/index.js
+	删除：     node_modules/depd/package.json
+	删除：     node_modules/destroy/LICENSE
+	删除：     node_modules/destroy/README.md
+	删除：     node_modules/destroy/index.js
+	删除：     node_modules/destroy/package.json
+	删除：     node_modules/docsify-cli/CHANGELOG.md
+	删除：     node_modules/docsify-cli/LICENSE
+	删除：     node_modules/docsify-cli/README.md
+	删除：     node_modules/docsify-cli/bin/docsify
+	删除：     node_modules/docsify-cli/lib/cli.js
+	删除：     node_modules/docsify-cli/lib/commands/generate.js
+	删除：     node_modules/docsify-cli/lib/commands/init.js
+	删除：     node_modules/docsify-cli/lib/commands/serve.js
+	删除：     node_modules/docsify-cli/lib/commands/start.js
+	删除：     node_modules/docsify-cli/lib/index.js
+	删除：     node_modules/docsify-cli/lib/template/.nojekyll
+	删除：     node_modules/docsify-cli/lib/template/README.md
+	删除：     node_modules/docsify-cli/lib/template/index.html
+	删除：     node_modules/docsify-cli/lib/template/index.local.html
+	删除：     node_modules/docsify-cli/lib/util/index.js
+	删除：     node_modules/docsify-cli/lib/util/logger.js
+	删除：     node_modules/docsify-cli/package.json
+	删除：     node_modules/docsify-cli/tools/locales/de.json
+	删除：     node_modules/docsify-cli/tools/locales/en.json
+	删除：     node_modules/docsify-cli/tools/locales/index.js
+	删除：     node_modules/docsify-cli/tools/locales/zh.json
+	删除：     node_modules/docsify-server-renderer/README.md
+	删除：     node_modules/docsify-server-renderer/build.js
+	删除：     node_modules/docsify-server-renderer/index.js
+	删除：     node_modules/docsify-server-renderer/node_modules/debug/LICENSE
+	删除：     node_modules/docsify-server-renderer/node_modules/debug/README.md
+	删除：     node_modules/docsify-server-renderer/node_modules/debug/package.json
+	删除：     node_modules/docsify-server-renderer/node_modules/debug/src/browser.js
+	删除：     node_modules/docsify-server-renderer/node_modules/debug/src/common.js
+	删除：     node_modules/docsify-server-renderer/node_modules/debug/src/index.js
+	删除：     node_modules/docsify-server-renderer/node_modules/debug/src/node.js
+	删除：     node_modules/docsify-server-renderer/node_modules/ms/index.js
+	删除：     node_modules/docsify-server-renderer/node_modules/ms/license.md
+	删除：     node_modules/docsify-server-renderer/node_modules/ms/package.json
+	删除：     node_modules/docsify-server-renderer/node_modules/ms/readme.md
+	删除：     node_modules/docsify-server-renderer/package.json
+	删除：     node_modules/docsify/CHANGELOG.md
+	删除：     node_modules/docsify/HISTORY.md
+	删除：     node_modules/docsify/LICENSE
+	删除：     node_modules/docsify/README.md
+	删除：     node_modules/docsify/lib/docsify.js
+	删除：     node_modules/docsify/lib/docsify.min.js
+	删除：     node_modules/docsify/lib/plugins/disqus.js
+	删除：     node_modules/docsify/lib/plugins/disqus.min.js
+	删除：     node_modules/docsify/lib/plugins/emoji.js
+	删除：     node_modules/docsify/lib/plugins/emoji.min.js
+	删除：     node_modules/docsify/lib/plugins/external-script.js
+	删除：     node_modules/docsify/lib/plugins/external-script.min.js
+	删除：     node_modules/docsify/lib/plugins/front-matter.js
+	删除：     node_modules/docsify/lib/plugins/front-matter.min.js
+	删除：     node_modules/docsify/lib/plugins/ga.js
+	删除：     node_modules/docsify/lib/plugins/ga.min.js
+	删除：     node_modules/docsify/lib/plugins/gitalk.js
+	删除：     node_modules/docsify/lib/plugins/gitalk.min.js
+	删除：     node_modules/docsify/lib/plugins/matomo.js
+	删除：     node_modules/docsify/lib/plugins/matomo.min.js
+	删除：     node_modules/docsify/lib/plugins/search.js
+	删除：     node_modules/docsify/lib/plugins/search.min.js
+	删除：     node_modules/docsify/lib/plugins/zoom-image.js
+	删除：     node_modules/docsify/lib/plugins/zoom-image.min.js
+	删除：     node_modules/docsify/lib/themes/buble.css
+	删除：     node_modules/docsify/lib/themes/dark.css
+	删除：     node_modules/docsify/lib/themes/dolphin.css
+	删除：     node_modules/docsify/lib/themes/pure.css
+	删除：     node_modules/docsify/lib/themes/vue.css
+	删除：     node_modules/docsify/package.json
+	删除：     node_modules/docsify/themes/buble.css
+	删除：     node_modules/docsify/themes/dark.css
+	删除：     node_modules/docsify/themes/dolphin.css
+	删除：     node_modules/docsify/themes/pure.css
+	删除：     node_modules/docsify/themes/vue.css
+	删除：     node_modules/dot-prop/index.d.ts
+	删除：     node_modules/dot-prop/index.js
+	删除：     node_modules/dot-prop/license
+	删除：     node_modules/dot-prop/package.json
+	删除：     node_modules/dot-prop/readme.md
+	删除：     node_modules/duplexer3/index.js
+	删除：     node_modules/duplexer3/license
+	删除：     node_modules/duplexer3/package.json
+	删除：     node_modules/duplexer3/readme.md
+	删除：     node_modules/ee-first/LICENSE
+	删除：     node_modules/ee-first/README.md
+	删除：     node_modules/ee-first/index.js
+	删除：     node_modules/ee-first/package.json
+	删除：     node_modules/emoji-regex/LICENSE-MIT.txt
+	删除：     node_modules/emoji-regex/README.md
+	删除：     node_modules/emoji-regex/es2015/index.js
+	删除：     node_modules/emoji-regex/es2015/text.js
+	删除：     node_modules/emoji-regex/index.d.ts
+	删除：     node_modules/emoji-regex/index.js
+	删除：     node_modules/emoji-regex/package.json
+	删除：     node_modules/emoji-regex/text.js
+	删除：     node_modules/encodeurl/HISTORY.md
+	删除：     node_modules/encodeurl/LICENSE
+	删除：     node_modules/encodeurl/README.md
+	删除：     node_modules/encodeurl/index.js
+	删除：     node_modules/encodeurl/package.json
+	删除：     node_modules/end-of-stream/LICENSE
+	删除：     node_modules/end-of-stream/README.md
+	删除：     node_modules/end-of-stream/index.js
+	删除：     node_modules/end-of-stream/package.json
+	删除：     node_modules/enquirer/LICENSE
+	删除：     node_modules/enquirer/README.md
+	删除：     node_modules/enquirer/index.d.ts
+	删除：     node_modules/enquirer/index.js
+	删除：     node_modules/enquirer/lib/ansi.js
+	删除：     node_modules/enquirer/lib/combos.js
+	删除：     node_modules/enquirer/lib/completer.js
+	删除：     node_modules/enquirer/lib/interpolate.js
+	删除：     node_modules/enquirer/lib/keypress.js
+	删除：     node_modules/enquirer/lib/placeholder.js
+	删除：     node_modules/enquirer/lib/prompt.js
+	删除：     node_modules/enquirer/lib/prompts/autocomplete.js
+	删除：     node_modules/enquirer/lib/prompts/basicauth.js
+	删除：     node_modules/enquirer/lib/prompts/confirm.js
+	删除：     node_modules/enquirer/lib/prompts/editable.js
+	删除：     node_modules/enquirer/lib/prompts/form.js
+	删除：     node_modules/enquirer/lib/prompts/index.js
+	删除：     node_modules/enquirer/lib/prompts/input.js
+	删除：     node_modules/enquirer/lib/prompts/invisible.js
+	删除：     node_modules/enquirer/lib/prompts/list.js
+	删除：     node_modules/enquirer/lib/prompts/multiselect.js
+	删除：     node_modules/enquirer/lib/prompts/numeral.js
+	删除：     node_modules/enquirer/lib/prompts/password.js
+	删除：     node_modules/enquirer/lib/prompts/quiz.js
+	删除：     node_modules/enquirer/lib/prompts/scale.js
+	删除：     node_modules/enquirer/lib/prompts/select.js
+	删除：     node_modules/enquirer/lib/prompts/snippet.js
+	删除：     node_modules/enquirer/lib/prompts/sort.js
+	删除：     node_modules/enquirer/lib/prompts/survey.js
+	删除：     node_modules/enquirer/lib/prompts/text.js
+	删除：     node_modules/enquirer/lib/prompts/toggle.js
+	删除：     node_modules/enquirer/lib/queue.js
+	删除：     node_modules/enquirer/lib/render.js
+	删除：     node_modules/enquirer/lib/roles.js
+	删除：     node_modules/enquirer/lib/state.js
+	删除：     node_modules/enquirer/lib/styles.js
+	删除：     node_modules/enquirer/lib/symbols.js
+	删除：     node_modules/enquirer/lib/theme.js
+	删除：     node_modules/enquirer/lib/timer.js
+	删除：     node_modules/enquirer/lib/types/array.js
+	删除：     node_modules/enquirer/lib/types/auth.js
+	删除：     node_modules/enquirer/lib/types/boolean.js
+	删除：     node_modules/enquirer/lib/types/index.js
+	删除：     node_modules/enquirer/lib/types/number.js
+	删除：     node_modules/enquirer/lib/types/string.js
+	删除：     node_modules/enquirer/lib/utils.js
+	删除：     node_modules/enquirer/package.json
+	删除：     node_modules/escape-goat/index.d.ts
+	删除：     node_modules/escape-goat/index.js
+	删除：     node_modules/escape-goat/license
+	删除：     node_modules/escape-goat/package.json
+	删除：     node_modules/escape-goat/readme.md
+	删除：     node_modules/escape-html/LICENSE
+	删除：     node_modules/escape-html/Readme.md
+	删除：     node_modules/escape-html/index.js
+	删除：     node_modules/escape-html/package.json
+	删除：     node_modules/escape-string-regexp/index.js
+	删除：     node_modules/escape-string-regexp/license
+	删除：     node_modules/escape-string-regexp/package.json
+	删除：     node_modules/escape-string-regexp/readme.md
+	删除：     node_modules/etag/HISTORY.md
+	删除：     node_modules/etag/LICENSE
+	删除：     node_modules/etag/README.md
+	删除：     node_modules/etag/index.js
+	删除：     node_modules/etag/package.json
+	删除：     node_modules/figlet/LICENSE.txt
+	删除：     node_modules/figlet/README.md
+	删除：     node_modules/figlet/bin/index.js
+	删除：     node_modules/figlet/dist/figlet.cjs
+	删除：     node_modules/figlet/dist/figlet.mjs
+	删除：     node_modules/figlet/dist/node-figlet.cjs
+	删除：     node_modules/figlet/dist/node-figlet.mjs
+	删除：     node_modules/figlet/dist/types/cjs/figlet.d.cts
+	删除：     node_modules/figlet/dist/types/cjs/node-figlet.d.cts
+	删除：     node_modules/figlet/dist/types/esm/figlet.d.ts
+	删除：     node_modules/figlet/dist/types/esm/node-figlet.d.ts
+	删除：     node_modules/figlet/fonts/1Row.flf
+	删除：     node_modules/figlet/fonts/3-D.flf
+	删除：     node_modules/figlet/fonts/3D Diagonal.flf
+	删除：     node_modules/figlet/fonts/3D-ASCII.flf
+	删除：     node_modules/figlet/fonts/3x5.flf
+	删除：     node_modules/figlet/fonts/4Max.flf
+	删除：     node_modules/figlet/fonts/5 Line Oblique.flf
+	删除：     node_modules/figlet/fonts/AMC 3 Line.flf
+	删除：     node_modules/figlet/fonts/AMC 3 Liv1.flf
+	删除：     node_modules/figlet/fonts/AMC AAA01.flf
+	删除：     node_modules/figlet/fonts/AMC Neko.flf
+	删除：     node_modules/figlet/fonts/AMC Razor.flf
+	删除：     node_modules/figlet/fonts/AMC Razor2.flf
+	删除：     node_modules/figlet/fonts/AMC Slash.flf
+	删除：     node_modules/figlet/fonts/AMC Slider.flf
+	删除：     node_modules/figlet/fonts/AMC Thin.flf
+	删除：     node_modules/figlet/fonts/AMC Tubes.flf
+	删除：     node_modules/figlet/fonts/AMC Untitled.flf
+	删除：     node_modules/figlet/fonts/ANSI Regular.flf
+	删除：     node_modules/figlet/fonts/ANSI Shadow.flf
+	删除：     node_modules/figlet/fonts/ASCII 12.flf
+	删除：     node_modules/figlet/fonts/ASCII 9.flf
+	删除：     node_modules/figlet/fonts/ASCII New Roman.flf
+	删除：     node_modules/figlet/fonts/Acrobatic.flf
+	删除：     node_modules/figlet/fonts/Alligator.flf
+	删除：     node_modules/figlet/fonts/Alligator2.flf
+	删除：     node_modules/figlet/fonts/Alpha.flf
+	删除：     node_modules/figlet/fonts/Alphabet.flf
+	删除：     node_modules/figlet/fonts/Arrows.flf
+	删除：     node_modules/figlet/fonts/Avatar.flf
+	删除：     node_modules/figlet/fonts/B1FF.flf
+	删除：     node_modules/figlet/fonts/Babyface Lame.flf
+	删除：     node_modules/figlet/fonts/Babyface Leet.flf
+	删除：     node_modules/figlet/fonts/Banner.flf
+	删除：     node_modules/figlet/fonts/Banner3-D.flf
+	删除：     node_modules/figlet/fonts/Banner3.flf
+	删除：     node_modules/figlet/fonts/Banner4.flf
+	删除：     node_modules/figlet/fonts/Barbwire.flf
+	删除：     node_modules/figlet/fonts/Basic.flf
+	删除：     node_modules/figlet/fonts/Bear.flf
+	删除：     node_modules/figlet/fonts/Bell.flf
+	删除：     node_modules/figlet/fonts/Benjamin.flf
+	删除：     node_modules/figlet/fonts/Big ASCII 12.flf
+	删除：     node_modules/figlet/fonts/Big ASCII 9.flf
+	删除：     node_modules/figlet/fonts/Big Chief.flf
+	删除：     node_modules/figlet/fonts/Big Money-ne.flf
+	删除：     node_modules/figlet/fonts/Big Money-nw.flf
+	删除：     node_modules/figlet/fonts/Big Money-se.flf
+	删除：     node_modules/figlet/fonts/Big Money-sw.flf
+	删除：     node_modules/figlet/fonts/Big Mono 12.flf
+	删除：     node_modules/figlet/fonts/Big Mono 9.flf
+	删除：     node_modules/figlet/fonts/Big.flf
+	删除：     node_modules/figlet/fonts/Bigfig.flf
+	删除：     node_modules/figlet/fonts/Binary.flf
+	删除：     node_modules/figlet/fonts/Block.flf
+	删除：     node_modules/figlet/fonts/Blocks.flf
+	删除：     node_modules/figlet/fonts/Bloody.flf
+	删除：     node_modules/figlet/fonts/BlurVision ASCII.flf
+	删除：     node_modules/figlet/fonts/Bolger.flf
+	删除：     node_modules/figlet/fonts/Braced.flf
+	删除：     node_modules/figlet/fonts/Bright.flf
+	删除：     node_modules/figlet/fonts/Broadway KB.flf
+	删除：     node_modules/figlet/fonts/Broadway.flf
+	删除：     node_modules/figlet/fonts/Bubble.flf
+	删除：     node_modules/figlet/fonts/Bulbhead.flf
+	删除：     node_modules/figlet/fonts/Caligraphy.flf
+	删除：     node_modules/figlet/fonts/Caligraphy2.flf
+	删除：     node_modules/figlet/fonts/Calvin S.flf
+	删除：     node_modules/figlet/fonts/Cards.flf
+	删除：     node_modules/figlet/fonts/Catwalk.flf
+	删除：     node_modules/figlet/fonts/Chiseled.flf
+	删除：     node_modules/figlet/fonts/Chunky.flf
+	删除：     node_modules/figlet/fonts/Circle.flf
+	删除：     node_modules/figlet/fonts/Coinstak.flf
+	删除：     node_modules/figlet/fonts/Cola.flf
+	删除：     node_modules/figlet/fonts/Colossal.flf
+	删除：     node_modules/figlet/fonts/Computer.flf
+	删除：     node_modules/figlet/fonts/Contessa.flf
+	删除：     node_modules/figlet/fonts/Contrast.flf
+	删除：     node_modules/figlet/fonts/Cosmike.flf
+	删除：     node_modules/figlet/fonts/Cosmike2.flf
+	删除：     node_modules/figlet/fonts/Crawford.flf
+	删除：     node_modules/figlet/fonts/Crawford2.flf
+	删除：     node_modules/figlet/fonts/Crazy.flf
+	删除：     node_modules/figlet/fonts/Cricket.flf
+	删除：     node_modules/figlet/fonts/Cursive.flf
+	删除：     node_modules/figlet/fonts/Cyberlarge.flf
+	删除：     node_modules/figlet/fonts/Cybermedium.flf
+	删除：     node_modules/figlet/fonts/Cybersmall.flf
+	删除：     node_modules/figlet/fonts/Cygnet.flf
+	删除：     node_modules/figlet/fonts/DANC4.flf
+	删除：     node_modules/figlet/fonts/DOS Rebel.flf
+	删除：     node_modules/figlet/fonts/DWhistled.flf
+	删除：     node_modules/figlet/fonts/Dancing Font.flf
+	删除：     node_modules/figlet/fonts/Decimal.flf
+	删除：     node_modules/figlet/fonts/Def Leppard.flf
+	删除：     node_modules/figlet/fonts/Delta Corps Priest 1.flf
+	删除：     node_modules/figlet/fonts/DiamFont.flf
+	删除：     node_modules/figlet/fonts/Diamond.flf
+	删除：     node_modules/figlet/fonts/Diet Cola.flf
+	删除：     node_modules/figlet/fonts/Digital.flf
+	删除：     node_modules/figlet/fonts/Doh.flf
+	删除：     node_modules/figlet/fonts/Doom.flf
+	删除：     node_modules/figlet/fonts/Dot Matrix.flf
+	删除：     node_modules/figlet/fonts/Double Shorts.flf
+	删除：     node_modules/figlet/fonts/Double.flf
+	删除：     node_modules/figlet/fonts/Dr Pepper.flf
+	删除：     node_modules/figlet/fonts/Efti Chess.flf
+	删除：     node_modules/figlet/fonts/Efti Font.flf
+	删除：     node_modules/figlet/fonts/Efti Italic.flf
+	删除：     node_modules/figlet/fonts/Efti Piti.flf
+	删除：     node_modules/figlet/fonts/Efti Robot.flf
+	删除：     node_modules/figlet/fonts/Efti Wall.flf
+	删除：     node_modules/figlet/fonts/Efti Water.flf
+	删除：     node_modules/figlet/fonts/Electronic.flf
+	删除：     node_modules/figlet/fonts/Elite.flf
+	删除：     node_modules/figlet/fonts/Emboss 2.flf
+	删除：     node_modules/figlet/fonts/Emboss.flf
+	删除：     node_modules/figlet/fonts/Epic.flf
+	删除：     node_modules/figlet/fonts/Fender.flf
+	删除：     node_modules/figlet/fonts/Filter.flf
+	删除：     node_modules/figlet/fonts/Fire Font-k.flf
+	删除：     node_modules/figlet/fonts/Fire Font-s.flf
+	删除：     node_modules/figlet/fonts/Flipped.flf
+	删除：     node_modules/figlet/fonts/Flower Power.flf
+	删除：     node_modules/figlet/fonts/Four Tops.flf
+	删除：     node_modules/figlet/fonts/Fraktur.flf
+	删除：     node_modules/figlet/fonts/Fun Face.flf
+	删除：     node_modules/figlet/fonts/Fun Faces.flf
+	删除：     node_modules/figlet/fonts/Future.flf
+	删除：     node_modules/figlet/fonts/Fuzzy.flf
+	删除：     node_modules/figlet/fonts/Georgi16.flf
+	删除：     node_modules/figlet/fonts/Georgia11.flf
+	删除：     node_modules/figlet/fonts/Ghost.flf
+	删除：     node_modules/figlet/fonts/Ghoulish.flf
+	删除：     node_modules/figlet/fonts/Glenyn.flf
+	删除：     node_modules/figlet/fonts/Goofy.flf
+	删除：     node_modules/figlet/fonts/Gothic.flf
+	删除：     node_modules/figlet/fonts/Graceful.flf
+	删除：     node_modules/figlet/fonts/Gradient.flf
+	删除：     node_modules/figlet/fonts/Graffiti.flf
+	删除：     node_modules/figlet/fonts/Greek.flf
+	删除：     node_modules/figlet/fonts/Heart Left.flf
+	删除：     node_modules/figlet/fonts/Heart Right.flf
+	删除：     node_modules/figlet/fonts/Henry 3D.flf
+	删除：     node_modules/figlet/fonts/Hex.flf
+	删除：     node_modules/figlet/fonts/Hieroglyphs.flf
+	删除：     node_modules/figlet/fonts/Hollywood.flf
+	删除：     node_modules/figlet/fonts/Horizontal Left.flf
+	删除：     node_modules/figlet/fonts/Horizontal Right.flf
+	删除：     node_modules/figlet/fonts/ICL-1900.flf
+	删除：     node_modules/figlet/fonts/Impossible.flf
+	删除：     node_modules/figlet/fonts/Invita.flf
+	删除：     node_modules/figlet/fonts/Isometric1.flf
+	删除：     node_modules/figlet/fonts/Isometric2.flf
+	删除：     node_modules/figlet/fonts/Isometric3.flf
+	删除：     node_modules/figlet/fonts/Isometric4.flf
+	删除：     node_modules/figlet/fonts/Italic.flf
+	删除：     node_modules/figlet/fonts/Ivrit.flf
+	删除：     node_modules/figlet/fonts/JS Block Letters.flf
+	删除：     node_modules/figlet/fonts/JS Bracket Letters.flf
+	删除：     node_modules/figlet/fonts/JS Capital Curves.flf
+	删除：     node_modules/figlet/fonts/JS Cursive.flf
+	删除：     node_modules/figlet/fonts/JS Stick Letters.flf
+	删除：     node_modules/figlet/fonts/Jacky.flf
+	删除：     node_modules/figlet/fonts/Jazmine.flf
+	删除：     node_modules/figlet/fonts/Jerusalem.flf
+	删除：     node_modules/figlet/fonts/Katakana.flf
+	删除：     node_modules/figlet/fonts/Kban.flf
+	删除：     node_modules/figlet/fonts/Keyboard.flf
+	删除：     node_modules/figlet/fonts/Knob.flf
+	删除：     node_modules/figlet/fonts/Konto Slant.flf
+	删除：     node_modules/figlet/fonts/Konto.flf
+	删除：     node_modules/figlet/fonts/LCD.flf
+	删除：     node_modules/figlet/fonts/Larry 3D 2.flf
+	删除：     node_modules/figlet/fonts/Larry 3D.flf
+	删除：     node_modules/figlet/fonts/Lean.flf
+	删除：     node_modules/figlet/fonts/Letter.flf
+	删除：     node_modules/figlet/fonts/Letters.flf
+	删除：     node_modules/figlet/fonts/Lil Devil.flf
+	删除：     node_modules/figlet/fonts/Line Blocks.flf
+	删除：     node_modules/figlet/fonts/Linux.flf
+	删除：     node_modules/figlet/fonts/Lockergnome.flf
+	删除：     node_modules/figlet/fonts/Madrid.flf
+	删除：     node_modules/figlet/fonts/Marquee.flf
+	删除：     node_modules/figlet/fonts/Maxfour.flf
+	删除：     node_modules/figlet/fonts/Merlin1.flf
+	删除：     node_modules/figlet/fonts/Merlin2.flf
+	删除：     node_modules/figlet/fonts/Mike.flf
+	删除：     node_modules/figlet/fonts/Mini.flf
+	删除：     node_modules/figlet/fonts/Mirror.flf
+	删除：     node_modules/figlet/fonts/Mnemonic.flf
+	删除：     node_modules/figlet/fonts/Modular.flf
+	删除：     node_modules/figlet/fonts/Mono 12.flf
+	删除：     node_modules/figlet/fonts/Mono 9.flf
+	删除：     node_modules/figlet/fonts/Morse.flf
+	删除：     node_modules/figlet/fonts/Morse2.flf
+	删除：     node_modules/figlet/fonts/Moscow.flf
+	删除：     node_modules/figlet/fonts/Mshebrew210.flf
+	删除：     node_modules/figlet/fonts/Muzzle.flf
+	删除：     node_modules/figlet/fonts/NScript.flf
+	删除：     node_modules/figlet/fonts/NT Greek.flf
+	删除：     node_modules/figlet/fonts/NV Script.flf
+	删除：     node_modules/figlet/fonts/Nancyj-Fancy.flf
+	删除：     node_modules/figlet/fonts/Nancyj-Improved.flf
+	删除：     node_modules/figlet/fonts/Nancyj-Underlined.flf
+	删除：     node_modules/figlet/fonts/Nancyj.flf
+	删除：     node_modules/figlet/fonts/Nipples.flf
+	删除：     node_modules/figlet/fonts/O8.flf
+	删除：     node_modules/figlet/fonts/OS2.flf
+	删除：     node_modules/figlet/fonts/Octal.flf
+	删除：     node_modules/figlet/fonts/Ogre.flf
+	删除：     node_modules/figlet/fonts/Old Banner.flf
+	删除：     node_modules/figlet/fonts/Pagga.flf
+	删除：     node_modules/figlet/fonts/Patorjk's Cheese.flf
+	删除：     node_modules/figlet/fonts/Patorjk-HeX.flf
+	删除：     node_modules/figlet/fonts/Pawp.flf
+	删除：     node_modules/figlet/fonts/Peaks Slant.flf
+	删除：     node_modules/figlet/fonts/Peaks.flf
+	删除：     node_modules/figlet/fonts/Pebbles.flf
+	删除：     node_modules/figlet/fonts/Pepper.flf
+	删除：     node_modules/figlet/fonts/Poison.flf
+	删除：     node_modules/figlet/fonts/Puffy.flf
+	删除：     node_modules/figlet/fonts/Puzzle.flf
+	删除：     node_modules/figlet/fonts/Pyramid.flf
+	删除：     node_modules/figlet/fonts/Rammstein.flf
+	删除：     node_modules/figlet/fonts/Rebel.flf
+	删除：     node_modules/figlet/fonts/Rectangles.flf
+	删除：     node_modules/figlet/fonts/Red Phoenix.flf
+	删除：     node_modules/figlet/fonts/Relief.flf
+	删除：     node_modules/figlet/fonts/Relief2.flf
+	删除：     node_modules/figlet/fonts/Reverse.flf
+	删除：     node_modules/figlet/fonts/Roman.flf
+	删除：     node_modules/figlet/fonts/Rot13.flf
+	删除：     node_modules/figlet/fonts/Rotated.flf
+	删除：     node_modules/figlet/fonts/Rounded.flf
+	删除：     node_modules/figlet/fonts/Rowan Cap.flf
+	删除：     node_modules/figlet/fonts/Rozzo.flf
+	删除：     node_modules/figlet/fonts/RubiFont.flf
+	删除：     node_modules/figlet/fonts/Runic.flf
+	删除：     node_modules/figlet/fonts/Runyc.flf
+	删除：     node_modules/figlet/fonts/S Blood.flf
+	删除：     node_modules/figlet/fonts/SL Script.flf
+	删除：     node_modules/figlet/fonts/Santa Clara.flf
+	删除：     node_modules/figlet/fonts/Script.flf
+	删除：     node_modules/figlet/fonts/Serifcap.flf
+	删除：     node_modules/figlet/fonts/Shaded Blocky.flf
+	删除：     node_modules/figlet/fonts/Shadow.flf
+	删除：     node_modules/figlet/fonts/Shimrod.flf
+	删除：     node_modules/figlet/fonts/Short.flf
+	删除：     node_modules/figlet/fonts/Slant Relief.flf
+	删除：     node_modules/figlet/fonts/Slant.flf
+	删除：     node_modules/figlet/fonts/Slide.flf
+	删除：     node_modules/figlet/fonts/Small ASCII 12.flf
+	删除：     node_modules/figlet/fonts/Small ASCII 9.flf
+	删除：     node_modules/figlet/fonts/Small Block.flf
+	删除：     node_modules/figlet/fonts/Small Braille.flf
+	删除：     node_modules/figlet/fonts/Small Caps.flf
+	删除：     node_modules/figlet/fonts/Small Isometric1.flf
+	删除：     node_modules/figlet/fonts/Small Keyboard.flf
+	删除：     node_modules/figlet/fonts/Small Mono 12.flf
+	删除：     node_modules/figlet/fonts/Small Mono 9.flf
+	删除：     node_modules/figlet/fonts/Small Poison.flf
+	删除：     node_modules/figlet/fonts/Small Script.flf
+	删除：     node_modules/figlet/fonts/Small Shadow.flf
+	删除：     node_modules/figlet/fonts/Small Slant.flf
+	删除：     node_modules/figlet/fonts/Small Tengwar.flf
+	删除：     node_modules/figlet/fonts/Small.flf
+	删除：     node_modules/figlet/fonts/Soft.flf
+	删除：     node_modules/figlet/fonts/Speed.flf
+	删除：     node_modules/figlet/fonts/Spliff.flf
+	删除：     node_modules/figlet/fonts/Stacey.flf
+	删除：     node_modules/figlet/fonts/Stampate.flf
+	删除：     node_modules/figlet/fonts/Stampatello.flf
+	删除：     node_modules/figlet/fonts/Standard.flf
+	删除：     node_modules/figlet/fonts/Star Strips.flf
+	删除：     node_modules/figlet/fonts/Star Wars.flf
+	删除：     node_modules/figlet/fonts/Stellar.flf
+	删除：     node_modules/figlet/fonts/Stforek.flf
+	删除：     node_modules/figlet/fonts/Stick Letters.flf
+	删除：     node_modules/figlet/fonts/Stop.flf
+	删除：     node_modules/figlet/fonts/Straight.flf
+	删除：     node_modules/figlet/fonts/Stronger Than All.flf
+	删除：     node_modules/figlet/fonts/Sub-Zero.flf
+	删除：     node_modules/figlet/fonts/Swamp Land.flf
+	删除：     node_modules/figlet/fonts/Swan.flf
+	删除：     node_modules/figlet/fonts/Sweet.flf
+	删除：     node_modules/figlet/fonts/THIS.flf
+	删除：     node_modules/figlet/fonts/Tanja.flf
+	删除：     node_modules/figlet/fonts/Tengwar.flf
+	删除：     node_modules/figlet/fonts/Term.flf
+	删除：     node_modules/figlet/fonts/Terrace.flf
+	删除：     node_modules/figlet/fonts/Test1.flf
+	删除：     node_modules/figlet/fonts/The Edge.flf
+	删除：     node_modules/figlet/fonts/Thick.flf
+	删除：     node_modules/figlet/fonts/Thin.flf
+	删除：     node_modules/figlet/fonts/Thorned.flf
+	删除：     node_modules/figlet/fonts/Three Point.flf
+	删除：     node_modules/figlet/fonts/Ticks Slant.flf
+	删除：     node_modules/figlet/fonts/Ticks.flf
+	删除：     node_modules/figlet/fonts/Tiles.flf
+	删除：     node_modules/figlet/fonts/Tinker-Toy.flf
+	删除：     node_modules/figlet/fonts/Tmplr.flf
+	删除：     node_modules/figlet/fonts/Tombstone.flf
+	删除：     node_modules/figlet/fonts/Train.flf
+	删除：     node_modules/figlet/fonts/Trek.flf
+	删除：     node_modules/figlet/fonts/Tsalagi.flf
+	删除：     node_modules/figlet/fonts/Tubular.flf
+	删除：     node_modules/figlet/fonts/Twisted.flf
+	删除：     node_modules/figlet/fonts/Two Point.flf
+	删除：     node_modules/figlet/fonts/USA Flag.flf
+	删除：     node_modules/figlet/fonts/Univers.flf
+	删除：     node_modules/figlet/fonts/Upside Down Text.flf
+	删除：     node_modules/figlet/fonts/Varsity.flf
+	删除：     node_modules/figlet/fonts/Wavescape.flf
+	删除：     node_modules/figlet/fonts/Wavy.flf
+	删除：     node_modules/figlet/fonts/Weird.flf
+	删除：     node_modules/figlet/fonts/Wet Letter.flf
+	删除：     node_modules/figlet/fonts/Whimsy.flf
+	删除：     node_modules/figlet/fonts/WideTerm.flf
+	删除：     node_modules/figlet/fonts/Wow.flf
+	删除：     node_modules/figlet/fonts/miniwi.flf
+	删除：     node_modules/figlet/importable-fonts/1Row.d.ts
+	删除：     node_modules/figlet/importable-fonts/1Row.js
+	删除：     node_modules/figlet/importable-fonts/3-D.d.ts
+	删除：     node_modules/figlet/importable-fonts/3-D.js
+	删除：     node_modules/figlet/importable-fonts/3D Diagonal.d.ts
+	删除：     node_modules/figlet/importable-fonts/3D Diagonal.js
+	删除：     node_modules/figlet/importable-fonts/3D-ASCII.d.ts
+	删除：     node_modules/figlet/importable-fonts/3D-ASCII.js
+	删除：     node_modules/figlet/importable-fonts/3x5.d.ts
+	删除：     node_modules/figlet/importable-fonts/3x5.js
+	删除：     node_modules/figlet/importable-fonts/4Max.d.ts
+	删除：     node_modules/figlet/importable-fonts/4Max.js
+	删除：     node_modules/figlet/importable-fonts/5 Line Oblique.d.ts
+	删除：     node_modules/figlet/importable-fonts/5 Line Oblique.js
+	删除：     node_modules/figlet/importable-fonts/AMC 3 Line.d.ts
+	删除：     node_modules/figlet/importable-fonts/AMC 3 Line.js
+	删除：     node_modules/figlet/importable-fonts/AMC 3 Liv1.d.ts
+	删除：     node_modules/figlet/importable-fonts/AMC 3 Liv1.js
+	删除：     node_modules/figlet/importable-fonts/AMC AAA01.d.ts
+	删除：     node_modules/figlet/importable-fonts/AMC AAA01.js
+	删除：     node_modules/figlet/importable-fonts/AMC Neko.d.ts
+	删除：     node_modules/figlet/importable-fonts/AMC Neko.js
+	删除：     node_modules/figlet/importable-fonts/AMC Razor.d.ts
+	删除：     node_modules/figlet/importable-fonts/AMC Razor.js
+	删除：     node_modules/figlet/importable-fonts/AMC Razor2.d.ts
+	删除：     node_modules/figlet/importable-fonts/AMC Razor2.js
+	删除：     node_modules/figlet/importable-fonts/AMC Slash.d.ts
+	删除：     node_modules/figlet/importable-fonts/AMC Slash.js
+	删除：     node_modules/figlet/importable-fonts/AMC Slider.d.ts
+	删除：     node_modules/figlet/importable-fonts/AMC Slider.js
+	删除：     node_modules/figlet/importable-fonts/AMC Thin.d.ts
+	删除：     node_modules/figlet/importable-fonts/AMC Thin.js
+	删除：     node_modules/figlet/importable-fonts/AMC Tubes.d.ts
+	删除：     node_modules/figlet/importable-fonts/AMC Tubes.js
+	删除：     node_modules/figlet/importable-fonts/AMC Untitled.d.ts
+	删除：     node_modules/figlet/importable-fonts/AMC Untitled.js
+	删除：     node_modules/figlet/importable-fonts/ANSI Regular.d.ts
+	删除：     node_modules/figlet/importable-fonts/ANSI Regular.js
+	删除：     node_modules/figlet/importable-fonts/ANSI Shadow.d.ts
+	删除：     node_modules/figlet/importable-fonts/ANSI Shadow.js
+	删除：     node_modules/figlet/importable-fonts/ASCII 12.d.ts
+	删除：     node_modules/figlet/importable-fonts/ASCII 12.js
+	删除：     node_modules/figlet/importable-fonts/ASCII 9.d.ts
+	删除：     node_modules/figlet/importable-fonts/ASCII 9.js
+	删除：     node_modules/figlet/importable-fonts/ASCII New Roman.d.ts
+	删除：     node_modules/figlet/importable-fonts/ASCII New Roman.js
+	删除：     node_modules/figlet/importable-fonts/Acrobatic.d.ts
+	删除：     node_modules/figlet/importable-fonts/Acrobatic.js
+	删除：     node_modules/figlet/importable-fonts/Alligator.d.ts
+	删除：     node_modules/figlet/importable-fonts/Alligator.js
+	删除：     node_modules/figlet/importable-fonts/Alligator2.d.ts
+	删除：     node_modules/figlet/importable-fonts/Alligator2.js
+	删除：     node_modules/figlet/importable-fonts/Alpha.d.ts
+	删除：     node_modules/figlet/importable-fonts/Alpha.js
+	删除：     node_modules/figlet/importable-fonts/Alphabet.d.ts
+	删除：     node_modules/figlet/importable-fonts/Alphabet.js
+	删除：     node_modules/figlet/importable-fonts/Arrows.d.ts
+	删除：     node_modules/figlet/importable-fonts/Arrows.js
+	删除：     node_modules/figlet/importable-fonts/Avatar.d.ts
+	删除：     node_modules/figlet/importable-fonts/Avatar.js
+	删除：     node_modules/figlet/importable-fonts/B1FF.d.ts
+	删除：     node_modules/figlet/importable-fonts/B1FF.js
+	删除：     node_modules/figlet/importable-fonts/Babyface Lame.d.ts
+	删除：     node_modules/figlet/importable-fonts/Babyface Lame.js
+	删除：     node_modules/figlet/importable-fonts/Babyface Leet.d.ts
+	删除：     node_modules/figlet/importable-fonts/Babyface Leet.js
+	删除：     node_modules/figlet/importable-fonts/Banner.d.ts
+	删除：     node_modules/figlet/importable-fonts/Banner.js
+	删除：     node_modules/figlet/importable-fonts/Banner3-D.d.ts
+	删除：     node_modules/figlet/importable-fonts/Banner3-D.js
+	删除：     node_modules/figlet/importable-fonts/Banner3.d.ts
+	删除：     node_modules/figlet/importable-fonts/Banner3.js
+	删除：     node_modules/figlet/importable-fonts/Banner4.d.ts
+	删除：     node_modules/figlet/importable-fonts/Banner4.js
+	删除：     node_modules/figlet/importable-fonts/Barbwire.d.ts
+	删除：     node_modules/figlet/importable-fonts/Barbwire.js
+	删除：     node_modules/figlet/importable-fonts/Basic.d.ts
+	删除：     node_modules/figlet/importable-fonts/Basic.js
+	删除：     node_modules/figlet/importable-fonts/Bear.d.ts
+	删除：     node_modules/figlet/importable-fonts/Bear.js
+	删除：     node_modules/figlet/importable-fonts/Bell.d.ts
+	删除：     node_modules/figlet/importable-fonts/Bell.js
+	删除：     node_modules/figlet/importable-fonts/Benjamin.d.ts
+	删除：     node_modules/figlet/importable-fonts/Benjamin.js
+	删除：     node_modules/figlet/importable-fonts/Big ASCII 12.d.ts
+	删除：     node_modules/figlet/importable-fonts/Big ASCII 12.js
+	删除：     node_modules/figlet/importable-fonts/Big ASCII 9.d.ts
+	删除：     node_modules/figlet/importable-fonts/Big ASCII 9.js
+	删除：     node_modules/figlet/importable-fonts/Big Chief.d.ts
+	删除：     node_modules/figlet/importable-fonts/Big Chief.js
+	删除：     node_modules/figlet/importable-fonts/Big Money-ne.d.ts
+	删除：     node_modules/figlet/importable-fonts/Big Money-ne.js
+	删除：     node_modules/figlet/importable-fonts/Big Money-nw.d.ts
+	删除：     node_modules/figlet/importable-fonts/Big Money-nw.js
+	删除：     node_modules/figlet/importable-fonts/Big Money-se.d.ts
+	删除：     node_modules/figlet/importable-fonts/Big Money-se.js
+	删除：     node_modules/figlet/importable-fonts/Big Money-sw.d.ts
+	删除：     node_modules/figlet/importable-fonts/Big Money-sw.js
+	删除：     node_modules/figlet/importable-fonts/Big Mono 12.d.ts
+	删除：     node_modules/figlet/importable-fonts/Big Mono 12.js
+	删除：     node_modules/figlet/importable-fonts/Big Mono 9.d.ts
+	删除：     node_modules/figlet/importable-fonts/Big Mono 9.js
+	删除：     node_modules/figlet/importable-fonts/Big.d.ts
+	删除：     node_modules/figlet/importable-fonts/Big.js
+	删除：     node_modules/figlet/importable-fonts/Bigfig.d.ts
+	删除：     node_modules/figlet/importable-fonts/Bigfig.js
+	删除：     node_modules/figlet/importable-fonts/Binary.d.ts
+	删除：     node_modules/figlet/importable-fonts/Binary.js
+	删除：     node_modules/figlet/importable-fonts/Block.d.ts
+	删除：     node_modules/figlet/importable-fonts/Block.js
+	删除：     node_modules/figlet/importable-fonts/Blocks.d.ts
+	删除：     node_modules/figlet/importable-fonts/Blocks.js
+	删除：     node_modules/figlet/importable-fonts/Bloody.d.ts
+	删除：     node_modules/figlet/importable-fonts/Bloody.js
+	删除：     node_modules/figlet/importable-fonts/BlurVision ASCII.d.ts
+	删除：     node_modules/figlet/importable-fonts/BlurVision ASCII.js
+	删除：     node_modules/figlet/importable-fonts/Bolger.d.ts
+	删除：     node_modules/figlet/importable-fonts/Bolger.js
+	删除：     node_modules/figlet/importable-fonts/Braced.d.ts
+	删除：     node_modules/figlet/importable-fonts/Braced.js
+	删除：     node_modules/figlet/importable-fonts/Bright.d.ts
+	删除：     node_modules/figlet/importable-fonts/Bright.js
+	删除：     node_modules/figlet/importable-fonts/Broadway KB.d.ts
+	删除：     node_modules/figlet/importable-fonts/Broadway KB.js
+	删除：     node_modules/figlet/importable-fonts/Broadway.d.ts
+	删除：     node_modules/figlet/importable-fonts/Broadway.js
+	删除：     node_modules/figlet/importable-fonts/Bubble.d.ts
+	删除：     node_modules/figlet/importable-fonts/Bubble.js
+	删除：     node_modules/figlet/importable-fonts/Bulbhead.d.ts
+	删除：     node_modules/figlet/importable-fonts/Bulbhead.js
+	删除：     node_modules/figlet/importable-fonts/Caligraphy.d.ts
+	删除：     node_modules/figlet/importable-fonts/Caligraphy.js
+	删除：     node_modules/figlet/importable-fonts/Caligraphy2.d.ts
+	删除：     node_modules/figlet/importable-fonts/Caligraphy2.js
+	删除：     node_modules/figlet/importable-fonts/Calvin S.d.ts
+	删除：     node_modules/figlet/importable-fonts/Calvin S.js
+	删除：     node_modules/figlet/importable-fonts/Cards.d.ts
+	删除：     node_modules/figlet/importable-fonts/Cards.js
+	删除：     node_modules/figlet/importable-fonts/Catwalk.d.ts
+	删除：     node_modules/figlet/importable-fonts/Catwalk.js
+	删除：     node_modules/figlet/importable-fonts/Chiseled.d.ts
+	删除：     node_modules/figlet/importable-fonts/Chiseled.js
+	删除：     node_modules/figlet/importable-fonts/Chunky.d.ts
+	删除：     node_modules/figlet/importable-fonts/Chunky.js
+	删除：     node_modules/figlet/importable-fonts/Circle.d.ts
+	删除：     node_modules/figlet/importable-fonts/Circle.js
+	删除：     node_modules/figlet/importable-fonts/Coinstak.d.ts
+	删除：     node_modules/figlet/importable-fonts/Coinstak.js
+	删除：     node_modules/figlet/importable-fonts/Cola.d.ts
+	删除：     node_modules/figlet/importable-fonts/Cola.js
+	删除：     node_modules/figlet/importable-fonts/Colossal.d.ts
+	删除：     node_modules/figlet/importable-fonts/Colossal.js
+	删除：     node_modules/figlet/importable-fonts/Computer.d.ts
+	删除：     node_modules/figlet/importable-fonts/Computer.js
+	删除：     node_modules/figlet/importable-fonts/Contessa.d.ts
+	删除：     node_modules/figlet/importable-fonts/Contessa.js
+	删除：     node_modules/figlet/importable-fonts/Contrast.d.ts
+	删除：     node_modules/figlet/importable-fonts/Contrast.js
+	删除：     node_modules/figlet/importable-fonts/Cosmike.d.ts
+	删除：     node_modules/figlet/importable-fonts/Cosmike.js
+	删除：     node_modules/figlet/importable-fonts/Cosmike2.d.ts
+	删除：     node_modules/figlet/importable-fonts/Cosmike2.js
+	删除：     node_modules/figlet/importable-fonts/Crawford.d.ts
+	删除：     node_modules/figlet/importable-fonts/Crawford.js
+	删除：     node_modules/figlet/importable-fonts/Crawford2.d.ts
+	删除：     node_modules/figlet/importable-fonts/Crawford2.js
+	删除：     node_modules/figlet/importable-fonts/Crazy.d.ts
+	删除：     node_modules/figlet/importable-fonts/Crazy.js
+	删除：     node_modules/figlet/importable-fonts/Cricket.d.ts
+	删除：     node_modules/figlet/importable-fonts/Cricket.js
+	删除：     node_modules/figlet/importable-fonts/Cursive.d.ts
+	删除：     node_modules/figlet/importable-fonts/Cursive.js
+	删除：     node_modules/figlet/importable-fonts/Cyberlarge.d.ts
+	删除：     node_modules/figlet/importable-fonts/Cyberlarge.js
+	删除：     node_modules/figlet/importable-fonts/Cybermedium.d.ts
+	删除：     node_modules/figlet/importable-fonts/Cybermedium.js
+	删除：     node_modules/figlet/importable-fonts/Cybersmall.d.ts
+	删除：     node_modules/figlet/importable-fonts/Cybersmall.js
+	删除：     node_modules/figlet/importable-fonts/Cygnet.d.ts
+	删除：     node_modules/figlet/importable-fonts/Cygnet.js
+	删除：     node_modules/figlet/importable-fonts/DANC4.d.ts
+	删除：     node_modules/figlet/importable-fonts/DANC4.js
+	删除：     node_modules/figlet/importable-fonts/DOS Rebel.d.ts
+	删除：     node_modules/figlet/importable-fonts/DOS Rebel.js
+	删除：     node_modules/figlet/importable-fonts/DWhistled.d.ts
+	删除：     node_modules/figlet/importable-fonts/DWhistled.js
+	删除：     node_modules/figlet/importable-fonts/Dancing Font.d.ts
+	删除：     node_modules/figlet/importable-fonts/Dancing Font.js
+	删除：     node_modules/figlet/importable-fonts/Decimal.d.ts
+	删除：     node_modules/figlet/importable-fonts/Decimal.js
+	删除：     node_modules/figlet/importable-fonts/Def Leppard.d.ts
+	删除：     node_modules/figlet/importable-fonts/Def Leppard.js
+	删除：     node_modules/figlet/importable-fonts/Delta Corps Priest 1.d.ts
+	删除：     node_modules/figlet/importable-fonts/Delta Corps Priest 1.js
+	删除：     node_modules/figlet/importable-fonts/DiamFont.d.ts
+	删除：     node_modules/figlet/importable-fonts/DiamFont.js
+	删除：     node_modules/figlet/importable-fonts/Diamond.d.ts
+	删除：     node_modules/figlet/importable-fonts/Diamond.js
+	删除：     node_modules/figlet/importable-fonts/Diet Cola.d.ts
+	删除：     node_modules/figlet/importable-fonts/Diet Cola.js
+	删除：     node_modules/figlet/importable-fonts/Digital.d.ts
+	删除：     node_modules/figlet/importable-fonts/Digital.js
+	删除：     node_modules/figlet/importable-fonts/Doh.d.ts
+	删除：     node_modules/figlet/importable-fonts/Doh.js
+	删除：     node_modules/figlet/importable-fonts/Doom.d.ts
+	删除：     node_modules/figlet/importable-fonts/Doom.js
+	删除：     node_modules/figlet/importable-fonts/Dot Matrix.d.ts
+	删除：     node_modules/figlet/importable-fonts/Dot Matrix.js
+	删除：     node_modules/figlet/importable-fonts/Double Shorts.d.ts
+	删除：     node_modules/figlet/importable-fonts/Double Shorts.js
+	删除：     node_modules/figlet/importable-fonts/Double.d.ts
+	删除：     node_modules/figlet/importable-fonts/Double.js
+	删除：     node_modules/figlet/importable-fonts/Dr Pepper.d.ts
+	删除：     node_modules/figlet/importable-fonts/Dr Pepper.js
+	删除：     node_modules/figlet/importable-fonts/Efti Chess.d.ts
+	删除：     node_modules/figlet/importable-fonts/Efti Chess.js
+	删除：     node_modules/figlet/importable-fonts/Efti Font.d.ts
+	删除：     node_modules/figlet/importable-fonts/Efti Font.js
+	删除：     node_modules/figlet/importable-fonts/Efti Italic.d.ts
+	删除：     node_modules/figlet/importable-fonts/Efti Italic.js
+	删除：     node_modules/figlet/importable-fonts/Efti Piti.d.ts
+	删除：     node_modules/figlet/importable-fonts/Efti Piti.js
+	删除：     node_modules/figlet/importable-fonts/Efti Robot.d.ts
+	删除：     node_modules/figlet/importable-fonts/Efti Robot.js
+	删除：     node_modules/figlet/importable-fonts/Efti Wall.d.ts
+	删除：     node_modules/figlet/importable-fonts/Efti Wall.js
+	删除：     node_modules/figlet/importable-fonts/Efti Water.d.ts
+	删除：     node_modules/figlet/importable-fonts/Efti Water.js
+	删除：     node_modules/figlet/importable-fonts/Electronic.d.ts
+	删除：     node_modules/figlet/importable-fonts/Electronic.js
+	删除：     node_modules/figlet/importable-fonts/Elite.d.ts
+	删除：     node_modules/figlet/importable-fonts/Elite.js
+	删除：     node_modules/figlet/importable-fonts/Emboss 2.d.ts
+	删除：     node_modules/figlet/importable-fonts/Emboss 2.js
+	删除：     node_modules/figlet/importable-fonts/Emboss.d.ts
+	删除：     node_modules/figlet/importable-fonts/Emboss.js
+	删除：     node_modules/figlet/importable-fonts/Epic.d.ts
+	删除：     node_modules/figlet/importable-fonts/Epic.js
+	删除：     node_modules/figlet/importable-fonts/Fender.d.ts
+	删除：     node_modules/figlet/importable-fonts/Fender.js
+	删除：     node_modules/figlet/importable-fonts/Filter.d.ts
+	删除：     node_modules/figlet/importable-fonts/Filter.js
+	删除：     node_modules/figlet/importable-fonts/Fire Font-k.d.ts
+	删除：     node_modules/figlet/importable-fonts/Fire Font-k.js
+	删除：     node_modules/figlet/importable-fonts/Fire Font-s.d.ts
+	删除：     node_modules/figlet/importable-fonts/Fire Font-s.js
+	删除：     node_modules/figlet/importable-fonts/Flipped.d.ts
+	删除：     node_modules/figlet/importable-fonts/Flipped.js
+	删除：     node_modules/figlet/importable-fonts/Flower Power.d.ts
+	删除：     node_modules/figlet/importable-fonts/Flower Power.js
+	删除：     node_modules/figlet/importable-fonts/Four Tops.d.ts
+	删除：     node_modules/figlet/importable-fonts/Four Tops.js
+	删除：     node_modules/figlet/importable-fonts/Fraktur.d.ts
+	删除：     node_modules/figlet/importable-fonts/Fraktur.js
+	删除：     node_modules/figlet/importable-fonts/Fun Face.d.ts
+	删除：     node_modules/figlet/importable-fonts/Fun Face.js
+	删除：     node_modules/figlet/importable-fonts/Fun Faces.d.ts
+	删除：     node_modules/figlet/importable-fonts/Fun Faces.js
+	删除：     node_modules/figlet/importable-fonts/Future.d.ts
+	删除：     node_modules/figlet/importable-fonts/Future.js
+	删除：     node_modules/figlet/importable-fonts/Fuzzy.d.ts
+	删除：     node_modules/figlet/importable-fonts/Fuzzy.js
+	删除：     node_modules/figlet/importable-fonts/Georgi16.d.ts
+	删除：     node_modules/figlet/importable-fonts/Georgi16.js
+	删除：     node_modules/figlet/importable-fonts/Georgia11.d.ts
+	删除：     node_modules/figlet/importable-fonts/Georgia11.js
+	删除：     node_modules/figlet/importable-fonts/Ghost.d.ts
+	删除：     node_modules/figlet/importable-fonts/Ghost.js
+	删除：     node_modules/figlet/importable-fonts/Ghoulish.d.ts
+	删除：     node_modules/figlet/importable-fonts/Ghoulish.js
+	删除：     node_modules/figlet/importable-fonts/Glenyn.d.ts
+	删除：     node_modules/figlet/importable-fonts/Glenyn.js
+	删除：     node_modules/figlet/importable-fonts/Goofy.d.ts
+	删除：     node_modules/figlet/importable-fonts/Goofy.js
+	删除：     node_modules/figlet/importable-fonts/Gothic.d.ts
+	删除：     node_modules/figlet/importable-fonts/Gothic.js
+	删除：     node_modules/figlet/importable-fonts/Graceful.d.ts
+	删除：     node_modules/figlet/importable-fonts/Graceful.js
+	删除：     node_modules/figlet/importable-fonts/Gradient.d.ts
+	删除：     node_modules/figlet/importable-fonts/Gradient.js
+	删除：     node_modules/figlet/importable-fonts/Graffiti.d.ts
+	删除：     node_modules/figlet/importable-fonts/Graffiti.js
+	删除：     node_modules/figlet/importable-fonts/Greek.d.ts
+	删除：     node_modules/figlet/importable-fonts/Greek.js
+	删除：     node_modules/figlet/importable-fonts/Heart Left.d.ts
+	删除：     node_modules/figlet/importable-fonts/Heart Left.js
+	删除：     node_modules/figlet/importable-fonts/Heart Right.d.ts
+	删除：     node_modules/figlet/importable-fonts/Heart Right.js
+	删除：     node_modules/figlet/importable-fonts/Henry 3D.d.ts
+	删除：     node_modules/figlet/importable-fonts/Henry 3D.js
+	删除：     node_modules/figlet/importable-fonts/Hex.d.ts
+	删除：     node_modules/figlet/importable-fonts/Hex.js
+	删除：     node_modules/figlet/importable-fonts/Hieroglyphs.d.ts
+	删除：     node_modules/figlet/importable-fonts/Hieroglyphs.js
+	删除：     node_modules/figlet/importable-fonts/Hollywood.d.ts
+	删除：     node_modules/figlet/importable-fonts/Hollywood.js
+	删除：     node_modules/figlet/importable-fonts/Horizontal Left.d.ts
+	删除：     node_modules/figlet/importable-fonts/Horizontal Left.js
+	删除：     node_modules/figlet/importable-fonts/Horizontal Right.d.ts
+	删除：     node_modules/figlet/importable-fonts/Horizontal Right.js
+	删除：     node_modules/figlet/importable-fonts/ICL-1900.d.ts
+	删除：     node_modules/figlet/importable-fonts/ICL-1900.js
+	删除：     node_modules/figlet/importable-fonts/Impossible.d.ts
+	删除：     node_modules/figlet/importable-fonts/Impossible.js
+	删除：     node_modules/figlet/importable-fonts/Invita.d.ts
+	删除：     node_modules/figlet/importable-fonts/Invita.js
+	删除：     node_modules/figlet/importable-fonts/Isometric1.d.ts
+	删除：     node_modules/figlet/importable-fonts/Isometric1.js
+	删除：     node_modules/figlet/importable-fonts/Isometric2.d.ts
+	删除：     node_modules/figlet/importable-fonts/Isometric2.js
+	删除：     node_modules/figlet/importable-fonts/Isometric3.d.ts
+	删除：     node_modules/figlet/importable-fonts/Isometric3.js
+	删除：     node_modules/figlet/importable-fonts/Isometric4.d.ts
+	删除：     node_modules/figlet/importable-fonts/Isometric4.js
+	删除：     node_modules/figlet/importable-fonts/Italic.d.ts
+	删除：     node_modules/figlet/importable-fonts/Italic.js
+	删除：     node_modules/figlet/importable-fonts/Ivrit.d.ts
+	删除：     node_modules/figlet/importable-fonts/Ivrit.js
+	删除：     node_modules/figlet/importable-fonts/JS Block Letters.d.ts
+	删除：     node_modules/figlet/importable-fonts/JS Block Letters.js
+	删除：     node_modules/figlet/importable-fonts/JS Bracket Letters.d.ts
+	删除：     node_modules/figlet/importable-fonts/JS Bracket Letters.js
+	删除：     node_modules/figlet/importable-fonts/JS Capital Curves.d.ts
+	删除：     node_modules/figlet/importable-fonts/JS Capital Curves.js
+	删除：     node_modules/figlet/importable-fonts/JS Cursive.d.ts
+	删除：     node_modules/figlet/importable-fonts/JS Cursive.js
+	删除：     node_modules/figlet/importable-fonts/JS Stick Letters.d.ts
+	删除：     node_modules/figlet/importable-fonts/JS Stick Letters.js
+	删除：     node_modules/figlet/importable-fonts/Jacky.d.ts
+	删除：     node_modules/figlet/importable-fonts/Jacky.js
+	删除：     node_modules/figlet/importable-fonts/Jazmine.d.ts
+	删除：     node_modules/figlet/importable-fonts/Jazmine.js
+	删除：     node_modules/figlet/importable-fonts/Jerusalem.d.ts
+	删除：     node_modules/figlet/importable-fonts/Jerusalem.js
+	删除：     node_modules/figlet/importable-fonts/Katakana.d.ts
+	删除：     node_modules/figlet/importable-fonts/Katakana.js
+	删除：     node_modules/figlet/importable-fonts/Kban.d.ts
+	删除：     node_modules/figlet/importable-fonts/Kban.js
+	删除：     node_modules/figlet/importable-fonts/Keyboard.d.ts
+	删除：     node_modules/figlet/importable-fonts/Keyboard.js
+	删除：     node_modules/figlet/importable-fonts/Knob.d.ts
+	删除：     node_modules/figlet/importable-fonts/Knob.js
+	删除：     node_modules/figlet/importable-fonts/Konto Slant.d.ts
+	删除：     node_modules/figlet/importable-fonts/Konto Slant.js
+	删除：     node_modules/figlet/importable-fonts/Konto.d.ts
+	删除：     node_modules/figlet/importable-fonts/Konto.js
+	删除：     node_modules/figlet/importable-fonts/LCD.d.ts
+	删除：     node_modules/figlet/importable-fonts/LCD.js
+	删除：     node_modules/figlet/importable-fonts/Larry 3D 2.d.ts
+	删除：     node_modules/figlet/importable-fonts/Larry 3D 2.js
+	删除：     node_modules/figlet/importable-fonts/Larry 3D.d.ts
+	删除：     node_modules/figlet/importable-fonts/Larry 3D.js
+	删除：     node_modules/figlet/importable-fonts/Lean.d.ts
+	删除：     node_modules/figlet/importable-fonts/Lean.js
+	删除：     node_modules/figlet/importable-fonts/Letter.d.ts
+	删除：     node_modules/figlet/importable-fonts/Letter.js
+	删除：     node_modules/figlet/importable-fonts/Letters.d.ts
+	删除：     node_modules/figlet/importable-fonts/Letters.js
+	删除：     node_modules/figlet/importable-fonts/Lil Devil.d.ts
+	删除：     node_modules/figlet/importable-fonts/Lil Devil.js
+	删除：     node_modules/figlet/importable-fonts/Line Blocks.d.ts
+	删除：     node_modules/figlet/importable-fonts/Line Blocks.js
+	删除：     node_modules/figlet/importable-fonts/Linux.d.ts
+	删除：     node_modules/figlet/importable-fonts/Linux.js
+	删除：     node_modules/figlet/importable-fonts/Lockergnome.d.ts
+	删除：     node_modules/figlet/importable-fonts/Lockergnome.js
+	删除：     node_modules/figlet/importable-fonts/Madrid.d.ts
+	删除：     node_modules/figlet/importable-fonts/Madrid.js
+	删除：     node_modules/figlet/importable-fonts/Marquee.d.ts
+	删除：     node_modules/figlet/importable-fonts/Marquee.js
+	删除：     node_modules/figlet/importable-fonts/Maxfour.d.ts
+	删除：     node_modules/figlet/importable-fonts/Maxfour.js
+	删除：     node_modules/figlet/importable-fonts/Merlin1.d.ts
+	删除：     node_modules/figlet/importable-fonts/Merlin1.js
+	删除：     node_modules/figlet/importable-fonts/Merlin2.d.ts
+	删除：     node_modules/figlet/importable-fonts/Merlin2.js
+	删除：     node_modules/figlet/importable-fonts/Mike.d.ts
+	删除：     node_modules/figlet/importable-fonts/Mike.js
+	删除：     node_modules/figlet/importable-fonts/Mini.d.ts
+	删除：     node_modules/figlet/importable-fonts/Mini.js
+	删除：     node_modules/figlet/importable-fonts/Mirror.d.ts
+	删除：     node_modules/figlet/importable-fonts/Mirror.js
+	删除：     node_modules/figlet/importable-fonts/Mnemonic.d.ts
+	删除：     node_modules/figlet/importable-fonts/Mnemonic.js
+	删除：     node_modules/figlet/importable-fonts/Modular.d.ts
+	删除：     node_modules/figlet/importable-fonts/Modular.js
+	删除：     node_modules/figlet/importable-fonts/Mono 12.d.ts
+	删除：     node_modules/figlet/importable-fonts/Mono 12.js
+	删除：     node_modules/figlet/importable-fonts/Mono 9.d.ts
+	删除：     node_modules/figlet/importable-fonts/Mono 9.js
+	删除：     node_modules/figlet/importable-fonts/Morse.d.ts
+	删除：     node_modules/figlet/importable-fonts/Morse.js
+	删除：     node_modules/figlet/importable-fonts/Morse2.d.ts
+	删除：     node_modules/figlet/importable-fonts/Morse2.js
+	删除：     node_modules/figlet/importable-fonts/Moscow.d.ts
+	删除：     node_modules/figlet/importable-fonts/Moscow.js
+	删除：     node_modules/figlet/importable-fonts/Mshebrew210.d.ts
+	删除：     node_modules/figlet/importable-fonts/Mshebrew210.js
+	删除：     node_modules/figlet/importable-fonts/Muzzle.d.ts
+	删除：     node_modules/figlet/importable-fonts/Muzzle.js
+	删除：     node_modules/figlet/importable-fonts/NScript.d.ts
+	删除：     node_modules/figlet/importable-fonts/NScript.js
+	删除：     node_modules/figlet/importable-fonts/NT Greek.d.ts
+	删除：     node_modules/figlet/importable-fonts/NT Greek.js
+	删除：     node_modules/figlet/importable-fonts/NV Script.d.ts
+	删除：     node_modules/figlet/importable-fonts/NV Script.js
+	删除：     node_modules/figlet/importable-fonts/Nancyj-Fancy.d.ts
+	删除：     node_modules/figlet/importable-fonts/Nancyj-Fancy.js
+	删除：     node_modules/figlet/importable-fonts/Nancyj-Improved.d.ts
+	删除：     node_modules/figlet/importable-fonts/Nancyj-Improved.js
+	删除：     node_modules/figlet/importable-fonts/Nancyj-Underlined.d.ts
+	删除：     node_modules/figlet/importable-fonts/Nancyj-Underlined.js
+	删除：     node_modules/figlet/importable-fonts/Nancyj.d.ts
+	删除：     node_modules/figlet/importable-fonts/Nancyj.js
+	删除：     node_modules/figlet/importable-fonts/Nipples.d.ts
+	删除：     node_modules/figlet/importable-fonts/Nipples.js
+	删除：     node_modules/figlet/importable-fonts/O8.d.ts
+	删除：     node_modules/figlet/importable-fonts/O8.js
+	删除：     node_modules/figlet/importable-fonts/OS2.d.ts
+	删除：     node_modules/figlet/importable-fonts/OS2.js
+	删除：     node_modules/figlet/importable-fonts/Octal.d.ts
+	删除：     node_modules/figlet/importable-fonts/Octal.js
+	删除：     node_modules/figlet/importable-fonts/Ogre.d.ts
+	删除：     node_modules/figlet/importable-fonts/Ogre.js
+	删除：     node_modules/figlet/importable-fonts/Old Banner.d.ts
+	删除：     node_modules/figlet/importable-fonts/Old Banner.js
+	删除：     node_modules/figlet/importable-fonts/Pagga.d.ts
+	删除：     node_modules/figlet/importable-fonts/Pagga.js
+	删除：     node_modules/figlet/importable-fonts/Patorjk's Cheese.d.ts
+	删除：     node_modules/figlet/importable-fonts/Patorjk's Cheese.js
+	删除：     node_modules/figlet/importable-fonts/Patorjk-HeX.d.ts
+	删除：     node_modules/figlet/importable-fonts/Patorjk-HeX.js
+	删除：     node_modules/figlet/importable-fonts/Pawp.d.ts
+	删除：     node_modules/figlet/importable-fonts/Pawp.js
+	删除：     node_modules/figlet/importable-fonts/Peaks Slant.d.ts
+	删除：     node_modules/figlet/importable-fonts/Peaks Slant.js
+	删除：     node_modules/figlet/importable-fonts/Peaks.d.ts
+	删除：     node_modules/figlet/importable-fonts/Peaks.js
+	删除：     node_modules/figlet/importable-fonts/Pebbles.d.ts
+	删除：     node_modules/figlet/importable-fonts/Pebbles.js
+	删除：     node_modules/figlet/importable-fonts/Pepper.d.ts
+	删除：     node_modules/figlet/importable-fonts/Pepper.js
+	删除：     node_modules/figlet/importable-fonts/Poison.d.ts
+	删除：     node_modules/figlet/importable-fonts/Poison.js
+	删除：     node_modules/figlet/importable-fonts/Puffy.d.ts
+	删除：     node_modules/figlet/importable-fonts/Puffy.js
+	删除：     node_modules/figlet/importable-fonts/Puzzle.d.ts
+	删除：     node_modules/figlet/importable-fonts/Puzzle.js
+	删除：     node_modules/figlet/importable-fonts/Pyramid.d.ts
+	删除：     node_modules/figlet/importable-fonts/Pyramid.js
+	删除：     node_modules/figlet/importable-fonts/Rammstein.d.ts
+	删除：     node_modules/figlet/importable-fonts/Rammstein.js
+	删除：     node_modules/figlet/importable-fonts/Rebel.d.ts
+	删除：     node_modules/figlet/importable-fonts/Rebel.js
+	删除：     node_modules/figlet/importable-fonts/Rectangles.d.ts
+	删除：     node_modules/figlet/importable-fonts/Rectangles.js
+	删除：     node_modules/figlet/importable-fonts/Red Phoenix.d.ts
+	删除：     node_modules/figlet/importable-fonts/Red Phoenix.js
+	删除：     node_modules/figlet/importable-fonts/Relief.d.ts
+	删除：     node_modules/figlet/importable-fonts/Relief.js
+	删除：     node_modules/figlet/importable-fonts/Relief2.d.ts
+	删除：     node_modules/figlet/importable-fonts/Relief2.js
+	删除：     node_modules/figlet/importable-fonts/Reverse.d.ts
+	删除：     node_modules/figlet/importable-fonts/Reverse.js
+	删除：     node_modules/figlet/importable-fonts/Roman.d.ts
+	删除：     node_modules/figlet/importable-fonts/Roman.js
+	删除：     node_modules/figlet/importable-fonts/Rot13.d.ts
+	删除：     node_modules/figlet/importable-fonts/Rot13.js
+	删除：     node_modules/figlet/importable-fonts/Rotated.d.ts
+	删除：     node_modules/figlet/importable-fonts/Rotated.js
+	删除：     node_modules/figlet/importable-fonts/Rounded.d.ts
+	删除：     node_modules/figlet/importable-fonts/Rounded.js
+	删除：     node_modules/figlet/importable-fonts/Rowan Cap.d.ts
+	删除：     node_modules/figlet/importable-fonts/Rowan Cap.js
+	删除：     node_modules/figlet/importable-fonts/Rozzo.d.ts
+	删除：     node_modules/figlet/importable-fonts/Rozzo.js
+	删除：     node_modules/figlet/importable-fonts/RubiFont.d.ts
+	删除：     node_modules/figlet/importable-fonts/RubiFont.js
+	删除：     node_modules/figlet/importable-fonts/Runic.d.ts
+	删除：     node_modules/figlet/importable-fonts/Runic.js
+	删除：     node_modules/figlet/importable-fonts/Runyc.d.ts
+	删除：     node_modules/figlet/importable-fonts/Runyc.js
+	删除：     node_modules/figlet/importable-fonts/S Blood.d.ts
+	删除：     node_modules/figlet/importable-fonts/S Blood.js
+	删除：     node_modules/figlet/importable-fonts/SL Script.d.ts
+	删除：     node_modules/figlet/importable-fonts/SL Script.js
+	删除：     node_modules/figlet/importable-fonts/Santa Clara.d.ts
+	删除：     node_modules/figlet/importable-fonts/Santa Clara.js
+	删除：     node_modules/figlet/importable-fonts/Script.d.ts
+	删除：     node_modules/figlet/importable-fonts/Script.js
+	删除：     node_modules/figlet/importable-fonts/Serifcap.d.ts
+	删除：     node_modules/figlet/importable-fonts/Serifcap.js
+	删除：     node_modules/figlet/importable-fonts/Shaded Blocky.d.ts
+	删除：     node_modules/figlet/importable-fonts/Shaded Blocky.js
+	删除：     node_modules/figlet/importable-fonts/Shadow.d.ts
+	删除：     node_modules/figlet/importable-fonts/Shadow.js
+	删除：     node_modules/figlet/importable-fonts/Shimrod.d.ts
+	删除：     node_modules/figlet/importable-fonts/Shimrod.js
+	删除：     node_modules/figlet/importable-fonts/Short.d.ts
+	删除：     node_modules/figlet/importable-fonts/Short.js
+	删除：     node_modules/figlet/importable-fonts/Slant Relief.d.ts
+	删除：     node_modules/figlet/importable-fonts/Slant Relief.js
+	删除：     node_modules/figlet/importable-fonts/Slant.d.ts
+	删除：     node_modules/figlet/importable-fonts/Slant.js
+	删除：     node_modules/figlet/importable-fonts/Slide.d.ts
+	删除：     node_modules/figlet/importable-fonts/Slide.js
+	删除：     node_modules/figlet/importable-fonts/Small ASCII 12.d.ts
+	删除：     node_modules/figlet/importable-fonts/Small ASCII 12.js
+	删除：     node_modules/figlet/importable-fonts/Small ASCII 9.d.ts
+	删除：     node_modules/figlet/importable-fonts/Small ASCII 9.js
+	删除：     node_modules/figlet/importable-fonts/Small Block.d.ts
+	删除：     node_modules/figlet/importable-fonts/Small Block.js
+	删除：     node_modules/figlet/importable-fonts/Small Braille.d.ts
+	删除：     node_modules/figlet/importable-fonts/Small Braille.js
+	删除：     node_modules/figlet/importable-fonts/Small Caps.d.ts
+	删除：     node_modules/figlet/importable-fonts/Small Caps.js
+	删除：     node_modules/figlet/importable-fonts/Small Isometric1.d.ts
+	删除：     node_modules/figlet/importable-fonts/Small Isometric1.js
+	删除：     node_modules/figlet/importable-fonts/Small Keyboard.d.ts
+	删除：     node_modules/figlet/importable-fonts/Small Keyboard.js
+	删除：     node_modules/figlet/importable-fonts/Small Mono 12.d.ts
+	删除：     node_modules/figlet/importable-fonts/Small Mono 12.js
+	删除：     node_modules/figlet/importable-fonts/Small Mono 9.d.ts
+	删除：     node_modules/figlet/importable-fonts/Small Mono 9.js
+	删除：     node_modules/figlet/importable-fonts/Small Poison.d.ts
+	删除：     node_modules/figlet/importable-fonts/Small Poison.js
+	删除：     node_modules/figlet/importable-fonts/Small Script.d.ts
+	删除：     node_modules/figlet/importable-fonts/Small Script.js
+	删除：     node_modules/figlet/importable-fonts/Small Shadow.d.ts
+	删除：     node_modules/figlet/importable-fonts/Small Shadow.js
+	删除：     node_modules/figlet/importable-fonts/Small Slant.d.ts
+	删除：     node_modules/figlet/importable-fonts/Small Slant.js
+	删除：     node_modules/figlet/importable-fonts/Small Tengwar.d.ts
+	删除：     node_modules/figlet/importable-fonts/Small Tengwar.js
+	删除：     node_modules/figlet/importable-fonts/Small.d.ts
+	删除：     node_modules/figlet/importable-fonts/Small.js
+	删除：     node_modules/figlet/importable-fonts/Soft.d.ts
+	删除：     node_modules/figlet/importable-fonts/Soft.js
+	删除：     node_modules/figlet/importable-fonts/Speed.d.ts
+	删除：     node_modules/figlet/importable-fonts/Speed.js
+	删除：     node_modules/figlet/importable-fonts/Spliff.d.ts
+	删除：     node_modules/figlet/importable-fonts/Spliff.js
+	删除：     node_modules/figlet/importable-fonts/Stacey.d.ts
+	删除：     node_modules/figlet/importable-fonts/Stacey.js
+	删除：     node_modules/figlet/importable-fonts/Stampate.d.ts
+	删除：     node_modules/figlet/importable-fonts/Stampate.js
+	删除：     node_modules/figlet/importable-fonts/Stampatello.d.ts
+	删除：     node_modules/figlet/importable-fonts/Stampatello.js
+	删除：     node_modules/figlet/importable-fonts/Standard.d.ts
+	删除：     node_modules/figlet/importable-fonts/Standard.js
+	删除：     node_modules/figlet/importable-fonts/Star Strips.d.ts
+	删除：     node_modules/figlet/importable-fonts/Star Strips.js
+	删除：     node_modules/figlet/importable-fonts/Star Wars.d.ts
+	删除：     node_modules/figlet/importable-fonts/Star Wars.js
+	删除：     node_modules/figlet/importable-fonts/Stellar.d.ts
+	删除：     node_modules/figlet/importable-fonts/Stellar.js
+	删除：     node_modules/figlet/importable-fonts/Stforek.d.ts
+	删除：     node_modules/figlet/importable-fonts/Stforek.js
+	删除：     node_modules/figlet/importable-fonts/Stick Letters.d.ts
+	删除：     node_modules/figlet/importable-fonts/Stick Letters.js
+	删除：     node_modules/figlet/importable-fonts/Stop.d.ts
+	删除：     node_modules/figlet/importable-fonts/Stop.js
+	删除：     node_modules/figlet/importable-fonts/Straight.d.ts
+	删除：     node_modules/figlet/importable-fonts/Straight.js
+	删除：     node_modules/figlet/importable-fonts/Stronger Than All.d.ts
+	删除：     node_modules/figlet/importable-fonts/Stronger Than All.js
+	删除：     node_modules/figlet/importable-fonts/Sub-Zero.d.ts
+	删除：     node_modules/figlet/importable-fonts/Sub-Zero.js
+	删除：     node_modules/figlet/importable-fonts/Swamp Land.d.ts
+	删除：     node_modules/figlet/importable-fonts/Swamp Land.js
+	删除：     node_modules/figlet/importable-fonts/Swan.d.ts
+	删除：     node_modules/figlet/importable-fonts/Swan.js
+	删除：     node_modules/figlet/importable-fonts/Sweet.d.ts
+	删除：     node_modules/figlet/importable-fonts/Sweet.js
+	删除：     node_modules/figlet/importable-fonts/THIS.d.ts
+	删除：     node_modules/figlet/importable-fonts/THIS.js
+	删除：     node_modules/figlet/importable-fonts/Tanja.d.ts
+	删除：     node_modules/figlet/importable-fonts/Tanja.js
+	删除：     node_modules/figlet/importable-fonts/Tengwar.d.ts
+	删除：     node_modules/figlet/importable-fonts/Tengwar.js
+	删除：     node_modules/figlet/importable-fonts/Term.d.ts
+	删除：     node_modules/figlet/importable-fonts/Term.js
+	删除：     node_modules/figlet/importable-fonts/Terrace.d.ts
+	删除：     node_modules/figlet/importable-fonts/Terrace.js
+	删除：     node_modules/figlet/importable-fonts/Test1.d.ts
+	删除：     node_modules/figlet/importable-fonts/Test1.js
+	删除：     node_modules/figlet/importable-fonts/The Edge.d.ts
+	删除：     node_modules/figlet/importable-fonts/The Edge.js
+	删除：     node_modules/figlet/importable-fonts/Thick.d.ts
+	删除：     node_modules/figlet/importable-fonts/Thick.js
+	删除：     node_modules/figlet/importable-fonts/Thin.d.ts
+	删除：     node_modules/figlet/importable-fonts/Thin.js
+	删除：     node_modules/figlet/importable-fonts/Thorned.d.ts
+	删除：     node_modules/figlet/importable-fonts/Thorned.js
+	删除：     node_modules/figlet/importable-fonts/Three Point.d.ts
+	删除：     node_modules/figlet/importable-fonts/Three Point.js
+	删除：     node_modules/figlet/importable-fonts/Ticks Slant.d.ts
+	删除：     node_modules/figlet/importable-fonts/Ticks Slant.js
+	删除：     node_modules/figlet/importable-fonts/Ticks.d.ts
+	删除：     node_modules/figlet/importable-fonts/Ticks.js
+	删除：     node_modules/figlet/importable-fonts/Tiles.d.ts
+	删除：     node_modules/figlet/importable-fonts/Tiles.js
+	删除：     node_modules/figlet/importable-fonts/Tinker-Toy.d.ts
+	删除：     node_modules/figlet/importable-fonts/Tinker-Toy.js
+	删除：     node_modules/figlet/importable-fonts/Tombstone.d.ts
+	删除：     node_modules/figlet/importable-fonts/Tombstone.js
+	删除：     node_modules/figlet/importable-fonts/Train.d.ts
+	删除：     node_modules/figlet/importable-fonts/Train.js
+	删除：     node_modules/figlet/importable-fonts/Trek.d.ts
+	删除：     node_modules/figlet/importable-fonts/Trek.js
+	删除：     node_modules/figlet/importable-fonts/Tsalagi.d.ts
+	删除：     node_modules/figlet/importable-fonts/Tsalagi.js
+	删除：     node_modules/figlet/importable-fonts/Tubular.d.ts
+	删除：     node_modules/figlet/importable-fonts/Tubular.js
+	删除：     node_modules/figlet/importable-fonts/Twisted.d.ts
+	删除：     node_modules/figlet/importable-fonts/Twisted.js
+	删除：     node_modules/figlet/importable-fonts/Two Point.d.ts
+	删除：     node_modules/figlet/importable-fonts/Two Point.js
+	删除：     node_modules/figlet/importable-fonts/USA Flag.d.ts
+	删除：     node_modules/figlet/importable-fonts/USA Flag.js
+	删除：     node_modules/figlet/importable-fonts/Univers.d.ts
+	删除：     node_modules/figlet/importable-fonts/Univers.js
+	删除：     node_modules/figlet/importable-fonts/Upside Down Text.d.ts
+	删除：     node_modules/figlet/importable-fonts/Upside Down Text.js
+	删除：     node_modules/figlet/importable-fonts/Varsity.d.ts
+	删除：     node_modules/figlet/importable-fonts/Varsity.js
+	删除：     node_modules/figlet/importable-fonts/Wavescape.d.ts
+	删除：     node_modules/figlet/importable-fonts/Wavescape.js
+	删除：     node_modules/figlet/importable-fonts/Wavy.d.ts
+	删除：     node_modules/figlet/importable-fonts/Wavy.js
+	删除：     node_modules/figlet/importable-fonts/Weird.d.ts
+	删除：     node_modules/figlet/importable-fonts/Weird.js
+	删除：     node_modules/figlet/importable-fonts/Wet Letter.d.ts
+	删除：     node_modules/figlet/importable-fonts/Wet Letter.js
+	删除：     node_modules/figlet/importable-fonts/Whimsy.d.ts
+	删除：     node_modules/figlet/importable-fonts/Whimsy.js
+	删除：     node_modules/figlet/importable-fonts/WideTerm.d.ts
+	删除：     node_modules/figlet/importable-fonts/WideTerm.js
+	删除：     node_modules/figlet/importable-fonts/Wow.d.ts
+	删除：     node_modules/figlet/importable-fonts/Wow.js
+	删除：     node_modules/figlet/importable-fonts/babyface-lame.d.ts
+	删除：     node_modules/figlet/importable-fonts/babyface-lame.js
+	删除：     node_modules/figlet/importable-fonts/babyface-leet.d.ts
+	删除：     node_modules/figlet/importable-fonts/babyface-leet.js
+	删除：     node_modules/figlet/importable-fonts/miniwi.d.ts
+	删除：     node_modules/figlet/importable-fonts/miniwi.js
+	删除：     node_modules/figlet/importable-fonts/tmplr.d.ts
+	删除：     node_modules/figlet/importable-fonts/tmplr.js
+	删除：     node_modules/figlet/package.json
+	删除：     node_modules/fill-range/LICENSE
+	删除：     node_modules/fill-range/README.md
+	删除：     node_modules/fill-range/index.js
+	删除：     node_modules/fill-range/package.json
+	删除：     node_modules/finalhandler/HISTORY.md
+	删除：     node_modules/finalhandler/LICENSE
+	删除：     node_modules/finalhandler/README.md
+	删除：     node_modules/finalhandler/index.js
+	删除：     node_modules/finalhandler/package.json
+	删除：     node_modules/find-up/index.d.ts
+	删除：     node_modules/find-up/index.js
+	删除：     node_modules/find-up/license
+	删除：     node_modules/find-up/package.json
+	删除：     node_modules/find-up/readme.md
+	删除：     node_modules/fresh/HISTORY.md
+	删除：     node_modules/fresh/LICENSE
+	删除：     node_modules/fresh/README.md
+	删除：     node_modules/fresh/index.js
+	删除：     node_modules/fresh/package.json
+	删除：     node_modules/fs-extra/CHANGELOG.md
+	删除：     node_modules/fs-extra/LICENSE
+	删除：     node_modules/fs-extra/README.md
+	删除：     node_modules/fs-extra/lib/copy-sync/copy-sync.js
+	删除：     node_modules/fs-extra/lib/copy-sync/index.js
+	删除：     node_modules/fs-extra/lib/copy/copy.js
+	删除：     node_modules/fs-extra/lib/copy/index.js
+	删除：     node_modules/fs-extra/lib/empty/index.js
+	删除：     node_modules/fs-extra/lib/ensure/file.js
+	删除：     node_modules/fs-extra/lib/ensure/index.js
+	删除：     node_modules/fs-extra/lib/ensure/link.js
+	删除：     node_modules/fs-extra/lib/ensure/symlink-paths.js
+	删除：     node_modules/fs-extra/lib/ensure/symlink-type.js
+	删除：     node_modules/fs-extra/lib/ensure/symlink.js
+	删除：     node_modules/fs-extra/lib/fs/index.js
+	删除：     node_modules/fs-extra/lib/index.js
+	删除：     node_modules/fs-extra/lib/json/index.js
+	删除：     node_modules/fs-extra/lib/json/jsonfile.js
+	删除：     node_modules/fs-extra/lib/json/output-json-sync.js
+	删除：     node_modules/fs-extra/lib/json/output-json.js
+	删除：     node_modules/fs-extra/lib/mkdirs/index.js
+	删除：     node_modules/fs-extra/lib/mkdirs/mkdirs-sync.js
+	删除：     node_modules/fs-extra/lib/mkdirs/mkdirs.js
+	删除：     node_modules/fs-extra/lib/mkdirs/win32.js
+	删除：     node_modules/fs-extra/lib/move-sync/index.js
+	删除：     node_modules/fs-extra/lib/move-sync/move-sync.js
+	删除：     node_modules/fs-extra/lib/move/index.js
+	删除：     node_modules/fs-extra/lib/move/move.js
+	删除：     node_modules/fs-extra/lib/output/index.js
+	删除：     node_modules/fs-extra/lib/path-exists/index.js
+	删除：     node_modules/fs-extra/lib/remove/index.js
+	删除：     node_modules/fs-extra/lib/remove/rimraf.js
+	删除：     node_modules/fs-extra/lib/util/buffer.js
+	删除：     node_modules/fs-extra/lib/util/stat.js
+	删除：     node_modules/fs-extra/lib/util/utimes.js
+	删除：     node_modules/fs-extra/package.json
+	删除：     node_modules/fsevents/LICENSE
+	删除：     node_modules/fsevents/README.md
+	删除：     node_modules/fsevents/fsevents.d.ts
+	删除：     node_modules/fsevents/fsevents.js
+	删除：     node_modules/fsevents/fsevents.node
+	删除：     node_modules/fsevents/package.json
+	删除：     node_modules/get-caller-file/LICENSE.md
+	删除：     node_modules/get-caller-file/README.md
+	删除：     node_modules/get-caller-file/index.d.ts
+	删除：     node_modules/get-caller-file/index.js
+	删除：     node_modules/get-caller-file/index.js.map
+	删除：     node_modules/get-caller-file/package.json
+	删除：     node_modules/get-port/index.d.ts
+	删除：     node_modules/get-port/index.js
+	删除：     node_modules/get-port/license
+	删除：     node_modules/get-port/package.json
+	删除：     node_modules/get-port/readme.md
+	删除：     node_modules/get-stream/buffer-stream.js
+	删除：     node_modules/get-stream/index.js
+	删除：     node_modules/get-stream/license
+	删除：     node_modules/get-stream/package.json
+	删除：     node_modules/get-stream/readme.md
+	删除：     node_modules/glob-parent/CHANGELOG.md
+	删除：     node_modules/glob-parent/LICENSE
+	删除：     node_modules/glob-parent/README.md
+	删除：     node_modules/glob-parent/index.js
+	删除：     node_modules/glob-parent/package.json
+	删除：     node_modules/global-dirs/index.d.ts
+	删除：     node_modules/global-dirs/index.js
+	删除：     node_modules/global-dirs/license
+	删除：     node_modules/global-dirs/package.json
+	删除：     node_modules/global-dirs/readme.md
+	删除：     node_modules/got/license
+	删除：     node_modules/got/package.json
+	删除：     node_modules/got/readme.md
+	删除：     node_modules/got/source/as-promise.js
+	删除：     node_modules/got/source/as-stream.js
+	删除：     node_modules/got/source/create.js
+	删除：     node_modules/got/source/errors.js
+	删除：     node_modules/got/source/get-response.js
+	删除：     node_modules/got/source/index.js
+	删除：     node_modules/got/source/known-hook-events.js
+	删除：     node_modules/got/source/merge.js
+	删除：     node_modules/got/source/normalize-arguments.js
+	删除：     node_modules/got/source/progress.js
+	删除：     node_modules/got/source/request-as-event-emitter.js
+	删除：     node_modules/got/source/utils/deep-freeze.js
+	删除：     node_modules/got/source/utils/get-body-size.js
+	删除：     node_modules/got/source/utils/is-form-data.js
+	删除：     node_modules/got/source/utils/timed-out.js
+	删除：     node_modules/got/source/utils/url-to-options.js
+	删除：     node_modules/graceful-fs/LICENSE
+	删除：     node_modules/graceful-fs/README.md
+	删除：     node_modules/graceful-fs/clone.js
+	删除：     node_modules/graceful-fs/graceful-fs.js
+	删除：     node_modules/graceful-fs/legacy-streams.js
+	删除：     node_modules/graceful-fs/package.json
+	删除：     node_modules/graceful-fs/polyfills.js
+	删除：     node_modules/has-ansi/index.js
+	删除：     node_modules/has-ansi/license
+	删除：     node_modules/has-ansi/node_modules/ansi-regex/index.js
+	删除：     node_modules/has-ansi/node_modules/ansi-regex/license
+	删除：     node_modules/has-ansi/node_modules/ansi-regex/package.json
+	删除：     node_modules/has-ansi/node_modules/ansi-regex/readme.md
+	删除：     node_modules/has-ansi/package.json
+	删除：     node_modules/has-ansi/readme.md
+	删除：     node_modules/has-flag/index.js
+	删除：     node_modules/has-flag/license
+	删除：     node_modules/has-flag/package.json
+	删除：     node_modules/has-flag/readme.md
+	删除：     node_modules/has-yarn/index.d.ts
+	删除：     node_modules/has-yarn/index.js
+	删除：     node_modules/has-yarn/license
+	删除：     node_modules/has-yarn/package.json
+	删除：     node_modules/has-yarn/readme.md
+	删除：     node_modules/http-cache-semantics/LICENSE
+	删除：     node_modules/http-cache-semantics/README.md
+	删除：     node_modules/http-cache-semantics/index.js
+	删除：     node_modules/http-cache-semantics/package.json
+	删除：     node_modules/http-errors/HISTORY.md
+	删除：     node_modules/http-errors/LICENSE
+	删除：     node_modules/http-errors/README.md
+	删除：     node_modules/http-errors/index.js
+	删除：     node_modules/http-errors/node_modules/statuses/HISTORY.md
+	删除：     node_modules/http-errors/node_modules/statuses/LICENSE
+	删除：     node_modules/http-errors/node_modules/statuses/README.md
+	删除：     node_modules/http-errors/node_modules/statuses/codes.json
+	删除：     node_modules/http-errors/node_modules/statuses/index.js
+	删除：     node_modules/http-errors/node_modules/statuses/package.json
+	删除：     node_modules/http-errors/package.json
+	删除：     node_modules/import-lazy/index.js
+	删除：     node_modules/import-lazy/license
+	删除：     node_modules/import-lazy/package.json
+	删除：     node_modules/import-lazy/readme.md
+	删除：     node_modules/imurmurhash/README.md
+	删除：     node_modules/imurmurhash/imurmurhash.js
+	删除：     node_modules/imurmurhash/imurmurhash.min.js
+	删除：     node_modules/imurmurhash/package.json
+	删除：     node_modules/inherits/LICENSE
+	删除：     node_modules/inherits/README.md
+	删除：     node_modules/inherits/inherits.js
+	删除：     node_modules/inherits/inherits_browser.js
+	删除：     node_modules/inherits/package.json
+	删除：     node_modules/ini/LICENSE
+	删除：     node_modules/ini/README.md
+	删除：     node_modules/ini/ini.js
+	删除：     node_modules/ini/package.json
+	删除：     node_modules/is-binary-path/index.d.ts
+	删除：     node_modules/is-binary-path/index.js
+	删除：     node_modules/is-binary-path/license
+	删除：     node_modules/is-binary-path/package.json
+	删除：     node_modules/is-binary-path/readme.md
+	删除：     node_modules/is-ci/CHANGELOG.md
+	删除：     node_modules/is-ci/LICENSE
+	删除：     node_modules/is-ci/README.md
+	删除：     node_modules/is-ci/bin.js
+	删除：     node_modules/is-ci/index.js
+	删除：     node_modules/is-ci/package.json
+	删除：     node_modules/is-extglob/LICENSE
+	删除：     node_modules/is-extglob/README.md
+	删除：     node_modules/is-extglob/index.js
+	删除：     node_modules/is-extglob/package.json
+	删除：     node_modules/is-fullwidth-code-point/index.d.ts
+	删除：     node_modules/is-fullwidth-code-point/index.js
+	删除：     node_modules/is-fullwidth-code-point/license
+	删除：     node_modules/is-fullwidth-code-point/package.json
+	删除：     node_modules/is-fullwidth-code-point/readme.md
+	删除：     node_modules/is-glob/LICENSE
+	删除：     node_modules/is-glob/README.md
+	删除：     node_modules/is-glob/index.js
+	删除：     node_modules/is-glob/package.json
+	删除：     node_modules/is-installed-globally/index.d.ts
+	删除：     node_modules/is-installed-globally/index.js
+	删除：     node_modules/is-installed-globally/license
+	删除：     node_modules/is-installed-globally/package.json
+	删除：     node_modules/is-installed-globally/readme.md
+	删除：     node_modules/is-npm/index.d.ts
+	删除：     node_modules/is-npm/index.js
+	删除：     node_modules/is-npm/license
+	删除：     node_modules/is-npm/package.json
+	删除：     node_modules/is-npm/readme.md
+	删除：     node_modules/is-number/LICENSE
+	删除：     node_modules/is-number/README.md
+	删除：     node_modules/is-number/index.js
+	删除：     node_modules/is-number/package.json
+	删除：     node_modules/is-obj/index.d.ts
+	删除：     node_modules/is-obj/index.js
+	删除：     node_modules/is-obj/license
+	删除：     node_modules/is-obj/package.json
+	删除：     node_modules/is-obj/readme.md
+	删除：     node_modules/is-path-inside/index.d.ts
+	删除：     node_modules/is-path-inside/index.js
+	删除：     node_modules/is-path-inside/license
+	删除：     node_modules/is-path-inside/package.json
+	删除：     node_modules/is-path-inside/readme.md
+	删除：     node_modules/is-typedarray/LICENSE.md
+	删除：     node_modules/is-typedarray/README.md
+	删除：     node_modules/is-typedarray/index.js
+	删除：     node_modules/is-typedarray/package.json
+	删除：     node_modules/is-typedarray/test.js
+	删除：     node_modules/is-wsl/index.js
+	删除：     node_modules/is-wsl/license
+	删除：     node_modules/is-wsl/package.json
+	删除：     node_modules/is-wsl/readme.md
+	删除：     node_modules/is-yarn-global/.travis.yml
+	删除：     node_modules/is-yarn-global/LICENSE
+	删除：     node_modules/is-yarn-global/README.md
+	删除：     node_modules/is-yarn-global/index.js
+	删除：     node_modules/is-yarn-global/package.json
+	删除：     node_modules/json-buffer/.npmignore
+	删除：     node_modules/json-buffer/.travis.yml
+	删除：     node_modules/json-buffer/LICENSE
+	删除：     node_modules/json-buffer/README.md
+	删除：     node_modules/json-buffer/index.js
+	删除：     node_modules/json-buffer/package.json
+	删除：     node_modules/json-buffer/test/index.js
+	删除：     node_modules/jsonfile/CHANGELOG.md
+	删除：     node_modules/jsonfile/LICENSE
+	删除：     node_modules/jsonfile/README.md
+	删除：     node_modules/jsonfile/index.js
+	删除：     node_modules/jsonfile/package.json
+	删除：     node_modules/keyv/LICENSE
+	删除：     node_modules/keyv/README.md
+	删除：     node_modules/keyv/package.json
+	删除：     node_modules/keyv/src/index.js
+	删除：     node_modules/latest-version/index.d.ts
+	删除：     node_modules/latest-version/index.js
+	删除：     node_modules/latest-version/license
+	删除：     node_modules/latest-version/package.json
+	删除：     node_modules/latest-version/readme.md
+	删除：     node_modules/livereload-js/.github/workflows/main.yml
+	删除：     node_modules/livereload-js/LICENSE
+	删除：     node_modules/livereload-js/README.md
+	删除：     node_modules/livereload-js/dist/livereload.js
+	删除：     node_modules/livereload-js/dist/livereload.min.js
+	删除：     node_modules/livereload-js/package.json
+	删除：     node_modules/livereload-js/src/connector.js
+	删除：     node_modules/livereload-js/src/customevents.js
+	删除：     node_modules/livereload-js/src/less.js
+	删除：     node_modules/livereload-js/src/livereload.js
+	删除：     node_modules/livereload-js/src/options.js
+	删除：     node_modules/livereload-js/src/protocol.js
+	删除：     node_modules/livereload-js/src/reloader.js
+	删除：     node_modules/livereload-js/src/startup.js
+	删除：     node_modules/livereload-js/src/timer.js
+	删除：     node_modules/livereload/.github/ISSUE_TEMPLATE
+	删除：     node_modules/livereload/.travis.yml
+	删除：     node_modules/livereload/LICENSE
+	删除：     node_modules/livereload/README.md
+	删除：     node_modules/livereload/bin/livereload.js
+	删除：     node_modules/livereload/dist/test.svg
+	删除：     node_modules/livereload/examples/index.html
+	删除：     node_modules/livereload/examples/server.js
+	删除：     node_modules/livereload/lib/command.coffee
+	删除：     node_modules/livereload/lib/command.js
+	删除：     node_modules/livereload/lib/livereload.coffee
+	删除：     node_modules/livereload/lib/livereload.js
+	删除：     node_modules/livereload/package.json
+	删除：     node_modules/livereload/svg/test.svg
+	删除：     node_modules/livereload/svg/test2.svg
+	删除：     node_modules/livereload/test/index.test.coffee
+	删除：     node_modules/livereload/test/mocha.opts
+	删除：     node_modules/livereload/test/ssl/localhost.cert
+	删除：     node_modules/livereload/test/ssl/localhost.key
+	删除：     node_modules/locate-path/index.d.ts
+	删除：     node_modules/locate-path/index.js
+	删除：     node_modules/locate-path/license
+	删除：     node_modules/locate-path/package.json
+	删除：     node_modules/locate-path/readme.md
+	删除：     node_modules/lowercase-keys/index.js
+	删除：     node_modules/lowercase-keys/license
+	删除：     node_modules/lowercase-keys/package.json
+	删除：     node_modules/lowercase-keys/readme.md
+	删除：     node_modules/lru-cache/LICENSE
+	删除：     node_modules/lru-cache/README.md
+	删除：     node_modules/lru-cache/index.js
+	删除：     node_modules/lru-cache/package.json
+	删除：     node_modules/make-dir/index.d.ts
+	删除：     node_modules/make-dir/index.js
+	删除：     node_modules/make-dir/license
+	删除：     node_modules/make-dir/package.json
+	删除：     node_modules/make-dir/readme.md
+	修改：     node_modules/marked/README.md
+	删除：     node_modules/marked/bin/marked
+	修改：     node_modules/marked/lib/marked.esm.js
+	删除：     node_modules/marked/lib/marked.js
+	修改：     node_modules/marked/man/marked.1
+	删除：     node_modules/marked/man/marked.1.txt
+	删除：     node_modules/marked/marked.min.js
+	修改：     node_modules/marked/package.json
+	删除：     node_modules/marked/src/Lexer.js
+	删除：     node_modules/marked/src/Parser.js
+	删除：     node_modules/marked/src/Renderer.js
+	删除：     node_modules/marked/src/Slugger.js
+	删除：     node_modules/marked/src/TextRenderer.js
+	删除：     node_modules/marked/src/Tokenizer.js
+	删除：     node_modules/marked/src/defaults.js
+	删除：     node_modules/marked/src/helpers.js
+	删除：     node_modules/marked/src/marked.js
+	删除：     node_modules/marked/src/rules.js
+	删除：     node_modules/medium-zoom/CHANGELOG.md
+	删除：     node_modules/medium-zoom/LICENSE
+	删除：     node_modules/medium-zoom/README.md
+	删除：     node_modules/medium-zoom/dist/medium-zoom.d.ts
+	删除：     node_modules/medium-zoom/dist/medium-zoom.esm.js
+	删除：     node_modules/medium-zoom/dist/medium-zoom.js
+	删除：     node_modules/medium-zoom/dist/medium-zoom.min.js
+	删除：     node_modules/medium-zoom/dist/pure/index.d.ts
+	删除：     node_modules/medium-zoom/dist/pure/index.js
+	删除：     node_modules/medium-zoom/dist/pure/medium-zoom.min.umd.js
+	删除：     node_modules/medium-zoom/dist/pure/medium-zoom.umd.js
+	删除：     node_modules/medium-zoom/dist/style.css
+	删除：     node_modules/medium-zoom/package.json
+	删除：     node_modules/mime/.npmignore
+	删除：     node_modules/mime/CHANGELOG.md
+	删除：     node_modules/mime/LICENSE
+	删除：     node_modules/mime/README.md
+	删除：     node_modules/mime/cli.js
+	删除：     node_modules/mime/mime.js
+	删除：     node_modules/mime/package.json
+	删除：     node_modules/mime/src/build.js
+	删除：     node_modules/mime/src/test.js
+	删除：     node_modules/mime/types.json
+	删除：     node_modules/mimic-response/index.js
+	删除：     node_modules/mimic-response/license
+	删除：     node_modules/mimic-response/package.json
+	删除：     node_modules/mimic-response/readme.md
+	删除：     node_modules/min-indent/index.js
+	删除：     node_modules/min-indent/license
+	删除：     node_modules/min-indent/package.json
+	删除：     node_modules/min-indent/readme.md
+	删除：     node_modules/minimist/.eslintrc
+	删除：     node_modules/minimist/.github/FUNDING.yml
+	删除：     node_modules/minimist/.nycrc
+	删除：     node_modules/minimist/CHANGELOG.md
+	删除：     node_modules/minimist/LICENSE
+	删除：     node_modules/minimist/README.md
+	删除：     node_modules/minimist/example/parse.js
+	删除：     node_modules/minimist/index.js
+	删除：     node_modules/minimist/package.json
+	删除：     node_modules/minimist/test/all_bool.js
+	删除：     node_modules/minimist/test/bool.js
+	删除：     node_modules/minimist/test/dash.js
+	删除：     node_modules/minimist/test/default_bool.js
+	删除：     node_modules/minimist/test/dotted.js
+	删除：     node_modules/minimist/test/kv_short.js
+	删除：     node_modules/minimist/test/long.js
+	删除：     node_modules/minimist/test/num.js
+	删除：     node_modules/minimist/test/parse.js
+	删除：     node_modules/minimist/test/parse_modified.js
+	删除：     node_modules/minimist/test/proto.js
+	删除：     node_modules/minimist/test/short.js
+	删除：     node_modules/minimist/test/stop_early.js
+	删除：     node_modules/minimist/test/unknown.js
+	删除：     node_modules/minimist/test/whitespace.js
+	删除：     node_modules/ms/index.js
+	删除：     node_modules/ms/license.md
+	删除：     node_modules/ms/package.json
+	删除：     node_modules/ms/readme.md
+	删除：     node_modules/nested-error-stacks/CHANGELOG.md
+	删除：     node_modules/nested-error-stacks/LICENSE
+	删除：     node_modules/nested-error-stacks/README.md
+	删除：     node_modules/nested-error-stacks/index.js
+	删除：     node_modules/nested-error-stacks/package.json
+	删除：     node_modules/node-fetch/LICENSE.md
+	删除：     node_modules/node-fetch/README.md
+	删除：     node_modules/node-fetch/browser.js
+	删除：     node_modules/node-fetch/lib/index.es.js
+	删除：     node_modules/node-fetch/lib/index.js
+	删除：     node_modules/node-fetch/lib/index.mjs
+	删除：     node_modules/node-fetch/package.json
+	删除：     node_modules/normalize-path/LICENSE
+	删除：     node_modules/normalize-path/README.md
+	删除：     node_modules/normalize-path/index.js
+	删除：     node_modules/normalize-path/package.json
+	删除：     node_modules/normalize-url/index.d.ts
+	删除：     node_modules/normalize-url/index.js
+	删除：     node_modules/normalize-url/license
+	删除：     node_modules/normalize-url/package.json
+	删除：     node_modules/normalize-url/readme.md
+	删除：     node_modules/on-finished/HISTORY.md
+	删除：     node_modules/on-finished/LICENSE
+	删除：     node_modules/on-finished/README.md
+	删除：     node_modules/on-finished/index.js
+	删除：     node_modules/on-finished/package.json
+	删除：     node_modules/once/LICENSE
+	删除：     node_modules/once/README.md
+	删除：     node_modules/once/once.js
+	删除：     node_modules/once/package.json
+	删除：     node_modules/open/index.d.ts
+	删除：     node_modules/open/index.js
+	删除：     node_modules/open/license
+	删除：     node_modules/open/package.json
+	删除：     node_modules/open/readme.md
+	删除：     node_modules/open/xdg-open
+	删除：     node_modules/opencollective-postinstall/LICENSE
+	删除：     node_modules/opencollective-postinstall/README.md
+	删除：     node_modules/opencollective-postinstall/index.js
+	删除：     node_modules/opencollective-postinstall/package.json
+	删除：     node_modules/opts/CHANGES.org
+	删除：     node_modules/opts/LICENSE.txt
+	删除：     node_modules/opts/README.md
+	删除：     node_modules/opts/README.org
+	删除：     node_modules/opts/examples/example1.js
+	删除：     node_modules/opts/examples/example2.js
+	删除：     node_modules/opts/examples/example3.js
+	删除：     node_modules/opts/examples/example4.js
+	删除：     node_modules/opts/man.3
+	删除：     node_modules/opts/package.json
+	删除：     node_modules/opts/src/opts.d.ts
+	删除：     node_modules/opts/src/opts.js
+	删除：     node_modules/p-cancelable/index.d.ts
+	删除：     node_modules/p-cancelable/index.js
+	删除：     node_modules/p-cancelable/license
+	删除：     node_modules/p-cancelable/package.json
+	删除：     node_modules/p-cancelable/readme.md
+	删除：     node_modules/p-event/index.d.ts
+	删除：     node_modules/p-event/index.js
+	删除：     node_modules/p-event/license
+	删除：     node_modules/p-event/package.json
+	删除：     node_modules/p-event/readme.md
+	删除：     node_modules/p-finally/index.js
+	删除：     node_modules/p-finally/license
+	删除：     node_modules/p-finally/package.json
+	删除：     node_modules/p-finally/readme.md
+	删除：     node_modules/p-limit/index.d.ts
+	删除：     node_modules/p-limit/index.js
+	删除：     node_modules/p-limit/license
+	删除：     node_modules/p-limit/package.json
+	删除：     node_modules/p-limit/readme.md
+	删除：     node_modules/p-locate/index.d.ts
+	删除：     node_modules/p-locate/index.js
+	删除：     node_modules/p-locate/license
+	删除：     node_modules/p-locate/package.json
+	删除：     node_modules/p-locate/readme.md
+	删除：     node_modules/p-timeout/index.d.ts
+	删除：     node_modules/p-timeout/index.js
+	删除：     node_modules/p-timeout/license
+	删除：     node_modules/p-timeout/package.json
+	删除：     node_modules/p-timeout/readme.md
+	删除：     node_modules/p-try/index.d.ts
+	删除：     node_modules/p-try/index.js
+	删除：     node_modules/p-try/license
+	删除：     node_modules/p-try/package.json
+	删除：     node_modules/p-try/readme.md
+	删除：     node_modules/package-json/index.d.ts
+	删除：     node_modules/package-json/index.js
+	删除：     node_modules/package-json/license
+	删除：     node_modules/package-json/package.json
+	删除：     node_modules/package-json/readme.md
+	删除：     node_modules/parent-require/.jshintrc
+	删除：     node_modules/parent-require/.travis.yml
+	删除：     node_modules/parent-require/LICENSE
+	删除：     node_modules/parent-require/README.md
+	删除：     node_modules/parent-require/index.js
+	删除：     node_modules/parent-require/package.json
+	删除：     node_modules/parseurl/HISTORY.md
+	删除：     node_modules/parseurl/LICENSE
+	删除：     node_modules/parseurl/README.md
+	删除：     node_modules/parseurl/index.js
+	删除：     node_modules/parseurl/package.json
+	删除：     node_modules/path-exists/index.d.ts
+	删除：     node_modules/path-exists/index.js
+	删除：     node_modules/path-exists/license
+	删除：     node_modules/path-exists/package.json
+	删除：     node_modules/path-exists/readme.md
+	删除：     node_modules/picomatch/CHANGELOG.md
+	删除：     node_modules/picomatch/LICENSE
+	删除：     node_modules/picomatch/README.md
+	删除：     node_modules/picomatch/index.js
+	删除：     node_modules/picomatch/lib/constants.js
+	删除：     node_modules/picomatch/lib/parse.js
+	删除：     node_modules/picomatch/lib/picomatch.js
+	删除：     node_modules/picomatch/lib/scan.js
+	删除：     node_modules/picomatch/lib/utils.js
+	删除：     node_modules/picomatch/package.json
+	删除：     node_modules/prepend-http/index.js
+	删除：     node_modules/prepend-http/license
+	删除：     node_modules/prepend-http/package.json
+	删除：     node_modules/prepend-http/readme.md
+	删除：     node_modules/prismjs/CHANGELOG.md
+	删除：     node_modules/prismjs/LICENSE
+	删除：     node_modules/prismjs/README.md
+	删除：     node_modules/prismjs/_headers
+	删除：     node_modules/prismjs/components.js
+	删除：     node_modules/prismjs/components.json
+	删除：     node_modules/prismjs/components/index.js
+	删除：     node_modules/prismjs/components/prism-abap.js
+	删除：     node_modules/prismjs/components/prism-abap.min.js
+	删除：     node_modules/prismjs/components/prism-abnf.js
+	删除：     node_modules/prismjs/components/prism-abnf.min.js
+	删除：     node_modules/prismjs/components/prism-actionscript.js
+	删除：     node_modules/prismjs/components/prism-actionscript.min.js
+	删除：     node_modules/prismjs/components/prism-ada.js
+	删除：     node_modules/prismjs/components/prism-ada.min.js
+	删除：     node_modules/prismjs/components/prism-agda.js
+	删除：     node_modules/prismjs/components/prism-agda.min.js
+	删除：     node_modules/prismjs/components/prism-al.js
+	删除：     node_modules/prismjs/components/prism-al.min.js
+	删除：     node_modules/prismjs/components/prism-antlr4.js
+	删除：     node_modules/prismjs/components/prism-antlr4.min.js
+	删除：     node_modules/prismjs/components/prism-apacheconf.js
+	删除：     node_modules/prismjs/components/prism-apacheconf.min.js
+	删除：     node_modules/prismjs/components/prism-apex.js
+	删除：     node_modules/prismjs/components/prism-apex.min.js
+	删除：     node_modules/prismjs/components/prism-apl.js
+	删除：     node_modules/prismjs/components/prism-apl.min.js
+	删除：     node_modules/prismjs/components/prism-applescript.js
+	删除：     node_modules/prismjs/components/prism-applescript.min.js
+	删除：     node_modules/prismjs/components/prism-aql.js
+	删除：     node_modules/prismjs/components/prism-aql.min.js
+	删除：     node_modules/prismjs/components/prism-arduino.js
+	删除：     node_modules/prismjs/components/prism-arduino.min.js
+	删除：     node_modules/prismjs/components/prism-arff.js
+	删除：     node_modules/prismjs/components/prism-arff.min.js
+	删除：     node_modules/prismjs/components/prism-armasm.js
+	删除：     node_modules/prismjs/components/prism-armasm.min.js
+	删除：     node_modules/prismjs/components/prism-arturo.js
+	删除：     node_modules/prismjs/components/prism-arturo.min.js
+	删除：     node_modules/prismjs/components/prism-asciidoc.js
+	删除：     node_modules/prismjs/components/prism-asciidoc.min.js
+	删除：     node_modules/prismjs/components/prism-asm6502.js
+	删除：     node_modules/prismjs/components/prism-asm6502.min.js
+	删除：     node_modules/prismjs/components/prism-asmatmel.js
+	删除：     node_modules/prismjs/components/prism-asmatmel.min.js
+	删除：     node_modules/prismjs/components/prism-aspnet.js
+	删除：     node_modules/prismjs/components/prism-aspnet.min.js
+	删除：     node_modules/prismjs/components/prism-autohotkey.js
+	删除：     node_modules/prismjs/components/prism-autohotkey.min.js
+	删除：     node_modules/prismjs/components/prism-autoit.js
+	删除：     node_modules/prismjs/components/prism-autoit.min.js
+	删除：     node_modules/prismjs/components/prism-avisynth.js
+	删除：     node_modules/prismjs/components/prism-avisynth.min.js
+	删除：     node_modules/prismjs/components/prism-avro-idl.js
+	删除：     node_modules/prismjs/components/prism-avro-idl.min.js
+	删除：     node_modules/prismjs/components/prism-awk.js
+	删除：     node_modules/prismjs/components/prism-awk.min.js
+	删除：     node_modules/prismjs/components/prism-bash.js
+	删除：     node_modules/prismjs/components/prism-bash.min.js
+	删除：     node_modules/prismjs/components/prism-basic.js
+	删除：     node_modules/prismjs/components/prism-basic.min.js
+	删除：     node_modules/prismjs/components/prism-batch.js
+	删除：     node_modules/prismjs/components/prism-batch.min.js
+	删除：     node_modules/prismjs/components/prism-bbcode.js
+	删除：     node_modules/prismjs/components/prism-bbcode.min.js
+	删除：     node_modules/prismjs/components/prism-bbj.js
+	删除：     node_modules/prismjs/components/prism-bbj.min.js
+	删除：     node_modules/prismjs/components/prism-bicep.js
+	删除：     node_modules/prismjs/components/prism-bicep.min.js
+	删除：     node_modules/prismjs/components/prism-birb.js
+	删除：     node_modules/prismjs/components/prism-birb.min.js
+	删除：     node_modules/prismjs/components/prism-bison.js
+	删除：     node_modules/prismjs/components/prism-bison.min.js
+	删除：     node_modules/prismjs/components/prism-bnf.js
+	删除：     node_modules/prismjs/components/prism-bnf.min.js
+	删除：     node_modules/prismjs/components/prism-bqn.js
+	删除：     node_modules/prismjs/components/prism-bqn.min.js
+	删除：     node_modules/prismjs/components/prism-brainfuck.js
+	删除：     node_modules/prismjs/components/prism-brainfuck.min.js
+	删除：     node_modules/prismjs/components/prism-brightscript.js
+	删除：     node_modules/prismjs/components/prism-brightscript.min.js
+	删除：     node_modules/prismjs/components/prism-bro.js
+	删除：     node_modules/prismjs/components/prism-bro.min.js
+	删除：     node_modules/prismjs/components/prism-bsl.js
+	删除：     node_modules/prismjs/components/prism-bsl.min.js
+	删除：     node_modules/prismjs/components/prism-c.js
+	删除：     node_modules/prismjs/components/prism-c.min.js
+	删除：     node_modules/prismjs/components/prism-cfscript.js
+	删除：     node_modules/prismjs/components/prism-cfscript.min.js
+	删除：     node_modules/prismjs/components/prism-chaiscript.js
+	删除：     node_modules/prismjs/components/prism-chaiscript.min.js
+	删除：     node_modules/prismjs/components/prism-cil.js
+	删除：     node_modules/prismjs/components/prism-cil.min.js
+	删除：     node_modules/prismjs/components/prism-cilkc.js
+	删除：     node_modules/prismjs/components/prism-cilkc.min.js
+	删除：     node_modules/prismjs/components/prism-cilkcpp.js
+	删除：     node_modules/prismjs/components/prism-cilkcpp.min.js
+	删除：     node_modules/prismjs/components/prism-clike.js
+	删除：     node_modules/prismjs/components/prism-clike.min.js
+	删除：     node_modules/prismjs/components/prism-clojure.js
+	删除：     node_modules/prismjs/components/prism-clojure.min.js
+	删除：     node_modules/prismjs/components/prism-cmake.js
+	删除：     node_modules/prismjs/components/prism-cmake.min.js
+	删除：     node_modules/prismjs/components/prism-cobol.js
+	删除：     node_modules/prismjs/components/prism-cobol.min.js
+	删除：     node_modules/prismjs/components/prism-coffeescript.js
+	删除：     node_modules/prismjs/components/prism-coffeescript.min.js
+	删除：     node_modules/prismjs/components/prism-concurnas.js
+	删除：     node_modules/prismjs/components/prism-concurnas.min.js
+	删除：     node_modules/prismjs/components/prism-cooklang.js
+	删除：     node_modules/prismjs/components/prism-cooklang.min.js
+	删除：     node_modules/prismjs/components/prism-coq.js
+	删除：     node_modules/prismjs/components/prism-coq.min.js
+	删除：     node_modules/prismjs/components/prism-core.js
+	删除：     node_modules/prismjs/components/prism-core.min.js
+	删除：     node_modules/prismjs/components/prism-cpp.js
+	删除：     node_modules/prismjs/components/prism-cpp.min.js
+	删除：     node_modules/prismjs/components/prism-crystal.js
+	删除：     node_modules/prismjs/components/prism-crystal.min.js
+	删除：     node_modules/prismjs/components/prism-csharp.js
+	删除：     node_modules/prismjs/components/prism-csharp.min.js
+	删除：     node_modules/prismjs/components/prism-cshtml.js
+	删除：     node_modules/prismjs/components/prism-cshtml.min.js
+	删除：     node_modules/prismjs/components/prism-csp.js
+	删除：     node_modules/prismjs/components/prism-csp.min.js
+	删除：     node_modules/prismjs/components/prism-css-extras.js
+	删除：     node_modules/prismjs/components/prism-css-extras.min.js
+	删除：     node_modules/prismjs/components/prism-css.js
+	删除：     node_modules/prismjs/components/prism-css.min.js
+	删除：     node_modules/prismjs/components/prism-csv.js
+	删除：     node_modules/prismjs/components/prism-csv.min.js
+	删除：     node_modules/prismjs/components/prism-cue.js
+	删除：     node_modules/prismjs/components/prism-cue.min.js
+	删除：     node_modules/prismjs/components/prism-cypher.js
+	删除：     node_modules/prismjs/components/prism-cypher.min.js
+	删除：     node_modules/prismjs/components/prism-d.js
+	删除：     node_modules/prismjs/components/prism-d.min.js
+	删除：     node_modules/prismjs/components/prism-dart.js
+	删除：     node_modules/prismjs/components/prism-dart.min.js
+	删除：     node_modules/prismjs/components/prism-dataweave.js
+	删除：     node_modules/prismjs/components/prism-dataweave.min.js
+	删除：     node_modules/prismjs/components/prism-dax.js
+	删除：     node_modules/prismjs/components/prism-dax.min.js
+	删除：     node_modules/prismjs/components/prism-dhall.js
+	删除：     node_modules/prismjs/components/prism-dhall.min.js
+	删除：     node_modules/prismjs/components/prism-diff.js
+	删除：     node_modules/prismjs/components/prism-diff.min.js
+	删除：     node_modules/prismjs/components/prism-django.js
+	删除：     node_modules/prismjs/components/prism-django.min.js
+	删除：     node_modules/prismjs/components/prism-dns-zone-file.js
+	删除：     node_modules/prismjs/components/prism-dns-zone-file.min.js
+	删除：     node_modules/prismjs/components/prism-docker.js
+	删除：     node_modules/prismjs/components/prism-docker.min.js
+	删除：     node_modules/prismjs/components/prism-dot.js
+	删除：     node_modules/prismjs/components/prism-dot.min.js
+	删除：     node_modules/prismjs/components/prism-ebnf.js
+	删除：     node_modules/prismjs/components/prism-ebnf.min.js
+	删除：     node_modules/prismjs/components/prism-editorconfig.js
+	删除：     node_modules/prismjs/components/prism-editorconfig.min.js
+	删除：     node_modules/prismjs/components/prism-eiffel.js
+	删除：     node_modules/prismjs/components/prism-eiffel.min.js
+	删除：     node_modules/prismjs/components/prism-ejs.js
+	删除：     node_modules/prismjs/components/prism-ejs.min.js
+	删除：     node_modules/prismjs/components/prism-elixir.js
+	删除：     node_modules/prismjs/components/prism-elixir.min.js
+	删除：     node_modules/prismjs/components/prism-elm.js
+	删除：     node_modules/prismjs/components/prism-elm.min.js
+	删除：     node_modules/prismjs/components/prism-erb.js
+	删除：     node_modules/prismjs/components/prism-erb.min.js
+	删除：     node_modules/prismjs/components/prism-erlang.js
+	删除：     node_modules/prismjs/components/prism-erlang.min.js
+	删除：     node_modules/prismjs/components/prism-etlua.js
+	删除：     node_modules/prismjs/components/prism-etlua.min.js
+	删除：     node_modules/prismjs/components/prism-excel-formula.js
+	删除：     node_modules/prismjs/components/prism-excel-formula.min.js
+	删除：     node_modules/prismjs/components/prism-factor.js
+	删除：     node_modules/prismjs/components/prism-factor.min.js
+	删除：     node_modules/prismjs/components/prism-false.js
+	删除：     node_modules/prismjs/components/prism-false.min.js
+	删除：     node_modules/prismjs/components/prism-firestore-security-rules.js
+	删除：     node_modules/prismjs/components/prism-firestore-security-rules.min.js
+	删除：     node_modules/prismjs/components/prism-flow.js
+	删除：     node_modules/prismjs/components/prism-flow.min.js
+	删除：     node_modules/prismjs/components/prism-fortran.js
+	删除：     node_modules/prismjs/components/prism-fortran.min.js
+	删除：     node_modules/prismjs/components/prism-fsharp.js
+	删除：     node_modules/prismjs/components/prism-fsharp.min.js
+	删除：     node_modules/prismjs/components/prism-ftl.js
+	删除：     node_modules/prismjs/components/prism-ftl.min.js
+	删除：     node_modules/prismjs/components/prism-gap.js
+	删除：     node_modules/prismjs/components/prism-gap.min.js
+	删除：     node_modules/prismjs/components/prism-gcode.js
+	删除：     node_modules/prismjs/components/prism-gcode.min.js
+	删除：     node_modules/prismjs/components/prism-gdscript.js
+	删除：     node_modules/prismjs/components/prism-gdscript.min.js
+	删除：     node_modules/prismjs/components/prism-gedcom.js
+	删除：     node_modules/prismjs/components/prism-gedcom.min.js
+	删除：     node_modules/prismjs/components/prism-gettext.js
+	删除：     node_modules/prismjs/components/prism-gettext.min.js
+	删除：     node_modules/prismjs/components/prism-gherkin.js
+	删除：     node_modules/prismjs/components/prism-gherkin.min.js
+	删除：     node_modules/prismjs/components/prism-git.js
+	删除：     node_modules/prismjs/components/prism-git.min.js
+	删除：     node_modules/prismjs/components/prism-glsl.js
+	删除：     node_modules/prismjs/components/prism-glsl.min.js
+	删除：     node_modules/prismjs/components/prism-gml.js
+	删除：     node_modules/prismjs/components/prism-gml.min.js
+	删除：     node_modules/prismjs/components/prism-gn.js
+	删除：     node_modules/prismjs/components/prism-gn.min.js
+	删除：     node_modules/prismjs/components/prism-go-module.js
+	删除：     node_modules/prismjs/components/prism-go-module.min.js
+	删除：     node_modules/prismjs/components/prism-go.js
+	删除：     node_modules/prismjs/components/prism-go.min.js
+	删除：     node_modules/prismjs/components/prism-gradle.js
+	删除：     node_modules/prismjs/components/prism-gradle.min.js
+	删除：     node_modules/prismjs/components/prism-graphql.js
+	删除：     node_modules/prismjs/components/prism-graphql.min.js
+	删除：     node_modules/prismjs/components/prism-groovy.js
+	删除：     node_modules/prismjs/components/prism-groovy.min.js
+	删除：     node_modules/prismjs/components/prism-haml.js
+	删除：     node_modules/prismjs/components/prism-haml.min.js
+	删除：     node_modules/prismjs/components/prism-handlebars.js
+	删除：     node_modules/prismjs/components/prism-handlebars.min.js
+	删除：     node_modules/prismjs/components/prism-haskell.js
+	删除：     node_modules/prismjs/components/prism-haskell.min.js
+	删除：     node_modules/prismjs/components/prism-haxe.js
+	删除：     node_modules/prismjs/components/prism-haxe.min.js
+	删除：     node_modules/prismjs/components/prism-hcl.js
+	删除：     node_modules/prismjs/components/prism-hcl.min.js
+	删除：     node_modules/prismjs/components/prism-hlsl.js
+	删除：     node_modules/prismjs/components/prism-hlsl.min.js
+	删除：     node_modules/prismjs/components/prism-hoon.js
+	删除：     node_modules/prismjs/components/prism-hoon.min.js
+	删除：     node_modules/prismjs/components/prism-hpkp.js
+	删除：     node_modules/prismjs/components/prism-hpkp.min.js
+	删除：     node_modules/prismjs/components/prism-hsts.js
+	删除：     node_modules/prismjs/components/prism-hsts.min.js
+	删除：     node_modules/prismjs/components/prism-http.js
+	删除：     node_modules/prismjs/components/prism-http.min.js
+	删除：     node_modules/prismjs/components/prism-ichigojam.js
+	删除：     node_modules/prismjs/components/prism-ichigojam.min.js
+	删除：     node_modules/prismjs/components/prism-icon.js
+	删除：     node_modules/prismjs/components/prism-icon.min.js
+	删除：     node_modules/prismjs/components/prism-icu-message-format.js
+	删除：     node_modules/prismjs/components/prism-icu-message-format.min.js
+	删除：     node_modules/prismjs/components/prism-idris.js
+	删除：     node_modules/prismjs/components/prism-idris.min.js
+	删除：     node_modules/prismjs/components/prism-iecst.js
+	删除：     node_modules/prismjs/components/prism-iecst.min.js
+	删除：     node_modules/prismjs/components/prism-ignore.js
+	删除：     node_modules/prismjs/components/prism-ignore.min.js
+	删除：     node_modules/prismjs/components/prism-inform7.js
+	删除：     node_modules/prismjs/components/prism-inform7.min.js
+	删除：     node_modules/prismjs/components/prism-ini.js
+	删除：     node_modules/prismjs/components/prism-ini.min.js
+	删除：     node_modules/prismjs/components/prism-io.js
+	删除：     node_modules/prismjs/components/prism-io.min.js
+	删除：     node_modules/prismjs/components/prism-j.js
+	删除：     node_modules/prismjs/components/prism-j.min.js
+	删除：     node_modules/prismjs/components/prism-java.js
+	删除：     node_modules/prismjs/components/prism-java.min.js
+	删除：     node_modules/prismjs/components/prism-javadoc.js
+	删除：     node_modules/prismjs/components/prism-javadoc.min.js
+	删除：     node_modules/prismjs/components/prism-javadoclike.js
+	删除：     node_modules/prismjs/components/prism-javadoclike.min.js
+	删除：     node_modules/prismjs/components/prism-javascript.js
+	删除：     node_modules/prismjs/components/prism-javascript.min.js
+	删除：     node_modules/prismjs/components/prism-javastacktrace.js
+	删除：     node_modules/prismjs/components/prism-javastacktrace.min.js
+	删除：     node_modules/prismjs/components/prism-jexl.js
+	删除：     node_modules/prismjs/components/prism-jexl.min.js
+	删除：     node_modules/prismjs/components/prism-jolie.js
+	删除：     node_modules/prismjs/components/prism-jolie.min.js
+	删除：     node_modules/prismjs/components/prism-jq.js
+	删除：     node_modules/prismjs/components/prism-jq.min.js
+	删除：     node_modules/prismjs/components/prism-js-extras.js
+	删除：     node_modules/prismjs/components/prism-js-extras.min.js
+	删除：     node_modules/prismjs/components/prism-js-templates.js
+	删除：     node_modules/prismjs/components/prism-js-templates.min.js
+	删除：     node_modules/prismjs/components/prism-jsdoc.js
+	删除：     node_modules/prismjs/components/prism-jsdoc.min.js
+	删除：     node_modules/prismjs/components/prism-json.js
+	删除：     node_modules/prismjs/components/prism-json.min.js
+	删除：     node_modules/prismjs/components/prism-json5.js
+	删除：     node_modules/prismjs/components/prism-json5.min.js
+	删除：     node_modules/prismjs/components/prism-jsonp.js
+	删除：     node_modules/prismjs/components/prism-jsonp.min.js
+	删除：     node_modules/prismjs/components/prism-jsstacktrace.js
+	删除：     node_modules/prismjs/components/prism-jsstacktrace.min.js
+	删除：     node_modules/prismjs/components/prism-jsx.js
+	删除：     node_modules/prismjs/components/prism-jsx.min.js
+	删除：     node_modules/prismjs/components/prism-julia.js
+	删除：     node_modules/prismjs/components/prism-julia.min.js
+	删除：     node_modules/prismjs/components/prism-keepalived.js
+	删除：     node_modules/prismjs/components/prism-keepalived.min.js
+	删除：     node_modules/prismjs/components/prism-keyman.js
+	删除：     node_modules/prismjs/components/prism-keyman.min.js
+	删除：     node_modules/prismjs/components/prism-kotlin.js
+	删除：     node_modules/prismjs/components/prism-kotlin.min.js
+	删除：     node_modules/prismjs/components/prism-kumir.js
+	删除：     node_modules/prismjs/components/prism-kumir.min.js
+	删除：     node_modules/prismjs/components/prism-kusto.js
+	删除：     node_modules/prismjs/components/prism-kusto.min.js
+	删除：     node_modules/prismjs/components/prism-latex.js
+	删除：     node_modules/prismjs/components/prism-latex.min.js
+	删除：     node_modules/prismjs/components/prism-latte.js
+	删除：     node_modules/prismjs/components/prism-latte.min.js
+	删除：     node_modules/prismjs/components/prism-less.js
+	删除：     node_modules/prismjs/components/prism-less.min.js
+	删除：     node_modules/prismjs/components/prism-lilypond.js
+	删除：     node_modules/prismjs/components/prism-lilypond.min.js
+	删除：     node_modules/prismjs/components/prism-linker-script.js
+	删除：     node_modules/prismjs/components/prism-linker-script.min.js
+	删除：     node_modules/prismjs/components/prism-liquid.js
+	删除：     node_modules/prismjs/components/prism-liquid.min.js
+	删除：     node_modules/prismjs/components/prism-lisp.js
+	删除：     node_modules/prismjs/components/prism-lisp.min.js
+	删除：     node_modules/prismjs/components/prism-livescript.js
+	删除：     node_modules/prismjs/components/prism-livescript.min.js
+	删除：     node_modules/prismjs/components/prism-llvm.js
+	删除：     node_modules/prismjs/components/prism-llvm.min.js
+	删除：     node_modules/prismjs/components/prism-log.js
+	删除：     node_modules/prismjs/components/prism-log.min.js
+	删除：     node_modules/prismjs/components/prism-lolcode.js
+	删除：     node_modules/prismjs/components/prism-lolcode.min.js
+	删除：     node_modules/prismjs/components/prism-lua.js
+	删除：     node_modules/prismjs/components/prism-lua.min.js
+	删除：     node_modules/prismjs/components/prism-magma.js
+	删除：     node_modules/prismjs/components/prism-magma.min.js
+	删除：     node_modules/prismjs/components/prism-makefile.js
+	删除：     node_modules/prismjs/components/prism-makefile.min.js
+	删除：     node_modules/prismjs/components/prism-markdown.js
+	删除：     node_modules/prismjs/components/prism-markdown.min.js
+	删除：     node_modules/prismjs/components/prism-markup-templating.js
+	删除：     node_modules/prismjs/components/prism-markup-templating.min.js
+	删除：     node_modules/prismjs/components/prism-markup.js
+	删除：     node_modules/prismjs/components/prism-markup.min.js
+	删除：     node_modules/prismjs/components/prism-mata.js
+	删除：     node_modules/prismjs/components/prism-mata.min.js
+	删除：     node_modules/prismjs/components/prism-matlab.js
+	删除：     node_modules/prismjs/components/prism-matlab.min.js
+	删除：     node_modules/prismjs/components/prism-maxscript.js
+	删除：     node_modules/prismjs/components/prism-maxscript.min.js
+	删除：     node_modules/prismjs/components/prism-mel.js
+	删除：     node_modules/prismjs/components/prism-mel.min.js
+	删除：     node_modules/prismjs/components/prism-mermaid.js
+	删除：     node_modules/prismjs/components/prism-mermaid.min.js
+	删除：     node_modules/prismjs/components/prism-metafont.js
+	删除：     node_modules/prismjs/components/prism-metafont.min.js
+	删除：     node_modules/prismjs/components/prism-mizar.js
+	删除：     node_modules/prismjs/components/prism-mizar.min.js
+	删除：     node_modules/prismjs/components/prism-mongodb.js
+	删除：     node_modules/prismjs/components/prism-mongodb.min.js
+	删除：     node_modules/prismjs/components/prism-monkey.js
+	删除：     node_modules/prismjs/components/prism-monkey.min.js
+	删除：     node_modules/prismjs/components/prism-moonscript.js
+	删除：     node_modules/prismjs/components/prism-moonscript.min.js
+	删除：     node_modules/prismjs/components/prism-n1ql.js
+	删除：     node_modules/prismjs/components/prism-n1ql.min.js
+	删除：     node_modules/prismjs/components/prism-n4js.js
+	删除：     node_modules/prismjs/components/prism-n4js.min.js
+	删除：     node_modules/prismjs/components/prism-nand2tetris-hdl.js
+	删除：     node_modules/prismjs/components/prism-nand2tetris-hdl.min.js
+	删除：     node_modules/prismjs/components/prism-naniscript.js
+	删除：     node_modules/prismjs/components/prism-naniscript.min.js
+	删除：     node_modules/prismjs/components/prism-nasm.js
+	删除：     node_modules/prismjs/components/prism-nasm.min.js
+	删除：     node_modules/prismjs/components/prism-neon.js
+	删除：     node_modules/prismjs/components/prism-neon.min.js
+	删除：     node_modules/prismjs/components/prism-nevod.js
+	删除：     node_modules/prismjs/components/prism-nevod.min.js
+	删除：     node_modules/prismjs/components/prism-nginx.js
+	删除：     node_modules/prismjs/components/prism-nginx.min.js
+	删除：     node_modules/prismjs/components/prism-nim.js
+	删除：     node_modules/prismjs/components/prism-nim.min.js
+	删除：     node_modules/prismjs/components/prism-nix.js
+	删除：     node_modules/prismjs/components/prism-nix.min.js
+	删除：     node_modules/prismjs/components/prism-nsis.js
+	删除：     node_modules/prismjs/components/prism-nsis.min.js
+	删除：     node_modules/prismjs/components/prism-objectivec.js
+	删除：     node_modules/prismjs/components/prism-objectivec.min.js
+	删除：     node_modules/prismjs/components/prism-ocaml.js
+	删除：     node_modules/prismjs/components/prism-ocaml.min.js
+	删除：     node_modules/prismjs/components/prism-odin.js
+	删除：     node_modules/prismjs/components/prism-odin.min.js
+	删除：     node_modules/prismjs/components/prism-opencl.js
+	删除：     node_modules/prismjs/components/prism-opencl.min.js
+	删除：     node_modules/prismjs/components/prism-openqasm.js
+	删除：     node_modules/prismjs/components/prism-openqasm.min.js
+	删除：     node_modules/prismjs/components/prism-oz.js
+	删除：     node_modules/prismjs/components/prism-oz.min.js
+	删除：     node_modules/prismjs/components/prism-parigp.js
+	删除：     node_modules/prismjs/components/prism-parigp.min.js
+	删除：     node_modules/prismjs/components/prism-parser.js
+	删除：     node_modules/prismjs/components/prism-parser.min.js
+	删除：     node_modules/prismjs/components/prism-pascal.js
+	删除：     node_modules/prismjs/components/prism-pascal.min.js
+	删除：     node_modules/prismjs/components/prism-pascaligo.js
+	删除：     node_modules/prismjs/components/prism-pascaligo.min.js
+	删除：     node_modules/prismjs/components/prism-pcaxis.js
+	删除：     node_modules/prismjs/components/prism-pcaxis.min.js
+	删除：     node_modules/prismjs/components/prism-peoplecode.js
+	删除：     node_modules/prismjs/components/prism-peoplecode.min.js
+	删除：     node_modules/prismjs/components/prism-perl.js
+	删除：     node_modules/prismjs/components/prism-perl.min.js
+	删除：     node_modules/prismjs/components/prism-php-extras.js
+	删除：     node_modules/prismjs/components/prism-php-extras.min.js
+	删除：     node_modules/prismjs/components/prism-php.js
+	删除：     node_modules/prismjs/components/prism-php.min.js
+	删除：     node_modules/prismjs/components/prism-phpdoc.js
+	删除：     node_modules/prismjs/components/prism-phpdoc.min.js
+	删除：     node_modules/prismjs/components/prism-plant-uml.js
+	删除：     node_modules/prismjs/components/prism-plant-uml.min.js
+	删除：     node_modules/prismjs/components/prism-plsql.js
+	删除：     node_modules/prismjs/components/prism-plsql.min.js
+	删除：     node_modules/prismjs/components/prism-powerquery.js
+	删除：     node_modules/prismjs/components/prism-powerquery.min.js
+	删除：     node_modules/prismjs/components/prism-powershell.js
+	删除：     node_modules/prismjs/components/prism-powershell.min.js
+	删除：     node_modules/prismjs/components/prism-processing.js
+	删除：     node_modules/prismjs/components/prism-processing.min.js
+	删除：     node_modules/prismjs/components/prism-prolog.js
+	删除：     node_modules/prismjs/components/prism-prolog.min.js
+	删除：     node_modules/prismjs/components/prism-promql.js
+	删除：     node_modules/prismjs/components/prism-promql.min.js
+	删除：     node_modules/prismjs/components/prism-properties.js
+	删除：     node_modules/prismjs/components/prism-properties.min.js
+	删除：     node_modules/prismjs/components/prism-protobuf.js
+	删除：     node_modules/prismjs/components/prism-protobuf.min.js
+	删除：     node_modules/prismjs/components/prism-psl.js
+	删除：     node_modules/prismjs/components/prism-psl.min.js
+	删除：     node_modules/prismjs/components/prism-pug.js
+	删除：     node_modules/prismjs/components/prism-pug.min.js
+	删除：     node_modules/prismjs/components/prism-puppet.js
+	删除：     node_modules/prismjs/components/prism-puppet.min.js
+	删除：     node_modules/prismjs/components/prism-pure.js
+	删除：     node_modules/prismjs/components/prism-pure.min.js
+	删除：     node_modules/prismjs/components/prism-purebasic.js
+	删除：     node_modules/prismjs/components/prism-purebasic.min.js
+	删除：     node_modules/prismjs/components/prism-purescript.js
+	删除：     node_modules/prismjs/components/prism-purescript.min.js
+	删除：     node_modules/prismjs/components/prism-python.js
+	删除：     node_modules/prismjs/components/prism-python.min.js
+	删除：     node_modules/prismjs/components/prism-q.js
+	删除：     node_modules/prismjs/components/prism-q.min.js
+	删除：     node_modules/prismjs/components/prism-qml.js
+	删除：     node_modules/prismjs/components/prism-qml.min.js
+	删除：     node_modules/prismjs/components/prism-qore.js
+	删除：     node_modules/prismjs/components/prism-qore.min.js
+	删除：     node_modules/prismjs/components/prism-qsharp.js
+	删除：     node_modules/prismjs/components/prism-qsharp.min.js
+	删除：     node_modules/prismjs/components/prism-r.js
+	删除：     node_modules/prismjs/components/prism-r.min.js
+	删除：     node_modules/prismjs/components/prism-racket.js
+	删除：     node_modules/prismjs/components/prism-racket.min.js
+	删除：     node_modules/prismjs/components/prism-reason.js
+	删除：     node_modules/prismjs/components/prism-reason.min.js
+	删除：     node_modules/prismjs/components/prism-regex.js
+	删除：     node_modules/prismjs/components/prism-regex.min.js
+	删除：     node_modules/prismjs/components/prism-rego.js
+	删除：     node_modules/prismjs/components/prism-rego.min.js
+	删除：     node_modules/prismjs/components/prism-renpy.js
+	删除：     node_modules/prismjs/components/prism-renpy.min.js
+	删除：     node_modules/prismjs/components/prism-rescript.js
+	删除：     node_modules/prismjs/components/prism-rescript.min.js
+	删除：     node_modules/prismjs/components/prism-rest.js
+	删除：     node_modules/prismjs/components/prism-rest.min.js
+	删除：     node_modules/prismjs/components/prism-rip.js
+	删除：     node_modules/prismjs/components/prism-rip.min.js
+	删除：     node_modules/prismjs/components/prism-roboconf.js
+	删除：     node_modules/prismjs/components/prism-roboconf.min.js
+	删除：     node_modules/prismjs/components/prism-robotframework.js
+	删除：     node_modules/prismjs/components/prism-robotframework.min.js
+	删除：     node_modules/prismjs/components/prism-ruby.js
+	删除：     node_modules/prismjs/components/prism-ruby.min.js
+	删除：     node_modules/prismjs/components/prism-rust.js
+	删除：     node_modules/prismjs/components/prism-rust.min.js
+	删除：     node_modules/prismjs/components/prism-sas.js
+	删除：     node_modules/prismjs/components/prism-sas.min.js
+	删除：     node_modules/prismjs/components/prism-sass.js
+	删除：     node_modules/prismjs/components/prism-sass.min.js
+	删除：     node_modules/prismjs/components/prism-scala.js
+	删除：     node_modules/prismjs/components/prism-scala.min.js
+	删除：     node_modules/prismjs/components/prism-scheme.js
+	删除：     node_modules/prismjs/components/prism-scheme.min.js
+	删除：     node_modules/prismjs/components/prism-scss.js
+	删除：     node_modules/prismjs/components/prism-scss.min.js
+	删除：     node_modules/prismjs/components/prism-shell-session.js
+	删除：     node_modules/prismjs/components/prism-shell-session.min.js
+	删除：     node_modules/prismjs/components/prism-smali.js
+	删除：     node_modules/prismjs/components/prism-smali.min.js
+	删除：     node_modules/prismjs/components/prism-smalltalk.js
+	删除：     node_modules/prismjs/components/prism-smalltalk.min.js
+	删除：     node_modules/prismjs/components/prism-smarty.js
+	删除：     node_modules/prismjs/components/prism-smarty.min.js
+	删除：     node_modules/prismjs/components/prism-sml.js
+	删除：     node_modules/prismjs/components/prism-sml.min.js
+	删除：     node_modules/prismjs/components/prism-solidity.js
+	删除：     node_modules/prismjs/components/prism-solidity.min.js
+	删除：     node_modules/prismjs/components/prism-solution-file.js
+	删除：     node_modules/prismjs/components/prism-solution-file.min.js
+	删除：     node_modules/prismjs/components/prism-soy.js
+	删除：     node_modules/prismjs/components/prism-soy.min.js
+	删除：     node_modules/prismjs/components/prism-sparql.js
+	删除：     node_modules/prismjs/components/prism-sparql.min.js
+	删除：     node_modules/prismjs/components/prism-splunk-spl.js
+	删除：     node_modules/prismjs/components/prism-splunk-spl.min.js
+	删除：     node_modules/prismjs/components/prism-sqf.js
+	删除：     node_modules/prismjs/components/prism-sqf.min.js
+	删除：     node_modules/prismjs/components/prism-sql.js
+	删除：     node_modules/prismjs/components/prism-sql.min.js
+	删除：     node_modules/prismjs/components/prism-squirrel.js
+	删除：     node_modules/prismjs/components/prism-squirrel.min.js
+	删除：     node_modules/prismjs/components/prism-stan.js
+	删除：     node_modules/prismjs/components/prism-stan.min.js
+	删除：     node_modules/prismjs/components/prism-stata.js
+	删除：     node_modules/prismjs/components/prism-stata.min.js
+	删除：     node_modules/prismjs/components/prism-stylus.js
+	删除：     node_modules/prismjs/components/prism-stylus.min.js
+	删除：     node_modules/prismjs/components/prism-supercollider.js
+	删除：     node_modules/prismjs/components/prism-supercollider.min.js
+	删除：     node_modules/prismjs/components/prism-swift.js
+	删除：     node_modules/prismjs/components/prism-swift.min.js
+	删除：     node_modules/prismjs/components/prism-systemd.js
+	删除：     node_modules/prismjs/components/prism-systemd.min.js
+	删除：     node_modules/prismjs/components/prism-t4-cs.js
+	删除：     node_modules/prismjs/components/prism-t4-cs.min.js
+	删除：     node_modules/prismjs/components/prism-t4-templating.js
+	删除：     node_modules/prismjs/components/prism-t4-templating.min.js
+	删除：     node_modules/prismjs/components/prism-t4-vb.js
+	删除：     node_modules/prismjs/components/prism-t4-vb.min.js
+	删除：     node_modules/prismjs/components/prism-tap.js
+	删除：     node_modules/prismjs/components/prism-tap.min.js
+	删除：     node_modules/prismjs/components/prism-tcl.js
+	删除：     node_modules/prismjs/components/prism-tcl.min.js
+	删除：     node_modules/prismjs/components/prism-textile.js
+	删除：     node_modules/prismjs/components/prism-textile.min.js
+	删除：     node_modules/prismjs/components/prism-toml.js
+	删除：     node_modules/prismjs/components/prism-toml.min.js
+	删除：     node_modules/prismjs/components/prism-tremor.js
+	删除：     node_modules/prismjs/components/prism-tremor.min.js
+	删除：     node_modules/prismjs/components/prism-tsx.js
+	删除：     node_modules/prismjs/components/prism-tsx.min.js
+	删除：     node_modules/prismjs/components/prism-tt2.js
+	删除：     node_modules/prismjs/components/prism-tt2.min.js
+	删除：     node_modules/prismjs/components/prism-turtle.js
+	删除：     node_modules/prismjs/components/prism-turtle.min.js
+	删除：     node_modules/prismjs/components/prism-twig.js
+	删除：     node_modules/prismjs/components/prism-twig.min.js
+	删除：     node_modules/prismjs/components/prism-typescript.js
+	删除：     node_modules/prismjs/components/prism-typescript.min.js
+	删除：     node_modules/prismjs/components/prism-typoscript.js
+	删除：     node_modules/prismjs/components/prism-typoscript.min.js
+	删除：     node_modules/prismjs/components/prism-unrealscript.js
+	删除：     node_modules/prismjs/components/prism-unrealscript.min.js
+	删除：     node_modules/prismjs/components/prism-uorazor.js
+	删除：     node_modules/prismjs/components/prism-uorazor.min.js
+	删除：     node_modules/prismjs/components/prism-uri.js
+	删除：     node_modules/prismjs/components/prism-uri.min.js
+	删除：     node_modules/prismjs/components/prism-v.js
+	删除：     node_modules/prismjs/components/prism-v.min.js
+	删除：     node_modules/prismjs/components/prism-vala.js
+	删除：     node_modules/prismjs/components/prism-vala.min.js
+	删除：     node_modules/prismjs/components/prism-vbnet.js
+	删除：     node_modules/prismjs/components/prism-vbnet.min.js
+	删除：     node_modules/prismjs/components/prism-velocity.js
+	删除：     node_modules/prismjs/components/prism-velocity.min.js
+	删除：     node_modules/prismjs/components/prism-verilog.js
+	删除：     node_modules/prismjs/components/prism-verilog.min.js
+	删除：     node_modules/prismjs/components/prism-vhdl.js
+	删除：     node_modules/prismjs/components/prism-vhdl.min.js
+	删除：     node_modules/prismjs/components/prism-vim.js
+	删除：     node_modules/prismjs/components/prism-vim.min.js
+	删除：     node_modules/prismjs/components/prism-visual-basic.js
+	删除：     node_modules/prismjs/components/prism-visual-basic.min.js
+	删除：     node_modules/prismjs/components/prism-warpscript.js
+	删除：     node_modules/prismjs/components/prism-warpscript.min.js
+	删除：     node_modules/prismjs/components/prism-wasm.js
+	删除：     node_modules/prismjs/components/prism-wasm.min.js
+	删除：     node_modules/prismjs/components/prism-web-idl.js
+	删除：     node_modules/prismjs/components/prism-web-idl.min.js
+	删除：     node_modules/prismjs/components/prism-wgsl.js
+	删除：     node_modules/prismjs/components/prism-wgsl.min.js
+	删除：     node_modules/prismjs/components/prism-wiki.js
+	删除：     node_modules/prismjs/components/prism-wiki.min.js
+	删除：     node_modules/prismjs/components/prism-wolfram.js
+	删除：     node_modules/prismjs/components/prism-wolfram.min.js
+	删除：     node_modules/prismjs/components/prism-wren.js
+	删除：     node_modules/prismjs/components/prism-wren.min.js
+	删除：     node_modules/prismjs/components/prism-xeora.js
+	删除：     node_modules/prismjs/components/prism-xeora.min.js
+	删除：     node_modules/prismjs/components/prism-xml-doc.js
+	删除：     node_modules/prismjs/components/prism-xml-doc.min.js
+	删除：     node_modules/prismjs/components/prism-xojo.js
+	删除：     node_modules/prismjs/components/prism-xojo.min.js
+	删除：     node_modules/prismjs/components/prism-xquery.js
+	删除：     node_modules/prismjs/components/prism-xquery.min.js
+	删除：     node_modules/prismjs/components/prism-yaml.js
+	删除：     node_modules/prismjs/components/prism-yaml.min.js
+	删除：     node_modules/prismjs/components/prism-yang.js
+	删除：     node_modules/prismjs/components/prism-yang.min.js
+	删除：     node_modules/prismjs/components/prism-zig.js
+	删除：     node_modules/prismjs/components/prism-zig.min.js
+	删除：     node_modules/prismjs/dependencies.js
+	删除：     node_modules/prismjs/package.json
+	删除：     node_modules/prismjs/plugins/autolinker/prism-autolinker.css
+	删除：     node_modules/prismjs/plugins/autolinker/prism-autolinker.js
+	删除：     node_modules/prismjs/plugins/autolinker/prism-autolinker.min.css
+	删除：     node_modules/prismjs/plugins/autolinker/prism-autolinker.min.js
+	删除：     node_modules/prismjs/plugins/autoloader/prism-autoloader.js
+	删除：     node_modules/prismjs/plugins/autoloader/prism-autoloader.min.js
+	删除：     node_modules/prismjs/plugins/command-line/prism-command-line.css
+	删除：     node_modules/prismjs/plugins/command-line/prism-command-line.js
+	删除：     node_modules/prismjs/plugins/command-line/prism-command-line.min.css
+	删除：     node_modules/prismjs/plugins/command-line/prism-command-line.min.js
+	删除：     node_modules/prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.js
+	删除：     node_modules/prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js
+	删除：     node_modules/prismjs/plugins/custom-class/prism-custom-class.js
+	删除：     node_modules/prismjs/plugins/custom-class/prism-custom-class.min.js
+	删除：     node_modules/prismjs/plugins/data-uri-highlight/prism-data-uri-highlight.js
+	删除：     node_modules/prismjs/plugins/data-uri-highlight/prism-data-uri-highlight.min.js
+	删除：     node_modules/prismjs/plugins/diff-highlight/prism-diff-highlight.css
+	删除：     node_modules/prismjs/plugins/diff-highlight/prism-diff-highlight.js
+	删除：     node_modules/prismjs/plugins/diff-highlight/prism-diff-highlight.min.css
+	删除：     node_modules/prismjs/plugins/diff-highlight/prism-diff-highlight.min.js
+	删除：     node_modules/prismjs/plugins/download-button/prism-download-button.js
+	删除：     node_modules/prismjs/plugins/download-button/prism-download-button.min.js
+	删除：     node_modules/prismjs/plugins/file-highlight/prism-file-highlight.js
+	删除：     node_modules/prismjs/plugins/file-highlight/prism-file-highlight.min.js
+	删除：     node_modules/prismjs/plugins/filter-highlight-all/prism-filter-highlight-all.js
+	删除：     node_modules/prismjs/plugins/filter-highlight-all/prism-filter-highlight-all.min.js
+	删除：     node_modules/prismjs/plugins/highlight-keywords/prism-highlight-keywords.js
+	删除：     node_modules/prismjs/plugins/highlight-keywords/prism-highlight-keywords.min.js
+	删除：     node_modules/prismjs/plugins/inline-color/prism-inline-color.css
+	删除：     node_modules/prismjs/plugins/inline-color/prism-inline-color.js
+	删除：     node_modules/prismjs/plugins/inline-color/prism-inline-color.min.css
+	删除：     node_modules/prismjs/plugins/inline-color/prism-inline-color.min.js
+	删除：     node_modules/prismjs/plugins/jsonp-highlight/prism-jsonp-highlight.js
+	删除：     node_modules/prismjs/plugins/jsonp-highlight/prism-jsonp-highlight.min.js
+	删除：     node_modules/prismjs/plugins/keep-markup/prism-keep-markup.js
+	删除：     node_modules/prismjs/plugins/keep-markup/prism-keep-markup.min.js
+	删除：     node_modules/prismjs/plugins/line-highlight/prism-line-highlight.css
+	删除：     node_modules/prismjs/plugins/line-highlight/prism-line-highlight.js
+	删除：     node_modules/prismjs/plugins/line-highlight/prism-line-highlight.min.css
+	删除：     node_modules/prismjs/plugins/line-highlight/prism-line-highlight.min.js
+	删除：     node_modules/prismjs/plugins/line-numbers/prism-line-numbers.css
+	删除：     node_modules/prismjs/plugins/line-numbers/prism-line-numbers.js
+	删除：     node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css
+	删除：     node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.js
+	删除：     node_modules/prismjs/plugins/match-braces/prism-match-braces.css
+	删除：     node_modules/prismjs/plugins/match-braces/prism-match-braces.js
+	删除：     node_modules/prismjs/plugins/match-braces/prism-match-braces.min.css
+	删除：     node_modules/prismjs/plugins/match-braces/prism-match-braces.min.js
+	删除：     node_modules/prismjs/plugins/normalize-whitespace/prism-normalize-whitespace.js
+	删除：     node_modules/prismjs/plugins/normalize-whitespace/prism-normalize-whitespace.min.js
+	删除：     node_modules/prismjs/plugins/previewers/prism-previewers.css
+	删除：     node_modules/prismjs/plugins/previewers/prism-previewers.js
+	删除：     node_modules/prismjs/plugins/previewers/prism-previewers.min.css
+	删除：     node_modules/prismjs/plugins/previewers/prism-previewers.min.js
+	删除：     node_modules/prismjs/plugins/remove-initial-line-feed/prism-remove-initial-line-feed.js
+	删除：     node_modules/prismjs/plugins/remove-initial-line-feed/prism-remove-initial-line-feed.min.js
+	删除：     node_modules/prismjs/plugins/show-invisibles/prism-show-invisibles.css
+	删除：     node_modules/prismjs/plugins/show-invisibles/prism-show-invisibles.js
+	删除：     node_modules/prismjs/plugins/show-invisibles/prism-show-invisibles.min.css
+	删除：     node_modules/prismjs/plugins/show-invisibles/prism-show-invisibles.min.js
+	删除：     node_modules/prismjs/plugins/show-language/prism-show-language.js
+	删除：     node_modules/prismjs/plugins/show-language/prism-show-language.min.js
+	删除：     node_modules/prismjs/plugins/toolbar/prism-toolbar.css
+	删除：     node_modules/prismjs/plugins/toolbar/prism-toolbar.js
+	删除：     node_modules/prismjs/plugins/toolbar/prism-toolbar.min.css
+	删除：     node_modules/prismjs/plugins/toolbar/prism-toolbar.min.js
+	删除：     node_modules/prismjs/plugins/treeview/prism-treeview.css
+	删除：     node_modules/prismjs/plugins/treeview/prism-treeview.js
+	删除：     node_modules/prismjs/plugins/treeview/prism-treeview.min.css
+	删除：     node_modules/prismjs/plugins/treeview/prism-treeview.min.js
+	删除：     node_modules/prismjs/plugins/unescaped-markup/prism-unescaped-markup.css
+	删除：     node_modules/prismjs/plugins/unescaped-markup/prism-unescaped-markup.js
+	删除：     node_modules/prismjs/plugins/unescaped-markup/prism-unescaped-markup.min.css
+	删除：     node_modules/prismjs/plugins/unescaped-markup/prism-unescaped-markup.min.js
+	删除：     node_modules/prismjs/plugins/wpd/prism-wpd.css
+	删除：     node_modules/prismjs/plugins/wpd/prism-wpd.js
+	删除：     node_modules/prismjs/plugins/wpd/prism-wpd.min.css
+	删除：     node_modules/prismjs/plugins/wpd/prism-wpd.min.js
+	删除：     node_modules/prismjs/prism.js
+	删除：     node_modules/prismjs/themes/prism-coy.css
+	删除：     node_modules/prismjs/themes/prism-coy.min.css
+	删除：     node_modules/prismjs/themes/prism-dark.css
+	删除：     node_modules/prismjs/themes/prism-dark.min.css
+	删除：     node_modules/prismjs/themes/prism-funky.css
+	删除：     node_modules/prismjs/themes/prism-funky.min.css
+	删除：     node_modules/prismjs/themes/prism-okaidia.css
+	删除：     node_modules/prismjs/themes/prism-okaidia.min.css
+	删除：     node_modules/prismjs/themes/prism-solarizedlight.css
+	删除：     node_modules/prismjs/themes/prism-solarizedlight.min.css
+	删除：     node_modules/prismjs/themes/prism-tomorrow.css
+	删除：     node_modules/prismjs/themes/prism-tomorrow.min.css
+	删除：     node_modules/prismjs/themes/prism-twilight.css
+	删除：     node_modules/prismjs/themes/prism-twilight.min.css
+	删除：     node_modules/prismjs/themes/prism.css
+	删除：     node_modules/prismjs/themes/prism.min.css
+	删除：     node_modules/pump/.github/FUNDING.yml
+	删除：     node_modules/pump/.travis.yml
+	删除：     node_modules/pump/LICENSE
+	删除：     node_modules/pump/README.md
+	删除：     node_modules/pump/SECURITY.md
+	删除：     node_modules/pump/index.js
+	删除：     node_modules/pump/package.json
+	删除：     node_modules/pump/test-browser.js
+	删除：     node_modules/pump/test-node.js
+	删除：     node_modules/pupa/index.d.ts
+	删除：     node_modules/pupa/index.js
+	删除：     node_modules/pupa/license
+	删除：     node_modules/pupa/package.json
+	删除：     node_modules/pupa/readme.md
+	删除：     node_modules/range-parser/HISTORY.md
+	删除：     node_modules/range-parser/LICENSE
+	删除：     node_modules/range-parser/README.md
+	删除：     node_modules/range-parser/index.js
+	删除：     node_modules/range-parser/package.json
+	删除：     node_modules/rc/LICENSE.APACHE2
+	删除：     node_modules/rc/LICENSE.BSD
+	删除：     node_modules/rc/LICENSE.MIT
+	删除：     node_modules/rc/README.md
+	删除：     node_modules/rc/browser.js
+	删除：     node_modules/rc/cli.js
+	删除：     node_modules/rc/index.js
+	删除：     node_modules/rc/lib/utils.js
+	删除：     node_modules/rc/package.json
+	删除：     node_modules/rc/test/ini.js
+	删除：     node_modules/rc/test/nested-env-vars.js
+	删除：     node_modules/rc/test/test.js
+	删除：     node_modules/readdirp/LICENSE
+	删除：     node_modules/readdirp/README.md
+	删除：     node_modules/readdirp/index.d.ts
+	删除：     node_modules/readdirp/index.js
+	删除：     node_modules/readdirp/package.json
+	删除：     node_modules/registry-auth-token/CHANGELOG.md
+	删除：     node_modules/registry-auth-token/LICENSE
+	删除：     node_modules/registry-auth-token/README.md
+	删除：     node_modules/registry-auth-token/base64.js
+	删除：     node_modules/registry-auth-token/index.js
+	删除：     node_modules/registry-auth-token/package.json
+	删除：     node_modules/registry-auth-token/registry-url.js
+	删除：     node_modules/registry-url/index.d.ts
+	删除：     node_modules/registry-url/index.js
+	删除：     node_modules/registry-url/license
+	删除：     node_modules/registry-url/package.json
+	删除：     node_modules/registry-url/readme.md
+	删除：     node_modules/require-directory/.jshintrc
+	删除：     node_modules/require-directory/.npmignore
+	删除：     node_modules/require-directory/.travis.yml
+	删除：     node_modules/require-directory/LICENSE
+	删除：     node_modules/require-directory/README.markdown
+	删除：     node_modules/require-directory/index.js
+	删除：     node_modules/require-directory/package.json
+	删除：     node_modules/require-main-filename/CHANGELOG.md
+	删除：     node_modules/require-main-filename/LICENSE.txt
+	删除：     node_modules/require-main-filename/README.md
+	删除：     node_modules/require-main-filename/index.js
+	删除：     node_modules/require-main-filename/package.json
+	删除：     node_modules/resolve-pathname/LICENSE
+	删除：     node_modules/resolve-pathname/README.md
+	删除：     node_modules/resolve-pathname/cjs/resolve-pathname.js
+	删除：     node_modules/resolve-pathname/cjs/resolve-pathname.min.js
+	删除：     node_modules/resolve-pathname/esm/resolve-pathname.js
+	删除：     node_modules/resolve-pathname/index.js
+	删除：     node_modules/resolve-pathname/package.json
+	删除：     node_modules/resolve-pathname/umd/resolve-pathname.js
+	删除：     node_modules/resolve-pathname/umd/resolve-pathname.min.js
+	删除：     node_modules/responselike/LICENSE
+	删除：     node_modules/responselike/README.md
+	删除：     node_modules/responselike/package.json
+	删除：     node_modules/responselike/src/index.js
+	删除：     node_modules/semver-diff/index.d.ts
+	删除：     node_modules/semver-diff/index.js
+	删除：     node_modules/semver-diff/license
+	删除：     node_modules/semver-diff/package.json
+	删除：     node_modules/semver-diff/readme.md
+	删除：     node_modules/semver/LICENSE
+	删除：     node_modules/semver/README.md
+	删除：     node_modules/semver/bin/semver.js
+	删除：     node_modules/semver/package.json
+	删除：     node_modules/semver/range.bnf
+	删除：     node_modules/semver/semver.js
+	删除：     node_modules/send/HISTORY.md
+	删除：     node_modules/send/LICENSE
+	删除：     node_modules/send/README.md
+	删除：     node_modules/send/SECURITY.md
+	删除：     node_modules/send/index.js
+	删除：     node_modules/send/node_modules/ms/index.js
+	删除：     node_modules/send/node_modules/ms/license.md
+	删除：     node_modules/send/node_modules/ms/package.json
+	删除：     node_modules/send/node_modules/ms/readme.md
+	删除：     node_modules/send/node_modules/on-finished/HISTORY.md
+	删除：     node_modules/send/node_modules/on-finished/LICENSE
+	删除：     node_modules/send/node_modules/on-finished/README.md
+	删除：     node_modules/send/node_modules/on-finished/index.js
+	删除：     node_modules/send/node_modules/on-finished/package.json
+	删除：     node_modules/send/node_modules/statuses/HISTORY.md
+	删除：     node_modules/send/node_modules/statuses/LICENSE
+	删除：     node_modules/send/node_modules/statuses/README.md
+	删除：     node_modules/send/node_modules/statuses/codes.json
+	删除：     node_modules/send/node_modules/statuses/index.js
+	删除：     node_modules/send/node_modules/statuses/package.json
+	删除：     node_modules/send/package.json
+	删除：     node_modules/serve-static/HISTORY.md
+	删除：     node_modules/serve-static/LICENSE
+	删除：     node_modules/serve-static/README.md
+	删除：     node_modules/serve-static/index.js
+	删除：     node_modules/serve-static/node_modules/encodeurl/LICENSE
+	删除：     node_modules/serve-static/node_modules/encodeurl/README.md
+	删除：     node_modules/serve-static/node_modules/encodeurl/index.js
+	删除：     node_modules/serve-static/node_modules/encodeurl/package.json
+	删除：     node_modules/serve-static/package.json
+	删除：     node_modules/set-blocking/CHANGELOG.md
+	删除：     node_modules/set-blocking/LICENSE.txt
+	删除：     node_modules/set-blocking/README.md
+	删除：     node_modules/set-blocking/index.js
+	删除：     node_modules/set-blocking/package.json
+	删除：     node_modules/setprototypeof/LICENSE
+	删除：     node_modules/setprototypeof/README.md
+	删除：     node_modules/setprototypeof/index.d.ts
+	删除：     node_modules/setprototypeof/index.js
+	删除：     node_modules/setprototypeof/package.json
+	删除：     node_modules/setprototypeof/test/index.js
+	删除：     node_modules/signal-exit/LICENSE.txt
+	删除：     node_modules/signal-exit/README.md
+	删除：     node_modules/signal-exit/index.js
+	删除：     node_modules/signal-exit/package.json
+	删除：     node_modules/signal-exit/signals.js
+	删除：     node_modules/statuses/HISTORY.md
+	删除：     node_modules/statuses/LICENSE
+	删除：     node_modules/statuses/README.md
+	删除：     node_modules/statuses/codes.json
+	删除：     node_modules/statuses/index.js
+	删除：     node_modules/statuses/package.json
+	删除：     node_modules/string-width/index.d.ts
+	删除：     node_modules/string-width/index.js
+	删除：     node_modules/string-width/license
+	删除：     node_modules/string-width/package.json
+	删除：     node_modules/string-width/readme.md
+	删除：     node_modules/strip-ansi/index.d.ts
+	删除：     node_modules/strip-ansi/index.js
+	删除：     node_modules/strip-ansi/license
+	删除：     node_modules/strip-ansi/package.json
+	删除：     node_modules/strip-ansi/readme.md
+	删除：     node_modules/strip-indent/index.d.ts
+	删除：     node_modules/strip-indent/index.js
+	删除：     node_modules/strip-indent/license
+	删除：     node_modules/strip-indent/package.json
+	删除：     node_modules/strip-indent/readme.md
+	删除：     node_modules/strip-json-comments/index.js
+	删除：     node_modules/strip-json-comments/license
+	删除：     node_modules/strip-json-comments/package.json
+	删除：     node_modules/strip-json-comments/readme.md
+	删除：     node_modules/supports-color/browser.js
+	删除：     node_modules/supports-color/index.js
+	删除：     node_modules/supports-color/license
+	删除：     node_modules/supports-color/package.json
+	删除：     node_modules/supports-color/readme.md
+	删除：     node_modules/term-size/index.d.ts
+	删除：     node_modules/term-size/index.js
+	删除：     node_modules/term-size/license
+	删除：     node_modules/term-size/package.json
+	删除：     node_modules/term-size/readme.md
+	删除：     node_modules/term-size/vendor/macos/term-size
+	删除：     node_modules/term-size/vendor/windows/term-size.exe
+	删除：     node_modules/tinydate/dist/tinydate.js
+	删除：     node_modules/tinydate/dist/tinydate.min.js
+	删除：     node_modules/tinydate/dist/tinydate.mjs
+	删除：     node_modules/tinydate/index.d.ts
+	删除：     node_modules/tinydate/license
+	删除：     node_modules/tinydate/package.json
+	删除：     node_modules/tinydate/readme.md
+	删除：     node_modules/to-readable-stream/index.js
+	删除：     node_modules/to-readable-stream/license
+	删除：     node_modules/to-readable-stream/package.json
+	删除：     node_modules/to-readable-stream/readme.md
+	删除：     node_modules/to-regex-range/LICENSE
+	删除：     node_modules/to-regex-range/README.md
+	删除：     node_modules/to-regex-range/index.js
+	删除：     node_modules/to-regex-range/package.json
+	删除：     node_modules/toidentifier/HISTORY.md
+	删除：     node_modules/toidentifier/LICENSE
+	删除：     node_modules/toidentifier/README.md
+	删除：     node_modules/toidentifier/index.js
+	删除：     node_modules/toidentifier/package.json
+	删除：     node_modules/tr46/.npmignore
+	删除：     node_modules/tr46/index.js
+	删除：     node_modules/tr46/lib/.gitkeep
+	删除：     node_modules/tr46/lib/mappingTable.json
+	删除：     node_modules/tr46/package.json
+	删除：     node_modules/tweezer.js/LICENSE
+	删除：     node_modules/tweezer.js/README.md
+	删除：     node_modules/tweezer.js/dist/multi-tweener.js
+	删除：     node_modules/tweezer.js/dist/multi-tweener.module.js
+	删除：     node_modules/tweezer.js/dist/tweezer.js
+	删除：     node_modules/tweezer.js/dist/tweezer.module.js
+	删除：     node_modules/tweezer.js/package.json
+	删除：     node_modules/type-fest/index.d.ts
+	删除：     node_modules/type-fest/license
+	删除：     node_modules/type-fest/package.json
+	删除：     node_modules/type-fest/readme.md
+	删除：     node_modules/type-fest/source/basic.d.ts
+	删除：     node_modules/type-fest/source/except.d.ts
+	删除：     node_modules/type-fest/source/literal-union.d.ts
+	删除：     node_modules/type-fest/source/merge-exclusive.d.ts
+	删除：     node_modules/type-fest/source/merge.d.ts
+	删除：     node_modules/type-fest/source/mutable.d.ts
+	删除：     node_modules/type-fest/source/opaque.d.ts
+	删除：     node_modules/type-fest/source/package-json.d.ts
+	删除：     node_modules/type-fest/source/partial-deep.d.ts
+	删除：     node_modules/type-fest/source/promisable.d.ts
+	删除：     node_modules/type-fest/source/readonly-deep.d.ts
+	删除：     node_modules/type-fest/source/require-at-least-one.d.ts
+	删除：     node_modules/type-fest/source/require-exactly-one.d.ts
+	删除：     node_modules/type-fest/source/set-optional.d.ts
+	删除：     node_modules/type-fest/source/set-required.d.ts
+	删除：     node_modules/typedarray-to-buffer/.airtap.yml
+	删除：     node_modules/typedarray-to-buffer/.travis.yml
+	删除：     node_modules/typedarray-to-buffer/LICENSE
+	删除：     node_modules/typedarray-to-buffer/README.md
+	删除：     node_modules/typedarray-to-buffer/index.js
+	删除：     node_modules/typedarray-to-buffer/package.json
+	删除：     node_modules/typedarray-to-buffer/test/basic.js
+	删除：     node_modules/unique-string/index.d.ts
+	删除：     node_modules/unique-string/index.js
+	删除：     node_modules/unique-string/license
+	删除：     node_modules/unique-string/package.json
+	删除：     node_modules/unique-string/readme.md
+	删除：     node_modules/universalify/LICENSE
+	删除：     node_modules/universalify/README.md
+	删除：     node_modules/universalify/index.js
+	删除：     node_modules/universalify/package.json
+	删除：     node_modules/unpipe/HISTORY.md
+	删除：     node_modules/unpipe/LICENSE
+	删除：     node_modules/unpipe/README.md
+	删除：     node_modules/unpipe/index.js
+	删除：     node_modules/unpipe/package.json
+	删除：     node_modules/update-notifier/check.js
+	删除：     node_modules/update-notifier/index.js
+	删除：     node_modules/update-notifier/license
+	删除：     node_modules/update-notifier/node_modules/ansi-styles/index.d.ts
+	删除：     node_modules/update-notifier/node_modules/ansi-styles/index.js
+	删除：     node_modules/update-notifier/node_modules/ansi-styles/license
+	删除：     node_modules/update-notifier/node_modules/ansi-styles/package.json
+	删除：     node_modules/update-notifier/node_modules/ansi-styles/readme.md
+	删除：     node_modules/update-notifier/node_modules/chalk/index.d.ts
+	删除：     node_modules/update-notifier/node_modules/chalk/license
+	删除：     node_modules/update-notifier/node_modules/chalk/package.json
+	删除：     node_modules/update-notifier/node_modules/chalk/readme.md
+	删除：     node_modules/update-notifier/node_modules/chalk/source/index.js
+	删除：     node_modules/update-notifier/node_modules/chalk/source/templates.js
+	删除：     node_modules/update-notifier/node_modules/chalk/source/util.js
+	删除：     node_modules/update-notifier/node_modules/color-convert/CHANGELOG.md
+	删除：     node_modules/update-notifier/node_modules/color-convert/LICENSE
+	删除：     node_modules/update-notifier/node_modules/color-convert/README.md
+	删除：     node_modules/update-notifier/node_modules/color-convert/conversions.js
+	删除：     node_modules/update-notifier/node_modules/color-convert/index.js
+	删除：     node_modules/update-notifier/node_modules/color-convert/package.json
+	删除：     node_modules/update-notifier/node_modules/color-convert/route.js
+	删除：     node_modules/update-notifier/node_modules/color-name/LICENSE
+	删除：     node_modules/update-notifier/node_modules/color-name/README.md
+	删除：     node_modules/update-notifier/node_modules/color-name/index.js
+	删除：     node_modules/update-notifier/node_modules/color-name/package.json
+	删除：     node_modules/update-notifier/node_modules/has-flag/index.d.ts
+	删除：     node_modules/update-notifier/node_modules/has-flag/index.js
+	删除：     node_modules/update-notifier/node_modules/has-flag/license
+	删除：     node_modules/update-notifier/node_modules/has-flag/package.json
+	删除：     node_modules/update-notifier/node_modules/has-flag/readme.md
+	删除：     node_modules/update-notifier/node_modules/supports-color/browser.js
+	删除：     node_modules/update-notifier/node_modules/supports-color/index.js
+	删除：     node_modules/update-notifier/node_modules/supports-color/license
+	删除：     node_modules/update-notifier/node_modules/supports-color/package.json
+	删除：     node_modules/update-notifier/node_modules/supports-color/readme.md
+	删除：     node_modules/update-notifier/package.json
+	删除：     node_modules/update-notifier/readme.md
+	删除：     node_modules/url-parse-lax/index.js
+	删除：     node_modules/url-parse-lax/license
+	删除：     node_modules/url-parse-lax/package.json
+	删除：     node_modules/url-parse-lax/readme.md
+	删除：     node_modules/utils-merge/.npmignore
+	删除：     node_modules/utils-merge/LICENSE
+	删除：     node_modules/utils-merge/README.md
+	删除：     node_modules/utils-merge/index.js
+	删除：     node_modules/utils-merge/package.json
+	删除：     node_modules/webidl-conversions/LICENSE.md
+	删除：     node_modules/webidl-conversions/README.md
+	删除：     node_modules/webidl-conversions/lib/index.js
+	删除：     node_modules/webidl-conversions/package.json
+	删除：     node_modules/whatwg-url/LICENSE.txt
+	删除：     node_modules/whatwg-url/README.md
+	删除：     node_modules/whatwg-url/lib/URL-impl.js
+	删除：     node_modules/whatwg-url/lib/URL.js
+	删除：     node_modules/whatwg-url/lib/public-api.js
+	删除：     node_modules/whatwg-url/lib/url-state-machine.js
+	删除：     node_modules/whatwg-url/lib/utils.js
+	删除：     node_modules/whatwg-url/package.json
+	删除：     node_modules/which-module/LICENSE
+	删除：     node_modules/which-module/README.md
+	删除：     node_modules/which-module/index.js
+	删除：     node_modules/which-module/package.json
+	删除：     node_modules/widest-line/index.d.ts
+	删除：     node_modules/widest-line/index.js
+	删除：     node_modules/widest-line/license
+	删除：     node_modules/widest-line/package.json
+	删除：     node_modules/widest-line/readme.md
+	删除：     node_modules/wrap-ansi/index.js
+	删除：     node_modules/wrap-ansi/license
+	删除：     node_modules/wrap-ansi/node_modules/ansi-styles/index.d.ts
+	删除：     node_modules/wrap-ansi/node_modules/ansi-styles/index.js
+	删除：     node_modules/wrap-ansi/node_modules/ansi-styles/license
+	删除：     node_modules/wrap-ansi/node_modules/ansi-styles/package.json
+	删除：     node_modules/wrap-ansi/node_modules/ansi-styles/readme.md
+	删除：     node_modules/wrap-ansi/node_modules/color-convert/CHANGELOG.md
+	删除：     node_modules/wrap-ansi/node_modules/color-convert/LICENSE
+	删除：     node_modules/wrap-ansi/node_modules/color-convert/README.md
+	删除：     node_modules/wrap-ansi/node_modules/color-convert/conversions.js
+	删除：     node_modules/wrap-ansi/node_modules/color-convert/index.js
+	删除：     node_modules/wrap-ansi/node_modules/color-convert/package.json
+	删除：     node_modules/wrap-ansi/node_modules/color-convert/route.js
+	删除：     node_modules/wrap-ansi/node_modules/color-name/LICENSE
+	删除：     node_modules/wrap-ansi/node_modules/color-name/README.md
+	删除：     node_modules/wrap-ansi/node_modules/color-name/index.js
+	删除：     node_modules/wrap-ansi/node_modules/color-name/package.json
+	删除：     node_modules/wrap-ansi/package.json
+	删除：     node_modules/wrap-ansi/readme.md
+	删除：     node_modules/wrappy/LICENSE
+	删除：     node_modules/wrappy/README.md
+	删除：     node_modules/wrappy/package.json
+	删除：     node_modules/wrappy/wrappy.js
+	删除：     node_modules/write-file-atomic/CHANGELOG.md
+	删除：     node_modules/write-file-atomic/LICENSE
+	删除：     node_modules/write-file-atomic/README.md
+	删除：     node_modules/write-file-atomic/index.js
+	删除：     node_modules/write-file-atomic/package.json
+	删除：     node_modules/ws/LICENSE
+	删除：     node_modules/ws/README.md
+	删除：     node_modules/ws/browser.js
+	删除：     node_modules/ws/index.js
+	删除：     node_modules/ws/lib/buffer-util.js
+	删除：     node_modules/ws/lib/constants.js
+	删除：     node_modules/ws/lib/event-target.js
+	删除：     node_modules/ws/lib/extension.js
+	删除：     node_modules/ws/lib/limiter.js
+	删除：     node_modules/ws/lib/permessage-deflate.js
+	删除：     node_modules/ws/lib/receiver.js
+	删除：     node_modules/ws/lib/sender.js
+	删除：     node_modules/ws/lib/stream.js
+	删除：     node_modules/ws/lib/validation.js
+	删除：     node_modules/ws/lib/websocket-server.js
+	删除：     node_modules/ws/lib/websocket.js
+	删除：     node_modules/ws/package.json
+	删除：     node_modules/xdg-basedir/index.d.ts
+	删除：     node_modules/xdg-basedir/index.js
+	删除：     node_modules/xdg-basedir/license
+	删除：     node_modules/xdg-basedir/package.json
+	删除：     node_modules/xdg-basedir/readme.md
+	删除：     node_modules/y18n/CHANGELOG.md
+	删除：     node_modules/y18n/LICENSE
+	删除：     node_modules/y18n/README.md
+	删除：     node_modules/y18n/index.js
+	删除：     node_modules/y18n/package.json
+	删除：     node_modules/yallist/LICENSE
+	删除：     node_modules/yallist/README.md
+	删除：     node_modules/yallist/iterator.js
+	删除：     node_modules/yallist/package.json
+	删除：     node_modules/yallist/yallist.js
+	删除：     node_modules/yargonaut/LICENSE
+	删除：     node_modules/yargonaut/README.md
+	删除：     node_modules/yargonaut/index.js
+	删除：     node_modules/yargonaut/node_modules/ansi-regex/index.js
+	删除：     node_modules/yargonaut/node_modules/ansi-regex/license
+	删除：     node_modules/yargonaut/node_modules/ansi-regex/package.json
+	删除：     node_modules/yargonaut/node_modules/ansi-regex/readme.md
+	删除：     node_modules/yargonaut/node_modules/ansi-styles/index.js
+	删除：     node_modules/yargonaut/node_modules/ansi-styles/license
+	删除：     node_modules/yargonaut/node_modules/ansi-styles/package.json
+	删除：     node_modules/yargonaut/node_modules/ansi-styles/readme.md
+	删除：     node_modules/yargonaut/node_modules/chalk/index.js
+	删除：     node_modules/yargonaut/node_modules/chalk/license
+	删除：     node_modules/yargonaut/node_modules/chalk/package.json
+	删除：     node_modules/yargonaut/node_modules/chalk/readme.md
+	删除：     node_modules/yargonaut/node_modules/strip-ansi/index.js
+	删除：     node_modules/yargonaut/node_modules/strip-ansi/license
+	删除：     node_modules/yargonaut/node_modules/strip-ansi/package.json
+	删除：     node_modules/yargonaut/node_modules/strip-ansi/readme.md
+	删除：     node_modules/yargonaut/node_modules/supports-color/index.js
+	删除：     node_modules/yargonaut/node_modules/supports-color/license
+	删除：     node_modules/yargonaut/node_modules/supports-color/package.json
+	删除：     node_modules/yargonaut/node_modules/supports-color/readme.md
+	删除：     node_modules/yargonaut/package.json
+	删除：     node_modules/yargs-parser/CHANGELOG.md
+	删除：     node_modules/yargs-parser/LICENSE.txt
+	删除：     node_modules/yargs-parser/README.md
+	删除：     node_modules/yargs-parser/index.js
+	删除：     node_modules/yargs-parser/lib/tokenize-arg-string.js
+	删除：     node_modules/yargs-parser/package.json
+	删除：     node_modules/yargs/CHANGELOG.md
+	删除：     node_modules/yargs/LICENSE
+	删除：     node_modules/yargs/README.md
+	删除：     node_modules/yargs/build/lib/apply-extends.d.ts
+	删除：     node_modules/yargs/build/lib/apply-extends.js
+	删除：     node_modules/yargs/build/lib/argsert.d.ts
+	删除：     node_modules/yargs/build/lib/argsert.js
+	删除：     node_modules/yargs/build/lib/command.d.ts
+	删除：     node_modules/yargs/build/lib/command.js
+	删除：     node_modules/yargs/build/lib/common-types.d.ts
+	删除：     node_modules/yargs/build/lib/common-types.js
+	删除：     node_modules/yargs/build/lib/completion-templates.d.ts
+	删除：     node_modules/yargs/build/lib/completion-templates.js
+	删除：     node_modules/yargs/build/lib/completion.d.ts
+	删除：     node_modules/yargs/build/lib/completion.js
+	删除：     node_modules/yargs/build/lib/is-promise.d.ts
+	删除：     node_modules/yargs/build/lib/is-promise.js
+	删除：     node_modules/yargs/build/lib/levenshtein.d.ts
+	删除：     node_modules/yargs/build/lib/levenshtein.js
+	删除：     node_modules/yargs/build/lib/middleware.d.ts
+	删除：     node_modules/yargs/build/lib/middleware.js
+	删除：     node_modules/yargs/build/lib/obj-filter.d.ts
+	删除：     node_modules/yargs/build/lib/obj-filter.js
+	删除：     node_modules/yargs/build/lib/parse-command.d.ts
+	删除：     node_modules/yargs/build/lib/parse-command.js
+	删除：     node_modules/yargs/build/lib/process-argv.d.ts
+	删除：     node_modules/yargs/build/lib/process-argv.js
+	删除：     node_modules/yargs/build/lib/usage.d.ts
+	删除：     node_modules/yargs/build/lib/usage.js
+	删除：     node_modules/yargs/build/lib/validation.d.ts
+	删除：     node_modules/yargs/build/lib/validation.js
+	删除：     node_modules/yargs/build/lib/yargs.d.ts
+	删除：     node_modules/yargs/build/lib/yargs.js
+	删除：     node_modules/yargs/build/lib/yerror.d.ts
+	删除：     node_modules/yargs/build/lib/yerror.js
+	删除：     node_modules/yargs/index.js
+	删除：     node_modules/yargs/locales/be.json
+	删除：     node_modules/yargs/locales/de.json
+	删除：     node_modules/yargs/locales/en.json
+	删除：     node_modules/yargs/locales/es.json
+	删除：     node_modules/yargs/locales/fi.json
+	删除：     node_modules/yargs/locales/fr.json
+	删除：     node_modules/yargs/locales/hi.json
+	删除：     node_modules/yargs/locales/hu.json
+	删除：     node_modules/yargs/locales/id.json
+	删除：     node_modules/yargs/locales/it.json
+	删除：     node_modules/yargs/locales/ja.json
+	删除：     node_modules/yargs/locales/ko.json
+	删除：     node_modules/yargs/locales/nb.json
+	删除：     node_modules/yargs/locales/nl.json
+	删除：     node_modules/yargs/locales/nn.json
+	删除：     node_modules/yargs/locales/pirate.json
+	删除：     node_modules/yargs/locales/pl.json
+	删除：     node_modules/yargs/locales/pt.json
+	删除：     node_modules/yargs/locales/pt_BR.json
+	删除：     node_modules/yargs/locales/ru.json
+	删除：     node_modules/yargs/locales/th.json
+	删除：     node_modules/yargs/locales/tr.json
+	删除：     node_modules/yargs/locales/zh_CN.json
+	删除：     node_modules/yargs/locales/zh_TW.json
+	删除：     node_modules/yargs/package.json
+	删除：     node_modules/yargs/yargs.js
+
+未跟踪的文件:
+  （使用 "git add <文件>..." 以包含要提交的内容）
+	.vitepress/cache/
+	.vitepress/dist/
+	git_status_log
+
+修改尚未加入提交（使用 "git add" 和/或 "git commit -a"）

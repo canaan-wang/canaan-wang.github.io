@@ -38,3 +38,4 @@ pnpm-debug.log*
 # Misc
 *.log
 .trae/documents
+node_modules

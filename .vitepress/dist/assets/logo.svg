@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="96" height="96" viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Lazy Cat Abstract Logo">
+  <defs>
+    <linearGradient id="catGrad" x1="0%" y1="20%" x2="100%" y2="80%">
+      <stop offset="0%" stop-color="#f8e0c2"/>
+      <stop offset="100%" stop-color="#b9f5d8"/>
+    </linearGradient>
+  </defs>
+  <!-- Abstract reclining body -->
+  <path d="M26 52 C 30 40, 44 34, 56 38 C 66 41, 72 48, 70 58 C 68 70, 56 76, 44 74 C 34 72, 24 64, 26 52 Z"
+        fill="url(#catGrad)" stroke="#e2e8f0" stroke-width="2.5"/>
+  <!-- Half-closed eyes (lazy) -->
+  <path d="M38 52 Q40 51 42 52" stroke="#0f172a" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+  <path d="M50 52 Q52 51 54 52" stroke="#0f172a" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+  <!-- Minimal tail hint -->
+  <path d="M60 62 C 66 64, 68 70, 60 74" stroke="#94a3b8" stroke-width="2" fill="none" stroke-linecap="round"/>
+  <!-- Soft top highlight -->
+  <path d="M40 40 C 44 38, 50 38, 54 42" fill="none" stroke="#ffffff" stroke-width="2" opacity="0.6" stroke-linecap="round"/>
+</svg>
