@@ -24,7 +24,7 @@ Redis GEO 提供了六个核心命令，用于地理位置的存储、查询和�
 **语法**：`GEOADD key 经度 纬度 成员 [经度 纬度 成员 ...]`
 
 **示例**：
-```redis
+```bash
 # 添加3个商家的位置：美团总部、饿了么总部、京东物流总部
 GEOADD restaurant:location 116.39748 39.90882 "meituan" 121.47370 31.23042 "eleme" 116.60680 39.91758 "jdlogistics"
 ```
@@ -38,7 +38,7 @@ GEOADD restaurant:location 116.39748 39.90882 "meituan" 121.47370 31.23042 "elem
 **语法**：`GEOPOS key 成员 [成员 ...]`
 
 **示例**：
-```redis
+```bash
 # 查询美团和饿了么的经纬度
 GEOPOS restaurant:location "meituan" "eleme"
 ```
@@ -54,7 +54,7 @@ GEOPOS restaurant:location "meituan" "eleme"
 **单位可选**：`m`（米，默认）、`km`（千米）、`mi`（英里）、`ft`（英尺）
 
 **示例**：
-```redis
+```bash
 # 计算美团和京东物流总部之间的距离（单位：千米）
 GEODIST restaurant:location "meituan" "jdlogistics" km
 ```
@@ -74,7 +74,7 @@ GEODIST restaurant:location "meituan" "jdlogistics" km
 - `COUNT`：限制返回的成员数量
 
 **示例**：
-```redis
+```bash
 # 以美团总部（116.39748, 39.90882）为中心，查找10千米内的商家，返回距离和经纬度，最多2个
 GEORADIUS restaurant:location 116.39748 39.90882 10 km WITHDIST WITHCOORD COUNT 2 ASC
 ```
@@ -88,7 +88,7 @@ GEORADIUS restaurant:location 116.39748 39.90882 10 km WITHDIST WITHCOORD COUNT 
 **语法**：`GEORADIUSBYMEMBER key 成员 半径 单位 [WITHCOORD] [WITHDIST] [ASC|DESC] [COUNT 数量]`
 
 **示例**：
-```redis
+```bash
 # 以美团总部为中心，查找10千米内的商家
 GEORADIUSBYMEMBER restaurant:location "meituan" 10 km WITHDIST ASC
 ```
@@ -100,7 +100,7 @@ GEORADIUSBYMEMBER restaurant:location "meituan" 10 km WITHDIST ASC
 **语法**：`GEOHASH key 成员 [成员 ...]`
 
 **示例**：
-```redis
+```bash
 GEOHASH restaurant:location "meituan"
 ```
 

@@ -39,7 +39,7 @@ Spring 容器通过解析 BeanDefinition 来创建和管理 Bean。
 ## 2.3 BeanFactory：IOC 容器的“基础接口”
 
 BeanFactory 是 Spring IOC 容器的最顶层接口，定义了容器的核心能力：
-- 获取 Bean（getBean(String name/Class<T> type)）；
+- 获取 Bean（`getBean(String name/Class<T> type)`）；
 - 判断 Bean 是否存在（containsBean(String name)）；
 - 判断 Bean 是否为单例（isSingleton(String name)）等。
 特点：**懒加载**（仅当调用 getBean 时才创建 Bean），轻量，适合资源受限场景（如移动端）。
@@ -119,7 +119,7 @@ Spring 支持 3 种核心配置方式，从传统 XML 到注解再到 Java 配�
 
 2. **配置示例**
 ① 开启组件扫描（XML 或配置类）：
-<context:component-scan base-package="com.example"/>（XML 方式）
+`<context:component-scan base-package="com.example"/>`（XML 方式）
 @ComponentScan("com.example")（配置类方式）
 ② 业务类注解：
 
