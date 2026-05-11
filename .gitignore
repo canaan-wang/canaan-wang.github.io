@@ -22,6 +22,8 @@ pnpm-debug.log*
 /tmp/
 /coverage/
 /.cache/
+/.vitepress/cache
+/.vitepress/dist
 
 # IDE & editor
 .idea/
