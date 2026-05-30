@@ -1,0 +1,81 @@
+- generic [ref=e3]:
+  - link "Skip to content" [ref=e4] [cursor=pointer]:
+    - /url: "#VPContent"
+  - banner:
+    - generic:
+      - generic:
+        - generic:
+          - link "Canaan' Blog" [ref=e6] [cursor=pointer]:
+            - /url: /
+            - generic [ref=e7]: Canaan' Blog
+          - generic [ref=e8]:
+            - button "搜索文档" [ref=e11] [cursor=pointer]:
+              - generic [ref=e14]: 搜索文档
+              - generic [ref=e15]:
+                - generic [ref=e16]: ⌘
+                - generic [ref=e17]: K
+            - navigation "Main Navigation" [ref=e18]:
+              - generic [ref=e19]: Main Navigation
+              - button "Web前端" [ref=e21] [cursor=pointer]:
+                - generic [ref=e23]: Web前端
+              - button "CSS" [ref=e26] [cursor=pointer]:
+                - generic [ref=e28]: CSS
+              - button "JavaScript" [ref=e31] [cursor=pointer]:
+                - generic [ref=e33]: JavaScript
+              - button "Java" [ref=e36] [cursor=pointer]:
+                - generic [ref=e38]: Java
+              - button "Go" [ref=e41] [cursor=pointer]:
+                - generic [ref=e43]: Go
+              - button "数据库" [ref=e46] [cursor=pointer]:
+                - generic [ref=e48]: 数据库
+              - button "Linux" [ref=e51] [cursor=pointer]:
+                - generic [ref=e53]: Linux
+              - button "macOS" [ref=e56] [cursor=pointer]:
+                - generic [ref=e58]: macOS
+              - button "理论" [ref=e61] [cursor=pointer]:
+                - generic [ref=e63]: 理论
+              - button "中间件" [ref=e66] [cursor=pointer]:
+                - generic [ref=e68]: 中间件
+            - button "extra navigation" [ref=e71] [cursor=pointer]
+  - generic [ref=e74]:
+    - generic [ref=e77]:
+      - heading "欢迎来到我的花园" [level=1] [ref=e78]:
+        - generic [ref=e79]: 欢迎来到我的花园
+      - paragraph [ref=e80]: 大道五十，天衍四九，人遁其一。世间万事，无人力不可为，无人力不可解。
+    - generic [ref=e83]:
+      - link [ref=e85] [cursor=pointer]:
+        - /url: /Go/Golang/Go%E8%AF%AD%E8%A8%80%E6%A6%82%E8%A7%88
+        - article [ref=e86]:
+          - generic [ref=e87]: 🌿
+          - heading "Go 语言" [level=2] [ref=e88]
+          - paragraph [ref=e89]: 从基础语法到并发模型，深入 Go 语言核心特性与框架实践。
+      - link [ref=e91] [cursor=pointer]:
+        - /url: /Java/Java/Java%E8%AF%AD%E8%A8%80%E6%A6%82%E8%A7%88
+        - article [ref=e92]:
+          - generic [ref=e93]: ☕
+          - heading "Java 生态" [level=2] [ref=e94]
+          - paragraph [ref=e95]: JVM、Spring 全家桶、并发编程与集合框架的系统学习。
+      - link [ref=e97] [cursor=pointer]:
+        - /url: /%E6%95%B0%E6%8D%AE%E5%BA%93/Redis/Redis
+        - article [ref=e98]:
+          - generic [ref=e99]: 🗄️
+          - heading "数据库" [level=2] [ref=e100]
+          - paragraph [ref=e101]: MySQL、Redis、Elasticsearch 的原理与实战笔记。
+      - link [ref=e103] [cursor=pointer]:
+        - /url: /%E7%90%86%E8%AE%BA/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/skiplist
+        - article [ref=e104]:
+          - generic [ref=e105]: 📐
+          - heading "计算机理论" [level=2] [ref=e106]
+          - paragraph [ref=e107]: 数据结构、分布式系统、网络协议、设计原则等底层知识。
+      - link [ref=e109] [cursor=pointer]:
+        - /url: /%E4%B8%AD%E9%97%B4%E4%BB%B6/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/kafka/Kafka
+        - article [ref=e110]:
+          - generic [ref=e111]: 🔧
+          - heading "中间件" [level=2] [ref=e112]
+          - paragraph [ref=e113]: 消息队列、缓存、配置中心、Docker 等基础设施技术。
+      - link [ref=e115] [cursor=pointer]:
+        - /url: /生活/
+        - article [ref=e116]:
+          - generic [ref=e117]: 🍳
+          - heading "生活随笔" [level=2] [ref=e118]
+          - paragraph [ref=e119]: 工作记录、菜谱分享、生活感悟，记录平凡中的美好。

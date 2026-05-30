@@ -1,0 +1,10 @@
+- generic [ref=e3]:
+  - link "Skip to content" [ref=e4] [cursor=pointer]:
+    - /url: "#VPContent"
+  - banner:
+    - generic
+  - generic [ref=e74]:
+    - generic [ref=e77]
+    - generic [ref=e83]
+  - contentinfo [ref=e120]:
+    - generic [ref=e121]

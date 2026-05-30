@@ -1,0 +1,791 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e3]:
+    - link "Skip to content" [ref=e4] [cursor=pointer]:
+      - /url: "#VPContent"
+    - banner:
+      - generic:
+        - generic:
+          - generic:
+            - link "Canaan' Blog" [ref=e6] [cursor=pointer]:
+              - /url: /
+              - generic [ref=e7]: Canaan' Blog
+            - generic [ref=e8]:
+              - button "搜索文档" [ref=e11] [cursor=pointer]:
+                - generic [ref=e14]: 搜索文档
+                - generic [ref=e15]:
+                  - generic [ref=e16]: ⌘
+                  - generic [ref=e17]: K
+              - navigation "Main Navigation" [ref=e18]:
+                - generic [ref=e19]: Main Navigation
+                - button "Web前端" [ref=e21] [cursor=pointer]:
+                  - generic [ref=e23]: Web前端
+                - button "CSS" [ref=e26] [cursor=pointer]:
+                  - generic [ref=e28]: CSS
+                - button "JavaScript" [ref=e31] [cursor=pointer]:
+                  - generic [ref=e33]: JavaScript
+                - button "Java" [ref=e36] [cursor=pointer]:
+                  - generic [ref=e38]: Java
+                - button "Go" [ref=e41] [cursor=pointer]:
+                  - generic [ref=e43]: Go
+                - button "数据库" [ref=e46] [cursor=pointer]:
+                  - generic [ref=e48]: 数据库
+                - button "Linux" [ref=e51] [cursor=pointer]:
+                  - generic [ref=e53]: Linux
+                - button "macOS" [ref=e56] [cursor=pointer]:
+                  - generic [ref=e58]: macOS
+                - button "理论" [ref=e61] [cursor=pointer]:
+                  - generic [ref=e63]: 理论
+                - button "中间件" [ref=e66] [cursor=pointer]:
+                  - generic [ref=e68]: 中间件
+              - switch "Switch to dark theme" [ref=e71] [cursor=pointer]
+              - link "github" [ref=e77] [cursor=pointer]:
+                - /url: https://github.com/canaan-wang/canaan-wang.github.io
+    - complementary [ref=e79]:
+      - navigation "Sidebar Navigation" [ref=e81]:
+        - generic [ref=e82]: Sidebar Navigation
+        - generic [ref=e84]:
+          - button "kafka" [ref=e85]:
+            - heading "kafka" [level=2] [ref=e86]
+          - generic [ref=e87]:
+            - link "Kafka" [ref=e90] [cursor=pointer]:
+              - /url: /%E4%B8%AD%E9%97%B4%E4%BB%B6/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/kafka/Kafka
+              - paragraph [ref=e91]: Kafka
+            - link "Golang接入Kafka" [ref=e94] [cursor=pointer]:
+              - /url: /%E4%B8%AD%E9%97%B4%E4%BB%B6/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/kafka/Golang%E6%8E%A5%E5%85%A5Kafka
+              - paragraph [ref=e95]: Golang接入Kafka
+        - generic [ref=e97]:
+          - button "rabbitmq" [ref=e98]:
+            - heading "rabbitmq" [level=2] [ref=e99]
+          - link "RabbitMQ" [ref=e103] [cursor=pointer]:
+            - /url: /%E4%B8%AD%E9%97%B4%E4%BB%B6/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/rabbitmq/RabbitMQ
+            - paragraph [ref=e104]: RabbitMQ
+    - generic [ref=e107]:
+      - navigation "页面导航" [ref=e113]:
+        - generic [ref=e114]:
+          - heading "页面导航" [level=2] [ref=e116]
+          - list [ref=e117]:
+            - listitem [ref=e118]:
+              - link "什么是 RabbitMQ" [ref=e119] [cursor=pointer]:
+                - /url: "#什么是-rabbitmq"
+            - listitem [ref=e120]:
+              - link "选型定位：为什么选 RabbitMQ" [ref=e121] [cursor=pointer]:
+                - /url: "#选型定位-为什么选-rabbitmq"
+            - listitem [ref=e122]:
+              - link "核心设计模型" [ref=e123] [cursor=pointer]:
+                - /url: "#核心设计模型"
+            - listitem [ref=e124]:
+              - link "Exchange 路由原理" [ref=e125] [cursor=pointer]:
+                - /url: "#exchange-路由原理"
+            - listitem [ref=e126]:
+              - link "Queue 与消息存储原理" [ref=e127] [cursor=pointer]:
+                - /url: "#queue-与消息存储原理"
+            - listitem [ref=e128]:
+              - link "Binding 与路由匹配机制" [ref=e129] [cursor=pointer]:
+                - /url: "#binding-与路由匹配机制"
+            - listitem [ref=e130]:
+              - link "Connection & Channel 模型" [ref=e131] [cursor=pointer]:
+                - /url: "#connection-channel-模型"
+            - listitem [ref=e132]:
+              - link "消息可靠性三段保障" [ref=e133] [cursor=pointer]:
+                - /url: "#消息可靠性三段保障"
+            - listitem [ref=e134]:
+              - link "消费者模型与负载均衡" [ref=e135] [cursor=pointer]:
+                - /url: "#消费者模型与负载均衡"
+            - listitem [ref=e136]:
+              - link "集群架构与高可用" [ref=e137] [cursor=pointer]:
+                - /url: "#集群架构与高可用"
+            - listitem [ref=e138]:
+              - link "延伸阅读" [ref=e139] [cursor=pointer]:
+                - /url: "#延伸阅读"
+      - generic [ref=e142]:
+        - main [ref=e143]:
+          - generic [ref=e145]:
+            - heading "RabbitMQ 架构与原理 Permalink to \"RabbitMQ 架构与原理\"" [level=1] [ref=e146]:
+              - text: RabbitMQ 架构与原理
+              - link "Permalink to \"RabbitMQ 架构与原理\"" [ref=e147] [cursor=pointer]:
+                - /url: "#rabbitmq-架构与原理"
+                - text: "#"
+            - heading "什么是 RabbitMQ Permalink to \"什么是 RabbitMQ\"" [level=2] [ref=e148]:
+              - text: 什么是 RabbitMQ
+              - link "Permalink to \"什么是 RabbitMQ\"" [ref=e149] [cursor=pointer]:
+                - /url: "#什么是-rabbitmq"
+                - text: "#"
+            - paragraph [ref=e150]:
+              - text: RabbitMQ 是一个开源的
+              - strong [ref=e151]: 消息中间件
+              - text: （Message Broker），基于 AMQP 0-9-1 协议实现，用 Erlang 开发。它的核心作用是
+              - strong [ref=e152]: 帮不同的系统之间异步传递消息
+              - text: 。
+            - heading "它解决什么问题 Permalink to \"它解决什么问题\"" [level=3] [ref=e153]:
+              - text: 它解决什么问题
+              - link "Permalink to \"它解决什么问题\"" [ref=e154] [cursor=pointer]:
+                - /url: "#它解决什么问题"
+                - text: "#"
+            - table [ref=e155]:
+              - rowgroup [ref=e156]:
+                - row "问题 没有 MQ 用了 RabbitMQ" [ref=e157]:
+                  - columnheader "问题" [ref=e158]
+                  - columnheader "没有 MQ" [ref=e159]
+                  - columnheader "用了 RabbitMQ" [ref=e160]
+              - rowgroup [ref=e161]:
+                - row "系统耦合 A 系统直接调用 B 接口，B 挂了 A 也受影响 A 发消息到 MQ，B 自己消费，两边解耦" [ref=e162]:
+                  - cell "系统耦合" [ref=e163]
+                  - cell "A 系统直接调用 B 接口，B 挂了 A 也受影响" [ref=e164]
+                  - cell "A 发消息到 MQ，B 自己消费，两边解耦" [ref=e165]
+                - row "流量突增 秒杀时请求直接打到数据库，瞬间崩 请求先入 MQ，后端按消费能力慢慢处理" [ref=e166]:
+                  - cell "流量突增" [ref=e167]
+                  - cell "秒杀时请求直接打到数据库，瞬间崩" [ref=e168]
+                  - cell "请求先入 MQ，后端按消费能力慢慢处理" [ref=e169]
+                - row "可靠通知 调用第三方接口失败，消息丢了 消息先存到 MQ，确保对方最终能收到" [ref=e170]:
+                  - cell "可靠通知" [ref=e171]
+                  - cell "调用第三方接口失败，消息丢了" [ref=e172]
+                  - cell "消息先存到 MQ，确保对方最终能收到" [ref=e173]
+                - row "广播事件 一个事件要通知 5 个系统，写 5 次 HTTP 调用 发一次消息，5 个系统各自订阅消费" [ref=e174]:
+                  - cell "广播事件" [ref=e175]
+                  - cell "一个事件要通知 5 个系统，写 5 次 HTTP 调用" [ref=e176]
+                  - cell "发一次消息，5 个系统各自订阅消费" [ref=e177]
+            - heading "核心特性 Permalink to \"核心特性\"" [level=3] [ref=e178]:
+              - text: 核心特性
+              - link "Permalink to \"核心特性\"" [ref=e179] [cursor=pointer]:
+                - /url: "#核心特性"
+                - text: "#"
+            - list [ref=e180]:
+              - listitem [ref=e181]:
+                - strong [ref=e182]: 灵活路由
+                - text: ：通过 Exchange + Binding + Routing Key 组合，支持广播、点对点、按主题订阅等多种路由模式。
+              - listitem [ref=e183]:
+                - strong [ref=e184]: 可靠投递
+                - text: ：支持发布确认、消费确认、消息持久化、Quorum Queue 复制，消息不易丢。
+              - listitem [ref=e185]:
+                - strong [ref=e186]: 低延迟
+                - text: ：消息默认走内存，微秒级延迟，适合实时性要求高的业务。
+              - listitem [ref=e187]:
+                - strong [ref=e188]: 丰富消息模式
+                - text: ：原生支持死信队列、延迟队列、优先级队列。
+              - listitem [ref=e189]:
+                - strong [ref=e190]: 管理界面
+                - text: ：自带 Web UI，可视化查看队列状态、消息堆积、消费者情况。
+            - heading "核心设计理念 Permalink to \"核心设计理念\"" [level=3] [ref=e191]:
+              - text: 核心设计理念
+              - link "Permalink to \"核心设计理念\"" [ref=e192] [cursor=pointer]:
+                - /url: "#核心设计理念"
+                - text: "#"
+            - paragraph [ref=e193]:
+              - strong [ref=e194]: 生产者不直接把消息发给队列
+              - text: ，而是发给"交换机（Exchange）"，由交换机根据"路由规则"将消息分发到一个或多个队列，消费者再从队列中取消息消费。
+            - separator [ref=e195]
+            - heading "选型定位：为什么选 RabbitMQ Permalink to \"选型定位：为什么选 RabbitMQ\"" [level=2] [ref=e196]:
+              - text: 选型定位：为什么选 RabbitMQ
+              - link "Permalink to \"选型定位：为什么选 RabbitMQ\"" [ref=e197] [cursor=pointer]:
+                - /url: "#选型定位-为什么选-rabbitmq"
+                - text: "#"
+            - table [ref=e198]:
+              - rowgroup [ref=e199]:
+                - row "维度 RabbitMQ Kafka RocketMQ" [ref=e200]:
+                  - columnheader "维度" [ref=e201]
+                  - columnheader "RabbitMQ" [ref=e202]
+                  - columnheader "Kafka" [ref=e203]
+                  - columnheader "RocketMQ" [ref=e204]
+              - rowgroup [ref=e205]:
+                - row "路由能力 极强（Exchange + Routing Key） 弱（仅 Topic-Partition） 中等（Tag 过滤）" [ref=e206]:
+                  - cell "路由能力" [ref=e207]
+                  - cell "极强（Exchange + Routing Key）" [ref=e208]:
+                    - strong [ref=e209]: 极强
+                    - text: （Exchange + Routing Key）
+                  - cell "弱（仅 Topic-Partition）" [ref=e210]
+                  - cell "中等（Tag 过滤）" [ref=e211]
+                - row "延迟 微秒级 毫秒级 毫秒级" [ref=e212]:
+                  - cell "延迟" [ref=e213]
+                  - cell "微秒级" [ref=e214]:
+                    - strong [ref=e215]: 微秒级
+                  - cell "毫秒级" [ref=e216]
+                  - cell "毫秒级" [ref=e217]
+                - row "吞吐量 中等（万～十万级/秒） 极高（数十万/秒） 高（十万级/秒）" [ref=e218]:
+                  - cell "吞吐量" [ref=e219]
+                  - cell "中等（万～十万级/秒）" [ref=e220]
+                  - cell "极高（数十万/秒）" [ref=e221]:
+                    - strong [ref=e222]: 极高
+                    - text: （数十万/秒）
+                  - cell "高（十万级/秒）" [ref=e223]
+                - row "消息模型 队列 + 路由 分区日志 + 偏移量 队列 + Tag" [ref=e224]:
+                  - cell "消息模型" [ref=e225]
+                  - cell "队列 + 路由" [ref=e226]
+                  - cell "分区日志 + 偏移量" [ref=e227]
+                  - cell "队列 + Tag" [ref=e228]
+                - row "顺序性 单队列有序 分区内严格有序 原生支持" [ref=e229]:
+                  - cell "顺序性" [ref=e230]
+                  - cell "单队列有序" [ref=e231]
+                  - cell "分区内严格有序" [ref=e232]:
+                    - strong [ref=e233]: 分区内严格有序
+                  - cell "原生支持" [ref=e234]
+                - row "消息回溯 不支持 原生支持 支持" [ref=e235]:
+                  - cell "消息回溯" [ref=e236]
+                  - cell "不支持" [ref=e237]
+                  - cell "原生支持" [ref=e238]:
+                    - strong [ref=e239]: 原生支持
+                  - cell "支持" [ref=e240]
+                - row "管理后台 自带 Web UI 无官方 UI 有" [ref=e241]:
+                  - cell "管理后台" [ref=e242]
+                  - cell "自带 Web UI" [ref=e243]:
+                    - strong [ref=e244]: 自带 Web UI
+                  - cell "无官方 UI" [ref=e245]
+                  - cell "有" [ref=e246]
+                - row "典型场景 业务异步解耦、复杂路由 大数据、日志、流处理 金融、订单" [ref=e247]:
+                  - cell "典型场景" [ref=e248]
+                  - cell "业务异步解耦、复杂路由" [ref=e249]
+                  - cell "大数据、日志、流处理" [ref=e250]
+                  - cell "金融、订单" [ref=e251]
+            - paragraph [ref=e252]:
+              - strong [ref=e253]: 一句话总结
+              - text: ：RabbitMQ 的核心优势是
+              - strong [ref=e254]: 路由灵活、延迟低、可靠性高、管理界面完善
+              - text: ，适合订单、支付、事件驱动这类对消息不能丢、路由规则复杂的业务场景。
+            - separator [ref=e255]
+            - heading "核心设计模型 Permalink to \"核心设计模型\"" [level=2] [ref=e256]:
+              - text: 核心设计模型
+              - link "Permalink to \"核心设计模型\"" [ref=e257] [cursor=pointer]:
+                - /url: "#核心设计模型"
+                - text: "#"
+            - paragraph [ref=e258]:
+              - text: RabbitMQ 与 Kafka 的本质区别不在性能，而在
+              - strong [ref=e259]: 消息分发的抽象层
+              - text: ：
+            - list [ref=e260]:
+              - listitem [ref=e261]:
+                - strong [ref=e262]: Kafka
+                - text: ：Producer → Topic → Partition → Consumer，路由在客户端决定（指定 partition key）。
+              - listitem [ref=e263]:
+                - strong [ref=e264]: RabbitMQ
+                - text: ：Producer →
+                - strong [ref=e265]: Exchange
+                - text: → (Binding + Routing Key) → Queue → Consumer，路由在 Broker 内完成，支持运行时动态调整订阅关系。
+            - paragraph [ref=e266]:
+              - strong [ref=e267]: Exchange 是必选环节
+              - text: 。即使生产者不指定 Exchange，消息也会走默认的
+              - code [ref=e268]: "\"\""
+              - text: Exchange（direct 类型，Routing Key 等于 Queue 名），这是新手容易忽略的设计细节。
+            - separator [ref=e269]
+            - heading "Exchange 路由原理 Permalink to \"Exchange 路由原理\"" [level=2] [ref=e270]:
+              - text: Exchange 路由原理
+              - link "Permalink to \"Exchange 路由原理\"" [ref=e271] [cursor=pointer]:
+                - /url: "#exchange-路由原理"
+                - text: "#"
+            - paragraph [ref=e272]:
+              - text: Exchange 是消息的路由分发器，
+              - strong [ref=e273]: 生产者只能往 Exchange 发消息
+              - text: ，不能直接发到 Queue。
+            - heading "四种路由类型 Permalink to \"四种路由类型\"" [level=3] [ref=e274]:
+              - text: 四种路由类型
+              - link "Permalink to \"四种路由类型\"" [ref=e275] [cursor=pointer]:
+                - /url: "#四种路由类型"
+                - text: "#"
+            - table [ref=e276]:
+              - rowgroup [ref=e277]:
+                - row "类型 匹配规则 典型场景" [ref=e278]:
+                  - columnheader "类型" [ref=e279]
+                  - columnheader "匹配规则" [ref=e280]
+                  - columnheader "典型场景" [ref=e281]
+              - rowgroup [ref=e282]:
+                - row "direct Routing Key 完全等于 Binding Key 点对点精确路由" [ref=e283]:
+                  - cell "direct" [ref=e284]:
+                    - code [ref=e285]: direct
+                  - cell "Routing Key 完全等于 Binding Key" [ref=e286]:
+                    - text: Routing Key
+                    - strong [ref=e287]: 完全等于
+                    - text: Binding Key
+                  - cell "点对点精确路由" [ref=e288]
+                - row "fanout 忽略 Routing Key，广播给所有绑定 Queue 事件多消费方" [ref=e289]:
+                  - cell "fanout" [ref=e290]:
+                    - code [ref=e291]: fanout
+                  - cell "忽略 Routing Key，广播给所有绑定 Queue" [ref=e292]:
+                    - strong [ref=e293]: 忽略
+                    - text: Routing Key，广播给所有绑定 Queue
+                  - cell "事件多消费方" [ref=e294]
+                - 'row "topic Binding Key 用 *（一个单词）和 #（零或多个单词）通配 灵活订阅，最常用" [ref=e295]':
+                  - cell "topic" [ref=e296]:
+                    - code [ref=e297]: topic
+                  - 'cell "Binding Key 用 *（一个单词）和 #（零或多个单词）通配" [ref=e298]':
+                    - text: Binding Key 用
+                    - code [ref=e299]: "*"
+                    - text: （一个单词）和
+                    - code [ref=e300]: "#"
+                    - text: （零或多个单词）通配
+                  - cell "灵活订阅，最常用" [ref=e301]
+                - row "headers 按消息 Headers KV 匹配 很少用，性能差" [ref=e302]:
+                  - cell "headers" [ref=e303]:
+                    - code [ref=e304]: headers
+                  - cell "按消息 Headers KV 匹配" [ref=e305]
+                  - cell "很少用，性能差" [ref=e306]
+            - paragraph [ref=e307]:
+              - strong [ref=e308]: 关键属性
+              - text: ：
+            - list [ref=e309]:
+              - listitem [ref=e310]:
+                - code [ref=e311]: durable=true
+                - text: ：Broker 重启后 Exchange 定义保留。
+              - listitem [ref=e312]:
+                - code [ref=e313]: autoDelete=false
+                - text: ：无 Queue 绑定时也不自动删除（生产环境推荐）。
+            - paragraph [ref=e314]:
+              - strong [ref=e315]: 黑洞消息陷阱
+              - text: ：没有匹配到任何 Queue 的消息会被
+              - strong [ref=e316]: 直接丢弃
+              - text: 。必须配置
+              - code [ref=e317]: mandatory=true
+              - text: + Return 回调，或设置 Alternate Exchange 兜底，否则会出现"发送成功但消息消失"的灵异事件。
+            - separator [ref=e318]
+            - heading "Queue 与消息存储原理 Permalink to \"Queue 与消息存储原理\"" [level=2] [ref=e319]:
+              - text: Queue 与消息存储原理
+              - link "Permalink to \"Queue 与消息存储原理\"" [ref=e320] [cursor=pointer]:
+                - /url: "#queue-与消息存储原理"
+                - text: "#"
+            - paragraph [ref=e321]:
+              - text: Queue 是消息真正存放的地方，
+              - strong [ref=e322]: 消费者只从 Queue 取消息
+              - text: 。
+            - heading "队列类型演进 Permalink to \"队列类型演进\"" [level=3] [ref=e323]:
+              - text: 队列类型演进
+              - link "Permalink to \"队列类型演进\"" [ref=e324] [cursor=pointer]:
+                - /url: "#队列类型演进"
+                - text: "#"
+            - table [ref=e325]:
+              - rowgroup [ref=e326]:
+                - row "类型 存储方式 复制机制 适用场景" [ref=e327]:
+                  - columnheader "类型" [ref=e328]
+                  - columnheader "存储方式" [ref=e329]
+                  - columnheader "复制机制" [ref=e330]
+                  - columnheader "适用场景" [ref=e331]
+              - rowgroup [ref=e332]:
+                - row "classic 内存为主，可选持久化到磁盘 单机或镜像队列（4.0 已移除镜像） 简单场景，逐步淘汰" [ref=e333]:
+                  - cell "classic" [ref=e334]:
+                    - code [ref=e335]: classic
+                  - cell "内存为主，可选持久化到磁盘" [ref=e336]
+                  - cell "单机或镜像队列（4.0 已移除镜像）" [ref=e337]
+                  - cell "简单场景，逐步淘汰" [ref=e338]
+                - row "quorum 日志复制 Raft 共识，多节点同步 高可靠生产环境，推荐" [ref=e339]:
+                  - cell "quorum" [ref=e340]:
+                    - code [ref=e341]: quorum
+                  - cell "日志复制" [ref=e342]
+                  - cell "Raft 共识，多节点同步" [ref=e343]:
+                    - strong [ref=e344]: Raft 共识
+                    - text: ，多节点同步
+                  - cell "高可靠生产环境，推荐" [ref=e345]:
+                    - text: 高可靠生产环境，
+                    - strong [ref=e346]: 推荐
+                - row "stream 追加日志 多副本 流式消费，类似 Kafka" [ref=e347]:
+                  - cell "stream" [ref=e348]:
+                    - code [ref=e349]: stream
+                  - cell "追加日志" [ref=e350]
+                  - cell "多副本" [ref=e351]
+                  - cell "流式消费，类似 Kafka" [ref=e352]
+            - document [ref=e354]:
+              - generic [ref=e358]:
+                - paragraph [ref=e366]: Quorum Queue Raft 复制
+                - generic [ref=e373]:
+                  - paragraph [ref=e379]: Raft Log Replication
+                  - paragraph [ref=e385]: Raft Log Replication
+                  - paragraph [ref=e391]:
+                    - text: Leader 宕机
+                    - text: 自动选举
+                - generic [ref=e392]:
+                  - paragraph [ref=e399]: Producer
+                  - paragraph [ref=e406]:
+                    - text: Leader
+                    - text: Queue Node
+                  - paragraph [ref=e413]: Follower 1
+                  - paragraph [ref=e420]: Follower 2
+                  - paragraph [ref=e427]: Consumer
+            - paragraph [ref=e428]: Quorum Queue 基于 Raft 协议实现 leader 选举和日志复制，写入需多数派确认，牺牲部分吞吐量换取强一致性。Classic 镜像队列在 4.0 已彻底移除，新项目应默认使用 Quorum Queue。
+            - heading "消息持久化的\"三要素\" Permalink to \"消息持久化的\"三要素\"\"" [level=3] [ref=e429]:
+              - text: 消息持久化的"三要素"
+              - link "Permalink to \"消息持久化的\"三要素\"\"" [ref=e430] [cursor=pointer]:
+                - /url: "#消息持久化的-三要素"
+                - text: "#"
+            - paragraph [ref=e431]:
+              - text: 消息在 Broker 重启后不丢失，需要
+              - strong [ref=e432]: 三者同时持久化
+              - text: ：
+            - list [ref=e433]:
+              - listitem [ref=e434]:
+                - strong [ref=e435]: Exchange
+                - code [ref=e436]: durable=true
+              - listitem [ref=e437]:
+                - strong [ref=e438]: Queue
+                - code [ref=e439]: durable=true
+              - listitem [ref=e440]:
+                - strong [ref=e441]: Message
+                - code [ref=e442]: deliveryMode=2
+                - text: （PERSISTENT）
+            - paragraph [ref=e443]: 少任何一个，Broker 崩溃时消息都会丢失。这是"消息丢了"问题的头号排查点。
+            - heading "队列参数的不可变性 Permalink to \"队列参数的不可变性\"" [level=3] [ref=e444]:
+              - text: 队列参数的不可变性
+              - link "Permalink to \"队列参数的不可变性\"" [ref=e445] [cursor=pointer]:
+                - /url: "#队列参数的不可变性"
+                - text: "#"
+            - paragraph [ref=e446]:
+              - text: 声明队列时如果参数（如
+              - code [ref=e447]: x-message-ttl
+              - text: 、
+              - code [ref=e448]: x-max-length
+              - text: 、
+              - code [ref=e449]: x-queue-type
+              - text: ）与已存在队列不一致，会
+              - strong [ref=e450]:
+                - text: 直接报错
+                - code [ref=e451]: PRECONDITION_FAILED
+              - text: 。生产环境修改队列参数需要：建新队列 → 切流 → 排空旧队列 → 删旧队列。前期设计要尽量考虑周全，避免后期改结构。
+            - separator [ref=e452]
+            - heading "Binding 与路由匹配机制 Permalink to \"Binding 与路由匹配机制\"" [level=2] [ref=e453]:
+              - text: Binding 与路由匹配机制
+              - link "Permalink to \"Binding 与路由匹配机制\"" [ref=e454] [cursor=pointer]:
+                - /url: "#binding-与路由匹配机制"
+                - text: "#"
+            - paragraph [ref=e455]:
+              - text: Binding 是 Exchange 和 Queue 之间的路由规则声明，携带一个
+              - code [ref=e456]: bindingKey
+              - text: （绑定键）。
+            - paragraph [ref=e457]:
+              - strong [ref=e458]: 两个容易混淆的概念
+              - text: ：
+            - list [ref=e459]:
+              - listitem [ref=e460]:
+                - strong [ref=e461]: Routing Key
+                - text: ：生产者发送消息时附带的路由标签，跟着消息走。
+              - listitem [ref=e462]:
+                - strong [ref=e463]: Binding Key
+                - text: ：声明 Binding 时设置的匹配模式，跟着绑定关系走。
+            - paragraph [ref=e464]: 匹配逻辑取决于 Exchange 类型：
+            - document [ref=e466]:
+              - generic [ref=e468]:
+                - generic [ref=e472]:
+                  - paragraph [ref=e478]:
+                    - text: "bindingKey: order.*.created"
+                    - text: 匹配（* = web）
+                  - paragraph [ref=e484]:
+                    - text: "bindingKey: order.#"
+                    - text: 匹配（# 包含 web.created）
+                  - paragraph [ref=e490]:
+                    - text: "bindingKey: payment.#"
+                    - text: 不匹配
+                - generic [ref=e491]:
+                  - paragraph [ref=e498]:
+                    - text: Producer
+                    - text: "routingKey: order.web.created"
+                  - paragraph [ref=e505]: topic Exchange
+                  - paragraph [ref=e512]: 下单通知队列
+                  - paragraph [ref=e519]: 全量审计队列
+                  - paragraph [ref=e526]: 支付队列
+            - paragraph [ref=e527]: 一个 Exchange 可以通过不同 Binding Key 绑定到多个 Queue；一个 Queue 也可以通过多个 Binding Key 绑定到同一个 Exchange，实现"或"关系的复合订阅。
+            - separator [ref=e528]
+            - heading "Connection & Channel 模型 Permalink to \"Connection & Channel 模型\"" [level=2] [ref=e529]:
+              - text: Connection & Channel 模型
+              - link "Permalink to \"Connection & Channel 模型\"" [ref=e530] [cursor=pointer]:
+                - /url: "#connection-channel-模型"
+                - text: "#"
+            - list [ref=e531]:
+              - listitem [ref=e532]:
+                - strong [ref=e533]: Connection
+                - text: ：与 Broker 的 TCP 长连接，
+                - strong [ref=e534]: 重量级
+                - text: ，应用生命周期内保持，不要频繁创建销毁。
+              - listitem [ref=e535]:
+                - strong [ref=e536]: Channel
+                - text: ：在 Connection 之上的
+                - strong [ref=e537]: 逻辑通道
+                - text: ，AMQP 的所有操作（声明、发送、消费）都在 Channel 上进行。
+            - paragraph [ref=e538]:
+              - strong [ref=e539]: Channel 不是线程安全的
+              - text: 。同一 Channel 不能跨线程并发发送。Spring AMQP 的
+              - code [ref=e540]: CachingConnectionFactory
+              - text: 会缓存 Channel，多线程场景下每个线程使用独立的 Channel，应用层通常不需要额外处理。但如果自定义 Channel，必须保证线程隔离。
+            - separator [ref=e541]
+            - heading "消息可靠性三段保障 Permalink to \"消息可靠性三段保障\"" [level=2] [ref=e542]:
+              - text: 消息可靠性三段保障
+              - link "Permalink to \"消息可靠性三段保障\"" [ref=e543] [cursor=pointer]:
+                - /url: "#消息可靠性三段保障"
+                - text: "#"
+            - paragraph [ref=e544]: 要做到"消息不丢、不重复处理"，需要从生产端、Broker、消费端三段同时保障。
+            - heading "生产端：Confirm + Return Permalink to \"生产端：Confirm + Return\"" [level=3] [ref=e545]:
+              - text: 生产端：Confirm + Return
+              - link "Permalink to \"生产端：Confirm + Return\"" [ref=e546] [cursor=pointer]:
+                - /url: "#生产端-confirm-return"
+                - text: "#"
+            - table [ref=e547]:
+              - rowgroup [ref=e548]:
+                - row "机制 作用" [ref=e549]:
+                  - columnheader "机制" [ref=e550]
+                  - columnheader "作用" [ref=e551]
+              - rowgroup [ref=e552]:
+                - row "Publisher Confirm 消息到达 Broker 后异步回调 ack，网络失败或 Broker 拒收时回调 nack" [ref=e553]:
+                  - cell "Publisher Confirm" [ref=e554]:
+                    - strong [ref=e555]: Publisher Confirm
+                  - cell "消息到达 Broker 后异步回调 ack，网络失败或 Broker 拒收时回调 nack" [ref=e556]:
+                    - text: 消息到达 Broker 后异步回调
+                    - code [ref=e557]: ack
+                    - text: ，网络失败或 Broker 拒收时回调
+                    - code [ref=e558]: nack
+                - row "Return Callback mandatory=true 时，路由不到任何 Queue 触发 Return 回调，暴露黑洞消息" [ref=e559]:
+                  - cell "Return Callback" [ref=e560]:
+                    - strong [ref=e561]: Return Callback
+                  - cell "mandatory=true 时，路由不到任何 Queue 触发 Return 回调，暴露黑洞消息" [ref=e562]:
+                    - code [ref=e563]: mandatory=true
+                    - text: 时，路由不到任何 Queue 触发 Return 回调，暴露黑洞消息
+            - paragraph [ref=e564]: Confirm 是异步的，不阻塞发送线程。如果业务需要强一致性，可配合本地消息表（Outbox 模式）：先写业务 DB + 消息记录表，异步任务扫描未确认记录重发。
+            - heading "Broker 端：持久化 + Quorum Queue Permalink to \"Broker 端：持久化 + Quorum Queue\"" [level=3] [ref=e565]:
+              - text: Broker 端：持久化 + Quorum Queue
+              - link "Permalink to \"Broker 端：持久化 + Quorum Queue\"" [ref=e566] [cursor=pointer]:
+                - /url: "#broker-端-持久化-quorum-queue"
+                - text: "#"
+            - list [ref=e567]:
+              - listitem [ref=e568]:
+                - text: Exchange、Queue、Message
+                - strong [ref=e569]: 三者都持久化
+                - text: （见上文"三要素"）。
+              - listitem [ref=e570]:
+                - text: 使用
+                - strong [ref=e571]: Quorum Queue
+                - text: （多节点 Raft 复制），而非单机 Classic Queue。
+              - listitem [ref=e572]:
+                - text: 集群至少 3 节点，磁盘/内存水位（
+                - code [ref=e573]: vm_memory_high_watermark
+                - text: ）需监控，打满后 Broker 会拒绝新发布。
+            - heading "消费端：Manual Ack + 幂等 + 死信 Permalink to \"消费端：Manual Ack + 幂等 + 死信\"" [level=3] [ref=e574]:
+              - text: 消费端：Manual Ack + 幂等 + 死信
+              - link "Permalink to \"消费端：Manual Ack + 幂等 + 死信\"" [ref=e575] [cursor=pointer]:
+                - /url: "#消费端-manual-ack-幂等-死信"
+                - text: "#"
+            - table [ref=e576]:
+              - rowgroup [ref=e577]:
+                - row "机制 原理" [ref=e578]:
+                  - columnheader "机制" [ref=e579]
+                  - columnheader "原理" [ref=e580]
+              - rowgroup [ref=e581]:
+                - row "manual ack 业务真正处理完成才发送 basicAck，处理失败或崩溃时消息重新投递" [ref=e582]:
+                  - cell "manual ack" [ref=e583]:
+                    - code [ref=e584]: manual ack
+                  - cell "业务真正处理完成才发送 basicAck，处理失败或崩溃时消息重新投递" [ref=e585]:
+                    - text: 业务真正处理完成才发送
+                    - code [ref=e586]: basicAck
+                    - text: ，处理失败或崩溃时消息重新投递
+                - row "幂等去重 基于业务唯一键（如订单号）查处理记录表或 Redis SETNX，防止重复消费" [ref=e587]:
+                  - cell "幂等去重" [ref=e588]:
+                    - strong [ref=e589]: 幂等去重
+                  - cell "基于业务唯一键（如订单号）查处理记录表或 Redis SETNX，防止重复消费" [ref=e590]
+                - row "死信队列 DLQ 多次失败的消息隔离到 DLQ，避免阻塞正常队列" [ref=e591]:
+                  - cell "死信队列 DLQ" [ref=e592]:
+                    - strong [ref=e593]: 死信队列 DLQ
+                  - cell "多次失败的消息隔离到 DLQ，避免阻塞正常队列" [ref=e594]
+            - document [ref=e596]:
+              - generic [ref=e598]:
+                - generic [ref=e604]:
+                  - paragraph [ref=e610]: basicAck
+                  - paragraph [ref=e616]: basicNack requeue=true
+                  - paragraph [ref=e622]:
+                    - text: basicNack requeue=false
+                    - text: 或 x-death 次数超限
+                - generic [ref=e623]:
+                  - paragraph [ref=e630]: Producer
+                  - paragraph [ref=e637]: 业务 Exchange
+                  - paragraph [ref=e644]: 业务 Queue
+                  - paragraph [ref=e651]: Consumer
+                  - paragraph [ref=e658]: 消息删除
+                  - paragraph [ref=e665]:
+                    - text: 死信 Exchange
+                    - text: DLX
+                  - paragraph [ref=e672]:
+                    - text: 死信 Queue
+                    - text: DLQ
+                  - paragraph [ref=e679]: 告警/人工介入
+            - paragraph [ref=e680]:
+              - strong [ref=e681]: 死信触发条件
+              - text: ：消息被拒绝且不重回队列（
+              - code [ref=e682]: requeue=false
+              - text: ）、消息 TTL 过期、队列长度超限。
+            - paragraph [ref=e683]:
+              - strong [ref=e684]: 幂等是必须项
+              - text: ：RabbitMQ 保证"至少一次投递"，网络重连、ack 丢失、消费者重启都会导致重投。业务端幂等 + MQ 至少一次投递 = 事实上的精确一次。RabbitMQ 不像 Kafka 有 exactly-once 事务语义，幂等是消费者必须自己做的事。
+            - paragraph [ref=e685]:
+              - strong [ref=e686]: 无限重投陷阱
+              - text: ：
+              - code [ref=e687]: basicNack(requeue=true)
+              - text: 如果 Consumer 代码有 bug（如反序列化异常），会形成死循环把队列打爆。应限制重试次数（消息头
+              - code [ref=e688]: x-death
+              - text: 数组记录每次死信信息，超过 N 次直接进 DLQ），或用延迟队列做退避。
+            - heading "延迟队列原理 Permalink to \"延迟队列原理\"" [level=3] [ref=e689]:
+              - text: 延迟队列原理
+              - link "Permalink to \"延迟队列原理\"" [ref=e690] [cursor=pointer]:
+                - /url: "#延迟队列原理"
+                - text: "#"
+            - table [ref=e691]:
+              - rowgroup [ref=e692]:
+                - row "方案 原理 推荐度" [ref=e693]:
+                  - columnheader "方案" [ref=e694]
+                  - columnheader "原理" [ref=e695]
+                  - columnheader "推荐度" [ref=e696]
+              - rowgroup [ref=e697]:
+                - row "官方延迟插件 声明 x-delayed-message 类型 Exchange，发消息时指定 x-delay header 推荐，简单可靠" [ref=e698]:
+                  - cell "官方延迟插件" [ref=e699]:
+                    - strong [ref=e700]: 官方延迟插件
+                  - cell "声明 x-delayed-message 类型 Exchange，发消息时指定 x-delay header" [ref=e701]:
+                    - text: 声明
+                    - code [ref=e702]: x-delayed-message
+                    - text: 类型 Exchange，发消息时指定
+                    - code [ref=e703]: x-delay
+                    - text: header
+                  - cell "推荐，简单可靠" [ref=e704]:
+                    - strong [ref=e705]: 推荐
+                    - text: ，简单可靠
+                - row "TTL + DLX 消息先进入设置了 TTL 的\"延迟队列\"，过期后由 DLX 转发到\"处理队列\" 可用，但 TTL 只能整队列一致，不灵活" [ref=e706]:
+                  - cell "TTL + DLX" [ref=e707]:
+                    - strong [ref=e708]: TTL + DLX
+                  - cell "消息先进入设置了 TTL 的\"延迟队列\"，过期后由 DLX 转发到\"处理队列\"" [ref=e709]
+                  - cell "可用，但 TTL 只能整队列一致，不灵活" [ref=e710]
+            - document [ref=e712]:
+              - generic [ref=e714]:
+                - generic [ref=e715]:
+                  - paragraph [ref=e721]: "x-delay: 30min"
+                  - paragraph [ref=e727]: TTL 到期
+                - generic [ref=e728]:
+                  - paragraph [ref=e735]: Producer
+                  - paragraph [ref=e742]:
+                    - text: 延迟 Exchange
+                    - text: x-delayed-message
+                  - paragraph [ref=e749]: 延迟 Queue
+                  - paragraph [ref=e756]:
+                    - text: 业务 Exchange
+                    - text: DLX
+                  - paragraph [ref=e763]: 处理 Queue
+                  - paragraph [ref=e770]: Consumer
+            - separator [ref=e771]
+            - heading "消费者模型与负载均衡 Permalink to \"消费者模型与负载均衡\"" [level=2] [ref=e772]:
+              - text: 消费者模型与负载均衡
+              - link "Permalink to \"消费者模型与负载均衡\"" [ref=e773] [cursor=pointer]:
+                - /url: "#消费者模型与负载均衡"
+                - text: "#"
+            - heading "Push 模型与背压控制 Permalink to \"Push 模型与背压控制\"" [level=3] [ref=e774]:
+              - text: Push 模型与背压控制
+              - link "Permalink to \"Push 模型与背压控制\"" [ref=e775] [cursor=pointer]:
+                - /url: "#push-模型与背压控制"
+                - text: "#"
+            - paragraph [ref=e776]:
+              - text: RabbitMQ 默认使用
+              - strong [ref=e777]: Push 模型
+              - text: ：Broker 主动将消息推送给 Consumer，效率高。但默认没有流量控制，一个 Consumer 可能一次性收到大量未 ack 消息，导致内存溢出或其他 Consumer 饿死。
+            - paragraph [ref=e778]:
+              - strong [ref=e779]: Prefetch（QoS）是生产环境必配项
+              - text: ：
+            - generic [ref=e780]:
+              - button "Copy Code" [ref=e781] [cursor=pointer]
+              - code [ref=e783]:
+                - generic [ref=e784]: prefetch = N 表示 Broker 最多给消费者推送 N 条未 ack 的消息
+            - list [ref=e785]:
+              - listitem [ref=e786]:
+                - text: CPU 密集型业务：
+                - code [ref=e787]: prefetch = 1~5
+              - listitem [ref=e788]:
+                - text: IO 密集型业务：
+                - code [ref=e789]: prefetch = 10~50
+              - listitem [ref=e790]:
+                - text: 需要严格顺序：
+                - code [ref=e791]: prefetch = 1
+                - text: + 单消费者
+            - paragraph [ref=e792]:
+              - text: Prefetch 的本质是
+              - strong [ref=e793]: 背压（backpressure）
+              - text: ：Consumer 处理能力下降时，未 ack 消息堆积达到 prefetch 上限，Broker 停止向该 Consumer 推送，消息自然流向其他空闲 Consumer。
+            - heading "Ack / Nack / Reject 状态机 Permalink to \"Ack / Nack / Reject 状态机\"" [level=3] [ref=e794]:
+              - text: Ack / Nack / Reject 状态机
+              - link "Permalink to \"Ack / Nack / Reject 状态机\"" [ref=e795] [cursor=pointer]:
+                - /url: "#ack-nack-reject-状态机"
+                - text: "#"
+            - separator [ref=e796]
+            - heading "集群架构与高可用 Permalink to \"集群架构与高可用\"" [level=2] [ref=e797]:
+              - text: 集群架构与高可用
+              - link "Permalink to \"集群架构与高可用\"" [ref=e798] [cursor=pointer]:
+                - /url: "#集群架构与高可用"
+                - text: "#"
+            - heading "Quorum Queue 的 Raft 复制 Permalink to \"Quorum Queue 的 Raft 复制\"" [level=3] [ref=e799]:
+              - text: Quorum Queue 的 Raft 复制
+              - link "Permalink to \"Quorum Queue 的 Raft 复制\"" [ref=e800] [cursor=pointer]:
+                - /url: "#quorum-queue-的-raft-复制"
+                - text: "#"
+            - paragraph [ref=e801]: Quorum Queue 是 RabbitMQ 3.8+ 引入的高可靠队列，基于 Raft 共识算法：
+            - list [ref=e802]:
+              - listitem [ref=e803]:
+                - text: 一个 Queue 有
+                - strong [ref=e804]: 1 个 Leader + N 个 Follower
+                - text: ，分布在不同节点。
+              - listitem [ref=e805]:
+                - text: 写入需
+                - strong [ref=e806]: 多数派确认
+                - text: （W > N/2）才返回成功。
+              - listitem [ref=e807]: Leader 宕机时，Follower 之间自动选举新 Leader，Consumer 自动重连到新 Leader。
+            - paragraph [ref=e808]: 相比旧版的 Classic Mirrored Queue（已移除），Quorum Queue 的故障恢复更快、数据一致性更强，但写入延迟略高、不支持独占队列和非持久化消息。
+            - heading "vhost 逻辑隔离 Permalink to \"vhost 逻辑隔离\"" [level=3] [ref=e809]:
+              - text: vhost 逻辑隔离
+              - link "Permalink to \"vhost 逻辑隔离\"" [ref=e810] [cursor=pointer]:
+                - /url: "#vhost-逻辑隔离"
+                - text: "#"
+            - paragraph [ref=e811]: vhost（Virtual Host）是 RabbitMQ 的逻辑隔离单位，类似数据库的 schema：
+            - list [ref=e812]:
+              - listitem [ref=e813]: Exchange、Queue、用户权限都按 vhost 隔离。
+              - listitem [ref=e814]:
+                - text: 默认 vhost 是
+                - code [ref=e815]: /
+                - text: ，生产环境建议按业务或环境分 vhost（如
+                - code [ref=e816]: /order-prod
+                - text: 、
+                - code [ref=e817]: /order-test
+                - text: ）。
+              - listitem [ref=e818]:
+                - text: 开发联调时如果连上去发现什么 Queue 都没有，先检查
+                - code [ref=e819]: virtual-host
+                - text: 配置是否正确。
+            - heading "管理后台的监控视角 Permalink to \"管理后台的监控视角\"" [level=3] [ref=e820]:
+              - text: 管理后台的监控视角
+              - link "Permalink to \"管理后台的监控视角\"" [ref=e821] [cursor=pointer]:
+                - /url: "#管理后台的监控视角"
+                - text: "#"
+            - paragraph [ref=e822]: 自带 Web 管理界面（默认 15672 端口）是排查神器，重点关注：
+            - list [ref=e823]:
+              - listitem [ref=e824]:
+                - strong [ref=e825]: Queues
+                - text: ：Ready（未消费数）、Unacked（已投递未确认数）、消费者数、入队/出队速率。
+                - strong [ref=e826]: 消息堆积排查的第一站
+                - text: 。
+              - listitem [ref=e827]:
+                - strong [ref=e828]: Connections / Channels
+                - text: ：排查连接泄漏和 Channel 滥用。
+              - listitem [ref=e829]:
+                - strong [ref=e830]: Exchanges
+                - text: ：验证 Binding 关系是否正确。
+            - separator [ref=e831]
+            - heading "延伸阅读 Permalink to \"延伸阅读\"" [level=2] [ref=e832]:
+              - text: 延伸阅读
+              - link "Permalink to \"延伸阅读\"" [ref=e833] [cursor=pointer]:
+                - /url: "#延伸阅读"
+                - text: "#"
+            - list [ref=e834]:
+              - listitem [ref=e835]:
+                - link "RabbitMQ 官方文档" [ref=e836] [cursor=pointer]:
+                  - /url: https://www.rabbitmq.com/documentation.html
+              - listitem [ref=e837]:
+                - link "AMQP 0-9-1 协议规范" [ref=e838] [cursor=pointer]:
+                  - /url: https://www.rabbitmq.com/tutorials/amqp-concepts.html
+              - listitem [ref=e839]:
+                - link "Spring AMQP 参考文档" [ref=e840] [cursor=pointer]:
+                  - /url: https://docs.spring.io/spring-amqp/reference/
+              - listitem [ref=e841]:
+                - link "Quorum Queue 设计文档" [ref=e842] [cursor=pointer]:
+                  - /url: https://www.rabbitmq.com/quorum-queues.html
+              - listitem [ref=e843]:
+                - link "RabbitMQ 官方教程" [ref=e844] [cursor=pointer]:
+                  - /url: https://www.rabbitmq.com/getstarted.html
+        - contentinfo [ref=e845]:
+          - navigation "Pager" [ref=e846]:
+            - generic [ref=e847]: Pager
+            - link "上一页 Golang接入Kafka" [ref=e849] [cursor=pointer]:
+              - /url: /%E4%B8%AD%E9%97%B4%E4%BB%B6/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/kafka/Golang%E6%8E%A5%E5%85%A5Kafka
+              - generic [ref=e850]: 上一页
+              - generic [ref=e851]: Golang接入Kafka
+  - img [ref=e854]

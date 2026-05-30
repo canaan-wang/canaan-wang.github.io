@@ -97,6 +97,24 @@ export default withMermaid({
     ]
   },
   {
+        'text': 'Linux',
+        'items': [
+      {
+            'text': 'Linux',
+            'link': '/Linux/SSH密钥免密登录'
+      }
+    ]
+  },
+  {
+        'text': 'macOS',
+        'items': [
+      {
+            'text': '命令行常用命令',
+            'link': '/macOS/命令行常用命令'
+      }
+    ]
+  },
+  {
         'text': '理论',
         'items': [
       {
@@ -624,6 +642,23 @@ export default withMermaid({
               'link': '/中间件/消息队列/kafka/Golang接入Kafka'
         }
       ]
+    },
+    {
+          'text': 'rabbitmq',
+          'items': [
+        {
+              'text': 'RabbitMQ 入门与核心概念',
+              'link': '/中间件/消息队列/rabbitmq/RabbitMQ入门与核心概念'
+        },
+        {
+              'text': 'RabbitMQ 进阶：存储原理与高可用',
+              'link': '/中间件/消息队列/rabbitmq/RabbitMQ进阶：存储原理与高可用'
+        },
+        {
+              'text': 'RabbitMQ 进阶：消息可靠性与高级特性',
+              'link': '/中间件/消息队列/rabbitmq/RabbitMQ进阶：消息可靠性与高级特性'
+        }
+      ]
     }
   ],
       '/中间件/缓存/': [
@@ -1020,6 +1055,28 @@ export default withMermaid({
         {
               'text': '领域驱动设计',
               'link': '/理论/领域驱动设计/领域驱动设计概览'
+        }
+      ]
+    }
+  ],
+      '/Linux/': [
+    {
+          'text': 'Linux',
+          'items': [
+        {
+              'text': 'SSH 密钥免密登录',
+              'link': '/Linux/SSH密钥免密登录'
+        }
+      ]
+    }
+  ],
+      '/macOS/': [
+    {
+          'text': 'macOS',
+          'items': [
+        {
+              'text': '命令行常用命令',
+              'link': '/macOS/命令行常用命令'
         }
       ]
     }
